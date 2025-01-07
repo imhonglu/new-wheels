@@ -1,6 +1,6 @@
 {
 	"name": "@imhonglu/configs",
-	"version": "1.0.0",
+	"version": "1.0.2",
 	"description": "Configuration files for the project.",
 	"repository": {
 		"type": "git",
@@ -22,7 +22,13 @@
 		"./tsconfig.base.json": "./tsconfig.base.json",
 		"./tsconfig.lib.json": "./tsconfig.lib.json"
 	},
-	"files": ["dist"],
+	"files": [
+		"dist",
+		"api-extractor-base.json",
+		"tsconfig.base.json",
+		"tsconfig.lib.json",
+		"@types"
+	],
 	"scripts": {
 		"test": "vitest",
 		"build": "tsc -b",
