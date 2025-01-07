@@ -4,7 +4,7 @@
 	"description": "Type-safe JSON Schema specification library",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/imhonglu/new-wheels.git",
+		"url": "git+https://github.com/imhonglu/new-wheels.git",
 		"directory": "libs/json-schema"
 	},
 	"type": "module",

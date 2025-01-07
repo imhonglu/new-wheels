@@ -4,7 +4,7 @@
 	"description": "TypeScript type guard utilities providing runtime type checking and validation with zero dependencies",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/imhonglu/new-wheels.git",
+		"url": "git+https://github.com/imhonglu/new-wheels.git",
 		"directory": "libs/type-guard"
 	},
 	"type": "module",

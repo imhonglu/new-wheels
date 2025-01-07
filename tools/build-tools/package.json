@@ -4,7 +4,7 @@
 	"description": "Build tools for the project.",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/imhonglu/new-wheels.git",
+		"url": "git+https://github.com/imhonglu/new-wheels.git",
 		"directory": "tools/build-tools"
 	},
 	"type": "module",

@@ -4,7 +4,7 @@
 	"description": "Type-safe regular expression pattern builder for TypeScript with fluent API",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/imhonglu/new-wheels.git",
+		"url": "git+https://github.com/imhonglu/new-wheels.git",
 		"directory": "libs/pattern-builder"
 	},
 	"type": "module",

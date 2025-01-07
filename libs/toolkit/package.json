@@ -4,7 +4,7 @@
 	"description": "Type-safe utility collection for TypeScript projects",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/imhonglu/new-wheels.git",
+		"url": "git+https://github.com/imhonglu/new-wheels.git",
 		"directory": "libs/toolkit"
 	},
 	"type": "module",
