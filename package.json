@@ -1,11 +1,10 @@
 {
 	"name": "@imhonglu/new-wheels",
-	"version": "0.0.1",
 	"description": "A project to create sustainable new wheels.",
 	"author": "imhonglu <anonymouser.unknown@gmail.com>",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/imhonglu/new-wheels.git"
+		"url": "git+https://github.com/imhonglu/new-wheels.git"
 	},
 	"type": "module",
 	"engines": {
