@@ -1,0 +1,49 @@
+{
+	"name": "@imhonglu/json-schema",
+	"version": "1.0.0",
+	"description": "Type-safe JSON Schema specification library",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/imhonglu/new-wheels.git",
+		"directory": "libs/json-schema"
+	},
+	"type": "module",
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js",
+			"require": "./dist/index.cjs",
+			"default": "./dist/index.js"
+		}
+	},
+	"scripts": {
+		"test": "vitest",
+		"build": "tsc -p tsconfig.build.json",
+		"postbuild": "esm-to-cjs && pnpm api-extractor run && pnpm api-documenter markdown -i ./temp -o ./docs",
+		"init": "node dist/test-suite/cli.js",
+		"postinit": "pnpm -w run check"
+	},
+	"keywords": [
+		"typescript",
+		"type-safe",
+		"json-schema",
+		"json",
+		"schema",
+		"specification"
+	],
+	"author": "imhonglu <anonymouser.unknown@gmail.com>",
+	"license": "MIT",
+	"devDependencies": {
+		"@imhonglu/build-tools": "workspace:^",
+		"@imhonglu/configs": "workspace:^"
+	},
+	"dependencies": {
+		"@imhonglu/format": "workspace:^",
+		"@imhonglu/toolkit": "workspace:^",
+		"@imhonglu/type-object": "workspace:^",
+		"@imhonglu/type-guard": "workspace:^"
+	}
+}

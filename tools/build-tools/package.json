@@ -1,0 +1,43 @@
+{
+	"name": "@imhonglu/build-tools",
+	"version": "1.0.0",
+	"description": "Build tools for the project.",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/imhonglu/new-wheels.git",
+		"directory": "tools/build-tools"
+	},
+	"type": "module",
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js",
+			"require": "./dist/index.cjs",
+			"default": "./dist/index.js"
+		}
+	},
+	"bin": {
+		"esm-to-cjs": "./dist/esm-to-cjs.cli.js"
+	},
+	"scripts": {
+		"test": "vitest",
+		"build": "tsc -p tsconfig.build.json",
+		"postbuild": "pnpm esm-to-cjs",
+		"esm-to-cjs": "node dist/esm-to-cjs.cli.js"
+	},
+	"keywords": [],
+	"author": "imhonglu <anonymouser.unknown@gmail.com>",
+	"license": "MIT",
+	"peerDependencies": {
+		"esbuild": "catalog:",
+		"tslib": "catalog:",
+		"typescript": "catalog:"
+	},
+	"dependencies": {
+		"@imhonglu/configs": "workspace:^",
+		"@imhonglu/toolkit": "workspace:^"
+	}
+}
