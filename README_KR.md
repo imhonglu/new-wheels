@@ -2,6 +2,8 @@
 
 [![Checked with Biome](https://img.shields.io/badge/Checked_with-Biome-60a5fa?style=flat&logo=biome)](https://biomejs.dev)
 
+[English](./README.md) | [한국어](./README_KR.md)
+
 ## Introduction
 
 개발자로서 필요한 견고한 기능들을 직접 구현하고자 합니다. 현재는 초기 단계이지만, 지속적으로 발전시켜 나가고 있습니다.

@@ -2,6 +2,8 @@
 
 [![Checked with Biome](https://img.shields.io/badge/Checked_with-Biome-60a5fa?style=flat&logo=biome)](https://biomejs.dev)
 
+[English](./README.md) | [한국어](./README_KR.md)
+
 ## Introduction
 
 As a developer, I aim to implement robust functionalities that are essential for development. While currently in its early stages, this project is continuously evolving.
