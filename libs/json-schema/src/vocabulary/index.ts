@@ -38,7 +38,7 @@ import "./structural-validation/min-properties.js";
 import "./structural-validation/required.js";
 import "./structural-validation/dependent-required.js";
 
-import "./core/defs";
-import "./core/ref";
+import "./core/defs.js";
+import "./core/ref.js";
 
 export { keywordHandler };
