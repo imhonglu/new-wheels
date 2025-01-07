@@ -22,6 +22,7 @@
 	"bin": {
 		"esm-to-cjs": "./dist/esm-to-cjs.cli.js"
 	},
+	"files": ["dist"],
 	"scripts": {
 		"test": "vitest",
 		"build": "tsc -p tsconfig.build.json",
