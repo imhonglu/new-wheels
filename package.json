@@ -23,7 +23,7 @@
 		"@microsoft/api-extractor": "^7.48.1",
 		"@microsoft/api-extractor-model": "^7.30.1",
 		"@microsoft/tsdoc": "^0.15.1",
-		"@types/node": "^22.10.4",
+		"@types/node": "^22.10.5",
 		"esbuild": "catalog:",
 		"jest-extended": "catalog:",
 		"tslib": "catalog:",

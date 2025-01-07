@@ -38,13 +38,13 @@
 	"author": "imhonglu <anonymouser.unknown@gmail.com>",
 	"license": "MIT",
 	"devDependencies": {
-		"@imhonglu/build-tools": "workspace:^",
-		"@imhonglu/configs": "workspace:^"
+		"@imhonglu/build-tools": "^1.0.0",
+		"@imhonglu/configs": "^1.0.2"
 	},
 	"dependencies": {
-		"@imhonglu/format": "workspace:^",
-		"@imhonglu/toolkit": "workspace:^",
-		"@imhonglu/type-object": "workspace:^",
-		"@imhonglu/type-guard": "workspace:^"
+		"@imhonglu/format": "^1.0.0",
+		"@imhonglu/toolkit": "^1.0.0",
+		"@imhonglu/type-guard": "^1.0.0",
+		"@imhonglu/type-object": "^1.0.0"
 	}
 }

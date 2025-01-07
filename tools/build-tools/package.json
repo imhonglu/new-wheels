@@ -38,7 +38,7 @@
 		"typescript": "catalog:"
 	},
 	"dependencies": {
-		"@imhonglu/configs": "workspace:^",
-		"@imhonglu/toolkit": "workspace:^"
+		"@imhonglu/configs": "^1.0.2",
+		"@imhonglu/toolkit": "^1.0.0"
 	}
 }
