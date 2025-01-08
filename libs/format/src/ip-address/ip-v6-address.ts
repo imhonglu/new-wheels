@@ -9,12 +9,6 @@ const IPV6_MAX_LENGTH = 45;
 const IPV6_PARTS_MAX = 8;
 const IPV6_COMPRESSED_PARTS_MAX = 7;
 
-class SafeParse {
-	constructor() {
-		console.log(new.target);
-	}
-}
-
 /**
  * The IPv6Address formatter based on RFC 4291 and RFC 5954.
  *
