@@ -4,17 +4,40 @@
 
 ## Introduction
 
-프로젝트에서 자주 사용되는 유틸리티 함수와 타입들을 모아놓은 라이브러리입니다.
+자주 사용되는 유틸리티 함수와 타입들을 모아놓은 라이브러리입니다.
 
 ## Table of Contents
 
 - [Installation](#installation)
+- [Usage](#usage)
 - [API Reference](#api-reference)
 
 ## Installation
 
 ```bash
 npm install @imhonglu/toolkit
+```
+
+## Usage
+
+유틸리티 타입 `Fn.Callable` 을 간단히 소개해보겠습니다.
+
+자세한 용례는 [API Reference](#api-reference) 에서 확인할 수 있습니다.
+
+```ts
+import type { Fn } from '@imhonglu/toolkit';
+
+// 함수 타입 '(...args: any[]) => any' 에 대한 타입 별칭을 제공합니다.
+Fn.Callable // (...args: any[]) => any
+
+// 제네릭을 통해 인자 유형만 정의할 수 있습니다.
+Fn.Callable<{ args: [number, number] }> // (...args: [number, number]) => any
+
+// 제네릭을 통해 반환 유형만 정의할 수 있습니다.
+Fn.Callable<{ return: string }> // (...args: any[]) => string
+
+// 제네릭을 통해 인자 유형과 반환 유형을 모두 정의할 수 있습니다.
+Fn.Callable<{ args: [number, number], return: string }> // (...args: [number, number]) => string
 ```
 
 ## API Reference
