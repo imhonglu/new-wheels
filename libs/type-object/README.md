@@ -4,8 +4,8 @@
 
 ## Introduction
 
-- Provides type-safe wrapper for [Object API](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object) with zero dependencies
-- Provides types that match the API behavior context
+- Provides a dependency-free type-safe wrapper for [Object API](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)
+- Provides types that closely match native behavior
 - Supported APIs
   - `Object.keys`
   - `Object.entries`

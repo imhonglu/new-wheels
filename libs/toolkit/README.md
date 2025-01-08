@@ -4,10 +4,12 @@
 
 ## Introduction
 
-A collection of utility functions and types that are frequently used in projects.
+A library containing commonly used utility functions and types.
+
 ## Table of Contents
 
 - [Installation](#installation)
+- [Usage](#usage)
 - [API Reference](#api-reference)
 
 ## Installation
@@ -16,31 +18,53 @@ A collection of utility functions and types that are frequently used in projects
 npm install @imhonglu/toolkit
 ```
 
+## Usage
+
+Let's introduce a simple example of the utility type `Fn.Callable`.
+
+For detailed usage examples, please refer to the [API Reference](#api-reference).
+
+```ts
+import type { Fn } from '@imhonglu/toolkit';
+
+// Provides a type alias for function type '(...args: any[]) => any'
+Fn.Callable // (...args: any[]) => any
+
+// Define argument types only through generics
+Fn.Callable<{ args: [number, number] }> // (...args: [number, number]) => any
+
+// Define return type only through generics
+Fn.Callable<{ return: string }> // (...args: any[]) => string
+
+// Define both argument and return types through generics
+Fn.Callable<{ args: [number, number], return: string }> // (...args: [number, number]) => string
+```
+
 ## API Reference
 
 ### Array Utilities
-- [combinations](./docs/toolkit.combinations.md) - Generate all possible combinations from an array
-- [chunk](./docs/toolkit.chunk.md) - Split an array into chunks of specified size
+- [combinations](./docs/toolkit.combinations.md) - Generate all combinations of an array
+- [chunk](./docs/toolkit.chunk.md) - Split array into chunks of specified size
 
 ### Object Utilities
-- [clone-prototype](./docs/toolkit.cloneprototype.md) - Clone objects including their prototype chain
-- [invert](./docs/toolkit.invert.md) - Swap object keys and values
-- [pick](./docs/toolkit.pick.md) - Create an object with selected properties
-- [omit](./docs/toolkit.omit.md) - Create an object excluding specified properties
+- [clone-prototype](./docs/toolkit.cloneprototype.md) - Clone object including prototype
+- [invert](./docs/toolkit.invert.md) - Invert object keys and values
+- [pick](./docs/toolkit.pick.md) - Pick specified properties from object
+- [omit](./docs/toolkit.omit.md) - Omit specified properties from object
 
 ### Function Utilities
-- [memoize](./docs/toolkit.memoize.md) - Memoize function results for better performance
-- [get-callsites](./docs/toolkit.getcallsites.md) - Retrieve call stack information
-- [create-safe-executor](./docs/toolkit.createsafeexecutor.md) - Create a safe function executor
-- [is-async-function](./docs/toolkit.isasyncfunction.md) - Check if a function is asynchronous
+- [memoize](./docs/toolkit.memoize.md) - Memoize function results
+- [get-callsites](./docs/toolkit.getcallsites.md) - Get call stack information
+- [create-safe-executor](./docs/toolkit.createsafeexecutor.md) - Create safe function executor
+- [is-async-function](./docs/toolkit.isasyncfunction.md) - Check if function is async
 
 ### Type Utilities
-- [literal-union](./docs/toolkit.literalunion.md) - Literal union type utilities
+- [literal-union](./docs/toolkit.literalunion.md) - Literal union type
 - [fn](./docs/toolkit.fn.md) - Function type utilities
 - [or](./docs/toolkit.or.md) - Union type utilities
 - [primitive](./docs/toolkit.primitive.md) - Primitive type utilities
 - [mutable](./docs/toolkit.mutable.md) - Mutable type utilities
-- [nullish-value](./docs/toolkit.nullishvalue.md) - Nullish type utilities
+- [nullish-value](./docs/toolkit.nullishvalue.md) - Nullish type
 
 ### String Utilities
-- [string-case](./docs/toolkit.stringcase.md) - String case conversion utilities
+- [string-case](./docs/toolkit.stringcase.md) - String case conversion

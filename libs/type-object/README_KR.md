@@ -5,7 +5,7 @@
 ## Introduction
 
 - 종속성 없는 타입 안전한 [Object API](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object) Wrapper 를 제공합니다.
-- Native API 동작과 동일한 맥락의 타입을 제공합니다.
+- 네이티브 동작에 가까운 타입을 제공합니다.
 - 지원하는 API
   - `Object.keys`
   - `Object.entries`
