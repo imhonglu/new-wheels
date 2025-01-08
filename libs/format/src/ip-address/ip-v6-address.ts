@@ -128,6 +128,11 @@ export class IPv6Address {
 		});
 	}
 
+	/**
+	 * Converts an {@link IPv6Address} object to a IPv6Address string.
+	 *
+	 * @param value - An {@link IPv6Address} object.
+	 */
 	public static stringify({ segments, compressIndex }: IPv6Address) {
 		const address = segments.join(":");
 		if (compressIndex !== undefined) {

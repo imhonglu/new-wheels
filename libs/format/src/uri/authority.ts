@@ -112,6 +112,11 @@ export class Authority {
 		});
 	}
 
+	/**
+	 * Converts an {@link Authority} object to an Authority string.
+	 *
+	 * @param value - An {@link Authority} object.
+	 */
 	public static stringify({ userinfo, host, port }: Authority): string {
 		let result = "";
 

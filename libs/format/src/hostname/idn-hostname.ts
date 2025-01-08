@@ -84,6 +84,11 @@ export class IdnHostname {
 		});
 	}
 
+	/**
+	 * Converts an {@link IdnHostname} object to an IdnHostname string.
+	 *
+	 * @param value - An {@link IdnHostname} object.
+	 */
 	public static stringify({ ascii }: IdnHostname) {
 		return ascii.labels.join(".");
 	}

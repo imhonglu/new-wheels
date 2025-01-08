@@ -67,6 +67,11 @@ export class Query {
 		});
 	}
 
+	/**
+	 * Converts an {@link Query} object to a Query string.
+	 *
+	 * @param value - An {@link Query} object.
+	 */
 	public static stringify({ pairs }: Query): string {
 		let result = "";
 

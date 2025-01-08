@@ -145,6 +145,11 @@ export class FullTime {
 		});
 	}
 
+	/**
+	 * Converts an {@link FullTime} object to a FullTime string.
+	 *
+	 * @param value - An {@link FullTime} object.
+	 */
 	public static stringify({ hour, minute, second, secfrac, offset }: FullTime) {
 		const timezone = offset
 			? `${offset.sign}${padZero(offset.hour)}:${padZero(offset.minute)}`

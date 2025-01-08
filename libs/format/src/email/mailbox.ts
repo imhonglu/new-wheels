@@ -74,6 +74,11 @@ export class Mailbox {
 		});
 	}
 
+	/**
+	 * Converts an {@link Mailbox} object to a Mailbox string.
+	 *
+	 * @param value - An {@link Mailbox} object.
+	 */
 	public static stringify({ localPart, domain }: Mailbox) {
 		return `${localPart}@${domain}`;
 	}

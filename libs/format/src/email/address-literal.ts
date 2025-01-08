@@ -51,6 +51,11 @@ export class AddressLiteral {
 		});
 	}
 
+	/**
+	 * Converts an {@link AddressLiteral} object to an AddressLiteral string.
+	 *
+	 * @param value - An {@link AddressLiteral} object.
+	 */
 	public static stringify(domain: AddressLiteral) {
 		if (domain.address instanceof IPv6Address) {
 			return `[IPv6:${domain.address}]`;

@@ -72,6 +72,11 @@ export class Path {
 		});
 	}
 
+	/**
+	 * Converts an {@link Path} object to a Path string.
+	 *
+	 * @param value - An {@link Path} object.
+	 */
 	public static stringify({
 		segments,
 		isAbsolute,

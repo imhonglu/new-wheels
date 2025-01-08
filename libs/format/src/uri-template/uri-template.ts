@@ -160,6 +160,11 @@ export class URITemplate {
 		return result;
 	}
 
+	/**
+	 * Converts an {@link URITemplate} object to a URITemplate string.
+	 *
+	 * @param value - An {@link URITemplate} object.
+	 */
 	public static stringify(value: URITemplate): string {
 		return value.text;
 	}

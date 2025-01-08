@@ -99,6 +99,11 @@ export class URIReference {
 		});
 	}
 
+	/**
+	 * Converts an {@link URIReference} object to a URIReference string.
+	 *
+	 * @param value - An {@link URIReference} object.
+	 */
 	public static stringify(value: URIReference): string {
 		let result = "";
 

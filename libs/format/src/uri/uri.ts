@@ -43,6 +43,11 @@ export class URI extends URIReference {
 		return reference as URI;
 	}
 
+	/**
+	 * Converts an {@link URI} object to a URI string.
+	 *
+	 * @param value - An {@link URI} object.
+	 */
 	public static stringify(value: URI) {
 		return URIReference.stringify(value);
 	}

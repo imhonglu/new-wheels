@@ -104,6 +104,11 @@ export class IdnMailbox {
 		});
 	}
 
+	/**
+	 * Converts an {@link IdnMailbox} object to an IdnMailbox string.
+	 *
+	 * @param value - An {@link IdnMailbox} object.
+	 */
 	public static stringify({ localPart, domain }: IdnMailbox) {
 		return `${localPart.ascii}@${domain}`;
 	}
