@@ -85,11 +85,29 @@ export class IdnHostname {
 	}
 
 	/**
+	 * Converts an {@link IdnHostname} object to a Unicode IdnHostname string.
+	 *
+	 * @param idnHostname - An {@link IdnHostname} object.
+	 */
+	public static toUnicode({ unicode }: IdnHostname): string {
+		return unicode.labels.join(".");
+	}
+
+	/**
+	 * Converts an {@link IdnHostname} object to an ASCII IdnHostname string.
+	 *
+	 * @param idnHostname - An {@link IdnHostname} object.
+	 */
+	public static toAscii({ ascii }: IdnHostname): string {
+		return ascii.labels.join(".");
+	}
+
+	/**
 	 * Converts an {@link IdnHostname} object to an IdnHostname string.
 	 *
 	 * @param value - An {@link IdnHostname} object.
 	 */
-	public static stringify({ ascii }: IdnHostname) {
-		return ascii.labels.join(".");
+	public static stringify(idnHostname: IdnHostname) {
+		return IdnHostname.toAscii(idnHostname);
 	}
 }
