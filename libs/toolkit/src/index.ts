@@ -9,6 +9,7 @@ export * from "./function/get-callsites.js";
 export * from "./function/create-safe-executor.js";
 export * from "./function/is-async-function.js";
 export * from "./types/literal-union.js";
+export * from "./types/array-element.js";
 export * from "./types/fn.js";
 export * from "./types/or.js";
 export * from "./types/primitive.js";
