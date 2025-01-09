@@ -43,7 +43,7 @@
 	},
 	"dependencies": {
 		"@imhonglu/format": "^1.0.0",
-		"@imhonglu/toolkit": "^1.0.0",
+		"@imhonglu/toolkit": "^1.0.1",
 		"@imhonglu/type-guard": "^1.0.0",
 		"@imhonglu/type-object": "^1.0.0"
 	}
