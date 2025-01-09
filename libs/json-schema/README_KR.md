@@ -23,27 +23,8 @@
 - [ ] [Basic Meta Data](https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-validation-01#name-a-vocabulary-for-basic-meta)
 - [x] [StructuralValidation](https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-validation-01#name-a-vocabulary-for-structural)
 - [x] [Applying Sub-schema](https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-01#name-keywords-for-applying-subschema)
-- [ ] [Format](https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-validation-01#name-vocabularies-for-semantic-c)
-  - [x] date-time
-  - [x] date
-  - [x] time
-  - [x] duration
-  - [x] email
-  - [x] hostname
-  - [x] idn-email
-  - [x] idn-hostname
-  - [x] ipv4
-  - [x] ipv6
-  - [ ] iri
-  - [ ] iri-reference
-  - [ ] json-pointer
-  - [ ] json-pointer-uri-fragment
-  - [x] regex
-  - [ ] relative-json-pointer
-  - [x] uri
-  - [x] uri-reference
-  - [x] uri-template
-  - [ ] uuid
+- [x] [Format](https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-validation-01#name-vocabularies-for-semantic-c)
+  - [ ] ~~relative-json-pointer~~ (draft 사양으로 구현 계획 없습니다.)
 - [ ] [String Encoded Data](https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-validation-01#name-a-vocabulary-for-the-conten)
 
 ## Table of Contents

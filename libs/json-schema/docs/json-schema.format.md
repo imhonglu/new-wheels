@@ -43,7 +43,7 @@ Description
 
 </td><td>
 
-"date-time" \| "date" \| "time" \| "duration" \| "email" \| "hostname" \| "idn-email" \| "idn-hostname" \| "ipv4" \| "ipv6" \| "iri" \| "iri-reference" \| "json-pointer" \| "json-pointer-uri-fragment" \| "regex" \| "relative-json-pointer" \| "uri" \| "uri-reference" \| "uri-template" \| "uuid"
+"date-time" \| "date" \| "time" \| "duration" \| "email" \| "hostname" \| "idn-email" \| "idn-hostname" \| "ipv4" \| "ipv6" \| "iri" \| "iri-reference" \| "json-pointer" \| "regex" \| "relative-json-pointer" \| "uri" \| "uri-reference" \| "uri-template" \| "uuid"
 
 
 </td><td>

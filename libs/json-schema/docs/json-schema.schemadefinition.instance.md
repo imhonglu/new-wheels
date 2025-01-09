@@ -7,7 +7,7 @@
 **Signature:**
 
 ```typescript
-type Instance<T> = T extends BooleanSchema ? unknown : T extends ConstType ? T["const"] : T extends EnumType ? T["enum"] : T extends NullType ? null : T extends BooleanType ? boolean : T extends NumericType ? number : T extends StringType ? string : T extends ArrayType ? Instance<T["items"]>[] : T extends ObjectType ? T["required"] extends Array<infer U> ? {
+type Instance<T> = T extends BooleanSchema ? unknown : T extends ConstType ? T["const"] : T extends EnumType ? ArrayElement<T["enum"]> : T extends NullType ? null : T extends BooleanType ? boolean : T extends NumericType ? number : T extends StringType ? string : T extends ArrayType ? Instance<T["items"]>[] : T extends ObjectType ? T["required"] extends Array<infer U> ? {
         [P in Extract<keyof T["properties"], U>]: Instance<T["properties"][P]>;
     } & {
         [P in Exclude<keyof T["properties"], U>]?: Instance<T["properties"][P]>;
