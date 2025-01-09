@@ -4,6 +4,8 @@
 
 ## Query.stringify() method
 
+Converts an [Query](./format.query.md) object to a Query string.
+
 **Signature:**
 
 ```typescript

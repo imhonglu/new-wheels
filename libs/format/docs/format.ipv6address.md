@@ -204,6 +204,8 @@ Converts a IPv6Address string to an [IPv6Address](./format.ipv6address.md) objec
 
 </td><td>
 
+Converts an [IPv6Address](./format.ipv6address.md) object to a IPv6Address string.
+
 
 </td></tr>
 </tbody></table>

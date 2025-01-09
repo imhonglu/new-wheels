@@ -4,6 +4,8 @@
 
 ## LocalPart.stringify() method
 
+Converts an [LocalPart](./format.localpart.md) object to a LocalPart string.
+
 **Signature:**
 
 ```typescript
@@ -39,6 +41,8 @@ value
 
 
 </td><td>
+
+An [LocalPart](./format.localpart.md) object.
 
 
 </td></tr>

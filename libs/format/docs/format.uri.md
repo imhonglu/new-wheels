@@ -13,13 +13,43 @@ export declare class URI extends URIReference
 ```
 **Extends:** [URIReference](./format.urireference.md)
 
-## Example
+## Example 1
 
 
 ```ts
 URI.parse("https://example.com/path?query#fragment");
 // {
 //   scheme: "https",
+//   ... // same as URIReference
+// }
+```
+
+## Example 2
+
+
+```ts
+URI.parse("http://한국.com/path?query#fragment");
+// {
+//   scheme: "http",
+//   authority: {
+//     host: "xn--3e0b707e.com",
+//     ... // same as Authority
+//   },
+//   ... // same as URIReference
+// }
+```
+
+## Example 3
+
+
+```ts
+URI.parse("http://한국.com/경로?쿼리#프래그먼트", { isIri: true });
+// {
+//   scheme: "http",
+//   authority: {
+//     host: "한국.com",
+//     ... // same as Authority
+//   },
 //   ... // same as URIReference
 // }
 ```
@@ -112,7 +142,7 @@ SafeExecutor&lt;typeof URI.parse&gt;
 
 </td><td>
 
-string
+[Scheme](./format.scheme.md)
 
 
 </td><td>
@@ -141,7 +171,7 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-[parse(text)](./format.uri.parse.md)
+[parse(text, options)](./format.uri.parse.md)
 
 
 </td><td>
@@ -166,6 +196,8 @@ Converts a URI string to a [URI](./format.uri.md) object.
 
 
 </td><td>
+
+Converts an [URI](./format.uri.md) object to a URI string.
 
 
 </td></tr>

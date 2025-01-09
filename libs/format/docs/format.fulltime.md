@@ -243,6 +243,8 @@ Converts a FullTime string to a [FullTime](./format.fulltime.md) object.
 
 </td><td>
 
+Converts an [FullTime](./format.fulltime.md) object to a FullTime string.
+
 
 </td></tr>
 </tbody></table>

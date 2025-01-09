@@ -9,7 +9,7 @@ Constructs a new instance of the `URIReference` class
 **Signature:**
 
 ```typescript
-constructor({ scheme, authority, path, query, fragment, }: URIReference);
+constructor({ scheme, authority, path, query, fragment, options, }: URIReference);
 ```
 
 ## Parameters
@@ -32,7 +32,7 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-{ scheme, authority, path, query, fragment, }
+{ scheme, authority, path, query, fragment, options, }
 
 
 </td><td>

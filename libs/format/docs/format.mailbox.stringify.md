@@ -4,6 +4,8 @@
 
 ## Mailbox.stringify() method
 
+Converts an [Mailbox](./format.mailbox.md) object to a Mailbox string.
+
 **Signature:**
 
 ```typescript

@@ -4,6 +4,8 @@
 
 ## DateTime.stringify() method
 
+Converts an [DateTime](./format.datetime.md) object to a DateTime string.
+
 **Signature:**
 
 ```typescript

@@ -63,6 +63,17 @@ The Duration formatter based on RFC 3339.
 </td></tr>
 <tr><td>
 
+[Fragment](./format.fragment.md)
+
+
+</td><td>
+
+The Fragment formatter based on RFC 3986.
+
+
+</td></tr>
+<tr><td>
+
 [FullDate](./format.fulldate.md)
 
 
@@ -154,6 +165,15 @@ The IdnMailbox formatter based on RFC 5321.
 </td></tr>
 <tr><td>
 
+[InvalidFragmentError](./format.invalidfragmenterror.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
 [InvalidFullDateError](./format.invalidfulldateerror.md)
 
 
@@ -199,6 +219,24 @@ The IdnMailbox formatter based on RFC 5321.
 </td></tr>
 <tr><td>
 
+[InvalidIPvFutureError](./format.invalidipvfutureerror.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[InvalidJsonPointerError](./format.invalidjsonpointererror.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
 [InvalidLocalPartError](./format.invalidlocalparterror.md)
 
 
@@ -235,6 +273,15 @@ The IdnMailbox formatter based on RFC 5321.
 </td></tr>
 <tr><td>
 
+[InvalidSchemeError](./format.invalidschemeerror.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
 [InvalidURIError](./format.invalidurierror.md)
 
 
@@ -245,6 +292,15 @@ The IdnMailbox formatter based on RFC 5321.
 <tr><td>
 
 [InvalidURITemplateError](./format.invaliduritemplateerror.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[InvalidUUIDError](./format.invaliduuiderror.md)
 
 
 </td><td>
@@ -279,6 +335,28 @@ The IPv4Address formatter based on RFC 2673 and RFC 5954.
 </td><td>
 
 The IPv6Address formatter based on RFC 4291 and RFC 5954.
+
+
+</td></tr>
+<tr><td>
+
+[IPvFuture](./format.ipvfuture.md)
+
+
+</td><td>
+
+The IPvFuture formatter based on RFC 3986.
+
+
+</td></tr>
+<tr><td>
+
+[JsonPointer](./format.jsonpointer.md)
+
+
+</td><td>
+
+The JsonPointer formatter based on RFC 6901.
 
 
 </td></tr>
@@ -328,6 +406,17 @@ The Query formatter based on RFC 3986.
 </td></tr>
 <tr><td>
 
+[Scheme](./format.scheme.md)
+
+
+</td><td>
+
+The Scheme formatter based on RFC 3986.
+
+
+</td></tr>
+<tr><td>
+
 [URI](./format.uri.md)
 
 
@@ -356,6 +445,17 @@ The URIReference formatter based on RFC 3986.
 </td><td>
 
 The URITemplate formatter based on RFC 6570.
+
+
+</td></tr>
+<tr><td>
+
+[UUID](./format.uuid.md)
+
+
+</td><td>
+
+The UUID formatter based on RFC 4122.
 
 
 </td></tr>
@@ -441,6 +541,15 @@ Description
 <tr><td>
 
 [TimeNumOffset](./format.timenumoffset.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[URIParseOptions](./format.uriparseoptions.md)
 
 
 </td><td>

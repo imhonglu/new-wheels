@@ -4,6 +4,8 @@
 
 ## Varspec.stringify() method
 
+Converts an [Varspec](./format.varspec.md) object to a Varspec string.
+
 **Signature:**
 
 ```typescript

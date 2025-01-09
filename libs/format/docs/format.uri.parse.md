@@ -9,7 +9,7 @@ Converts a URI string to a [URI](./format.uri.md) object.
 **Signature:**
 
 ```typescript
-static parse(text: string): URI;
+static parse(text: string, options?: URIParseOptions): URI;
 ```
 
 ## Parameters
@@ -46,6 +46,22 @@ A valid URI string. e.g. "https://example.com/path?query\#fragment"
 
 
 </td></tr>
+<tr><td>
+
+options
+
+
+</td><td>
+
+[URIParseOptions](./format.uriparseoptions.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
 </tbody></table>
 **Returns:**
 
@@ -53,5 +69,5 @@ A valid URI string. e.g. "https://example.com/path?query\#fragment"
 
 ## Exceptions
 
-- [InvalidURIError](./format.invalidurierror.md)
+- [InvalidURIError](./format.invalidurierror.md) - [InvalidSchemeError](./format.invalidschemeerror.md) - [InvalidAuthorityError](./format.invalidauthorityerror.md) - [InvalidPathError](./format.invalidpatherror.md) - [InvalidQueryError](./format.invalidqueryerror.md) - [InvalidFragmentError](./format.invalidfragmenterror.md)
 

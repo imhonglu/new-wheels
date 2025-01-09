@@ -162,6 +162,8 @@ Converts a IPv4Address string to an [IPv4Address](./format.ipv4address.md) objec
 
 </td><td>
 
+Converts an [IPv4Address](./format.ipv4address.md) object to a IPv4Address string.
+
 
 </td></tr>
 </tbody></table>

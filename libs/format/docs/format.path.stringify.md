@@ -4,6 +4,8 @@
 
 ## Path.stringify() method
 
+Converts an [Path](./format.path.md) object to a Path string.
+
 **Signature:**
 
 ```typescript

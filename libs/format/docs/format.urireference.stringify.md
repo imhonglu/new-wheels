@@ -4,6 +4,8 @@
 
 ## URIReference.stringify() method
 
+Converts an [URIReference](./format.urireference.md) object to a URIReference string.
+
 **Signature:**
 
 ```typescript
@@ -39,6 +41,8 @@ value
 
 
 </td><td>
+
+An [URIReference](./format.urireference.md) object.
 
 
 </td></tr>

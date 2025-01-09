@@ -46,7 +46,7 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-[(constructor)({ scheme, authority, path, query, fragment, })](./format.urireference._constructor_.md)
+[(constructor)({ scheme, authority, path, query, fragment, options, })](./format.urireference._constructor_.md)
 
 
 </td><td>
@@ -116,7 +116,28 @@ _(Optional)_
 
 </td><td>
 
-string
+[Fragment](./format.fragment.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[options?](./format.urireference.options.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+[URIParseOptions](./format.uriparseoptions.md)
 
 
 </td><td>
@@ -198,7 +219,7 @@ SafeExecutor&lt;typeof URIReference.parse&gt;
 
 </td><td>
 
-string
+[Scheme](./format.scheme.md)
 
 
 </td><td>
@@ -229,7 +250,7 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-[parse(text)](./format.urireference.parse.md)
+[parse(text, options)](./format.urireference.parse.md)
 
 
 </td><td>
@@ -254,6 +275,8 @@ Converts a URIReference string to a [URIReference](./format.urireference.md) obj
 
 
 </td><td>
+
+Converts an [URIReference](./format.urireference.md) object to a URIReference string.
 
 
 </td></tr>

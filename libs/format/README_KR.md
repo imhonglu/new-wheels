@@ -36,10 +36,14 @@ console.log(time.hour); // 0
 console.log(time.toString()); // '00:00:00.000Z'
 console.log(JSON.stringify(time)); // '"00:00:00.000Z"'
 
-// 안전한 파싱
+// 유효성 검사가 포함된 안전한 파싱
 const result = FullTime.safeParse('invalid');
-if (!result.ok) {
+if (result.ok) {
+  console.log(result.data);
+  // result.data는 파싱된 FullTime 인스턴스를 반환합니다
+} else {
   console.error(result.error);
+  // result.error는 오류 정보를 포함한 InvalidFullTimeError를 반환합니다
 }
 ```
 
@@ -54,8 +58,8 @@ if (!result.ok) {
 
 ### IP Address Formatter(RFC 2673, RFC 4291, RFC 5954)
 
-- [Ipv4Address](./docs/format.ipv4address.md) - RFC 2673, RFC 5954 기반의 IPv4 주소
-- [Ipv6Address](./docs/format.ipv6address.md) - RFC 4291, RFC 5954 기반의 IPv6 주소
+- [IPv4Address](./docs/format.ipv4address.md) - RFC 2673, RFC 5954 기반의 IPv4 주소
+- [IPv6Address](./docs/format.ipv6address.md) - RFC 4291, RFC 5954 기반의 IPv6 주소
 
 ### Hostname Formatter(RFC 1034, RFC 5890)
 
@@ -69,14 +73,27 @@ if (!result.ok) {
 - [AddressLiteral](./docs/format.addressliteral.md) - RFC 5321 기반의 주소 리터럴
 - [LocalPart](./docs/format.localpart.md) - RFC 5321, RFC 5322 기반의 로컬 파트
 
-### URI Formatter(RFC 3986)
+### URI Formatter(RFC 3986, RFC 3987)
 
-- [Uri](./docs/format.uri.md) - RFC 3986 기반의 URI
-- [UriReference](./docs/format.urireference.md) - RFC 3986 기반의 URI 참조
-- [Authority](./docs/format.authority.md) - RFC 3986 기반의 권한
-- [Path](./docs/format.path.md) - RFC 3986 기반의 경로
-- [Query](./docs/format.query.md) - RFC 3986 기반의 쿼리
+IRI를 지원하는 API는 공통적으로 `{ isIri: boolean }` 옵션을 제공합니다.
+
+- [URI](./docs/format.uri.md) - RFC 3986, RFC 3987 기반의 URI / IRI
+- [URIReference](./docs/format.urireference.md) - RFC 3986, RFC 3987 기반의 URI Reference / IRI Reference
+- [Authority](./docs/format.authority.md) - RFC 3986, RFC 3987 기반의 Authority / IRI Authority
+- [Path](./docs/format.path.md) - RFC 3986, RFC 3987 기반의 Path / IRI Path
+- [Query](./docs/format.query.md) - RFC 3986, RFC 3987 기반의 Query / IRI Query
+- [Fragment](./docs/format.fragment.md) - RFC 3986, RFC 3987 기반의 Fragment / IRI Fragment
+- [Scheme](./docs/format.scheme.md) - RFC 3986 기반의 Scheme
+- [IPvFuture](./docs/format.ipvfuture.md) - RFC 3986 기반의 IPvFuture
 
 ### URI Template Formatter(RFC 6570)
 
-- [UriTemplate](./docs/format.uritemplate.md) - RFC 6570 기반의 URI 템플릿
+- [URITemplate](./docs/format.uritemplate.md) - RFC 6570 기반의 URI 템플릿
+
+### UUID Formatter(RFC 4122)
+
+- [UUID](./docs/format.uuid.md) - RFC 4122 기반의 UUID
+
+### JSON Pointer Formatter(RFC 6901)
+
+- [JsonPointer](./docs/format.jsonpointer.md) - RFC 6901 기반의 JSON Pointer

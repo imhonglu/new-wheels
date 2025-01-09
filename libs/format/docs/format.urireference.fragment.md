@@ -7,5 +7,5 @@
 **Signature:**
 
 ```typescript
-readonly fragment?: string;
+readonly fragment?: Fragment;
 ```

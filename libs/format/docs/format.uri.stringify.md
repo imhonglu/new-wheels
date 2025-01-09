@@ -4,6 +4,8 @@
 
 ## URI.stringify() method
 
+Converts an [URI](./format.uri.md) object to a URI string.
+
 **Signature:**
 
 ```typescript
@@ -39,6 +41,8 @@ value
 
 
 </td><td>
+
+An [URI](./format.uri.md) object.
 
 
 </td></tr>

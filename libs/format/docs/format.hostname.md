@@ -183,6 +183,8 @@ Converts a Hostname string to a [Hostname](./format.hostname.md) object.
 
 </td><td>
 
+Converts an [Hostname](./format.hostname.md) object to a Hostname string.
+
 
 </td></tr>
 </tbody></table>

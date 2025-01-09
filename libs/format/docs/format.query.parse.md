@@ -9,7 +9,7 @@ Converts a Query string to a [Query](./format.query.md) object.
 **Signature:**
 
 ```typescript
-static parse(text: string): Query;
+static parse(text: string, options?: URIParseOptions): Query;
 ```
 
 ## Parameters
@@ -43,6 +43,22 @@ string
 </td><td>
 
 A valid Query string. e.g. "key1=value1&amp;key2=value2&amp;key2=value3"
+
+
+</td></tr>
+<tr><td>
+
+options
+
+
+</td><td>
+
+[URIParseOptions](./format.uriparseoptions.md)
+
+
+</td><td>
+
+_(Optional)_
 
 
 </td></tr>

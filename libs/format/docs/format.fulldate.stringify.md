@@ -4,6 +4,8 @@
 
 ## FullDate.stringify() method
 
+Converts an [FullDate](./format.fulldate.md) object to a FullDate string.
+
 **Signature:**
 
 ```typescript
