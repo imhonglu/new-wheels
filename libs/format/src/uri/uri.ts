@@ -1,6 +1,8 @@
 import type { SafeExecutor } from "@imhonglu/toolkit";
 import { Serializable } from "../utils/serializable/serializable.js";
 import { InvalidURIError } from "./errors/invalid-uri-error.js";
+import type { Scheme } from "./scheme.js";
+import type { URIParseOptions } from "./types/uri-parse-options.js";
 import { URIReference } from "./uri-reference.js";
 
 /**
@@ -15,11 +17,37 @@ import { URIReference } from "./uri-reference.js";
  * // }
  * ```
  *
+ * @example
+ * ```ts
+ * URI.parse("http://한국.com/path?query#fragment");
+ * // {
+ * //   scheme: "http",
+ * //   authority: {
+ * //     host: "xn--3e0b707e.com",
+ * //     ... // same as Authority
+ * //   },
+ * //   ... // same as URIReference
+ * // }
+ * ```
+ *
+ * @example
+ * ```ts
+ * URI.parse("http://한국.com/경로?쿼리#프래그먼트", { isIri: true });
+ * // {
+ * //   scheme: "http",
+ * //   authority: {
+ * //     host: "한국.com",
+ * //     ... // same as Authority
+ * //   },
+ * //   ... // same as URIReference
+ * // }
+ * ```
+ *
  * @see {@link https://datatracker.ietf.org/doc/html/rfc3986#section-3.1 | RFC 3986#section-3.1}
  */
 @Serializable
 export class URI extends URIReference {
-	public readonly scheme: string;
+	public readonly scheme: Scheme;
 
 	public constructor(reference: URI) {
 		super(reference);
@@ -32,15 +60,22 @@ export class URI extends URIReference {
 	 * Converts a URI string to a {@link URI} object.
 	 *
 	 * @param text - A valid URI string. e.g. "https://example.com/path?query#fragment"
-	 * @throws - {@link InvalidURIError}
+	 * @throws
+	 * - {@link InvalidURIError}
+	 * - {@link InvalidSchemeError}
+	 * - {@link InvalidAuthorityError}
+	 * - {@link InvalidPathError}
+	 * - {@link InvalidQueryError}
+	 * - {@link InvalidFragmentError}
 	 */
-	public static parse(text: string) {
-		const reference = URIReference.parse(text);
+	public static parse(text: string, options?: URIParseOptions): URI {
+		const reference = URIReference.parse(text, options);
+
 		if (!reference.scheme) {
 			throw new InvalidURIError(text);
 		}
 
-		return reference as URI;
+		return new URI(reference as URI);
 	}
 
 	/**

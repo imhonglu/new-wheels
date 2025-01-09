@@ -4,12 +4,24 @@ import { IdnHostname } from "../hostname/idn-hostname.js";
 import { IPv4Address } from "../ip-address/ipv4-address.js";
 import { IPv6Address } from "../ip-address/ipv6-address.js";
 import { Serializable } from "../utils/serializable/serializable.js";
-import { pctEncoded, subDelims, unreserved } from "./constants.js";
+import {
+	iriUnreserved,
+	pctEncoded,
+	subDelims,
+	unreserved,
+} from "./constants.js";
 import { InvalidAuthorityError } from "./errors/invalid-authority-error.js";
+import { IPvFuture } from "./ipv-future.js";
+import type { URIParseOptions } from "./types/uri-parse-options.js";
+import { parseAuthorityComponents } from "./utils/parse-authority-components.js";
 
 const pattern = {
-	ipv4: /^\d{1,3}\./,
-	ipLiteral: /^\[.+\]$/,
+	iriUserinfo: characterSet(iriUnreserved, subDelims, ":")
+		.nonCapturingGroup()
+		.oneOrMore()
+		.anchor()
+		.toRegExp("u"),
+
 	userinfo: oneOf(pctEncoded, characterSet(unreserved, subDelims, ":"))
 		.nonCapturingGroup()
 		.oneOrMore()
@@ -45,13 +57,15 @@ const pattern = {
 @Serializable
 export class Authority {
 	public readonly userinfo?: string;
-	public readonly host: IdnHostname | IPv4Address | IPv6Address;
+	public readonly host: IdnHostname | IPv4Address | IPv6Address | IPvFuture;
 	public readonly port?: number;
+	public readonly options?: URIParseOptions;
 
-	public constructor({ userinfo, host, port }: Authority) {
+	public constructor({ userinfo, host, port, options }: Authority) {
 		this.userinfo = userinfo;
 		this.host = host;
 		this.port = port;
+		this.options = options;
 	}
 
 	public static safeParse: SafeExecutor<typeof Authority.parse>;
@@ -62,43 +76,37 @@ export class Authority {
 	 * @param text - A valid Authority string. e.g. "example.com".
 	 * @throws - {@link InvalidAuthorityError}
 	 */
-	public static parse(text: string): Authority {
-		const atPos = text.indexOf("@");
+	public static parse(text: string, options?: URIParseOptions): Authority {
+		const authorityComponents = parseAuthorityComponents(text);
 
-		const userinfo = atPos !== -1 ? text.slice(0, atPos) : undefined;
-		if (userinfo !== undefined && !pattern.userinfo.test(userinfo)) {
+		if (!authorityComponents) {
 			throw new InvalidAuthorityError(text);
 		}
 
-		let host = text.slice(atPos + 1);
-		let port: number | undefined;
+		const { userinfo, host, port, type } = authorityComponents;
+		const userinfoPattern = options?.isIri
+			? pattern.iriUserinfo
+			: pattern.userinfo;
 
-		const colonPos = host.lastIndexOf(":");
-		if (colonPos !== -1) {
-			const portString = host.slice(colonPos + 1);
-
-			if (!portString.endsWith("]")) {
-				port = Number.parseInt(portString);
-				host = host.slice(0, colonPos);
-			}
-		}
-
-		if (port !== undefined && !Number.isInteger(port)) {
+		if (userinfo && !userinfoPattern.test(userinfo)) {
 			throw new InvalidAuthorityError(text);
 		}
 
-		let type: "idn-hostname" | "ipv4-address" | "ipv6-address";
-		let result: SafeResult<IdnHostname | IPv4Address | IPv6Address>;
+		let result: SafeResult<IdnHostname | IPv4Address | IPv6Address | IPvFuture>;
 
-		if (pattern.ipv4.test(host)) {
-			type = "ipv4-address";
-			result = IPv4Address.safeParse(host);
-		} else if (pattern.ipLiteral.test(host)) {
-			type = "ipv6-address";
-			result = IPv6Address.safeParse(host.slice(1, -1));
-		} else {
-			type = "idn-hostname";
-			result = IdnHostname.safeParse(host);
+		switch (type) {
+			case "ipv4-address":
+				result = IPv4Address.safeParse(host);
+				break;
+			case "ipv6-address":
+				result = IPv6Address.safeParse(host.slice(1, -1));
+				break;
+			case "ipv-future":
+				result = IPvFuture.safeParse(host.slice(1, -1));
+				break;
+			case "reg-name":
+				result = IdnHostname.safeParse(host);
+				break;
 		}
 
 		if (!result.ok) {
@@ -109,6 +117,7 @@ export class Authority {
 			userinfo,
 			host: result.data,
 			port,
+			options,
 		});
 	}
 
@@ -117,13 +126,25 @@ export class Authority {
 	 *
 	 * @param value - An {@link Authority} object.
 	 */
-	public static stringify({ userinfo, host, port }: Authority): string {
+	public static stringify({
+		userinfo,
+		host,
+		port,
+		options,
+	}: Authority): string {
 		let result = "";
 
 		if (userinfo) result += `${userinfo}@`;
+		if (host instanceof IPv6Address || host instanceof IPvFuture) {
+			result += `[${host}]`;
+		} else if (host instanceof IdnHostname) {
+			result += options?.isIri
+				? IdnHostname.toUnicode(host)
+				: IdnHostname.toAscii(host);
+		} else {
+			result += `${host}`;
+		}
 		if (port) result += `:${port}`;
-		if (host instanceof IPv6Address) result += `[${host}]`;
-		else result += host;
 
 		return result;
 	}

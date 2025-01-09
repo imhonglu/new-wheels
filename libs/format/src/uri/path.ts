@@ -1,19 +1,31 @@
 import { characterSet, concat } from "@imhonglu/pattern-builder";
 import type { SafeExecutor } from "@imhonglu/toolkit";
 import { Serializable } from "../utils/serializable/serializable.js";
-import { pchar } from "./constants.js";
+import { iriPchar, pchar } from "./constants.js";
 import { InvalidPathError } from "./errors/invalid-path-error.js";
+import type { URIParseOptions } from "./types/uri-parse-options.js";
 
 const slash = characterSet("/").optional();
 
-const pattern = concat(
-	concat(slash, pchar.clone().nonCapturingGroup().oneOrMore())
-		.nonCapturingGroup()
-		.zeroOrMore(),
-	slash,
-)
-	.anchor()
-	.toRegExp();
+const pattern = {
+	iriPath: concat(
+		concat(slash, iriPchar.clone().nonCapturingGroup().oneOrMore())
+			.nonCapturingGroup()
+			.zeroOrMore(),
+		slash,
+	)
+		.anchor()
+		.toRegExp("u"),
+
+	path: concat(
+		concat(slash, pchar.clone().nonCapturingGroup().oneOrMore())
+			.nonCapturingGroup()
+			.zeroOrMore(),
+		slash,
+	)
+		.anchor()
+		.toRegExp(),
+};
 
 /**
  * The Path formatter based on RFC 3986.
@@ -32,14 +44,21 @@ const pattern = concat(
  */
 @Serializable
 export class Path {
+	public readonly segments: string[];
 	public readonly isAbsolute: boolean;
 	public readonly hasTrailingSlash: boolean;
-	public readonly segments: string[];
+	public readonly options?: URIParseOptions;
 
-	public constructor({ isAbsolute, hasTrailingSlash, segments }: Path) {
+	public constructor({
+		segments,
+		isAbsolute,
+		hasTrailingSlash,
+		options,
+	}: Path) {
+		this.segments = segments;
 		this.isAbsolute = isAbsolute;
 		this.hasTrailingSlash = hasTrailingSlash;
-		this.segments = segments;
+		this.options = options;
 	}
 
 	public static safeParse: SafeExecutor<typeof Path.parse>;
@@ -50,10 +69,10 @@ export class Path {
 	 * @param text - A valid Path string. e.g. "/path/to/resource"
 	 * @throws - {@link InvalidPathError}
 	 */
-	public static parse(text: string): Path {
-		const matches = text.match(pattern);
+	public static parse(text: string, options?: URIParseOptions): Path {
+		const pathPattern = options?.isIri ? pattern.iriPath : pattern.path;
 
-		if (!matches) {
+		if (!pathPattern.test(text)) {
 			throw new InvalidPathError(text);
 		}
 
@@ -69,6 +88,7 @@ export class Path {
 			segments,
 			isAbsolute,
 			hasTrailingSlash,
+			options,
 		});
 	}
 
