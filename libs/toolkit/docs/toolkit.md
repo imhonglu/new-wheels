@@ -310,6 +310,17 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
+[ArrayElement](./toolkit.arrayelement.md)
+
+
+</td><td>
+
+Extracts the element type from an array type using type inference.
+
+
+</td></tr>
+<tr><td>
+
 [InvertObject](./toolkit.invertobject.md)
 
 
