@@ -42,6 +42,6 @@
 	},
 	"dependencies": {
 		"@imhonglu/pattern-builder": "^1.0.0",
-		"@imhonglu/toolkit": "^1.0.0"
+		"@imhonglu/toolkit": "^1.0.1"
 	}
 }
