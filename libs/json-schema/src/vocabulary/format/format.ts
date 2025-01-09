@@ -8,10 +8,12 @@ import {
 	IPv6Address,
 	IdnHostname,
 	IdnMailbox,
+	JsonPointer,
 	Mailbox,
 	URI,
 	URIReference,
 	URITemplate,
+	UUID,
 } from "@imhonglu/format";
 import { createSafeExecutor } from "@imhonglu/toolkit";
 import type { Format } from "../../types/json-schema/format.js";
@@ -48,9 +50,7 @@ function isFormat(format: Format["format"]): (data: string) => boolean {
 		case "iri-reference":
 			return (data) => is.string(data);
 		case "json-pointer":
-			return (data) => is.string(data);
-		case "json-pointer-uri-fragment":
-			return (data) => is.string(data);
+			return (data) => is.string(data) && JsonPointer.safeParse(data).ok;
 		case "regex": {
 			const safeParse = createSafeExecutor(
 				(string: string) => new RegExp(string),
@@ -67,7 +67,7 @@ function isFormat(format: Format["format"]): (data: string) => boolean {
 		case "uri-template":
 			return (data) => is.string(data) && URITemplate.safeParse(data).ok;
 		case "uuid":
-			return (data) => is.string(data);
+			return (data) => is.string(data) && UUID.safeParse(data).ok;
 		default:
 			return (data) => is.string(data);
 	}
