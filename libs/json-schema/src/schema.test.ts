@@ -157,3 +157,13 @@ test("should throw error when nested object schema validation fails", () => {
 		),
 	).toThrow(ValidationFailedError);
 });
+
+test("should correctly infer literal union types from const array", () => {
+	const BloodType = new Schema({
+		enum: ["a", "b", "o", "ab"] as const,
+	});
+
+	type BloodType = SchemaDefinition.Instance<typeof BloodType>;
+
+	expectTypeOf<BloodType>().toEqualTypeOf<"a" | "b" | "o" | "ab">();
+});
