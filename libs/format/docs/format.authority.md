@@ -60,7 +60,7 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-[(constructor)({ userinfo, host, port })](./format.authority._constructor_.md)
+[(constructor)({ userinfo, host, port, options })](./format.authority._constructor_.md)
 
 
 </td><td>
@@ -109,10 +109,31 @@ Description
 
 </td><td>
 
-[IdnHostname](./format.idnhostname.md) \| [IPv4Address](./format.ipv4address.md) \| [IPv6Address](./format.ipv6address.md)
+[IdnHostname](./format.idnhostname.md) \| [IPv4Address](./format.ipv4address.md) \| [IPv6Address](./format.ipv6address.md) \| [IPvFuture](./format.ipvfuture.md)
 
 
 </td><td>
+
+
+</td></tr>
+<tr><td>
+
+[options?](./format.authority.options.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+[URIParseOptions](./format.uriparseoptions.md)
+
+
+</td><td>
+
+_(Optional)_
 
 
 </td></tr>
@@ -199,7 +220,7 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-[parse(text)](./format.authority.parse.md)
+[parse(text, options)](./format.authority.parse.md)
 
 
 </td><td>
@@ -215,7 +236,7 @@ Converts an Authority string to an [Authority](./format.authority.md) object.
 </td></tr>
 <tr><td>
 
-[stringify({ userinfo, host, port })](./format.authority.stringify.md)
+[stringify({ userinfo, host, port, options, })](./format.authority.stringify.md)
 
 
 </td><td>
@@ -224,6 +245,8 @@ Converts an Authority string to an [Authority](./format.authority.md) object.
 
 
 </td><td>
+
+Converts an [Authority](./format.authority.md) object to an Authority string.
 
 
 </td></tr>

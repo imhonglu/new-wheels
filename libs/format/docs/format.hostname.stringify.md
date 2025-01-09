@@ -4,6 +4,8 @@
 
 ## Hostname.stringify() method
 
+Converts an [Hostname](./format.hostname.md) object to a Hostname string.
+
 **Signature:**
 
 ```typescript

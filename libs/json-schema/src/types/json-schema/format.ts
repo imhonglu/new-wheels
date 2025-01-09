@@ -16,7 +16,6 @@ export interface Format {
 		| "iri"
 		| "iri-reference"
 		| "json-pointer"
-		| "json-pointer-uri-fragment"
 		| "regex"
 		| "relative-json-pointer"
 		| "uri"

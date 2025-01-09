@@ -175,7 +175,7 @@ Converts a IdnHostname string to a [IdnHostname](./format.idnhostname.md) object
 </td></tr>
 <tr><td>
 
-[stringify({ ascii })](./format.idnhostname.stringify.md)
+[stringify(idnHostname)](./format.idnhostname.stringify.md)
 
 
 </td><td>
@@ -184,6 +184,40 @@ Converts a IdnHostname string to a [IdnHostname](./format.idnhostname.md) object
 
 
 </td><td>
+
+Converts an [IdnHostname](./format.idnhostname.md) object to an IdnHostname string.
+
+
+</td></tr>
+<tr><td>
+
+[toAscii({ ascii })](./format.idnhostname.toascii.md)
+
+
+</td><td>
+
+`static`
+
+
+</td><td>
+
+Converts an [IdnHostname](./format.idnhostname.md) object to an ASCII IdnHostname string.
+
+
+</td></tr>
+<tr><td>
+
+[toUnicode({ unicode })](./format.idnhostname.tounicode.md)
+
+
+</td><td>
+
+`static`
+
+
+</td><td>
+
+Converts an [IdnHostname](./format.idnhostname.md) object to a Unicode IdnHostname string.
 
 
 </td></tr>

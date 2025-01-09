@@ -79,6 +79,11 @@ export class Varspec {
 		});
 	}
 
+	/**
+	 * Converts an {@link Varspec} object to a Varspec string.
+	 *
+	 * @param value - An {@link Varspec} object.
+	 */
 	public static stringify({ name, modifier }: Varspec) {
 		return `${name}${modifier ? modifier.type : ""}`;
 	}

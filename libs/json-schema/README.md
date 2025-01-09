@@ -4,9 +4,9 @@
 
 ## Introduction
 
-- A library that complies with JSON Schema 2020-12-draft specification.
-- Validated based on [JSON-Schema-test-suite](https://github.com/json-schema-org/JSON-Schema-Test-Suite).
-- Keywords types are automatically inferred based on schema definitions.
+- A library that complies with JSON Schema 2020-12-draft specification
+- Validated based on [JSON-Schema-test-suite](https://github.com/json-schema-org/JSON-Schema-Test-Suite)
+- Keywords types are automatically inferred based on schema definitions
 
 ![demo-1](./assets/demo.gif)
 
@@ -23,27 +23,8 @@
 - [ ] [Basic Meta Data](https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-validation-01#name-a-vocabulary-for-basic-meta)
 - [x] [StructuralValidation](https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-validation-01#name-a-vocabulary-for-structural)
 - [x] [Applying Sub-schema](https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-01#name-keywords-for-applying-subschema)
-- [ ] [Format](https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-validation-01#name-vocabularies-for-semantic-c)
-  - [x] date-time
-  - [x] date
-  - [x] time
-  - [x] duration
-  - [x] email
-  - [x] hostname
-  - [x] idn-email
-  - [x] idn-hostname
-  - [x] ipv4
-  - [x] ipv6
-  - [ ] iri
-  - [ ] iri-reference
-  - [ ] json-pointer
-  - [ ] json-pointer-uri-fragment
-  - [x] regex
-  - [ ] relative-json-pointer
-  - [x] uri
-  - [x] uri-reference
-  - [x] uri-template
-  - [ ] uuid
+- [x] [Format](https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-validation-01#name-vocabularies-for-semantic-c)
+  - [ ] ~~relative-json-pointer~~ (No plans to implement as draft specification)
 - [ ] [String Encoded Data](https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-validation-01#name-a-vocabulary-for-the-conten)
 
 ## Table of Contents

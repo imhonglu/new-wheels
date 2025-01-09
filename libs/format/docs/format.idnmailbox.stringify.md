@@ -4,6 +4,8 @@
 
 ## IdnMailbox.stringify() method
 
+Converts an [IdnMailbox](./format.idnmailbox.md) object to an IdnMailbox string.
+
 **Signature:**
 
 ```typescript

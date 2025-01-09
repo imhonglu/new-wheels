@@ -4,6 +4,8 @@
 
 ## AddressLiteral.stringify() method
 
+Converts an [AddressLiteral](./format.addressliteral.md) object to an AddressLiteral string.
+
 **Signature:**
 
 ```typescript

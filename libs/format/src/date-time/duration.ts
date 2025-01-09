@@ -100,6 +100,11 @@ export class Duration {
 		});
 	}
 
+	/**
+	 * Converts an {@link Duration} object to a Duration string.
+	 *
+	 * @param value - An {@link Duration} object.
+	 */
 	public static stringify({
 		year,
 		month,

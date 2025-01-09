@@ -9,7 +9,7 @@ Constructs a new instance of the `Query` class
 **Signature:**
 
 ```typescript
-constructor({ pairs }: Query);
+constructor({ pairs, options }: Query);
 ```
 
 ## Parameters
@@ -32,7 +32,7 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-{ pairs }
+{ pairs, options }
 
 
 </td><td>

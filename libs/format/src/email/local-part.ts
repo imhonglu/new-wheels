@@ -77,6 +77,11 @@ export class LocalPart {
 		});
 	}
 
+	/**
+	 * Converts an {@link LocalPart} object to a LocalPart string.
+	 *
+	 * @param value - An {@link LocalPart} object.
+	 */
 	public static stringify(value: LocalPart) {
 		return value.text;
 	}

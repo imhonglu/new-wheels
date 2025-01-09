@@ -49,6 +49,11 @@ export class Hostname {
 		});
 	}
 
+	/**
+	 * Converts an {@link Hostname} object to a Hostname string.
+	 *
+	 * @param value - An {@link Hostname} object.
+	 */
 	public static stringify({ labels }: Hostname) {
 		return labels.join(".");
 	}

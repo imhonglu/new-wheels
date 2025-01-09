@@ -185,6 +185,8 @@ Converts a DateTime string to a [DateTime](./format.datetime.md) object.
 
 </td><td>
 
+Converts an [DateTime](./format.datetime.md) object to a DateTime string.
+
 
 </td></tr>
 </tbody></table>

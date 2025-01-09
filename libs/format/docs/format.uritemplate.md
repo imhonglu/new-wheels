@@ -223,6 +223,8 @@ Converts a URITemplate string to a [URITemplate](./format.uritemplate.md) object
 
 </td><td>
 
+Converts an [URITemplate](./format.uritemplate.md) object to a URITemplate string.
+
 
 </td></tr>
 </tbody></table>

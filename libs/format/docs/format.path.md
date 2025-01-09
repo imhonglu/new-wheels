@@ -46,7 +46,7 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-[(constructor)({ isAbsolute, hasTrailingSlash, segments })](./format.path._constructor_.md)
+[(constructor)({ segments, isAbsolute, hasTrailingSlash, options, })](./format.path._constructor_.md)
 
 
 </td><td>
@@ -123,6 +123,27 @@ boolean
 </td></tr>
 <tr><td>
 
+[options?](./format.path.options.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+[URIParseOptions](./format.uriparseoptions.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
 [safeParse](./format.path.safeparse.md)
 
 
@@ -181,7 +202,7 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-[parse(text)](./format.path.parse.md)
+[parse(text, options)](./format.path.parse.md)
 
 
 </td><td>
@@ -206,6 +227,8 @@ Converts a Path string to a [Path](./format.path.md) object.
 
 
 </td><td>
+
+Converts an [Path](./format.path.md) object to a Path string.
 
 
 </td></tr>

@@ -4,6 +4,8 @@
 
 ## URITemplate.stringify() method
 
+Converts an [URITemplate](./format.uritemplate.md) object to a URITemplate string.
+
 **Signature:**
 
 ```typescript
@@ -39,6 +41,8 @@ value
 
 
 </td><td>
+
+An [URITemplate](./format.uritemplate.md) object.
 
 
 </td></tr>

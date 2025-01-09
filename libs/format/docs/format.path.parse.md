@@ -9,7 +9,7 @@ Converts a Path string to a [Path](./format.path.md) object.
 **Signature:**
 
 ```typescript
-static parse(text: string): Path;
+static parse(text: string, options?: URIParseOptions): Path;
 ```
 
 ## Parameters
@@ -43,6 +43,22 @@ string
 </td><td>
 
 A valid Path string. e.g. "/path/to/resource"
+
+
+</td></tr>
+<tr><td>
+
+options
+
+
+</td><td>
+
+[URIParseOptions](./format.uriparseoptions.md)
+
+
+</td><td>
+
+_(Optional)_
 
 
 </td></tr>

@@ -4,10 +4,12 @@
 
 ## IdnHostname.stringify() method
 
+Converts an [IdnHostname](./format.idnhostname.md) object to an IdnHostname string.
+
 **Signature:**
 
 ```typescript
-static stringify({ ascii }: IdnHostname): string;
+static stringify(idnHostname: IdnHostname): string;
 ```
 
 ## Parameters
@@ -30,7 +32,7 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-{ ascii }
+idnHostname
 
 
 </td><td>

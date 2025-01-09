@@ -4,6 +4,8 @@
 
 ## IPv6Address.stringify() method
 
+Converts an [IPv6Address](./format.ipv6address.md) object to a IPv6Address string.
+
 **Signature:**
 
 ```typescript

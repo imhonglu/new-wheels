@@ -188,6 +188,8 @@ Converts a LocalPart string to a [LocalPart](./format.localpart.md) object.
 
 </td><td>
 
+Converts an [LocalPart](./format.localpart.md) object to a LocalPart string.
+
 
 </td></tr>
 </tbody></table>

@@ -68,6 +68,11 @@ export class FullDate {
 		});
 	}
 
+	/**
+	 * Converts an {@link FullDate} object to a FullDate string.
+	 *
+	 * @param value - An {@link FullDate} object.
+	 */
 	public static stringify({ year, month, day }: FullDate) {
 		return `${year}-${padZero(month)}-${padZero(day)}`;
 	}

@@ -187,6 +187,8 @@ Converts a Mailbox string to a [Mailbox](./format.mailbox.md) object.
 
 </td><td>
 
+Converts an [Mailbox](./format.mailbox.md) object to a Mailbox string.
+
 
 </td></tr>
 </tbody></table>

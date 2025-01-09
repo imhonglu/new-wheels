@@ -4,6 +4,8 @@
 
 ## Duration.stringify() method
 
+Converts an [Duration](./format.duration.md) object to a Duration string.
+
 **Signature:**
 
 ```typescript

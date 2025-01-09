@@ -171,6 +171,8 @@ Converts a AddressLiteral string to a [AddressLiteral](./format.addressliteral.m
 
 </td><td>
 
+Converts an [AddressLiteral](./format.addressliteral.md) object to an AddressLiteral string.
+
 
 </td></tr>
 </tbody></table>

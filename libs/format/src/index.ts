@@ -5,3 +5,5 @@ export * from "./email/index.js";
 export * from "./uri/index.js";
 export * from "./uri-template/index.js";
 export * from "./utils/serializable/serializable.js";
+export * from "./uuid/index.js";
+export * from "./json-pointer/index.js";

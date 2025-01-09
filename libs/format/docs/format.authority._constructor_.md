@@ -9,7 +9,7 @@ Constructs a new instance of the `Authority` class
 **Signature:**
 
 ```typescript
-constructor({ userinfo, host, port }: Authority);
+constructor({ userinfo, host, port, options }: Authority);
 ```
 
 ## Parameters
@@ -32,7 +32,7 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-{ userinfo, host, port }
+{ userinfo, host, port, options }
 
 
 </td><td>

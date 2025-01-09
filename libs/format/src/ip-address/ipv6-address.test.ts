@@ -1,6 +1,6 @@
 import { describe, expect, test } from "vitest";
 import { InvalidIpAddressError } from "./errors/invalid-ip-address-error.js";
-import { IPv6Address } from "./ip-v6-address.js";
+import { IPv6Address } from "./ipv6-address.js";
 
 describe("IPv6Address", () => {
 	test("should parse a valid IPAddress string", () => {

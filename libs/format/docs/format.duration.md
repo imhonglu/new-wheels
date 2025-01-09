@@ -291,6 +291,8 @@ Converts a Duration string to a [Duration](./format.duration.md) object.
 
 </td><td>
 
+Converts an [Duration](./format.duration.md) object to a Duration string.
+
 
 </td></tr>
 </tbody></table>

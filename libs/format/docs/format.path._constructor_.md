@@ -9,7 +9,7 @@ Constructs a new instance of the `Path` class
 **Signature:**
 
 ```typescript
-constructor({ isAbsolute, hasTrailingSlash, segments }: Path);
+constructor({ segments, isAbsolute, hasTrailingSlash, options, }: Path);
 ```
 
 ## Parameters
@@ -32,7 +32,7 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-{ isAbsolute, hasTrailingSlash, segments }
+{ segments, isAbsolute, hasTrailingSlash, options, }
 
 
 </td><td>

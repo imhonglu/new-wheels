@@ -4,6 +4,8 @@
 
 ## IPv4Address.stringify() method
 
+Converts an [IPv4Address](./format.ipv4address.md) object to a IPv4Address string.
+
 **Signature:**
 
 ```typescript
@@ -39,6 +41,8 @@ value
 
 
 </td><td>
+
+An [IPv4Address](./format.ipv4address.md) object.
 
 
 </td></tr>

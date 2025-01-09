@@ -197,6 +197,8 @@ Converts a Varspec string into a [Varspec](./format.varspec.md) object.
 
 </td><td>
 
+Converts an [Varspec](./format.varspec.md) object to a Varspec string.
+
 
 </td></tr>
 </tbody></table>

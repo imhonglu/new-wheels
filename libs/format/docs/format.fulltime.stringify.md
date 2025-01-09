@@ -4,6 +4,8 @@
 
 ## FullTime.stringify() method
 
+Converts an [FullTime](./format.fulltime.md) object to a FullTime string.
+
 **Signature:**
 
 ```typescript

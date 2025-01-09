@@ -16,7 +16,6 @@ export declare class Query
 
 
 ```ts
-Query.parse("key1=value1&key2=value2&key2=value3");
 // {
 //   pairs: Map([
 //     ["key1", "value1"],
@@ -45,7 +44,7 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-[(constructor)({ pairs })](./format.query._constructor_.md)
+[(constructor)({ pairs, options })](./format.query._constructor_.md)
 
 
 </td><td>
@@ -83,6 +82,27 @@ Description
 
 </th></tr></thead>
 <tbody><tr><td>
+
+[options?](./format.query.options.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+[URIParseOptions](./format.uriparseoptions.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
 
 [pairs](./format.query.pairs.md)
 
@@ -142,7 +162,7 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-[parse(text)](./format.query.parse.md)
+[parse(text, options)](./format.query.parse.md)
 
 
 </td><td>
@@ -167,6 +187,8 @@ Converts a Query string to a [Query](./format.query.md) object.
 
 
 </td><td>
+
+Converts an [Query](./format.query.md) object to a Query string.
 
 
 </td></tr>

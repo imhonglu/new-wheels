@@ -192,6 +192,8 @@ Converts a IdnMailbox string to a [IdnMailbox](./format.idnmailbox.md) object.
 
 </td><td>
 
+Converts an [IdnMailbox](./format.idnmailbox.md) object to an IdnMailbox string.
+
 
 </td></tr>
 </tbody></table>

@@ -9,7 +9,7 @@ Converts an Authority string to an [Authority](./format.authority.md) object.
 **Signature:**
 
 ```typescript
-static parse(text: string): Authority;
+static parse(text: string, options?: URIParseOptions): Authority;
 ```
 
 ## Parameters
@@ -43,6 +43,22 @@ string
 </td><td>
 
 A valid Authority string. e.g. "example.com".
+
+
+</td></tr>
+<tr><td>
+
+options
+
+
+</td><td>
+
+[URIParseOptions](./format.uriparseoptions.md)
+
+
+</td><td>
+
+_(Optional)_
 
 
 </td></tr>

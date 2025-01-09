@@ -54,6 +54,11 @@ export class IPv4Address {
 		});
 	}
 
+	/**
+	 * Converts an {@link IPv4Address} object to a IPv4Address string.
+	 *
+	 * @param value - An {@link IPv4Address} object.
+	 */
 	public static stringify(value: IPv4Address) {
 		return value.segments.join(".");
 	}

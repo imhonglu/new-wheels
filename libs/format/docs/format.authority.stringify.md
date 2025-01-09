@@ -4,10 +4,12 @@
 
 ## Authority.stringify() method
 
+Converts an [Authority](./format.authority.md) object to an Authority string.
+
 **Signature:**
 
 ```typescript
-static stringify({ userinfo, host, port }: Authority): string;
+static stringify({ userinfo, host, port, options, }: Authority): string;
 ```
 
 ## Parameters
@@ -30,7 +32,7 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-{ userinfo, host, port }
+{ userinfo, host, port, options, }
 
 
 </td><td>

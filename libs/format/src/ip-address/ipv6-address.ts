@@ -1,19 +1,13 @@
 import type { SafeExecutor } from "@imhonglu/toolkit";
 import { Serializable } from "../utils/serializable/serializable.js";
 import { InvalidIpAddressError } from "./errors/invalid-ip-address-error.js";
-import { IPv4Address } from "./ip-v4-address.js";
+import { IPv4Address } from "./ipv4-address.js";
 import { isValidIPv6Part } from "./utils/is-valid-part.js";
 
 const IPV6_MIN_LENGTH = 2;
 const IPV6_MAX_LENGTH = 45;
 const IPV6_PARTS_MAX = 8;
 const IPV6_COMPRESSED_PARTS_MAX = 7;
-
-class SafeParse {
-	constructor() {
-		console.log(new.target);
-	}
-}
 
 /**
  * The IPv6Address formatter based on RFC 4291 and RFC 5954.
@@ -134,6 +128,11 @@ export class IPv6Address {
 		});
 	}
 
+	/**
+	 * Converts an {@link IPv6Address} object to a IPv6Address string.
+	 *
+	 * @param value - An {@link IPv6Address} object.
+	 */
 	public static stringify({ segments, compressIndex }: IPv6Address) {
 		const address = segments.join(":");
 		if (compressIndex !== undefined) {

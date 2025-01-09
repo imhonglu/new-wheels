@@ -201,6 +201,8 @@ Converts a FullDate string to a [FullDate](./format.fulldate.md) object.
 
 </td><td>
 
+Converts an [FullDate](./format.fulldate.md) object to a FullDate string.
+
 
 </td></tr>
 </tbody></table>

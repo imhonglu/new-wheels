@@ -7,5 +7,10 @@
 	},
 	"files.associations": {
 		"*.json": "jsonc"
+	},
+	"search.exclude": {
+		"**/dist": true,
+		"**/docs": true,
+		"**/temp": true
 	}
 }

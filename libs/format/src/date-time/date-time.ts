@@ -73,6 +73,11 @@ export class DateTime {
 		});
 	}
 
+	/**
+	 * Converts an {@link DateTime} object to a DateTime string.
+	 *
+	 * @param value - An {@link DateTime} object.
+	 */
 	public static stringify({ date, time }: DateTime) {
 		return `${FullDate.stringify(date)}T${FullTime.stringify(time)}`;
 	}
