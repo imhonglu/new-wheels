@@ -1,4 +1,8 @@
-import { type SafeExecutor, createSafeExecutor } from "@imhonglu/toolkit";
+import {
+	type ArrayElement,
+	type SafeExecutor,
+	createSafeExecutor,
+} from "@imhonglu/toolkit";
 import type {
 	ApplyingSubSchema,
 	BasicMetaData,
@@ -205,7 +209,7 @@ export namespace SchemaDefinition {
 		: T extends ConstType
 			? T["const"]
 			: T extends EnumType
-				? T["enum"]
+				? ArrayElement<T["enum"]>
 				: T extends NullType
 					? null
 					: T extends BooleanType

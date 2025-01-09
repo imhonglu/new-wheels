@@ -60,6 +60,7 @@ Fn.Callable<{ args: [number, number], return: string }> // (...args: [number, nu
 
 ### Type Utilities
 - [literal-union](./docs/toolkit.literalunion.md) - Literal union type
+- [array-element](./docs/toolkit.arrayelement.md) - Array element type
 - [fn](./docs/toolkit.fn.md) - Function type utilities
 - [or](./docs/toolkit.or.md) - Union type utilities
 - [primitive](./docs/toolkit.primitive.md) - Primitive type utilities
