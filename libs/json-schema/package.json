@@ -1,6 +1,6 @@
 {
 	"name": "@imhonglu/json-schema",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "Type-safe JSON Schema specification library",
 	"repository": {
 		"type": "git",
