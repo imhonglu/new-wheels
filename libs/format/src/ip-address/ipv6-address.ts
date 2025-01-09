@@ -1,7 +1,7 @@
 import type { SafeExecutor } from "@imhonglu/toolkit";
 import { Serializable } from "../utils/serializable/serializable.js";
 import { InvalidIpAddressError } from "./errors/invalid-ip-address-error.js";
-import { IPv4Address } from "./ip-v4-address.js";
+import { IPv4Address } from "./ipv4-address.js";
 import { isValidIPv6Part } from "./utils/is-valid-part.js";
 
 const IPV6_MIN_LENGTH = 2;

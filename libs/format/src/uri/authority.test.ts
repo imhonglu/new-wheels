@@ -1,7 +1,7 @@
 import { describe, expect, test } from "vitest";
 import { IdnHostname } from "../hostname/idn-hostname.js";
-import { IPv4Address } from "../ip-address/ip-v4-address.js";
-import { IPv6Address } from "../ip-address/ip-v6-address.js";
+import { IPv4Address } from "../ip-address/ipv4-address.js";
+import { IPv6Address } from "../ip-address/ipv6-address.js";
 import { Authority } from "./authority.js";
 import { InvalidAuthorityError } from "./errors/invalid-authority-error.js";
 

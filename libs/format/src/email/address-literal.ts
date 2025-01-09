@@ -1,6 +1,6 @@
 import type { SafeExecutor } from "@imhonglu/toolkit";
-import { IPv4Address } from "../ip-address/ip-v4-address.js";
-import { IPv6Address } from "../ip-address/ip-v6-address.js";
+import { IPv4Address } from "../ip-address/ipv4-address.js";
+import { IPv6Address } from "../ip-address/ipv6-address.js";
 import { Serializable } from "../utils/serializable/serializable.js";
 import { InvalidEmailDomainError } from "./errors/invalid-email-domain-error.js";
 
