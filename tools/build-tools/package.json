@@ -1,6 +1,6 @@
 {
 	"name": "@imhonglu/build-tools",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Build tools for the project.",
 	"repository": {
 		"type": "git",

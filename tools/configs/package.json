@@ -42,6 +42,6 @@
 		"vitest": "catalog:"
 	},
 	"devDependencies": {
-		"@imhonglu/build-tools": "^1.0.0"
+		"@imhonglu/build-tools": "^1.0.1"
 	}
 }
