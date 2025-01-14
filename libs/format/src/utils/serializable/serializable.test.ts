@@ -1,15 +1,18 @@
-import { beforeEach, describe, expect, test } from "vitest";
+import type { SafeExecutor } from "@imhonglu/toolkit";
+import { expect, test } from "vitest";
 import { Serializable } from "./serializable.js";
 
 @Serializable
 class Example {
 	constructor(public readonly text: string) {}
 
-	static parse(value: string) {
+	public static safeParse: SafeExecutor<typeof this.parse>;
+
+	public static parse(value: string) {
 		return new Example(value);
 	}
 
-	static stringify(value: Example) {
+	public static stringify(value: Example) {
 		return value.text;
 	}
 }
