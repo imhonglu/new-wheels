@@ -25,7 +25,8 @@
 			"linter": {
 				"rules": {
 					"suspicious": {
-						"noExplicitAny": "off"
+						"noExplicitAny": "off",
+						"noThenProperty": "off"
 					},
 					"complexity": {
 						"noBannedTypes": "off"
