@@ -2,7 +2,7 @@ import { expect, test, vi } from "vitest";
 import { sh } from "./sh.js";
 import { spinner } from "./spinner.js";
 
-test("spinner should display the progress of a task", async () => {
+test("should display the progress of a task", async () => {
 	process.stdout.moveCursor = vi.fn();
 	process.stdout.clearLine = vi.fn();
 	process.stdout.cursorTo = vi.fn();

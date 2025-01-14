@@ -2,7 +2,7 @@ import { expect, test } from "vitest";
 import { createTypeNode } from "./create-type-node.js";
 import { printNode } from "./print-node.js";
 
-test("createTypeNode", () => {
+test("should create a type node", () => {
 	expect(printNode(createTypeNode(String))).toBe("string");
 	expect(printNode(createTypeNode(Boolean))).toBe("boolean");
 	expect(printNode(createTypeNode(Number))).toBe("number");
@@ -17,5 +17,8 @@ test("createTypeNode", () => {
 				bar: Number,
 			}),
 		),
-	).toBe('{ "foo": "string"; "bar": number; }');
+	).toBe(`{
+    "foo": "string";
+    "bar": number;
+}`);
 });

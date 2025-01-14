@@ -2,7 +2,7 @@ import { expect, test } from "vitest";
 import { createInterface } from "./create-interface.js";
 import { printNode } from "./print-node.js";
 
-test("createInterface", () => {
+test("should create an interface", () => {
 	expect(
 		printNode(
 			createInterface("ObjectType", {
@@ -10,5 +10,8 @@ test("createInterface", () => {
 				bar: Number,
 			}),
 		),
-	).toBe('export interface ObjectType { "foo": string; "bar": number; }');
+	).toBe(`export interface ObjectType {
+    "foo": string;
+    "bar": number;
+}`);
 });
