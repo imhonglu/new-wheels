@@ -11,5 +11,5 @@ test("concat with strings", () => {
 test("concat with character set", () => {
 	const pattern = concat(alpha, digit, /c/);
 
-	expect(pattern.toString()).toBe("[a-zA-Z][\\d]c");
+	expect(pattern.toString()).toBe("[a-zA-Z][0-9]c");
 });

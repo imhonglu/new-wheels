@@ -47,7 +47,7 @@ export function characterSet(...patterns: PatternInput[]) {
 }
 
 /** The pre-defined digit pattern. */
-export const digit = characterSet(/\d/);
+export const digit = characterSet(/0-9/);
 
 /** The pre-defined alpha pattern. */
 export const alpha = characterSet(/a-z/, /A-Z/);

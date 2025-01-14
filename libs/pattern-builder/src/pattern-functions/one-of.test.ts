@@ -11,5 +11,5 @@ test("oneOf with strings", () => {
 test("oneOf with character set", () => {
 	const pattern = oneOf(alpha, digit, /c/);
 
-	expect(pattern.toString()).toBe("[a-zA-Z]|[\\d]|c");
+	expect(pattern.toString()).toBe("[a-zA-Z]|[0-9]|c");
 });
