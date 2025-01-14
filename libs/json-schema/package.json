@@ -24,8 +24,8 @@
 		"test": "vitest",
 		"build": "tsc -p tsconfig.build.json",
 		"postbuild": "esm-to-cjs && pnpm api-extractor run && pnpm api-documenter markdown -i ./temp -o ./docs",
-		"init": "node dist/test-suite/cli.js",
-		"postinit": "pnpm -w run check"
+		"generate-tests": "./src/test-suite/cli.ts",
+		"postgenerate-tests": "pnpm -w run check"
 	},
 	"keywords": [
 		"typescript",

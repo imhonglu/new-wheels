@@ -2,16 +2,6 @@ import type { SafeExecutorResult } from "@imhonglu/toolkit";
 import { expect, expectTypeOf, test } from "vitest";
 import { ValidationFailedError } from "./errors/validation-failed-error.js";
 import { Schema, type SchemaDefinition } from "./schema.js";
-import { TestCaseManager, latestTestCase } from "./utils/test-case-manager.js";
-
-test.concurrent.for(await latestTestCase.load("boolean_schema"))(
-	TestCaseManager.format,
-	(testCase) => {
-		const schema = new Schema(testCase.schema);
-
-		expect(schema.validate(testCase.data)).toBe(testCase.expected);
-	},
-);
 
 test("should parse simple object schema and validate types", () => {
 	const Address = new Schema({
