@@ -4,6 +4,6 @@ export * from "./utils/spinner.js";
 export * from "./utils/create-interface.js";
 export * from "./utils/create-type-node.js";
 export * from "./utils/print-node.js";
-export * from "./utils/create-const.js";
-export * from "./utils/create-expression.js";
+export * from "./utils/create-var-statement.js";
+export * from "./utils/create-var-expression.js";
 export * from "./utils/load-ts-config.js";

@@ -1,6 +1,6 @@
 import ts from "typescript";
 
-export function createExpression(value: unknown): ts.Expression {
+export function createVarExpression(value: unknown): ts.Expression {
 	if (typeof value === "string") {
 		return ts.factory.createStringLiteral(value);
 	}
@@ -10,6 +10,12 @@ export function createExpression(value: unknown): ts.Expression {
 	}
 
 	if (typeof value === "number") {
+		if (value < 0) {
+			return ts.factory.createPrefixUnaryExpression(
+				ts.SyntaxKind.MinusToken,
+				ts.factory.createNumericLiteral(Math.abs(value)),
+			);
+		}
 		return ts.factory.createNumericLiteral(value);
 	}
 
@@ -23,7 +29,7 @@ export function createExpression(value: unknown): ts.Expression {
 
 	if (Array.isArray(value)) {
 		return ts.factory.createArrayLiteralExpression(
-			value.map((item) => createExpression(item)),
+			value.map((item) => createVarExpression(item)),
 		);
 	}
 
@@ -31,7 +37,7 @@ export function createExpression(value: unknown): ts.Expression {
 		Object.entries(value).map(([key, value]) =>
 			ts.factory.createPropertyAssignment(
 				ts.factory.createStringLiteral(key),
-				createExpression(value),
+				createVarExpression(value),
 			),
 		),
 	);
