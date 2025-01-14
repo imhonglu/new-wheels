@@ -13,7 +13,13 @@ const getTempSourceFile = memoize(() =>
 );
 
 export function printNode(node: ts.Node) {
-	return getPrinter()
-		.printNode(ts.EmitHint.Unspecified, node, getTempSourceFile())
-		.replace(/\s+/g, " ");
+	if (ts.isSourceFile(node)) {
+		return getPrinter().printFile(node);
+	}
+
+	return getPrinter().printNode(
+		ts.EmitHint.Unspecified,
+		node,
+		getTempSourceFile(),
+	);
 }
