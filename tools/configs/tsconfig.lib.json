@@ -7,14 +7,14 @@
 		"inlineSourceMap": true,
 		"typeRoots": [
 			"../../../../../node_modules/@types",
-			"../../../node_modules/@types",
-			"./@types"
+			"../../../node_modules/@types"
 		],
 		"outDir": "${configDir}/dist"
 	},
 
 	"include": [
 		// @see https://github.com/microsoft/rushstack/blob/main/rigs/local-node-rig/profiles/default/tsconfig-base.json
-		"../../../src/**/*.ts"
+		"../../../src/**/*.ts",
+		"types/*.d.ts"
 	]
 }

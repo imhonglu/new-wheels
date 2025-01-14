@@ -27,7 +27,7 @@
 		"api-extractor-base.json",
 		"tsconfig.base.json",
 		"tsconfig.lib.json",
-		"@types"
+		"types"
 	],
 	"scripts": {
 		"test": "vitest",
