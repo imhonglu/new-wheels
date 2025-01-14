@@ -7,4 +7,3 @@ export * from "./utils/print-node.js";
 export * from "./utils/create-const.js";
 export * from "./utils/create-expression.js";
 export * from "./utils/load-ts-config.js";
-export * from "./utils/get-dir-name.js";
