@@ -38,7 +38,7 @@
 		"typescript": "catalog:"
 	},
 	"dependencies": {
-		"@imhonglu/configs": "^1.0.2",
+		"@imhonglu/configs": "^1.0.3",
 		"@imhonglu/toolkit": "^1.0.1"
 	}
 }

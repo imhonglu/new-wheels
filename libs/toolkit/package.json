@@ -30,7 +30,7 @@
 	"license": "MIT",
 	"devDependencies": {
 		"@imhonglu/build-tools": "^1.0.0",
-		"@imhonglu/configs": "^1.0.2"
+		"@imhonglu/configs": "^1.0.3"
 	},
 	"dependencies": {
 		"@imhonglu/type-guard": "^1.0.0",
