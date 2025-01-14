@@ -14,21 +14,34 @@ export async function gitFetch({
 	branch = "main",
 	cwd = join(resolve(), repo),
 }: GitOptions) {
+	const dirname = join(cwd, repo);
+
 	const cloneResult = await $(
 		"git clone",
 		`https://github.com/${org}/${repo}.git`,
-		cwd,
+		dirname,
 	);
 
-	if ((!cloneResult.ok && cloneResult.error.code !== 128) || !cloneResult.ok) {
-		throw cloneResult;
+	if (!cloneResult.ok) {
+		if (cloneResult.error.code !== 128) {
+			throw new Error(`Git clone failed for ${org}/${repo}`, {
+				cause: cloneResult.error,
+			});
+		}
 	}
 
-	const fetchResult = await $(`git -C ${cwd}/.git`, "fetch", "origin", branch);
+	const fetchResult = await $(
+		`git -C ${dirname}/.git`,
+		"fetch",
+		"origin",
+		branch,
+	);
 
 	if (!fetchResult.ok) {
-		throw fetchResult;
+		throw new Error(`Git fetch failed for ${org}/${repo} (${branch})`, {
+			cause: fetchResult.error,
+		});
 	}
 
-	return cwd;
+	return dirname;
 }
