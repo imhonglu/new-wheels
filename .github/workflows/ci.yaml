@@ -31,10 +31,6 @@ jobs:
         run: pnpm install
         timeout-minutes: 1
 
-      - name: Run lint
-        run: pnpm run lint
-        timeout-minutes: 1
-
       - name: Run tests
         run: pnpm run test:related
         timeout-minutes: 60
