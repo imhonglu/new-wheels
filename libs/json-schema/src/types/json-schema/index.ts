@@ -4,6 +4,7 @@ import type { Core } from "./core.js";
 import type { Format } from "./format.js";
 import type { StringEncodedData } from "./string-encoded-data.js";
 import type { StructuralValidation } from "./structural-validation.js";
+import type { UnevaluatedLocations } from "./unevaluated-locations.js";
 
 export * from "./applying-sub-schema.js";
 export * from "./basic-meta-data.js";
@@ -11,6 +12,7 @@ export * from "./core.js";
 export * from "./format.js";
 export * from "./string-encoded-data.js";
 export * from "./structural-validation.js";
+export * from "./unevaluated-locations.js";
 
 /**
  * @see https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-01#name-json-schema-objects-and-key
@@ -21,7 +23,8 @@ export interface ObjectSchema
 		StructuralValidation.All,
 		StringEncodedData<JsonSchema>,
 		Format,
-		ApplyingSubSchema.All<JsonSchema> {}
+		ApplyingSubSchema.All<JsonSchema>,
+		UnevaluatedLocations.All<JsonSchema> {}
 
 /**
  * @see https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-01#name-boolean-json-schemas
