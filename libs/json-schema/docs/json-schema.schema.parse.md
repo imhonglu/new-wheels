@@ -2,10 +2,48 @@
 
 [Home](./index.md) &gt; [@imhonglu/json-schema](./json-schema.md) &gt; [Schema](./json-schema.schema.md) &gt; [parse](./json-schema.schema.parse.md)
 
-## Schema.parse property
+## Schema.parse() method
 
 **Signature:**
 
 ```typescript
-parse: (data: unknown) => SchemaDefinition.Instance<T>;
+parse(data: unknown): SchemaDefinition.Instance<T>;
 ```
+
+## Parameters
+
+<table><thead><tr><th>
+
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+data
+
+
+</td><td>
+
+unknown
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
+
+[SchemaDefinition.Instance](./json-schema.schemadefinition.instance.md)<!-- -->&lt;T&gt;
+

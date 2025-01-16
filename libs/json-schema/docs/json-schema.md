@@ -130,6 +130,15 @@ Description
 
 
 </td></tr>
+<tr><td>
+
+[UnevaluatedLocations](./json-schema.unevaluatedlocations.md)
+
+
+</td><td>
+
+
+</td></tr>
 </tbody></table>
 
 ## Type Aliases
@@ -157,6 +166,15 @@ Description
 <tr><td>
 
 [JsonSchema](./json-schema.jsonschema.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[ValidationContext](./json-schema.validationcontext.md)
 
 
 </td><td>

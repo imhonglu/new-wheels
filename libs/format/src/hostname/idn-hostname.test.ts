@@ -62,6 +62,7 @@ test("should not parse invalid label, correct Punycode", () => {
 });
 
 test("should parse valid Chinese Punycode", () => {
+	// cspell:words ihqwcrb pqjye
 	expect(IdnHostname.parse("xn--ihqwcrb4cv8a8dqg056pqjye")).toMatchObject({
 		unicode: {
 			labels: ["他们为什么不说中文"],

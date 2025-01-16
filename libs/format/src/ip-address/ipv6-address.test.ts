@@ -35,7 +35,7 @@ test("should parse an address with compression", () => {
 
 	expect(IPv6Address.parse("::1").toString()).toBe("::1");
 
-	expect(IPv6Address.parse("abef::").toString()).toBe("abef::");
+	expect(IPv6Address.parse("ffff::").toString()).toBe("ffff::");
 });
 
 test("should parse an address with embedded IPv4", () => {

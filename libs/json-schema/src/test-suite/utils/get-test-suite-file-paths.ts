@@ -5,12 +5,12 @@ export async function getTestSuiteFilePaths(
 	testSuitePath: string,
 	exclude?: string[],
 ) {
-	const dirents = await readdir(testSuitePath, {
+	const direntList = await readdir(testSuitePath, {
 		withFileTypes: true,
 		recursive: true,
 	});
 
-	return dirents
+	return direntList
 		.filter(
 			(dirent) =>
 				dirent.isFile() &&

@@ -2,10 +2,48 @@
 
 [Home](./index.md) &gt; [@imhonglu/json-schema](./json-schema.md) &gt; [Schema](./json-schema.schema.md) &gt; [validate](./json-schema.schema.validate.md)
 
-## Schema.validate property
+## Schema.validate() method
 
 **Signature:**
 
 ```typescript
-readonly validate: (data: unknown) => data is SchemaDefinition.Instance<T>;
+validate(data: unknown): data is SchemaDefinition.Instance<T>;
 ```
+
+## Parameters
+
+<table><thead><tr><th>
+
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+data
+
+
+</td><td>
+
+unknown
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
+
+data is [SchemaDefinition.Instance](./json-schema.schemadefinition.instance.md)<!-- -->&lt;T&gt;
+

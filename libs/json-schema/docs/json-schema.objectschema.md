@@ -7,7 +7,7 @@
 **Signature:**
 
 ```typescript
-export interface ObjectSchema extends Core<JsonSchema>, BasicMetaData, StructuralValidation.All, StringEncodedData<JsonSchema>, Format, ApplyingSubSchema.All<JsonSchema> 
+export interface ObjectSchema extends Core<JsonSchema>, BasicMetaData, StructuralValidation.All, StringEncodedData<JsonSchema>, Format, ApplyingSubSchema.All<JsonSchema>, UnevaluatedLocations.All<JsonSchema> 
 ```
-**Extends:** [Core](./json-schema.core.md)<!-- -->&lt;[JsonSchema](./json-schema.jsonschema.md)<!-- -->&gt;, [BasicMetaData](./json-schema.basicmetadata.md)<!-- -->, [StructuralValidation.All](./json-schema.structuralvalidation.all.md)<!-- -->, [StringEncodedData](./json-schema.stringencodeddata.md)<!-- -->&lt;[JsonSchema](./json-schema.jsonschema.md)<!-- -->&gt;, [Format](./json-schema.format.md)<!-- -->, [ApplyingSubSchema.All](./json-schema.applyingsubschema.all.md)<!-- -->&lt;[JsonSchema](./json-schema.jsonschema.md)<!-- -->&gt;
+**Extends:** [Core](./json-schema.core.md)<!-- -->&lt;[JsonSchema](./json-schema.jsonschema.md)<!-- -->&gt;, [BasicMetaData](./json-schema.basicmetadata.md)<!-- -->, [StructuralValidation.All](./json-schema.structuralvalidation.all.md)<!-- -->, [StringEncodedData](./json-schema.stringencodeddata.md)<!-- -->&lt;[JsonSchema](./json-schema.jsonschema.md)<!-- -->&gt;, [Format](./json-schema.format.md)<!-- -->, [ApplyingSubSchema.All](./json-schema.applyingsubschema.all.md)<!-- -->&lt;[JsonSchema](./json-schema.jsonschema.md)<!-- -->&gt;, [UnevaluatedLocations.All](./json-schema.unevaluatedlocations.all.md)<!-- -->&lt;[JsonSchema](./json-schema.jsonschema.md)<!-- -->&gt;
 

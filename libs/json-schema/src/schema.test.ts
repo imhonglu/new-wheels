@@ -29,13 +29,13 @@ test("should parse simple object schema and validate types", () => {
 	expectTypeOf<AddressType["zip"]>().toEqualTypeOf<string | undefined>();
 
 	const address = Address.parse(
-		'{"street": "123 Main St", "city": "Anytown", "zip": "12345"}',
+		'{"street": "123 Main St", "city": "Toronto", "zip": "M5H 2N2"}',
 	);
 
 	expect(address).toEqual({
 		street: "123 Main St",
-		city: "Anytown",
-		zip: "12345",
+		city: "Toronto",
+		zip: "M5H 2N2",
 	});
 
 	expectTypeOf(address).toEqualTypeOf<AddressType>();
@@ -44,7 +44,7 @@ test("should parse simple object schema and validate types", () => {
 		street: "123 Main St",
 	});
 
-	expect(() => Address.parse('{"city": "Anytown"}')).toThrow();
+	expect(() => Address.parse('{"city": "Toronto"}')).toThrow();
 });
 
 test("should parse nested object schema with referenced schemas", () => {
@@ -83,7 +83,7 @@ test("should parse nested object schema with referenced schemas", () => {
 	>();
 
 	const person = Person.parse(
-		'{"lastName": "Doe", "firstName": "John", "age": 30, "address": {"street": "123 Main St", "city": "Anytown", "zip": "12345"}}',
+		'{"lastName": "Doe", "firstName": "John", "age": 30, "address": {"street": "123 Main St", "city": "Toronto", "zip": "M5H 2N2"}}',
 	);
 
 	expect(person).toEqual({
@@ -92,8 +92,8 @@ test("should parse nested object schema with referenced schemas", () => {
 		age: 30,
 		address: {
 			street: "123 Main St",
-			city: "Anytown",
-			zip: "12345",
+			city: "Toronto",
+			zip: "M5H 2N2",
 		},
 	});
 	expectTypeOf(person).toEqualTypeOf<PersonType>();
@@ -143,7 +143,7 @@ test("should throw error when nested object schema validation fails", () => {
 
 	expect(() =>
 		Person.parse(
-			'{"lastName": "Doe", "firstName": "John", "address": {"city": "Anytown", "zip": "12345"}}',
+			'{"lastName": "Doe", "firstName": "John", "address": {"city": "Toronto", "zip": "M5H 2N2"}}',
 		),
 	).toThrow(ValidationFailedError);
 });

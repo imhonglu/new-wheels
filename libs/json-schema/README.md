@@ -93,11 +93,11 @@ export type Person = SchemaDefinition.Instance<typeof Person>;
 import { Person } from "./person.js";
 
 const person = Person.parse(
-  '{"name": "John Doe", "address": {"street": "123 Main St", "city": "Anytown", "zip": "12345"}}',
+  '{"name": "John Doe", "address": {"street": "123 Main St", "city": "Toronto", "zip": "M5H 2N2"}}',
 );
 
 console.log(person);
-// { name: 'John Doe', address: { street: '123 Main St', city: 'Anytown', zip: '12345' } }
+// { name: 'John Doe', address: { street: '123 Main St', city: 'Toronto', zip: 'M5H 2N2' } }
 ```
 
 ## API Reference

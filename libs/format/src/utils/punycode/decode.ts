@@ -51,7 +51,7 @@ export function decode(input: string) {
 		// which gets added to `i`. The overflow checking is easier
 		// if we increase `i` as we go, then subtract off its starting
 		// value at the end to obtain `delta`.
-		const oldi = i;
+		const oldI = i;
 		for (
 			let w = 1, k = PARAMETERS.base;
 			;
@@ -91,7 +91,7 @@ export function decode(input: string) {
 		}
 
 		const out = output.length + 1;
-		bias = adapt(i - oldi, out, oldi === 0);
+		bias = adapt(i - oldI, out, oldI === 0);
 
 		// `i` was supposed to wrap around from `out` to `0`,
 		// incrementing `n` each time, so we'll fix that now:

@@ -34,6 +34,24 @@ Description
 </td></tr>
 <tr><td>
 
+[Conditional](./json-schema.applyingsubschema.conditional.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Logic](./json-schema.applyingsubschema.logic.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
 [Object](./json-schema.applyingsubschema.object.md)
 
 

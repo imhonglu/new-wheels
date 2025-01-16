@@ -7,7 +7,7 @@
 **Signature:**
 
 ```typescript
-type All<Schema = unknown> = Object<Schema> & Array<Schema>;
+type All<Schema = unknown> = Logic<Schema> & Conditional<Schema> & Array<Schema> & Object<Schema>;
 ```
-**References:** [Object](./json-schema.applyingsubschema.object.md)<!-- -->, [Array](./json-schema.applyingsubschema.array.md)
+**References:** [Logic](./json-schema.applyingsubschema.logic.md)<!-- -->, [Conditional](./json-schema.applyingsubschema.conditional.md)<!-- -->, [Array](./json-schema.applyingsubschema.array.md)<!-- -->, [Object](./json-schema.applyingsubschema.object.md)
 

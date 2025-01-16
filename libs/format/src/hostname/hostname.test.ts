@@ -32,12 +32,14 @@ test("should throw an error for a hostname string with invalid characters", () =
 test("should throw an error for a hostname string with a component that is too long", () => {
 	expect(() =>
 		Hostname.parse(
+			// cspell:disable-next-line
 			"a-vvvvvvvvvvvvvvvveeeeeeeeeeeeeeeerrrrrrrrrrrrrrrryyyyyyyyyyyyyyyy-long-host-name-component",
 		),
 	).toThrow(InvalidHostnameError);
 });
 
-test("should parse a valid punycoded IDN Hostname string", () => {
+test("should convert punycode to Unicode for valid IDN hostname", () => {
+	// cspell:words 4gbwdl wgbh1c
 	expect(Hostname.parse("xn--4gbwdl.xn--wgbh1c")).toMatchObject({
 		labels: ["xn--4gbwdl", "xn--wgbh1c"],
 	});
