@@ -18,7 +18,8 @@
     "ucschar",
     "abempty",
     "noscheme",
-    "hexdig"
+    "hexdig",
+    "vitest"
   ],
   "dictionaries": ["typescript", "node"],
   "ignorePaths": ["pnpm-*.yaml", "dist/", "docs/", "tsconfig.base.json"],
