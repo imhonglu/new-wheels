@@ -12,11 +12,11 @@ test("should parse a valid JSON Pointer string", () => {
 });
 
 test("should parse special characters correctly", () => {
-	expect(JsonPointer.parse("/foo/~0bar")).toMatchObject({
-		segments: ["foo", "~0bar"],
+	expect(JsonPointer.parse("/foo/~1bar")).toMatchObject({
+		segments: ["foo", "/bar"],
 	});
 	expect(JsonPointer.parse("/foo/bar~1baz")).toMatchObject({
-		segments: ["foo", "bar~1baz"],
+		segments: ["foo", "bar/baz"],
 	});
 });
 

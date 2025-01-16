@@ -9,8 +9,9 @@ const unescaped = characterSet(
 	/[\u{30}-\u{7D}]/u,
 	/[\u{7F}-\u{10FFFF}]/u,
 );
-const escaped = concat("~", /[01]/).nonCapturingGroup();
-const referenceToken = oneOf(unescaped, escaped)
+const escapeTilde = "~0";
+const escapeSlash = "~1";
+const referenceToken = oneOf(unescaped, escapeTilde, escapeSlash)
 	.nonCapturingGroup()
 	.zeroOrMore();
 
@@ -48,23 +49,55 @@ export class JsonPointer {
 	 * @throws - {@link InvalidJsonPointerError}
 	 */
 	public static parse(text: string) {
+		if (text === "/") {
+			return new JsonPointer({
+				segments: [],
+			});
+		}
+
 		const match = pattern.exec(text);
 		if (!match) {
 			throw new InvalidJsonPointerError(text);
 		}
 
+		const segments = [];
+
+		for (const segment of text.slice(1).split("/")) {
+			segments.push(JsonPointer.unescape(segment));
+		}
+
 		return new JsonPointer({
-			segments: text === "/" ? [] : text.slice(1).split("/"),
+			segments,
 		});
 	}
 
 	/**
 	 * Converts an {@link JsonPointer} object to a JsonPointer string.
 	 *
-	 * @param jsonPointer - The JsonPointer object to convert.
+	 * @param value - The JsonPointer object to convert.
 	 * @returns The JsonPointer string.
 	 */
 	public static stringify({ segments }: JsonPointer) {
 		return `/${segments.join("/")}`;
+	}
+
+	/**
+	 * Escapes the special characters in a JsonPointer string.
+	 *
+	 * @param text - The JsonPointer string to escape.
+	 * @returns The escaped JsonPointer string.
+	 */
+	public static escape(text: string) {
+		return text.replace("~", escapeTilde).replace("/", escapeSlash);
+	}
+
+	/**
+	 * Unescapes the special characters in a JsonPointer string.
+	 *
+	 * @param text - The JsonPointer string to unescape.
+	 * @returns The unescaped JsonPointer string.
+	 */
+	public static unescape(text: string) {
+		return text.replace(escapeTilde, "~").replace(escapeSlash, "/");
 	}
 }
