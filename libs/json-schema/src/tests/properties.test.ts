@@ -146,7 +146,7 @@ describe("properties whose names are Javascript object property names", () => {
 	const schema = {
 		$schema: "https://json-schema.org/draft/2020-12/schema",
 		properties: {
-			__proto__: { type: "number" },
+			["__proto__"]: { type: "number" },
 			toString: { properties: { length: { type: "string" } } },
 			constructor: { type: "number" },
 		},
@@ -165,7 +165,7 @@ describe("properties whose names are Javascript object property names", () => {
 	});
 	test("__proto__ not valid", () => {
 		const instance = new Schema(schema);
-		expect(instance.validate({ __proto__: "foo" })).toBeFalsy();
+		expect(instance.validate({ ["__proto__"]: "foo" })).toBeFalsy();
 	});
 	test("toString not valid", () => {
 		const instance = new Schema(schema);
@@ -179,7 +179,7 @@ describe("properties whose names are Javascript object property names", () => {
 		const instance = new Schema(schema);
 		expect(
 			instance.validate({
-				__proto__: 12,
+				["__proto__"]: 12,
 				toString: { length: "foo" },
 				constructor: 37,
 			}),

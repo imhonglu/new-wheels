@@ -98,7 +98,7 @@ describe("required properties whose names are Javascript object property names",
 	});
 	test("__proto__ present", () => {
 		const instance = new Schema(schema);
-		expect(instance.validate({ __proto__: "foo" })).toBeFalsy();
+		expect(instance.validate({ ["__proto__"]: "foo" })).toBeFalsy();
 	});
 	test("toString present", () => {
 		const instance = new Schema(schema);
@@ -112,7 +112,7 @@ describe("required properties whose names are Javascript object property names",
 		const instance = new Schema(schema);
 		expect(
 			instance.validate({
-				__proto__: 12,
+				["__proto__"]: 12,
 				toString: { length: "foo" },
 				constructor: 37,
 			}),
