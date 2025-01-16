@@ -26,8 +26,26 @@ const pattern = concat("/", referenceToken)
  *
  * @example
  * ```typescript
- * JsonPointer.parse("/foo/bar");
- * // => { segments: ["foo", "bar"] }
+ * JsonPointer.parse("/foo/~1bar");
+ * // => { segments: ["foo", "/bar"] }
+ * ```
+ *
+ * @example
+ * ```typescript
+ * JsonPointer.parse("/foo/bar~1baz");
+ * // => { segments: ["foo", "bar/baz"] }
+ * ```
+ *
+ * @example
+ * ```typescript
+ * JsonPointer.escape("bar/baz");
+ * // => "bar~1baz"
+ * ```
+ *
+ * @example
+ * ```typescript
+ * JsonPointer.unescape("bar~1baz");
+ * // => "bar/baz"
  * ```
  *
  * @see {@link https://datatracker.ietf.org/doc/html/rfc6901 | RFC 6901}
