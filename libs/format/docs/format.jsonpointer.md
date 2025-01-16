@@ -12,12 +12,36 @@ The JsonPointer formatter based on RFC 6901.
 export declare class JsonPointer 
 ```
 
-## Example
+## Example 1
 
 
 ```typescript
-JsonPointer.parse("/foo/bar");
-// => { segments: ["foo", "bar"] }
+JsonPointer.parse("/foo/~1bar");
+// => { segments: ["foo", "/bar"] }
+```
+
+## Example 2
+
+
+```typescript
+JsonPointer.parse("/foo/bar~1baz");
+// => { segments: ["foo", "bar/baz"] }
+```
+
+## Example 3
+
+
+```typescript
+JsonPointer.escape("bar/baz");
+// => "bar~1baz"
+```
+
+## Example 4
+
+
+```typescript
+JsonPointer.unescape("bar~1baz");
+// => "bar/baz"
 ```
 
 ## Constructors
@@ -137,6 +161,22 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
+[escape(text)](./format.jsonpointer.escape.md)
+
+
+</td><td>
+
+`static`
+
+
+</td><td>
+
+Escapes the special characters in a JsonPointer string.
+
+
+</td></tr>
+<tr><td>
+
 [parse(text)](./format.jsonpointer.parse.md)
 
 
@@ -164,6 +204,22 @@ Converts a JsonPointer string to an [JsonPointer](./format.jsonpointer.md) objec
 </td><td>
 
 Converts an [JsonPointer](./format.jsonpointer.md) object to a JsonPointer string.
+
+
+</td></tr>
+<tr><td>
+
+[unescape(text)](./format.jsonpointer.unescape.md)
+
+
+</td><td>
+
+`static`
+
+
+</td><td>
+
+Unescapes the special characters in a JsonPointer string.
 
 
 </td></tr>
