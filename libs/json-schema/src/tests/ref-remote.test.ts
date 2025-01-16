@@ -2,242 +2,242 @@
 import { describe, expect, test } from "vitest";
 import { Schema } from "../schema.js";
 describe("remote ref", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		$ref: "http://localhost:1234/draft2020-12/integer.json",
-	};
-	test("remote ref valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(1)).toBeTruthy();
-	});
-	test("remote ref invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("a")).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    $ref: "http://localhost:1234/draft2020-12/integer.json",
+  };
+  test("remote ref valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(1)).toBeTruthy();
+  });
+  test("remote ref invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("a")).toBeFalsy();
+  });
 });
 describe("fragment within remote ref", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		$ref: "http://localhost:1234/draft2020-12/subSchemas.json#/$defs/integer",
-	};
-	test("remote fragment valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(1)).toBeTruthy();
-	});
-	test("remote fragment invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("a")).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    $ref: "http://localhost:1234/draft2020-12/subSchemas.json#/$defs/integer",
+  };
+  test("remote fragment valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(1)).toBeTruthy();
+  });
+  test("remote fragment invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("a")).toBeFalsy();
+  });
 });
 describe("anchor within remote ref", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		$ref: "http://localhost:1234/draft2020-12/locationIndependentIdentifier.json#foo",
-	};
-	test("remote anchor valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(1)).toBeTruthy();
-	});
-	test("remote anchor invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("a")).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    $ref: "http://localhost:1234/draft2020-12/locationIndependentIdentifier.json#foo",
+  };
+  test("remote anchor valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(1)).toBeTruthy();
+  });
+  test("remote anchor invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("a")).toBeFalsy();
+  });
 });
 describe("ref within remote ref", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		$ref: "http://localhost:1234/draft2020-12/subSchemas.json#/$defs/refToInteger",
-	};
-	test("ref within ref valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(1)).toBeTruthy();
-	});
-	test("ref within ref invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("a")).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    $ref: "http://localhost:1234/draft2020-12/subSchemas.json#/$defs/refToInteger",
+  };
+  test("ref within ref valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(1)).toBeTruthy();
+  });
+  test("ref within ref invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("a")).toBeFalsy();
+  });
 });
 describe("base URI change", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		$id: "http://localhost:1234/draft2020-12/",
-		items: { $id: "baseUriChange/", items: { $ref: "folderInteger.json" } },
-	};
-	test("base URI change ref valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate([[1]])).toBeTruthy();
-	});
-	test("base URI change ref invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate([["a"]])).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    $id: "http://localhost:1234/draft2020-12/",
+    items: { $id: "baseUriChange/", items: { $ref: "folderInteger.json" } },
+  };
+  test("base URI change ref valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate([[1]])).toBeTruthy();
+  });
+  test("base URI change ref invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate([["a"]])).toBeFalsy();
+  });
 });
 describe("base URI change - change folder", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		$id: "http://localhost:1234/draft2020-12/scope_change_defs1.json",
-		type: "object",
-		properties: { list: { $ref: "baseUriChangeFolder/" } },
-		$defs: {
-			baz: {
-				$id: "baseUriChangeFolder/",
-				type: "array",
-				items: { $ref: "folderInteger.json" },
-			},
-		},
-	};
-	test("number is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ list: [1] })).toBeTruthy();
-	});
-	test("string is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ list: ["a"] })).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    $id: "http://localhost:1234/draft2020-12/scope_change_defs1.json",
+    type: "object",
+    properties: { list: { $ref: "baseUriChangeFolder/" } },
+    $defs: {
+      baz: {
+        $id: "baseUriChangeFolder/",
+        type: "array",
+        items: { $ref: "folderInteger.json" },
+      },
+    },
+  };
+  test("number is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ list: [1] })).toBeTruthy();
+  });
+  test("string is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ list: ["a"] })).toBeFalsy();
+  });
 });
 describe("base URI change - change folder in subschema", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		$id: "http://localhost:1234/draft2020-12/scope_change_defs2.json",
-		type: "object",
-		properties: {
-			list: { $ref: "baseUriChangeFolderInSubschema/#/$defs/bar" },
-		},
-		$defs: {
-			baz: {
-				$id: "baseUriChangeFolderInSubschema/",
-				$defs: {
-					bar: { type: "array", items: { $ref: "folderInteger.json" } },
-				},
-			},
-		},
-	};
-	test("number is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ list: [1] })).toBeTruthy();
-	});
-	test("string is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ list: ["a"] })).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    $id: "http://localhost:1234/draft2020-12/scope_change_defs2.json",
+    type: "object",
+    properties: {
+      list: { $ref: "baseUriChangeFolderInSubschema/#/$defs/bar" },
+    },
+    $defs: {
+      baz: {
+        $id: "baseUriChangeFolderInSubschema/",
+        $defs: {
+          bar: { type: "array", items: { $ref: "folderInteger.json" } },
+        },
+      },
+    },
+  };
+  test("number is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ list: [1] })).toBeTruthy();
+  });
+  test("string is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ list: ["a"] })).toBeFalsy();
+  });
 });
 describe("root ref in remote ref", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		$id: "http://localhost:1234/draft2020-12/object",
-		type: "object",
-		properties: { name: { $ref: "name-defs.json#/$defs/orNull" } },
-	};
-	test("string is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ name: "foo" })).toBeTruthy();
-	});
-	test("null is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ name: null })).toBeTruthy();
-	});
-	test("object is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ name: { name: null } })).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    $id: "http://localhost:1234/draft2020-12/object",
+    type: "object",
+    properties: { name: { $ref: "name-defs.json#/$defs/orNull" } },
+  };
+  test("string is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ name: "foo" })).toBeTruthy();
+  });
+  test("null is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ name: null })).toBeTruthy();
+  });
+  test("object is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ name: { name: null } })).toBeFalsy();
+  });
 });
 describe("remote ref with ref to defs", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		$id: "http://localhost:1234/draft2020-12/schema-remote-ref-ref-defs1.json",
-		$ref: "ref-and-defs.json",
-	};
-	test("invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ bar: 1 })).toBeFalsy();
-	});
-	test("valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ bar: "a" })).toBeTruthy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    $id: "http://localhost:1234/draft2020-12/schema-remote-ref-ref-defs1.json",
+    $ref: "ref-and-defs.json",
+  };
+  test("invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ bar: 1 })).toBeFalsy();
+  });
+  test("valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ bar: "a" })).toBeTruthy();
+  });
 });
 describe("Location-independent identifier in remote ref", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		$ref: "http://localhost:1234/draft2020-12/locationIndependentIdentifier.json#/$defs/refToInteger",
-	};
-	test("integer is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(1)).toBeTruthy();
-	});
-	test("string is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("foo")).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    $ref: "http://localhost:1234/draft2020-12/locationIndependentIdentifier.json#/$defs/refToInteger",
+  };
+  test("integer is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(1)).toBeTruthy();
+  });
+  test("string is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("foo")).toBeFalsy();
+  });
 });
 describe("retrieved nested refs resolve relative to their URI not $id", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		$id: "http://localhost:1234/draft2020-12/some-id",
-		properties: { name: { $ref: "nested/foo-ref-string.json" } },
-	};
-	test("number is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ name: { foo: 1 } })).toBeFalsy();
-	});
-	test("string is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ name: { foo: "a" } })).toBeTruthy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    $id: "http://localhost:1234/draft2020-12/some-id",
+    properties: { name: { $ref: "nested/foo-ref-string.json" } },
+  };
+  test("number is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ name: { foo: 1 } })).toBeFalsy();
+  });
+  test("string is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ name: { foo: "a" } })).toBeTruthy();
+  });
 });
 describe("remote HTTP ref with different $id", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		$ref: "http://localhost:1234/different-id-ref-string.json",
-	};
-	test("number is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(1)).toBeFalsy();
-	});
-	test("string is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("foo")).toBeTruthy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    $ref: "http://localhost:1234/different-id-ref-string.json",
+  };
+  test("number is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(1)).toBeFalsy();
+  });
+  test("string is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("foo")).toBeTruthy();
+  });
 });
 describe("remote HTTP ref with different URN $id", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		$ref: "http://localhost:1234/urn-ref-string.json",
-	};
-	test("number is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(1)).toBeFalsy();
-	});
-	test("string is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("foo")).toBeTruthy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    $ref: "http://localhost:1234/urn-ref-string.json",
+  };
+  test("number is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(1)).toBeFalsy();
+  });
+  test("string is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("foo")).toBeTruthy();
+  });
 });
 describe("remote HTTP ref with nested absolute ref", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		$ref: "http://localhost:1234/nested-absolute-ref-to-string.json",
-	};
-	test("number is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(1)).toBeFalsy();
-	});
-	test("string is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("foo")).toBeTruthy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    $ref: "http://localhost:1234/nested-absolute-ref-to-string.json",
+  };
+  test("number is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(1)).toBeFalsy();
+  });
+  test("string is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("foo")).toBeTruthy();
+  });
 });
 describe("$ref to $ref finds detached $anchor", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		$ref: "http://localhost:1234/draft2020-12/detached-ref.json#/$defs/foo",
-	};
-	test("number is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(1)).toBeTruthy();
-	});
-	test("non-number is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("a")).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    $ref: "http://localhost:1234/draft2020-12/detached-ref.json#/$defs/foo",
+  };
+  test("number is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(1)).toBeTruthy();
+  });
+  test("non-number is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("a")).toBeFalsy();
+  });
 });

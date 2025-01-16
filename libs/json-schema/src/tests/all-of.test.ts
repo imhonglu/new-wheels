@@ -2,204 +2,204 @@
 import { describe, expect, test } from "vitest";
 import { Schema } from "../schema.js";
 describe("allOf", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		allOf: [
-			{ properties: { bar: { type: "integer" } }, required: ["bar"] },
-			{ properties: { foo: { type: "string" } }, required: ["foo"] },
-		],
-	};
-	test("allOf", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ foo: "baz", bar: 2 })).toBeTruthy();
-	});
-	test("mismatch second", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ foo: "baz" })).toBeFalsy();
-	});
-	test("mismatch first", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ bar: 2 })).toBeFalsy();
-	});
-	test("wrong type", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ foo: "baz", bar: "quux" })).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    allOf: [
+      { properties: { bar: { type: "integer" } }, required: ["bar"] },
+      { properties: { foo: { type: "string" } }, required: ["foo"] },
+    ],
+  };
+  test("allOf", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ foo: "baz", bar: 2 })).toBeTruthy();
+  });
+  test("mismatch second", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ foo: "baz" })).toBeFalsy();
+  });
+  test("mismatch first", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ bar: 2 })).toBeFalsy();
+  });
+  test("wrong type", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ foo: "baz", bar: "quux" })).toBeFalsy();
+  });
 });
 describe("allOf with base schema", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		properties: { bar: { type: "integer" } },
-		required: ["bar"],
-		allOf: [
-			{ properties: { foo: { type: "string" } }, required: ["foo"] },
-			{ properties: { baz: { type: "null" } }, required: ["baz"] },
-		],
-	};
-	test("valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ foo: "quux", bar: 2, baz: null })).toBeTruthy();
-	});
-	test("mismatch base schema", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ foo: "quux", baz: null })).toBeFalsy();
-	});
-	test("mismatch first allOf", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ bar: 2, baz: null })).toBeFalsy();
-	});
-	test("mismatch second allOf", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ foo: "quux", bar: 2 })).toBeFalsy();
-	});
-	test("mismatch both", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ bar: 2 })).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    properties: { bar: { type: "integer" } },
+    required: ["bar"],
+    allOf: [
+      { properties: { foo: { type: "string" } }, required: ["foo"] },
+      { properties: { baz: { type: "null" } }, required: ["baz"] },
+    ],
+  };
+  test("valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ foo: "quux", bar: 2, baz: null })).toBeTruthy();
+  });
+  test("mismatch base schema", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ foo: "quux", baz: null })).toBeFalsy();
+  });
+  test("mismatch first allOf", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ bar: 2, baz: null })).toBeFalsy();
+  });
+  test("mismatch second allOf", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ foo: "quux", bar: 2 })).toBeFalsy();
+  });
+  test("mismatch both", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ bar: 2 })).toBeFalsy();
+  });
 });
 describe("allOf simple types", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		allOf: [{ maximum: 30 }, { minimum: 20 }],
-	};
-	test("valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(25)).toBeTruthy();
-	});
-	test("mismatch one", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(35)).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    allOf: [{ maximum: 30 }, { minimum: 20 }],
+  };
+  test("valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(25)).toBeTruthy();
+  });
+  test("mismatch one", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(35)).toBeFalsy();
+  });
 });
 describe("allOf with boolean schemas, all true", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		allOf: [true, true],
-	};
-	test("any value is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("foo")).toBeTruthy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    allOf: [true, true],
+  };
+  test("any value is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("foo")).toBeTruthy();
+  });
 });
 describe("allOf with boolean schemas, some false", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		allOf: [true, false],
-	};
-	test("any value is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("foo")).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    allOf: [true, false],
+  };
+  test("any value is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("foo")).toBeFalsy();
+  });
 });
 describe("allOf with boolean schemas, all false", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		allOf: [false, false],
-	};
-	test("any value is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("foo")).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    allOf: [false, false],
+  };
+  test("any value is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("foo")).toBeFalsy();
+  });
 });
 describe("allOf with one empty schema", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		allOf: [{}],
-	};
-	test("any data is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(1)).toBeTruthy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    allOf: [{}],
+  };
+  test("any data is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(1)).toBeTruthy();
+  });
 });
 describe("allOf with two empty schemas", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		allOf: [{}, {}],
-	};
-	test("any data is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(1)).toBeTruthy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    allOf: [{}, {}],
+  };
+  test("any data is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(1)).toBeTruthy();
+  });
 });
 describe("allOf with the first empty schema", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		allOf: [{}, { type: "number" }],
-	};
-	test("number is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(1)).toBeTruthy();
-	});
-	test("string is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("foo")).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    allOf: [{}, { type: "number" }],
+  };
+  test("number is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(1)).toBeTruthy();
+  });
+  test("string is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("foo")).toBeFalsy();
+  });
 });
 describe("allOf with the last empty schema", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		allOf: [{ type: "number" }, {}],
-	};
-	test("number is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(1)).toBeTruthy();
-	});
-	test("string is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("foo")).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    allOf: [{ type: "number" }, {}],
+  };
+  test("number is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(1)).toBeTruthy();
+  });
+  test("string is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("foo")).toBeFalsy();
+  });
 });
 describe("nested allOf, to check validation semantics", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		allOf: [{ allOf: [{ type: "null" }] }],
-	};
-	test("null is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(null)).toBeTruthy();
-	});
-	test("anything non-null is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(123)).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    allOf: [{ allOf: [{ type: "null" }] }],
+  };
+  test("null is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(null)).toBeTruthy();
+  });
+  test("anything non-null is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(123)).toBeFalsy();
+  });
 });
 describe("allOf combined with anyOf, oneOf", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		allOf: [{ multipleOf: 2 }],
-		anyOf: [{ multipleOf: 3 }],
-		oneOf: [{ multipleOf: 5 }],
-	};
-	test("allOf: false, anyOf: false, oneOf: false", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(1)).toBeFalsy();
-	});
-	test("allOf: false, anyOf: false, oneOf: true", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(5)).toBeFalsy();
-	});
-	test("allOf: false, anyOf: true, oneOf: false", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(3)).toBeFalsy();
-	});
-	test("allOf: false, anyOf: true, oneOf: true", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(15)).toBeFalsy();
-	});
-	test("allOf: true, anyOf: false, oneOf: false", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(2)).toBeFalsy();
-	});
-	test("allOf: true, anyOf: false, oneOf: true", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(10)).toBeFalsy();
-	});
-	test("allOf: true, anyOf: true, oneOf: false", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(6)).toBeFalsy();
-	});
-	test("allOf: true, anyOf: true, oneOf: true", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(30)).toBeTruthy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    allOf: [{ multipleOf: 2 }],
+    anyOf: [{ multipleOf: 3 }],
+    oneOf: [{ multipleOf: 5 }],
+  };
+  test("allOf: false, anyOf: false, oneOf: false", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(1)).toBeFalsy();
+  });
+  test("allOf: false, anyOf: false, oneOf: true", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(5)).toBeFalsy();
+  });
+  test("allOf: false, anyOf: true, oneOf: false", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(3)).toBeFalsy();
+  });
+  test("allOf: false, anyOf: true, oneOf: true", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(15)).toBeFalsy();
+  });
+  test("allOf: true, anyOf: false, oneOf: false", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(2)).toBeFalsy();
+  });
+  test("allOf: true, anyOf: false, oneOf: true", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(10)).toBeFalsy();
+  });
+  test("allOf: true, anyOf: true, oneOf: false", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(6)).toBeFalsy();
+  });
+  test("allOf: true, anyOf: true, oneOf: true", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(30)).toBeTruthy();
+  });
 });

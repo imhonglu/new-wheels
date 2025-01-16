@@ -2,221 +2,221 @@
 import { describe, expect, test } from "vitest";
 import { Schema } from "../schema.js";
 describe("not", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		not: { type: "integer" },
-	};
-	test("allowed", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("foo")).toBeTruthy();
-	});
-	test("disallowed", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(1)).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    not: { type: "integer" },
+  };
+  test("allowed", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("foo")).toBeTruthy();
+  });
+  test("disallowed", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(1)).toBeFalsy();
+  });
 });
 describe("not multiple types", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		not: { type: ["integer", "boolean"] },
-	};
-	test("valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("foo")).toBeTruthy();
-	});
-	test("mismatch", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(1)).toBeFalsy();
-	});
-	test("other mismatch", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(true)).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    not: { type: ["integer", "boolean"] },
+  };
+  test("valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("foo")).toBeTruthy();
+  });
+  test("mismatch", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(1)).toBeFalsy();
+  });
+  test("other mismatch", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(true)).toBeFalsy();
+  });
 });
 describe("not more complex schema", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		not: { type: "object", properties: { foo: { type: "string" } } },
-	};
-	test("match", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(1)).toBeTruthy();
-	});
-	test("other match", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ foo: 1 })).toBeTruthy();
-	});
-	test("mismatch", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ foo: "bar" })).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    not: { type: "object", properties: { foo: { type: "string" } } },
+  };
+  test("match", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(1)).toBeTruthy();
+  });
+  test("other match", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ foo: 1 })).toBeTruthy();
+  });
+  test("mismatch", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ foo: "bar" })).toBeFalsy();
+  });
 });
 describe("forbidden property", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		properties: { foo: { not: {} } },
-	};
-	test("property present", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ foo: 1, bar: 2 })).toBeFalsy();
-	});
-	test("property absent", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ bar: 1, baz: 2 })).toBeTruthy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    properties: { foo: { not: {} } },
+  };
+  test("property present", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ foo: 1, bar: 2 })).toBeFalsy();
+  });
+  test("property absent", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ bar: 1, baz: 2 })).toBeTruthy();
+  });
 });
 describe("forbid everything with empty schema", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		not: {},
-	};
-	test("number is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(1)).toBeFalsy();
-	});
-	test("string is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("foo")).toBeFalsy();
-	});
-	test("boolean true is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(true)).toBeFalsy();
-	});
-	test("boolean false is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(false)).toBeFalsy();
-	});
-	test("null is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(null)).toBeFalsy();
-	});
-	test("object is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ foo: "bar" })).toBeFalsy();
-	});
-	test("empty object is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({})).toBeFalsy();
-	});
-	test("array is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(["foo"])).toBeFalsy();
-	});
-	test("empty array is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate([])).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    not: {},
+  };
+  test("number is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(1)).toBeFalsy();
+  });
+  test("string is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("foo")).toBeFalsy();
+  });
+  test("boolean true is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(true)).toBeFalsy();
+  });
+  test("boolean false is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(false)).toBeFalsy();
+  });
+  test("null is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(null)).toBeFalsy();
+  });
+  test("object is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ foo: "bar" })).toBeFalsy();
+  });
+  test("empty object is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({})).toBeFalsy();
+  });
+  test("array is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(["foo"])).toBeFalsy();
+  });
+  test("empty array is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate([])).toBeFalsy();
+  });
 });
 describe("forbid everything with boolean schema true", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		not: true,
-	};
-	test("number is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(1)).toBeFalsy();
-	});
-	test("string is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("foo")).toBeFalsy();
-	});
-	test("boolean true is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(true)).toBeFalsy();
-	});
-	test("boolean false is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(false)).toBeFalsy();
-	});
-	test("null is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(null)).toBeFalsy();
-	});
-	test("object is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ foo: "bar" })).toBeFalsy();
-	});
-	test("empty object is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({})).toBeFalsy();
-	});
-	test("array is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(["foo"])).toBeFalsy();
-	});
-	test("empty array is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate([])).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    not: true,
+  };
+  test("number is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(1)).toBeFalsy();
+  });
+  test("string is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("foo")).toBeFalsy();
+  });
+  test("boolean true is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(true)).toBeFalsy();
+  });
+  test("boolean false is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(false)).toBeFalsy();
+  });
+  test("null is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(null)).toBeFalsy();
+  });
+  test("object is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ foo: "bar" })).toBeFalsy();
+  });
+  test("empty object is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({})).toBeFalsy();
+  });
+  test("array is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(["foo"])).toBeFalsy();
+  });
+  test("empty array is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate([])).toBeFalsy();
+  });
 });
 describe("allow everything with boolean schema false", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		not: false,
-	};
-	test("number is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(1)).toBeTruthy();
-	});
-	test("string is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("foo")).toBeTruthy();
-	});
-	test("boolean true is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(true)).toBeTruthy();
-	});
-	test("boolean false is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(false)).toBeTruthy();
-	});
-	test("null is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(null)).toBeTruthy();
-	});
-	test("object is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ foo: "bar" })).toBeTruthy();
-	});
-	test("empty object is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({})).toBeTruthy();
-	});
-	test("array is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(["foo"])).toBeTruthy();
-	});
-	test("empty array is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate([])).toBeTruthy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    not: false,
+  };
+  test("number is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(1)).toBeTruthy();
+  });
+  test("string is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("foo")).toBeTruthy();
+  });
+  test("boolean true is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(true)).toBeTruthy();
+  });
+  test("boolean false is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(false)).toBeTruthy();
+  });
+  test("null is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(null)).toBeTruthy();
+  });
+  test("object is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ foo: "bar" })).toBeTruthy();
+  });
+  test("empty object is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({})).toBeTruthy();
+  });
+  test("array is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(["foo"])).toBeTruthy();
+  });
+  test("empty array is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate([])).toBeTruthy();
+  });
 });
 describe("double negation", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		not: { not: {} },
-	};
-	test("any value is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("foo")).toBeTruthy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    not: { not: {} },
+  };
+  test("any value is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("foo")).toBeTruthy();
+  });
 });
 describe("collect annotations inside a 'not', even if collection is disabled", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		not: {
-			$comment:
-				"this subschema must still produce annotations internally, even though the 'not' will ultimately discard them",
-			anyOf: [true, { properties: { foo: true } }],
-			unevaluatedProperties: false,
-		},
-	};
-	test("unevaluated property", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ bar: 1 })).toBeTruthy();
-	});
-	test("annotations are still collected inside a 'not'", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ foo: 1 })).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    not: {
+      $comment:
+        "this subschema must still produce annotations internally, even though the 'not' will ultimately discard them",
+      anyOf: [true, { properties: { foo: true } }],
+      unevaluatedProperties: false,
+    },
+  };
+  test("unevaluated property", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ bar: 1 })).toBeTruthy();
+  });
+  test("annotations are still collected inside a 'not'", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ foo: 1 })).toBeFalsy();
+  });
 });

@@ -1,11 +1,11 @@
 const pattern = /^(([^:/?#]+):)?(\/\/([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?/;
 
 export interface URIComponents {
-	scheme?: string;
-	authority?: string;
-	path?: string;
-	query?: string;
-	fragment?: string;
+  scheme?: string;
+  authority?: string;
+  path?: string;
+  query?: string;
+  fragment?: string;
 }
 
 /**
@@ -18,26 +18,26 @@ export interface URIComponents {
  *
  */
 export function parseURIComponents(text: string): URIComponents | undefined {
-	const match = text.match(pattern);
+  const match = text.match(pattern);
 
-	if (!match) {
-		return undefined;
-	}
+  if (!match) {
+    return undefined;
+  }
 
-	/**
-	 * scheme    = $2
-	 * authority = $4
-	 * path      = $5
-	 * query     = $7
-	 * fragment  = $9
-	 */
-	const [, , scheme, , authority, path, , query, , fragment] = match;
+  /**
+   * scheme    = $2
+   * authority = $4
+   * path      = $5
+   * query     = $7
+   * fragment  = $9
+   */
+  const [, , scheme, , authority, path, , query, , fragment] = match;
 
-	return {
-		scheme,
-		authority,
-		path,
-		query,
-		fragment,
-	};
+  return {
+    scheme,
+    authority,
+    path,
+    query,
+    fragment,
+  };
 }

@@ -2,64 +2,64 @@
 import { describe, expect, test } from "vitest";
 import { Schema } from "../../schema.js";
 describe("Proper UTF-16 surrogate pair handling: pattern", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		pattern: "^\uD83D\uDC32*$",
-	};
-	test("matches empty", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("")).toBeTruthy();
-	});
-	test("matches single", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("\uD83D\uDC32")).toBeTruthy();
-	});
-	test("matches two", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("\uD83D\uDC32\uD83D\uDC32")).toBeTruthy();
-	});
-	test("doesn't match one", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("\uD83D\uDC09")).toBeFalsy();
-	});
-	test("doesn't match two", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("\uD83D\uDC09\uD83D\uDC09")).toBeFalsy();
-	});
-	test("doesn't match one ASCII", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("D")).toBeFalsy();
-	});
-	test("doesn't match two ASCII", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("DD")).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    pattern: "^\uD83D\uDC32*$",
+  };
+  test("matches empty", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("")).toBeTruthy();
+  });
+  test("matches single", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("\uD83D\uDC32")).toBeTruthy();
+  });
+  test("matches two", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("\uD83D\uDC32\uD83D\uDC32")).toBeTruthy();
+  });
+  test("doesn't match one", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("\uD83D\uDC09")).toBeFalsy();
+  });
+  test("doesn't match two", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("\uD83D\uDC09\uD83D\uDC09")).toBeFalsy();
+  });
+  test("doesn't match one ASCII", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("D")).toBeFalsy();
+  });
+  test("doesn't match two ASCII", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("DD")).toBeFalsy();
+  });
 });
 describe("Proper UTF-16 surrogate pair handling: patternProperties", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		patternProperties: { "^\uD83D\uDC32*$": { type: "integer" } },
-	};
-	test("matches empty", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ "": 1 })).toBeTruthy();
-	});
-	test("matches single", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ "\uD83D\uDC32": 1 })).toBeTruthy();
-	});
-	test("matches two", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ "\uD83D\uDC32\uD83D\uDC32": 1 })).toBeTruthy();
-	});
-	test("doesn't match one", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ "\uD83D\uDC32": "hello" })).toBeFalsy();
-	});
-	test("doesn't match two", () => {
-		const instance = new Schema(schema);
-		expect(
-			instance.validate({ "\uD83D\uDC32\uD83D\uDC32": "hello" }),
-		).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    patternProperties: { "^\uD83D\uDC32*$": { type: "integer" } },
+  };
+  test("matches empty", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ "": 1 })).toBeTruthy();
+  });
+  test("matches single", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ "\uD83D\uDC32": 1 })).toBeTruthy();
+  });
+  test("matches two", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ "\uD83D\uDC32\uD83D\uDC32": 1 })).toBeTruthy();
+  });
+  test("doesn't match one", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ "\uD83D\uDC32": "hello" })).toBeFalsy();
+  });
+  test("doesn't match two", () => {
+    const instance = new Schema(schema);
+    expect(
+      instance.validate({ "\uD83D\uDC32\uD83D\uDC32": "hello" }),
+    ).toBeFalsy();
+  });
 });

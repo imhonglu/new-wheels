@@ -2,108 +2,108 @@
 import { describe, expect, test } from "vitest";
 import { Schema } from "../../../schema.js";
 describe("validation of date-time strings", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		format: "date-time",
-	};
-	test("all string formats ignore integers", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(12)).toBeTruthy();
-	});
-	test("all string formats ignore floats", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(13.7)).toBeTruthy();
-	});
-	test("all string formats ignore objects", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({})).toBeTruthy();
-	});
-	test("all string formats ignore arrays", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate([])).toBeTruthy();
-	});
-	test("all string formats ignore booleans", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(false)).toBeTruthy();
-	});
-	test("all string formats ignore nulls", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(null)).toBeTruthy();
-	});
-	test("a valid date-time string", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("1963-06-19T08:30:06.283185Z")).toBeTruthy();
-	});
-	test("a valid date-time string without second fraction", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("1963-06-19T08:30:06Z")).toBeTruthy();
-	});
-	test("a valid date-time string with plus offset", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("1937-01-01T12:00:27.87+00:20")).toBeTruthy();
-	});
-	test("a valid date-time string with minus offset", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("1990-12-31T15:59:50.123-08:00")).toBeTruthy();
-	});
-	test("a valid date-time with a leap second, UTC", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("1998-12-31T23:59:60Z")).toBeTruthy();
-	});
-	test("a valid date-time with a leap second, with minus offset", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("1998-12-31T15:59:60.123-08:00")).toBeTruthy();
-	});
-	test("an invalid date-time past leap second, UTC", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("1998-12-31T23:59:61Z")).toBeFalsy();
-	});
-	test("an invalid date-time with leap second on a wrong minute, UTC", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("1998-12-31T23:58:60Z")).toBeFalsy();
-	});
-	test("an invalid date-time with leap second on a wrong hour, UTC", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("1998-12-31T22:59:60Z")).toBeFalsy();
-	});
-	test("an invalid day in date-time string", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("1990-02-31T15:59:59.123-08:00")).toBeFalsy();
-	});
-	test("an invalid offset in date-time string", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("1990-12-31T15:59:59-24:00")).toBeFalsy();
-	});
-	test("an invalid closing Z after time-zone offset", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("1963-06-19T08:30:06.28123+01:00Z")).toBeFalsy();
-	});
-	test("an invalid date-time string", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("06/19/1963 08:30:06 PST")).toBeFalsy();
-	});
-	test("case-insensitive T and Z", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("1963-06-19t08:30:06.283185z")).toBeTruthy();
-	});
-	test("only RFC3339 not all of ISO 8601 are valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("2013-350T01:01:01")).toBeFalsy();
-	});
-	test("invalid non-padded month dates", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("1963-6-19T08:30:06.283185Z")).toBeFalsy();
-	});
-	test("invalid non-padded day dates", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("1963-06-1T08:30:06.283185Z")).toBeFalsy();
-	});
-	test("invalid non-ASCII '\u09EA' (a Bengali 4) in date portion", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("1963-06-1\u09EAT00:00:00Z")).toBeFalsy();
-	});
-	test("invalid non-ASCII '\u09EA' (a Bengali 4) in time portion", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("1963-06-11T0\u09EA:00:00Z")).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    format: "date-time",
+  };
+  test("all string formats ignore integers", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(12)).toBeTruthy();
+  });
+  test("all string formats ignore floats", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(13.7)).toBeTruthy();
+  });
+  test("all string formats ignore objects", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({})).toBeTruthy();
+  });
+  test("all string formats ignore arrays", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate([])).toBeTruthy();
+  });
+  test("all string formats ignore booleans", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(false)).toBeTruthy();
+  });
+  test("all string formats ignore nulls", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(null)).toBeTruthy();
+  });
+  test("a valid date-time string", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("1963-06-19T08:30:06.283185Z")).toBeTruthy();
+  });
+  test("a valid date-time string without second fraction", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("1963-06-19T08:30:06Z")).toBeTruthy();
+  });
+  test("a valid date-time string with plus offset", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("1937-01-01T12:00:27.87+00:20")).toBeTruthy();
+  });
+  test("a valid date-time string with minus offset", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("1990-12-31T15:59:50.123-08:00")).toBeTruthy();
+  });
+  test("a valid date-time with a leap second, UTC", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("1998-12-31T23:59:60Z")).toBeTruthy();
+  });
+  test("a valid date-time with a leap second, with minus offset", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("1998-12-31T15:59:60.123-08:00")).toBeTruthy();
+  });
+  test("an invalid date-time past leap second, UTC", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("1998-12-31T23:59:61Z")).toBeFalsy();
+  });
+  test("an invalid date-time with leap second on a wrong minute, UTC", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("1998-12-31T23:58:60Z")).toBeFalsy();
+  });
+  test("an invalid date-time with leap second on a wrong hour, UTC", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("1998-12-31T22:59:60Z")).toBeFalsy();
+  });
+  test("an invalid day in date-time string", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("1990-02-31T15:59:59.123-08:00")).toBeFalsy();
+  });
+  test("an invalid offset in date-time string", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("1990-12-31T15:59:59-24:00")).toBeFalsy();
+  });
+  test("an invalid closing Z after time-zone offset", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("1963-06-19T08:30:06.28123+01:00Z")).toBeFalsy();
+  });
+  test("an invalid date-time string", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("06/19/1963 08:30:06 PST")).toBeFalsy();
+  });
+  test("case-insensitive T and Z", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("1963-06-19t08:30:06.283185z")).toBeTruthy();
+  });
+  test("only RFC3339 not all of ISO 8601 are valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("2013-350T01:01:01")).toBeFalsy();
+  });
+  test("invalid non-padded month dates", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("1963-6-19T08:30:06.283185Z")).toBeFalsy();
+  });
+  test("invalid non-padded day dates", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("1963-06-1T08:30:06.283185Z")).toBeFalsy();
+  });
+  test("invalid non-ASCII '\u09EA' (a Bengali 4) in date portion", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("1963-06-1\u09EAT00:00:00Z")).toBeFalsy();
+  });
+  test("invalid non-ASCII '\u09EA' (a Bengali 4) in time portion", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("1963-06-11T0\u09EA:00:00Z")).toBeFalsy();
+  });
 });

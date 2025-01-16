@@ -33,27 +33,27 @@
  * ```
  */
 export function combinations<T>(source: T[]): IterableIterator<T[]> {
-	let index = 0;
+  let index = 0;
 
-	return {
-		[Symbol.iterator]() {
-			return this;
-		},
+  return {
+    [Symbol.iterator]() {
+      return this;
+    },
 
-		next() {
-			index += 1;
+    next() {
+      index += 1;
 
-			if (index < 1 << source.length) {
-				return {
-					value: source.filter((_, j) => (1 << j) & index),
-					done: false,
-				};
-			}
+      if (index < 1 << source.length) {
+        return {
+          value: source.filter((_, j) => (1 << j) & index),
+          done: false,
+        };
+      }
 
-			return {
-				value: undefined,
-				done: true,
-			};
-		},
-	};
+      return {
+        value: undefined,
+        done: true,
+      };
+    },
+  };
 }

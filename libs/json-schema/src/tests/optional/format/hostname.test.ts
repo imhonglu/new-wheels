@@ -2,112 +2,112 @@
 import { describe, expect, test } from "vitest";
 import { Schema } from "../../../schema.js";
 describe("validation of host names", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		format: "hostname",
-	};
-	test("all string formats ignore integers", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(12)).toBeTruthy();
-	});
-	test("all string formats ignore floats", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(13.7)).toBeTruthy();
-	});
-	test("all string formats ignore objects", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({})).toBeTruthy();
-	});
-	test("all string formats ignore arrays", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate([])).toBeTruthy();
-	});
-	test("all string formats ignore booleans", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(false)).toBeTruthy();
-	});
-	test("all string formats ignore nulls", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(null)).toBeTruthy();
-	});
-	test("a valid host name", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("www.example.com")).toBeTruthy();
-	});
-	test("a valid punycoded IDN hostname", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("xn--4gbwdl.xn--wgbh1c")).toBeTruthy();
-	});
-	test("a host name starting with an illegal character", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("-a-host-name-that-starts-with--")).toBeFalsy();
-	});
-	test("a host name containing illegal characters", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("not_a_valid_host_name")).toBeFalsy();
-	});
-	test("a host name with a component too long", () => {
-		const instance = new Schema(schema);
-		expect(
-			instance.validate(
-				"a-vvvvvvvvvvvvvvvveeeeeeeeeeeeeeeerrrrrrrrrrrrrrrryyyyyyyyyyyyyyyy-long-host-name-component",
-			),
-		).toBeFalsy();
-	});
-	test("starts with hyphen", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("-hostname")).toBeFalsy();
-	});
-	test("ends with hyphen", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("hostname-")).toBeFalsy();
-	});
-	test("starts with underscore", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("_hostname")).toBeFalsy();
-	});
-	test("ends with underscore", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("hostname_")).toBeFalsy();
-	});
-	test("contains underscore", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("host_name")).toBeFalsy();
-	});
-	test("maximum label length", () => {
-		const instance = new Schema(schema);
-		expect(
-			instance.validate(
-				"abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijk.com",
-			),
-		).toBeTruthy();
-	});
-	test("exceeds maximum label length", () => {
-		const instance = new Schema(schema);
-		expect(
-			instance.validate(
-				"abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijkl.com",
-			),
-		).toBeFalsy();
-	});
-	test("single label", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("hostname")).toBeTruthy();
-	});
-	test("single label with hyphen", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("host-name")).toBeTruthy();
-	});
-	test("single label with digits", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("h0stn4me")).toBeTruthy();
-	});
-	test("single label starting with digit", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("1host")).toBeTruthy();
-	});
-	test("single label ending with digit", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("hostnam3")).toBeTruthy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    format: "hostname",
+  };
+  test("all string formats ignore integers", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(12)).toBeTruthy();
+  });
+  test("all string formats ignore floats", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(13.7)).toBeTruthy();
+  });
+  test("all string formats ignore objects", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({})).toBeTruthy();
+  });
+  test("all string formats ignore arrays", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate([])).toBeTruthy();
+  });
+  test("all string formats ignore booleans", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(false)).toBeTruthy();
+  });
+  test("all string formats ignore nulls", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(null)).toBeTruthy();
+  });
+  test("a valid host name", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("www.example.com")).toBeTruthy();
+  });
+  test("a valid punycoded IDN hostname", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("xn--4gbwdl.xn--wgbh1c")).toBeTruthy();
+  });
+  test("a host name starting with an illegal character", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("-a-host-name-that-starts-with--")).toBeFalsy();
+  });
+  test("a host name containing illegal characters", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("not_a_valid_host_name")).toBeFalsy();
+  });
+  test("a host name with a component too long", () => {
+    const instance = new Schema(schema);
+    expect(
+      instance.validate(
+        "a-vvvvvvvvvvvvvvvveeeeeeeeeeeeeeeerrrrrrrrrrrrrrrryyyyyyyyyyyyyyyy-long-host-name-component",
+      ),
+    ).toBeFalsy();
+  });
+  test("starts with hyphen", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("-hostname")).toBeFalsy();
+  });
+  test("ends with hyphen", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("hostname-")).toBeFalsy();
+  });
+  test("starts with underscore", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("_hostname")).toBeFalsy();
+  });
+  test("ends with underscore", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("hostname_")).toBeFalsy();
+  });
+  test("contains underscore", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("host_name")).toBeFalsy();
+  });
+  test("maximum label length", () => {
+    const instance = new Schema(schema);
+    expect(
+      instance.validate(
+        "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijk.com",
+      ),
+    ).toBeTruthy();
+  });
+  test("exceeds maximum label length", () => {
+    const instance = new Schema(schema);
+    expect(
+      instance.validate(
+        "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijkl.com",
+      ),
+    ).toBeFalsy();
+  });
+  test("single label", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("hostname")).toBeTruthy();
+  });
+  test("single label with hyphen", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("host-name")).toBeTruthy();
+  });
+  test("single label with digits", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("h0stn4me")).toBeTruthy();
+  });
+  test("single label starting with digit", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("1host")).toBeTruthy();
+  });
+  test("single label ending with digit", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("hostnam3")).toBeTruthy();
+  });
 });

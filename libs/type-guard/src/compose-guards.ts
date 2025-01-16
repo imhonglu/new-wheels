@@ -2,9 +2,9 @@ import { type NegateTypeGuards, negateGuards } from "./negate-guards.js";
 import type { Guards } from "./types/guards.js";
 
 export type ComposeTypeGuards<T extends Guards> = {
-	[P in keyof T]: T[P];
+  [P in keyof T]: T[P];
 } & {
-	not: NegateTypeGuards<T>;
+  not: NegateTypeGuards<T>;
 };
 
 /**
@@ -52,12 +52,12 @@ export type ComposeTypeGuards<T extends Guards> = {
  * @see {@link ComposeTypeGuards} - The type of the returned object
  */
 export function composeGuards<T extends Guards>(guards: T) {
-	const not = negateGuards(guards);
+  const not = negateGuards(guards);
 
-	return new Proxy(guards, {
-		get(target, prop) {
-			if (prop === "not") return not;
-			return prop in target ? target[prop] : undefined;
-		},
-	}) as ComposeTypeGuards<T>;
+  return new Proxy(guards, {
+    get(target, prop) {
+      if (prop === "not") return not;
+      return prop in target ? target[prop] : undefined;
+    },
+  }) as ComposeTypeGuards<T>;
 }

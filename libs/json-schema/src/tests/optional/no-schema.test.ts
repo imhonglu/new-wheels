@@ -2,17 +2,17 @@
 import { describe, expect, test } from "vitest";
 import { Schema } from "../../schema.js";
 describe("validation without $schema", () => {
-	const schema = { minLength: 2 };
-	test("a 3-character string is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("foo")).toBeTruthy();
-	});
-	test("a 1-character string is not valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("a")).toBeFalsy();
-	});
-	test("a non-string is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(5)).toBeTruthy();
-	});
+  const schema = { minLength: 2 };
+  test("a 3-character string is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("foo")).toBeTruthy();
+  });
+  test("a 1-character string is not valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("a")).toBeFalsy();
+  });
+  test("a non-string is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(5)).toBeTruthy();
+  });
 });

@@ -2,74 +2,74 @@
 import { describe, expect, test } from "vitest";
 import { Schema } from "../schema.js";
 describe("by int", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		multipleOf: 2,
-	};
-	test("int by int", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(10)).toBeTruthy();
-	});
-	test("int by int fail", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(7)).toBeFalsy();
-	});
-	test("ignores non-numbers", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("foo")).toBeTruthy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    multipleOf: 2,
+  };
+  test("int by int", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(10)).toBeTruthy();
+  });
+  test("int by int fail", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(7)).toBeFalsy();
+  });
+  test("ignores non-numbers", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("foo")).toBeTruthy();
+  });
 });
 describe("by number", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		multipleOf: 1.5,
-	};
-	test("zero is multiple of anything", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(0)).toBeTruthy();
-	});
-	test("4.5 is multiple of 1.5", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(4.5)).toBeTruthy();
-	});
-	test("35 is not multiple of 1.5", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(35)).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    multipleOf: 1.5,
+  };
+  test("zero is multiple of anything", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(0)).toBeTruthy();
+  });
+  test("4.5 is multiple of 1.5", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(4.5)).toBeTruthy();
+  });
+  test("35 is not multiple of 1.5", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(35)).toBeFalsy();
+  });
 });
 describe("by small number", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		multipleOf: 0.0001,
-	};
-	test("0.0075 is multiple of 0.0001", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(0.0075)).toBeTruthy();
-	});
-	test("0.00751 is not multiple of 0.0001", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(0.00751)).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    multipleOf: 0.0001,
+  };
+  test("0.0075 is multiple of 0.0001", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(0.0075)).toBeTruthy();
+  });
+  test("0.00751 is not multiple of 0.0001", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(0.00751)).toBeFalsy();
+  });
 });
 describe("float division = inf", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		type: "integer",
-		multipleOf: 0.123456789,
-	};
-	test("always invalid, but naive implementations may raise an overflow error", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(1e308)).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    type: "integer",
+    multipleOf: 0.123456789,
+  };
+  test("always invalid, but naive implementations may raise an overflow error", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(1e308)).toBeFalsy();
+  });
 });
 describe("small multiple of large integer", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		type: "integer",
-		multipleOf: 1e-8,
-	};
-	test("any integer is a multiple of 1e-8", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(12391239123)).toBeTruthy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    type: "integer",
+    multipleOf: 1e-8,
+  };
+  test("any integer is a multiple of 1e-8", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(12391239123)).toBeTruthy();
+  });
 });

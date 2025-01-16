@@ -3,7 +3,7 @@ import type { PatternInput } from "../types/pattern-input.js";
 import { extractPatternSource } from "../utils/extract-pattern-source.js";
 
 function isCharacterSet(source: string) {
-	return source.startsWith("[") && source.endsWith("]");
+  return source.startsWith("[") && source.endsWith("]");
 }
 
 /**
@@ -31,19 +31,19 @@ function isCharacterSet(source: string) {
  * ```
  */
 export function characterSet(...patterns: PatternInput[]) {
-	const source = patterns
-		.map((pattern) => {
-			const source = extractPatternSource(pattern);
+  const source = patterns
+    .map((pattern) => {
+      const source = extractPatternSource(pattern);
 
-			if (isCharacterSet(source)) {
-				return source.slice(1, -1);
-			}
+      if (isCharacterSet(source)) {
+        return source.slice(1, -1);
+      }
 
-			return source;
-		})
-		.join("");
+      return source;
+    })
+    .join("");
 
-	return new Characters(`[${source}]`);
+  return new Characters(`[${source}]`);
 }
 
 /** The pre-defined digit pattern. */

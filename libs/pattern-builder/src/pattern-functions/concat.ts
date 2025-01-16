@@ -27,5 +27,5 @@ import { extractPatternSource } from "../utils/extract-pattern-source.js";
  * ```
  */
 export function concat(...patterns: PatternInput[]) {
-	return new PatternBuilder(patterns.map(extractPatternSource).join(""));
+  return new PatternBuilder(patterns.map(extractPatternSource).join(""));
 }

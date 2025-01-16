@@ -11,34 +11,34 @@ import { padZero } from "./utils/pad-zero.js";
 const twoDigits = digit.clone().exact(2);
 const groupedTwoDigits = twoDigits.clone().group();
 const pattern = concat(
-	groupedTwoDigits,
-	":",
-	groupedTwoDigits,
-	":",
-	groupedTwoDigits,
+  groupedTwoDigits,
+  ":",
+  groupedTwoDigits,
+  ":",
+  groupedTwoDigits,
 
-	concat(characterSet("."), digit.clone().oneOrMore()).group().optional(),
+  concat(characterSet("."), digit.clone().oneOrMore()).group().optional(),
 
-	oneOf(
-		characterSet("Z", "z"),
-		concat(
-			characterSet("+", "-"),
-			twoDigits,
-			":",
-			twoDigits,
-		).nonCapturingGroup(),
-	).group(),
+  oneOf(
+    characterSet("Z", "z"),
+    concat(
+      characterSet("+", "-"),
+      twoDigits,
+      ":",
+      twoDigits,
+    ).nonCapturingGroup(),
+  ).group(),
 )
-	.anchor()
-	.toRegExp();
+  .anchor()
+  .toRegExp();
 
 const FULL_TIME_MIN_LENGTH = 8;
 const FULL_TIME_MAX_LENGTH = 21;
 
 export interface TimeNumOffset {
-	sign: "+" | "-";
-	hour: number;
-	minute: number;
+  sign: "+" | "-";
+  hour: number;
+  minute: number;
 }
 
 /**
@@ -54,107 +54,107 @@ export interface TimeNumOffset {
  */
 @Serializable
 export class FullTime {
-	public readonly hour: number;
-	public readonly minute: number;
-	public readonly second: number;
-	public readonly secfrac?: `.${number}`;
-	public readonly offset?: TimeNumOffset;
+  public readonly hour: number;
+  public readonly minute: number;
+  public readonly second: number;
+  public readonly secfrac?: `.${number}`;
+  public readonly offset?: TimeNumOffset;
 
-	constructor({ hour, minute, second, secfrac, offset }: FullTime) {
-		this.hour = hour;
-		this.minute = minute;
-		this.second = second;
-		this.secfrac = secfrac;
-		this.offset = offset;
-	}
+  constructor({ hour, minute, second, secfrac, offset }: FullTime) {
+    this.hour = hour;
+    this.minute = minute;
+    this.second = second;
+    this.secfrac = secfrac;
+    this.offset = offset;
+  }
 
-	public static safeParse: SafeExecutor<typeof FullTime.parse>;
+  public static safeParse: SafeExecutor<typeof FullTime.parse>;
 
-	/**
-	 * Converts a FullTime string to a {@link FullTime} object.
-	 *
-	 * @param text - A valid FullTime string. e.g. "12:34:56Z".
-	 * @param referenceDate - A reference date for leap seconds.
-	 * @throws - {@link InvalidFullTimeError}
-	 */
-	public static parse(
-		text: string,
-		/**
-		 * @defaultValue { year: 1970, month: 1, day: 1 }
-		 */
-		referenceDate: FullDate = {
-			year: 1970,
-			month: 1,
-			day: 1,
-		},
-	) {
-		if (
-			text.length < FULL_TIME_MIN_LENGTH ||
-			text.length > FULL_TIME_MAX_LENGTH
-		) {
-			throw new InvalidFullTimeError(text);
-		}
+  /**
+   * Converts a FullTime string to a {@link FullTime} object.
+   *
+   * @param text - A valid FullTime string. e.g. "12:34:56Z".
+   * @param referenceDate - A reference date for leap seconds.
+   * @throws - {@link InvalidFullTimeError}
+   */
+  public static parse(
+    text: string,
+    /**
+     * @defaultValue { year: 1970, month: 1, day: 1 }
+     */
+    referenceDate: FullDate = {
+      year: 1970,
+      month: 1,
+      day: 1,
+    },
+  ) {
+    if (
+      text.length < FULL_TIME_MIN_LENGTH ||
+      text.length > FULL_TIME_MAX_LENGTH
+    ) {
+      throw new InvalidFullTimeError(text);
+    }
 
-		const match = text.match(pattern);
+    const match = text.match(pattern);
 
-		if (!match) {
-			throw new InvalidFullTimeError(text);
-		}
+    if (!match) {
+      throw new InvalidFullTimeError(text);
+    }
 
-		const hour = Number.parseInt(match[1]);
-		const minute = Number.parseInt(match[2]);
-		const second = Number.parseInt(match[3]);
-		const secfrac = match[4] as FullTime["secfrac"];
+    const hour = Number.parseInt(match[1]);
+    const minute = Number.parseInt(match[2]);
+    const second = Number.parseInt(match[3]);
+    const secfrac = match[4] as FullTime["secfrac"];
 
-		const offsetString = match[5];
-		const offset =
-			offsetString.length !== 1
-				? {
-						sign: offsetString[0] as TimeNumOffset["sign"],
-						hour: Number.parseInt(offsetString.slice(1, 3)),
-						minute: Number.parseInt(offsetString.slice(4)),
-					}
-				: undefined;
+    const offsetString = match[5];
+    const offset =
+      offsetString.length !== 1
+        ? {
+            sign: offsetString[0] as TimeNumOffset["sign"],
+            hour: Number.parseInt(offsetString.slice(1, 3)),
+            minute: Number.parseInt(offsetString.slice(4)),
+          }
+        : undefined;
 
-		if (
-			offset &&
-			(!isValidHour(offset.hour) || !isValidMinute(offset.minute))
-		) {
-			throw new InvalidFullTimeError(text);
-		}
+    if (
+      offset &&
+      (!isValidHour(offset.hour) || !isValidMinute(offset.minute))
+    ) {
+      throw new InvalidFullTimeError(text);
+    }
 
-		if (
-			!isValidHour(hour) ||
-			!isValidMinute(minute) ||
-			!isValidSecond(second, {
-				...referenceDate,
-				hour,
-				minute,
-				offset,
-			})
-		) {
-			throw new InvalidFullTimeError(text);
-		}
+    if (
+      !isValidHour(hour) ||
+      !isValidMinute(minute) ||
+      !isValidSecond(second, {
+        ...referenceDate,
+        hour,
+        minute,
+        offset,
+      })
+    ) {
+      throw new InvalidFullTimeError(text);
+    }
 
-		return new FullTime({
-			hour,
-			minute,
-			second,
-			secfrac,
-			offset,
-		});
-	}
+    return new FullTime({
+      hour,
+      minute,
+      second,
+      secfrac,
+      offset,
+    });
+  }
 
-	/**
-	 * Converts an {@link FullTime} object to a FullTime string.
-	 *
-	 * @param value - An {@link FullTime} object.
-	 */
-	public static stringify({ hour, minute, second, secfrac, offset }: FullTime) {
-		const timezone = offset
-			? `${offset.sign}${padZero(offset.hour)}:${padZero(offset.minute)}`
-			: "Z";
+  /**
+   * Converts an {@link FullTime} object to a FullTime string.
+   *
+   * @param value - An {@link FullTime} object.
+   */
+  public static stringify({ hour, minute, second, secfrac, offset }: FullTime) {
+    const timezone = offset
+      ? `${offset.sign}${padZero(offset.hour)}:${padZero(offset.minute)}`
+      : "Z";
 
-		return `${padZero(hour)}:${padZero(minute)}:${padZero(second)}${secfrac ?? ""}${timezone}`;
-	}
+    return `${padZero(hour)}:${padZero(minute)}:${padZero(second)}${secfrac ?? ""}${timezone}`;
+  }
 }

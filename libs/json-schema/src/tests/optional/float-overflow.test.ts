@@ -2,13 +2,13 @@
 import { describe, expect, test } from "vitest";
 import { Schema } from "../../schema.js";
 describe("all integers are multiples of 0.5, if overflow is handled", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		type: "integer",
-		multipleOf: 0.5,
-	};
-	test("valid if optional overflow handling is implemented", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(1e308)).toBeTruthy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    type: "integer",
+    multipleOf: 0.5,
+  };
+  test("valid if optional overflow handling is implemented", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(1e308)).toBeTruthy();
+  });
 });

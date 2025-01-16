@@ -2,24 +2,24 @@
 import { describe, expect, test } from "vitest";
 import { Schema } from "../schema.js";
 describe("exclusiveMinimum validation", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		exclusiveMinimum: 1.1,
-	};
-	test("above the exclusiveMinimum is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(1.2)).toBeTruthy();
-	});
-	test("boundary point is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(1.1)).toBeFalsy();
-	});
-	test("below the exclusiveMinimum is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(0.6)).toBeFalsy();
-	});
-	test("ignores non-numbers", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("x")).toBeTruthy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    exclusiveMinimum: 1.1,
+  };
+  test("above the exclusiveMinimum is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(1.2)).toBeTruthy();
+  });
+  test("boundary point is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(1.1)).toBeFalsy();
+  });
+  test("below the exclusiveMinimum is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(0.6)).toBeFalsy();
+  });
+  test("ignores non-numbers", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("x")).toBeTruthy();
+  });
 });

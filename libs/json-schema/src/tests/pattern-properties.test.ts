@@ -2,127 +2,127 @@
 import { describe, expect, test } from "vitest";
 import { Schema } from "../schema.js";
 describe("patternProperties validates properties matching a regex", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		patternProperties: { "f.*o": { type: "integer" } },
-	};
-	test("a single valid match is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ foo: 1 })).toBeTruthy();
-	});
-	test("multiple valid matches is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ foo: 1, foooooo: 2 })).toBeTruthy();
-	});
-	test("a single invalid match is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ foo: "bar", fooooo: 2 })).toBeFalsy();
-	});
-	test("multiple invalid matches is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ foo: "bar", foooooo: "baz" })).toBeFalsy();
-	});
-	test("ignores arrays", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(["foo"])).toBeTruthy();
-	});
-	test("ignores strings", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("foo")).toBeTruthy();
-	});
-	test("ignores other non-objects", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(12)).toBeTruthy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    patternProperties: { "f.*o": { type: "integer" } },
+  };
+  test("a single valid match is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ foo: 1 })).toBeTruthy();
+  });
+  test("multiple valid matches is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ foo: 1, foooooo: 2 })).toBeTruthy();
+  });
+  test("a single invalid match is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ foo: "bar", fooooo: 2 })).toBeFalsy();
+  });
+  test("multiple invalid matches is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ foo: "bar", foooooo: "baz" })).toBeFalsy();
+  });
+  test("ignores arrays", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(["foo"])).toBeTruthy();
+  });
+  test("ignores strings", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("foo")).toBeTruthy();
+  });
+  test("ignores other non-objects", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(12)).toBeTruthy();
+  });
 });
 describe("multiple simultaneous patternProperties are validated", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		patternProperties: { "a*": { type: "integer" }, "aaa*": { maximum: 20 } },
-	};
-	test("a single valid match is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ a: 21 })).toBeTruthy();
-	});
-	test("a simultaneous match is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ aaaa: 18 })).toBeTruthy();
-	});
-	test("multiple matches is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ a: 21, aaaa: 18 })).toBeTruthy();
-	});
-	test("an invalid due to one is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ a: "bar" })).toBeFalsy();
-	});
-	test("an invalid due to the other is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ aaaa: 31 })).toBeFalsy();
-	});
-	test("an invalid due to both is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ aaa: "foo", aaaa: 31 })).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    patternProperties: { "a*": { type: "integer" }, "aaa*": { maximum: 20 } },
+  };
+  test("a single valid match is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ a: 21 })).toBeTruthy();
+  });
+  test("a simultaneous match is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ aaaa: 18 })).toBeTruthy();
+  });
+  test("multiple matches is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ a: 21, aaaa: 18 })).toBeTruthy();
+  });
+  test("an invalid due to one is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ a: "bar" })).toBeFalsy();
+  });
+  test("an invalid due to the other is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ aaaa: 31 })).toBeFalsy();
+  });
+  test("an invalid due to both is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ aaa: "foo", aaaa: 31 })).toBeFalsy();
+  });
 });
 describe("regexes are not anchored by default and are case sensitive", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		patternProperties: {
-			"[0-9]{2,}": { type: "boolean" },
-			X_: { type: "string" },
-		},
-	};
-	test("non recognized members are ignored", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ "answer 1": "42" })).toBeTruthy();
-	});
-	test("recognized members are accounted for", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ a31b: null })).toBeFalsy();
-	});
-	test("regexes are case sensitive", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ a_x_3: 3 })).toBeTruthy();
-	});
-	test("regexes are case sensitive, 2", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ a_X_3: 3 })).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    patternProperties: {
+      "[0-9]{2,}": { type: "boolean" },
+      X_: { type: "string" },
+    },
+  };
+  test("non recognized members are ignored", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ "answer 1": "42" })).toBeTruthy();
+  });
+  test("recognized members are accounted for", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ a31b: null })).toBeFalsy();
+  });
+  test("regexes are case sensitive", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ a_x_3: 3 })).toBeTruthy();
+  });
+  test("regexes are case sensitive, 2", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ a_X_3: 3 })).toBeFalsy();
+  });
 });
 describe("patternProperties with boolean schemas", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		patternProperties: { "f.*": true, "b.*": false },
-	};
-	test("object with property matching schema true is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ foo: 1 })).toBeTruthy();
-	});
-	test("object with property matching schema false is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ bar: 2 })).toBeFalsy();
-	});
-	test("object with both properties is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ foo: 1, bar: 2 })).toBeFalsy();
-	});
-	test("object with a property matching both true and false is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ foobar: 1 })).toBeFalsy();
-	});
-	test("empty object is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({})).toBeTruthy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    patternProperties: { "f.*": true, "b.*": false },
+  };
+  test("object with property matching schema true is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ foo: 1 })).toBeTruthy();
+  });
+  test("object with property matching schema false is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ bar: 2 })).toBeFalsy();
+  });
+  test("object with both properties is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ foo: 1, bar: 2 })).toBeFalsy();
+  });
+  test("object with a property matching both true and false is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ foobar: 1 })).toBeFalsy();
+  });
+  test("empty object is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({})).toBeTruthy();
+  });
 });
 describe("patternProperties with null valued instance properties", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		patternProperties: { "^.*bar$": { type: "null" } },
-	};
-	test("allows null values", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ foobar: null })).toBeTruthy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    patternProperties: { "^.*bar$": { type: "null" } },
+  };
+  test("allows null values", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ foobar: null })).toBeTruthy();
+  });
 });

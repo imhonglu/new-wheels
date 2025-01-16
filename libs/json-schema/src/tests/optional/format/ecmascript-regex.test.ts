@@ -2,12 +2,12 @@
 import { describe, expect, test } from "vitest";
 import { Schema } from "../../../schema.js";
 describe("\\a is not an ECMA 262 control escape", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		format: "regex",
-	};
-	test("when used as a pattern", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("\\a")).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    format: "regex",
+  };
+  test("when used as a pattern", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("\\a")).toBeFalsy();
+  });
 });

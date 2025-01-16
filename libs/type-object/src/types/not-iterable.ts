@@ -15,10 +15,10 @@
  * @see {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object/keys | MDN Object.keys}
  */
 export type NotIterable =
-	| null
-	| undefined
-	| Map<unknown, unknown>
-	| Set<unknown>
-	| number
-	| symbol
-	| boolean;
+  | null
+  | undefined
+  | Map<unknown, unknown>
+  | Set<unknown>
+  | number
+  | symbol
+  | boolean;

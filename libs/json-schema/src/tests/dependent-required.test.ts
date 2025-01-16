@@ -2,106 +2,106 @@
 import { describe, expect, test } from "vitest";
 import { Schema } from "../schema.js";
 describe("single dependency", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		dependentRequired: { bar: ["foo"] },
-	};
-	test("neither", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({})).toBeTruthy();
-	});
-	test("nondependant", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ foo: 1 })).toBeTruthy();
-	});
-	test("with dependency", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ foo: 1, bar: 2 })).toBeTruthy();
-	});
-	test("missing dependency", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ bar: 2 })).toBeFalsy();
-	});
-	test("ignores arrays", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(["bar"])).toBeTruthy();
-	});
-	test("ignores strings", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("foobar")).toBeTruthy();
-	});
-	test("ignores other non-objects", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(12)).toBeTruthy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    dependentRequired: { bar: ["foo"] },
+  };
+  test("neither", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({})).toBeTruthy();
+  });
+  test("nondependant", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ foo: 1 })).toBeTruthy();
+  });
+  test("with dependency", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ foo: 1, bar: 2 })).toBeTruthy();
+  });
+  test("missing dependency", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ bar: 2 })).toBeFalsy();
+  });
+  test("ignores arrays", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(["bar"])).toBeTruthy();
+  });
+  test("ignores strings", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("foobar")).toBeTruthy();
+  });
+  test("ignores other non-objects", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(12)).toBeTruthy();
+  });
 });
 describe("empty dependents", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		dependentRequired: { bar: [] },
-	};
-	test("empty object", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({})).toBeTruthy();
-	});
-	test("object with one property", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ bar: 2 })).toBeTruthy();
-	});
-	test("non-object is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(1)).toBeTruthy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    dependentRequired: { bar: [] },
+  };
+  test("empty object", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({})).toBeTruthy();
+  });
+  test("object with one property", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ bar: 2 })).toBeTruthy();
+  });
+  test("non-object is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(1)).toBeTruthy();
+  });
 });
 describe("multiple dependents required", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		dependentRequired: { quux: ["foo", "bar"] },
-	};
-	test("neither", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({})).toBeTruthy();
-	});
-	test("nondependants", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ foo: 1, bar: 2 })).toBeTruthy();
-	});
-	test("with dependencies", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ foo: 1, bar: 2, quux: 3 })).toBeTruthy();
-	});
-	test("missing dependency", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ foo: 1, quux: 2 })).toBeFalsy();
-	});
-	test("missing other dependency", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ bar: 1, quux: 2 })).toBeFalsy();
-	});
-	test("missing both dependencies", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ quux: 1 })).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    dependentRequired: { quux: ["foo", "bar"] },
+  };
+  test("neither", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({})).toBeTruthy();
+  });
+  test("nondependants", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ foo: 1, bar: 2 })).toBeTruthy();
+  });
+  test("with dependencies", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ foo: 1, bar: 2, quux: 3 })).toBeTruthy();
+  });
+  test("missing dependency", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ foo: 1, quux: 2 })).toBeFalsy();
+  });
+  test("missing other dependency", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ bar: 1, quux: 2 })).toBeFalsy();
+  });
+  test("missing both dependencies", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ quux: 1 })).toBeFalsy();
+  });
 });
 describe("dependencies with escaped characters", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		dependentRequired: { "foo\nbar": ["foo\rbar"], 'foo"bar': ["foo'bar"] },
-	};
-	test("CRLF", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ "foo\nbar": 1, "foo\rbar": 2 })).toBeTruthy();
-	});
-	test("quoted quotes", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ "foo'bar": 1, 'foo"bar': 2 })).toBeTruthy();
-	});
-	test("CRLF missing dependent", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ "foo\nbar": 1, foo: 2 })).toBeFalsy();
-	});
-	test("quoted quotes missing dependent", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ 'foo"bar': 2 })).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    dependentRequired: { "foo\nbar": ["foo\rbar"], 'foo"bar': ["foo'bar"] },
+  };
+  test("CRLF", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ "foo\nbar": 1, "foo\rbar": 2 })).toBeTruthy();
+  });
+  test("quoted quotes", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ "foo'bar": 1, 'foo"bar': 2 })).toBeTruthy();
+  });
+  test("CRLF missing dependent", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ "foo\nbar": 1, foo: 2 })).toBeFalsy();
+  });
+  test("quoted quotes missing dependent", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ 'foo"bar': 2 })).toBeFalsy();
+  });
 });

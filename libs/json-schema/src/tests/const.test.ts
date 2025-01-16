@@ -2,292 +2,292 @@
 import { describe, expect, test } from "vitest";
 import { Schema } from "../schema.js";
 describe("const validation", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		const: 2,
-	};
-	test("same value is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(2)).toBeTruthy();
-	});
-	test("another value is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(5)).toBeFalsy();
-	});
-	test("another type is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("a")).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    const: 2,
+  };
+  test("same value is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(2)).toBeTruthy();
+  });
+  test("another value is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(5)).toBeFalsy();
+  });
+  test("another type is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("a")).toBeFalsy();
+  });
 });
 describe("const with object", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		const: { foo: "bar", baz: "bax" },
-	};
-	test("same object is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ foo: "bar", baz: "bax" })).toBeTruthy();
-	});
-	test("same object with different property order is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ baz: "bax", foo: "bar" })).toBeTruthy();
-	});
-	test("another object is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ foo: "bar" })).toBeFalsy();
-	});
-	test("another type is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate([1, 2])).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    const: { foo: "bar", baz: "bax" },
+  };
+  test("same object is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ foo: "bar", baz: "bax" })).toBeTruthy();
+  });
+  test("same object with different property order is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ baz: "bax", foo: "bar" })).toBeTruthy();
+  });
+  test("another object is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ foo: "bar" })).toBeFalsy();
+  });
+  test("another type is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate([1, 2])).toBeFalsy();
+  });
 });
 describe("const with array", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		const: [{ foo: "bar" }],
-	};
-	test("same array is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate([{ foo: "bar" }])).toBeTruthy();
-	});
-	test("another array item is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate([2])).toBeFalsy();
-	});
-	test("array with additional items is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate([1, 2, 3])).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    const: [{ foo: "bar" }],
+  };
+  test("same array is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate([{ foo: "bar" }])).toBeTruthy();
+  });
+  test("another array item is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate([2])).toBeFalsy();
+  });
+  test("array with additional items is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate([1, 2, 3])).toBeFalsy();
+  });
 });
 describe("const with null", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		const: null,
-	};
-	test("null is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(null)).toBeTruthy();
-	});
-	test("not null is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(0)).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    const: null,
+  };
+  test("null is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(null)).toBeTruthy();
+  });
+  test("not null is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(0)).toBeFalsy();
+  });
 });
 describe("const with false does not match 0", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		const: false,
-	};
-	test("false is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(false)).toBeTruthy();
-	});
-	test("integer zero is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(0)).toBeFalsy();
-	});
-	test("float zero is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(0)).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    const: false,
+  };
+  test("false is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(false)).toBeTruthy();
+  });
+  test("integer zero is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(0)).toBeFalsy();
+  });
+  test("float zero is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(0)).toBeFalsy();
+  });
 });
 describe("const with true does not match 1", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		const: true,
-	};
-	test("true is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(true)).toBeTruthy();
-	});
-	test("integer one is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(1)).toBeFalsy();
-	});
-	test("float one is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(1)).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    const: true,
+  };
+  test("true is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(true)).toBeTruthy();
+  });
+  test("integer one is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(1)).toBeFalsy();
+  });
+  test("float one is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(1)).toBeFalsy();
+  });
 });
 describe("const with [false] does not match [0]", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		const: [false],
-	};
-	test("[false] is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate([false])).toBeTruthy();
-	});
-	test("[0] is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate([0])).toBeFalsy();
-	});
-	test("[0.0] is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate([0])).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    const: [false],
+  };
+  test("[false] is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate([false])).toBeTruthy();
+  });
+  test("[0] is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate([0])).toBeFalsy();
+  });
+  test("[0.0] is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate([0])).toBeFalsy();
+  });
 });
 describe("const with [true] does not match [1]", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		const: [true],
-	};
-	test("[true] is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate([true])).toBeTruthy();
-	});
-	test("[1] is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate([1])).toBeFalsy();
-	});
-	test("[1.0] is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate([1])).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    const: [true],
+  };
+  test("[true] is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate([true])).toBeTruthy();
+  });
+  test("[1] is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate([1])).toBeFalsy();
+  });
+  test("[1.0] is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate([1])).toBeFalsy();
+  });
 });
 describe('const with {"a": false} does not match {"a": 0}', () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		const: { a: false },
-	};
-	test('{"a": false} is valid', () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ a: false })).toBeTruthy();
-	});
-	test('{"a": 0} is invalid', () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ a: 0 })).toBeFalsy();
-	});
-	test('{"a": 0.0} is invalid', () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ a: 0 })).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    const: { a: false },
+  };
+  test('{"a": false} is valid', () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ a: false })).toBeTruthy();
+  });
+  test('{"a": 0} is invalid', () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ a: 0 })).toBeFalsy();
+  });
+  test('{"a": 0.0} is invalid', () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ a: 0 })).toBeFalsy();
+  });
 });
 describe('const with {"a": true} does not match {"a": 1}', () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		const: { a: true },
-	};
-	test('{"a": true} is valid', () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ a: true })).toBeTruthy();
-	});
-	test('{"a": 1} is invalid', () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ a: 1 })).toBeFalsy();
-	});
-	test('{"a": 1.0} is invalid', () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ a: 1 })).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    const: { a: true },
+  };
+  test('{"a": true} is valid', () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ a: true })).toBeTruthy();
+  });
+  test('{"a": 1} is invalid', () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ a: 1 })).toBeFalsy();
+  });
+  test('{"a": 1.0} is invalid', () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ a: 1 })).toBeFalsy();
+  });
 });
 describe("const with 0 does not match other zero-like types", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		const: 0,
-	};
-	test("false is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(false)).toBeFalsy();
-	});
-	test("integer zero is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(0)).toBeTruthy();
-	});
-	test("float zero is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(0)).toBeTruthy();
-	});
-	test("empty object is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({})).toBeFalsy();
-	});
-	test("empty array is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate([])).toBeFalsy();
-	});
-	test("empty string is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("")).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    const: 0,
+  };
+  test("false is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(false)).toBeFalsy();
+  });
+  test("integer zero is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(0)).toBeTruthy();
+  });
+  test("float zero is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(0)).toBeTruthy();
+  });
+  test("empty object is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({})).toBeFalsy();
+  });
+  test("empty array is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate([])).toBeFalsy();
+  });
+  test("empty string is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("")).toBeFalsy();
+  });
 });
 describe("const with 1 does not match true", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		const: 1,
-	};
-	test("true is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(true)).toBeFalsy();
-	});
-	test("integer one is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(1)).toBeTruthy();
-	});
-	test("float one is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(1)).toBeTruthy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    const: 1,
+  };
+  test("true is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(true)).toBeFalsy();
+  });
+  test("integer one is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(1)).toBeTruthy();
+  });
+  test("float one is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(1)).toBeTruthy();
+  });
 });
 describe("const with -2.0 matches integer and float types", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		const: -2,
-	};
-	test("integer -2 is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(-2)).toBeTruthy();
-	});
-	test("integer 2 is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(2)).toBeFalsy();
-	});
-	test("float -2.0 is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(-2)).toBeTruthy();
-	});
-	test("float 2.0 is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(2)).toBeFalsy();
-	});
-	test("float -2.00001 is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(-2.00001)).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    const: -2,
+  };
+  test("integer -2 is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(-2)).toBeTruthy();
+  });
+  test("integer 2 is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(2)).toBeFalsy();
+  });
+  test("float -2.0 is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(-2)).toBeTruthy();
+  });
+  test("float 2.0 is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(2)).toBeFalsy();
+  });
+  test("float -2.00001 is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(-2.00001)).toBeFalsy();
+  });
 });
 describe("float and integers are equal up to 64-bit representation limits", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		const: 9007199254740992,
-	};
-	test("integer is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(9007199254740992)).toBeTruthy();
-	});
-	test("integer minus one is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(9007199254740991)).toBeFalsy();
-	});
-	test("float is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(9007199254740992)).toBeTruthy();
-	});
-	test("float minus one is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(9007199254740991)).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    const: 9007199254740992,
+  };
+  test("integer is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(9007199254740992)).toBeTruthy();
+  });
+  test("integer minus one is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(9007199254740991)).toBeFalsy();
+  });
+  test("float is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(9007199254740992)).toBeTruthy();
+  });
+  test("float minus one is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(9007199254740991)).toBeFalsy();
+  });
 });
 describe("nul characters in strings", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		const: "hello\0there",
-	};
-	test("match string with nul", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("hello\0there")).toBeTruthy();
-	});
-	test("do not match string lacking nul", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("hellothere")).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    const: "hello\0there",
+  };
+  test("match string with nul", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("hello\0there")).toBeTruthy();
+  });
+  test("do not match string lacking nul", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("hellothere")).toBeFalsy();
+  });
 });

@@ -2,7 +2,7 @@ import { is } from "../../utils/is.js";
 import { keywordHandler } from "../keyword-handler.js";
 
 keywordHandler.register("pattern", (schema) => {
-	const pattern = new RegExp(schema.pattern);
+  const pattern = new RegExp(schema.pattern);
 
-	return (data) => (is.string(data) ? pattern.test(data) : true);
+  return (data) => (is.string(data) ? pattern.test(data) : true);
 });

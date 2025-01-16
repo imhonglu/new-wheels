@@ -18,13 +18,13 @@ export * from "./unevaluated-locations.js";
  * @see {@link https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-01#section-4.3.1 | ObjectSchema}
  */
 export interface ObjectSchema
-	extends Core<JsonSchema>,
-		BasicMetaData,
-		StructuralValidation.All,
-		StringEncodedData<JsonSchema>,
-		Format,
-		ApplyingSubSchema.All<JsonSchema>,
-		UnevaluatedLocations.All<JsonSchema> {}
+  extends Core<JsonSchema>,
+    BasicMetaData,
+    StructuralValidation.All,
+    StringEncodedData<JsonSchema>,
+    Format,
+    ApplyingSubSchema.All<JsonSchema>,
+    UnevaluatedLocations.All<JsonSchema> {}
 
 /**
  * @see {@link https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-01#section-4.3.2 | BooleanSchema}

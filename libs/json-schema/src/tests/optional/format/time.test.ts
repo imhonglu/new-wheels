@@ -2,188 +2,188 @@
 import { describe, expect, test } from "vitest";
 import { Schema } from "../../../schema.js";
 describe("validation of time strings", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		format: "time",
-	};
-	test("all string formats ignore integers", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(12)).toBeTruthy();
-	});
-	test("all string formats ignore floats", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(13.7)).toBeTruthy();
-	});
-	test("all string formats ignore objects", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({})).toBeTruthy();
-	});
-	test("all string formats ignore arrays", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate([])).toBeTruthy();
-	});
-	test("all string formats ignore booleans", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(false)).toBeTruthy();
-	});
-	test("all string formats ignore nulls", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(null)).toBeTruthy();
-	});
-	test("a valid time string", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("08:30:06Z")).toBeTruthy();
-	});
-	test("invalid time string with extra leading zeros", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("008:030:006Z")).toBeFalsy();
-	});
-	test("invalid time string with no leading zero for single digit", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("8:3:6Z")).toBeFalsy();
-	});
-	test("hour, minute, second must be two digits", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("8:0030:6Z")).toBeFalsy();
-	});
-	test("a valid time string with leap second, Zulu", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("23:59:60Z")).toBeTruthy();
-	});
-	test("invalid leap second, Zulu (wrong hour)", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("22:59:60Z")).toBeFalsy();
-	});
-	test("invalid leap second, Zulu (wrong minute)", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("23:58:60Z")).toBeFalsy();
-	});
-	test("valid leap second, zero time-offset", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("23:59:60+00:00")).toBeTruthy();
-	});
-	test("invalid leap second, zero time-offset (wrong hour)", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("22:59:60+00:00")).toBeFalsy();
-	});
-	test("invalid leap second, zero time-offset (wrong minute)", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("23:58:60+00:00")).toBeFalsy();
-	});
-	test("valid leap second, positive time-offset", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("01:29:60+01:30")).toBeTruthy();
-	});
-	test("valid leap second, large positive time-offset", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("23:29:60+23:30")).toBeTruthy();
-	});
-	test("invalid leap second, positive time-offset (wrong hour)", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("23:59:60+01:00")).toBeFalsy();
-	});
-	test("invalid leap second, positive time-offset (wrong minute)", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("23:59:60+00:30")).toBeFalsy();
-	});
-	test("valid leap second, negative time-offset", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("15:59:60-08:00")).toBeTruthy();
-	});
-	test("valid leap second, large negative time-offset", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("00:29:60-23:30")).toBeTruthy();
-	});
-	test("invalid leap second, negative time-offset (wrong hour)", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("23:59:60-01:00")).toBeFalsy();
-	});
-	test("invalid leap second, negative time-offset (wrong minute)", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("23:59:60-00:30")).toBeFalsy();
-	});
-	test("a valid time string with second fraction", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("23:20:50.52Z")).toBeTruthy();
-	});
-	test("a valid time string with precise second fraction", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("08:30:06.283185Z")).toBeTruthy();
-	});
-	test("a valid time string with plus offset", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("08:30:06+00:20")).toBeTruthy();
-	});
-	test("a valid time string with minus offset", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("08:30:06-08:00")).toBeTruthy();
-	});
-	test("hour, minute in time-offset must be two digits", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("08:30:06-8:000")).toBeFalsy();
-	});
-	test("a valid time string with case-insensitive Z", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("08:30:06z")).toBeTruthy();
-	});
-	test("an invalid time string with invalid hour", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("24:00:00Z")).toBeFalsy();
-	});
-	test("an invalid time string with invalid minute", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("00:60:00Z")).toBeFalsy();
-	});
-	test("an invalid time string with invalid second", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("00:00:61Z")).toBeFalsy();
-	});
-	test("an invalid time string with invalid leap second (wrong hour)", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("22:59:60Z")).toBeFalsy();
-	});
-	test("an invalid time string with invalid leap second (wrong minute)", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("23:58:60Z")).toBeFalsy();
-	});
-	test("an invalid time string with invalid time numoffset hour", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("01:02:03+24:00")).toBeFalsy();
-	});
-	test("an invalid time string with invalid time numoffset minute", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("01:02:03+00:60")).toBeFalsy();
-	});
-	test("an invalid time string with invalid time with both Z and numoffset", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("01:02:03Z+00:30")).toBeFalsy();
-	});
-	test("an invalid offset indicator", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("08:30:06 PST")).toBeFalsy();
-	});
-	test("only RFC3339 not all of ISO 8601 are valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("01:01:01,1111")).toBeFalsy();
-	});
-	test("no time offset", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("12:00:00")).toBeFalsy();
-	});
-	test("no time offset with second fraction", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("12:00:00.52")).toBeFalsy();
-	});
-	test("invalid non-ASCII '\u09E8' (a Bengali 2)", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("1\u09E8:00:00Z")).toBeFalsy();
-	});
-	test("offset not starting with plus or minus", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("08:30:06#00:20")).toBeFalsy();
-	});
-	test("contains letters", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("ab:cd:ef")).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    format: "time",
+  };
+  test("all string formats ignore integers", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(12)).toBeTruthy();
+  });
+  test("all string formats ignore floats", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(13.7)).toBeTruthy();
+  });
+  test("all string formats ignore objects", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({})).toBeTruthy();
+  });
+  test("all string formats ignore arrays", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate([])).toBeTruthy();
+  });
+  test("all string formats ignore booleans", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(false)).toBeTruthy();
+  });
+  test("all string formats ignore nulls", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(null)).toBeTruthy();
+  });
+  test("a valid time string", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("08:30:06Z")).toBeTruthy();
+  });
+  test("invalid time string with extra leading zeros", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("008:030:006Z")).toBeFalsy();
+  });
+  test("invalid time string with no leading zero for single digit", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("8:3:6Z")).toBeFalsy();
+  });
+  test("hour, minute, second must be two digits", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("8:0030:6Z")).toBeFalsy();
+  });
+  test("a valid time string with leap second, Zulu", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("23:59:60Z")).toBeTruthy();
+  });
+  test("invalid leap second, Zulu (wrong hour)", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("22:59:60Z")).toBeFalsy();
+  });
+  test("invalid leap second, Zulu (wrong minute)", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("23:58:60Z")).toBeFalsy();
+  });
+  test("valid leap second, zero time-offset", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("23:59:60+00:00")).toBeTruthy();
+  });
+  test("invalid leap second, zero time-offset (wrong hour)", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("22:59:60+00:00")).toBeFalsy();
+  });
+  test("invalid leap second, zero time-offset (wrong minute)", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("23:58:60+00:00")).toBeFalsy();
+  });
+  test("valid leap second, positive time-offset", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("01:29:60+01:30")).toBeTruthy();
+  });
+  test("valid leap second, large positive time-offset", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("23:29:60+23:30")).toBeTruthy();
+  });
+  test("invalid leap second, positive time-offset (wrong hour)", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("23:59:60+01:00")).toBeFalsy();
+  });
+  test("invalid leap second, positive time-offset (wrong minute)", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("23:59:60+00:30")).toBeFalsy();
+  });
+  test("valid leap second, negative time-offset", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("15:59:60-08:00")).toBeTruthy();
+  });
+  test("valid leap second, large negative time-offset", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("00:29:60-23:30")).toBeTruthy();
+  });
+  test("invalid leap second, negative time-offset (wrong hour)", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("23:59:60-01:00")).toBeFalsy();
+  });
+  test("invalid leap second, negative time-offset (wrong minute)", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("23:59:60-00:30")).toBeFalsy();
+  });
+  test("a valid time string with second fraction", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("23:20:50.52Z")).toBeTruthy();
+  });
+  test("a valid time string with precise second fraction", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("08:30:06.283185Z")).toBeTruthy();
+  });
+  test("a valid time string with plus offset", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("08:30:06+00:20")).toBeTruthy();
+  });
+  test("a valid time string with minus offset", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("08:30:06-08:00")).toBeTruthy();
+  });
+  test("hour, minute in time-offset must be two digits", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("08:30:06-8:000")).toBeFalsy();
+  });
+  test("a valid time string with case-insensitive Z", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("08:30:06z")).toBeTruthy();
+  });
+  test("an invalid time string with invalid hour", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("24:00:00Z")).toBeFalsy();
+  });
+  test("an invalid time string with invalid minute", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("00:60:00Z")).toBeFalsy();
+  });
+  test("an invalid time string with invalid second", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("00:00:61Z")).toBeFalsy();
+  });
+  test("an invalid time string with invalid leap second (wrong hour)", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("22:59:60Z")).toBeFalsy();
+  });
+  test("an invalid time string with invalid leap second (wrong minute)", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("23:58:60Z")).toBeFalsy();
+  });
+  test("an invalid time string with invalid time numoffset hour", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("01:02:03+24:00")).toBeFalsy();
+  });
+  test("an invalid time string with invalid time numoffset minute", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("01:02:03+00:60")).toBeFalsy();
+  });
+  test("an invalid time string with invalid time with both Z and numoffset", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("01:02:03Z+00:30")).toBeFalsy();
+  });
+  test("an invalid offset indicator", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("08:30:06 PST")).toBeFalsy();
+  });
+  test("only RFC3339 not all of ISO 8601 are valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("01:01:01,1111")).toBeFalsy();
+  });
+  test("no time offset", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("12:00:00")).toBeFalsy();
+  });
+  test("no time offset with second fraction", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("12:00:00.52")).toBeFalsy();
+  });
+  test("invalid non-ASCII '\u09E8' (a Bengali 2)", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("1\u09E8:00:00Z")).toBeFalsy();
+  });
+  test("offset not starting with plus or minus", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("08:30:06#00:20")).toBeFalsy();
+  });
+  test("contains letters", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("ab:cd:ef")).toBeFalsy();
+  });
 });

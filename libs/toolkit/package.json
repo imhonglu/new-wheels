@@ -1,39 +1,39 @@
 {
-	"name": "@imhonglu/toolkit",
-	"version": "1.0.1",
-	"description": "Type-safe utility collection for TypeScript projects",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/imhonglu/new-wheels.git",
-		"directory": "libs/toolkit"
-	},
-	"type": "module",
-	"main": "./dist/index.cjs",
-	"module": "./dist/index.js",
-	"types": "./dist/index.d.ts",
-	"exports": {
-		".": {
-			"types": "./dist/index.d.ts",
-			"import": "./dist/index.js",
-			"require": "./dist/index.cjs",
-			"default": "./dist/index.js"
-		}
-	},
-	"files": ["dist"],
-	"scripts": {
-		"test": "vitest",
-		"build": "tsc -p tsconfig.build.json",
-		"postbuild": "esm-to-cjs && pnpm api-extractor run && pnpm api-documenter markdown -i ./temp -o ./docs"
-	},
-	"keywords": ["typescript", "utilities", "type-safe", "toolkit"],
-	"author": "imhonglu <anonymouser.unknown@gmail.com>",
-	"license": "MIT",
-	"devDependencies": {
-		"@imhonglu/build-tools": "^1.0.2",
-		"@imhonglu/configs": "^1.0.3"
-	},
-	"dependencies": {
-		"@imhonglu/type-guard": "^1.0.0",
-		"@imhonglu/type-object": "^1.0.0"
-	}
+  "name": "@imhonglu/toolkit",
+  "version": "1.0.1",
+  "description": "Type-safe utility collection for TypeScript projects",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imhonglu/new-wheels.git",
+    "directory": "libs/toolkit"
+  },
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "test": "vitest",
+    "build": "tsc -p tsconfig.build.json",
+    "postbuild": "esm-to-cjs && pnpm api-extractor run && pnpm api-documenter markdown -i ./temp -o ./docs"
+  },
+  "keywords": ["typescript", "utilities", "type-safe", "toolkit"],
+  "author": "imhonglu <anonymouser.unknown@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@imhonglu/build-tools": "^1.0.2",
+    "@imhonglu/configs": "^1.0.3"
+  },
+  "dependencies": {
+    "@imhonglu/type-guard": "^1.0.0",
+    "@imhonglu/type-object": "^1.0.0"
+  }
 }

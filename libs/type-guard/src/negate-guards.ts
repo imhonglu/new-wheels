@@ -2,7 +2,7 @@ import { type NegateTypeGuard, negateGuard } from "./negate-guard.js";
 import type { Guards } from "./types/guards.js";
 
 export type NegateTypeGuards<T extends Guards> = {
-	[P in keyof T]: NegateTypeGuard<T[P]>;
+  [P in keyof T]: NegateTypeGuard<T[P]>;
 };
 
 /**
@@ -36,15 +36,15 @@ export type NegateTypeGuards<T extends Guards> = {
  * @see {@link NegateTypeGuards} - The type of the returned object
  */
 export function negateGuards<T extends Guards>(guards: T) {
-	return new Proxy({} as NegateTypeGuards<T>, {
-		get(target, prop: keyof T) {
-			if (!(prop in guards)) {
-				return undefined;
-			}
-			if (!target[prop]) {
-				target[prop] = negateGuard(guards[prop]);
-			}
-			return target[prop];
-		},
-	});
+  return new Proxy({} as NegateTypeGuards<T>, {
+    get(target, prop: keyof T) {
+      if (!(prop in guards)) {
+        return undefined;
+      }
+      if (!target[prop]) {
+        target[prop] = negateGuard(guards[prop]);
+      }
+      return target[prop];
+    },
+  });
 }

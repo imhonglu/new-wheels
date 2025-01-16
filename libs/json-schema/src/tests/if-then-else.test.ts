@@ -2,180 +2,180 @@
 import { describe, expect, test } from "vitest";
 import { Schema } from "../schema.js";
 describe("ignore if without then or else", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		if: { const: 0 },
-	};
-	test("valid when valid against lone if", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(0)).toBeTruthy();
-	});
-	test("valid when invalid against lone if", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("hello")).toBeTruthy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    if: { const: 0 },
+  };
+  test("valid when valid against lone if", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(0)).toBeTruthy();
+  });
+  test("valid when invalid against lone if", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("hello")).toBeTruthy();
+  });
 });
 describe("ignore then without if", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		then: { const: 0 },
-	};
-	test("valid when valid against lone then", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(0)).toBeTruthy();
-	});
-	test("valid when invalid against lone then", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("hello")).toBeTruthy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    then: { const: 0 },
+  };
+  test("valid when valid against lone then", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(0)).toBeTruthy();
+  });
+  test("valid when invalid against lone then", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("hello")).toBeTruthy();
+  });
 });
 describe("ignore else without if", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		else: { const: 0 },
-	};
-	test("valid when valid against lone else", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(0)).toBeTruthy();
-	});
-	test("valid when invalid against lone else", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("hello")).toBeTruthy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    else: { const: 0 },
+  };
+  test("valid when valid against lone else", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(0)).toBeTruthy();
+  });
+  test("valid when invalid against lone else", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("hello")).toBeTruthy();
+  });
 });
 describe("if and then without else", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		if: { exclusiveMaximum: 0 },
-		then: { minimum: -10 },
-	};
-	test("valid through then", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(-1)).toBeTruthy();
-	});
-	test("invalid through then", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(-100)).toBeFalsy();
-	});
-	test("valid when if test fails", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(3)).toBeTruthy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    if: { exclusiveMaximum: 0 },
+    then: { minimum: -10 },
+  };
+  test("valid through then", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(-1)).toBeTruthy();
+  });
+  test("invalid through then", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(-100)).toBeFalsy();
+  });
+  test("valid when if test fails", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(3)).toBeTruthy();
+  });
 });
 describe("if and else without then", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		if: { exclusiveMaximum: 0 },
-		else: { multipleOf: 2 },
-	};
-	test("valid when if test passes", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(-1)).toBeTruthy();
-	});
-	test("valid through else", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(4)).toBeTruthy();
-	});
-	test("invalid through else", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(3)).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    if: { exclusiveMaximum: 0 },
+    else: { multipleOf: 2 },
+  };
+  test("valid when if test passes", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(-1)).toBeTruthy();
+  });
+  test("valid through else", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(4)).toBeTruthy();
+  });
+  test("invalid through else", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(3)).toBeFalsy();
+  });
 });
 describe("validate against correct branch, then vs else", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		if: { exclusiveMaximum: 0 },
-		then: { minimum: -10 },
-		else: { multipleOf: 2 },
-	};
-	test("valid through then", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(-1)).toBeTruthy();
-	});
-	test("invalid through then", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(-100)).toBeFalsy();
-	});
-	test("valid through else", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(4)).toBeTruthy();
-	});
-	test("invalid through else", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(3)).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    if: { exclusiveMaximum: 0 },
+    then: { minimum: -10 },
+    else: { multipleOf: 2 },
+  };
+  test("valid through then", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(-1)).toBeTruthy();
+  });
+  test("invalid through then", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(-100)).toBeFalsy();
+  });
+  test("valid through else", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(4)).toBeTruthy();
+  });
+  test("invalid through else", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(3)).toBeFalsy();
+  });
 });
 describe("non-interference across combined schemas", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		allOf: [
-			{ if: { exclusiveMaximum: 0 } },
-			{ then: { minimum: -10 } },
-			{ else: { multipleOf: 2 } },
-		],
-	};
-	test("valid, but would have been invalid through then", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(-100)).toBeTruthy();
-	});
-	test("valid, but would have been invalid through else", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(3)).toBeTruthy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    allOf: [
+      { if: { exclusiveMaximum: 0 } },
+      { then: { minimum: -10 } },
+      { else: { multipleOf: 2 } },
+    ],
+  };
+  test("valid, but would have been invalid through then", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(-100)).toBeTruthy();
+  });
+  test("valid, but would have been invalid through else", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(3)).toBeTruthy();
+  });
 });
 describe("if with boolean schema true", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		if: true,
-		then: { const: "then" },
-		else: { const: "else" },
-	};
-	test("boolean schema true in if always chooses the then path (valid)", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("then")).toBeTruthy();
-	});
-	test("boolean schema true in if always chooses the then path (invalid)", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("else")).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    if: true,
+    then: { const: "then" },
+    else: { const: "else" },
+  };
+  test("boolean schema true in if always chooses the then path (valid)", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("then")).toBeTruthy();
+  });
+  test("boolean schema true in if always chooses the then path (invalid)", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("else")).toBeFalsy();
+  });
 });
 describe("if with boolean schema false", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		if: false,
-		then: { const: "then" },
-		else: { const: "else" },
-	};
-	test("boolean schema false in if always chooses the else path (invalid)", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("then")).toBeFalsy();
-	});
-	test("boolean schema false in if always chooses the else path (valid)", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("else")).toBeTruthy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    if: false,
+    then: { const: "then" },
+    else: { const: "else" },
+  };
+  test("boolean schema false in if always chooses the else path (invalid)", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("then")).toBeFalsy();
+  });
+  test("boolean schema false in if always chooses the else path (valid)", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("else")).toBeTruthy();
+  });
 });
 describe("if appears at the end when serialized (keyword processing sequence)", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		then: { const: "yes" },
-		else: { const: "other" },
-		if: { maxLength: 4 },
-	};
-	test("yes redirects to then and passes", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("yes")).toBeTruthy();
-	});
-	test("other redirects to else and passes", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("other")).toBeTruthy();
-	});
-	test("no redirects to then and fails", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("no")).toBeFalsy();
-	});
-	test("invalid redirects to else and fails", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("invalid")).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    then: { const: "yes" },
+    else: { const: "other" },
+    if: { maxLength: 4 },
+  };
+  test("yes redirects to then and passes", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("yes")).toBeTruthy();
+  });
+  test("other redirects to else and passes", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("other")).toBeTruthy();
+  });
+  test("no redirects to then and fails", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("no")).toBeFalsy();
+  });
+  test("invalid redirects to else and fails", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("invalid")).toBeFalsy();
+  });
 });

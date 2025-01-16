@@ -2,108 +2,108 @@
 import { describe, expect, test } from "vitest";
 import { Schema } from "../../../schema.js";
 describe("validation of duration strings", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		format: "duration",
-	};
-	test("all string formats ignore integers", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(12)).toBeTruthy();
-	});
-	test("all string formats ignore floats", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(13.7)).toBeTruthy();
-	});
-	test("all string formats ignore objects", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({})).toBeTruthy();
-	});
-	test("all string formats ignore arrays", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate([])).toBeTruthy();
-	});
-	test("all string formats ignore booleans", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(false)).toBeTruthy();
-	});
-	test("all string formats ignore nulls", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(null)).toBeTruthy();
-	});
-	test("a valid duration string", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("P4DT12H30M5S")).toBeTruthy();
-	});
-	test("an invalid duration string", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("PT1D")).toBeFalsy();
-	});
-	test("no elements present", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("P")).toBeFalsy();
-	});
-	test("no time elements present", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("P1YT")).toBeFalsy();
-	});
-	test("no date or time elements present", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("PT")).toBeFalsy();
-	});
-	test("elements out of order", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("P2D1Y")).toBeFalsy();
-	});
-	test("missing time separator", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("P1D2H")).toBeFalsy();
-	});
-	test("time element in the date position", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("P2S")).toBeFalsy();
-	});
-	test("four years duration", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("P4Y")).toBeTruthy();
-	});
-	test("zero time, in seconds", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("PT0S")).toBeTruthy();
-	});
-	test("zero time, in days", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("P0D")).toBeTruthy();
-	});
-	test("one month duration", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("P1M")).toBeTruthy();
-	});
-	test("one minute duration", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("PT1M")).toBeTruthy();
-	});
-	test("one and a half days, in hours", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("PT36H")).toBeTruthy();
-	});
-	test("one and a half days, in days and hours", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("P1DT12H")).toBeTruthy();
-	});
-	test("two weeks", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("P2W")).toBeTruthy();
-	});
-	test("weeks cannot be combined with other units", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("P1Y2W")).toBeFalsy();
-	});
-	test("invalid non-ASCII '\u09E8' (a Bengali 2)", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("P\u09E8Y")).toBeFalsy();
-	});
-	test("element without unit", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("P1")).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    format: "duration",
+  };
+  test("all string formats ignore integers", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(12)).toBeTruthy();
+  });
+  test("all string formats ignore floats", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(13.7)).toBeTruthy();
+  });
+  test("all string formats ignore objects", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({})).toBeTruthy();
+  });
+  test("all string formats ignore arrays", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate([])).toBeTruthy();
+  });
+  test("all string formats ignore booleans", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(false)).toBeTruthy();
+  });
+  test("all string formats ignore nulls", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(null)).toBeTruthy();
+  });
+  test("a valid duration string", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("P4DT12H30M5S")).toBeTruthy();
+  });
+  test("an invalid duration string", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("PT1D")).toBeFalsy();
+  });
+  test("no elements present", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("P")).toBeFalsy();
+  });
+  test("no time elements present", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("P1YT")).toBeFalsy();
+  });
+  test("no date or time elements present", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("PT")).toBeFalsy();
+  });
+  test("elements out of order", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("P2D1Y")).toBeFalsy();
+  });
+  test("missing time separator", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("P1D2H")).toBeFalsy();
+  });
+  test("time element in the date position", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("P2S")).toBeFalsy();
+  });
+  test("four years duration", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("P4Y")).toBeTruthy();
+  });
+  test("zero time, in seconds", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("PT0S")).toBeTruthy();
+  });
+  test("zero time, in days", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("P0D")).toBeTruthy();
+  });
+  test("one month duration", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("P1M")).toBeTruthy();
+  });
+  test("one minute duration", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("PT1M")).toBeTruthy();
+  });
+  test("one and a half days, in hours", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("PT36H")).toBeTruthy();
+  });
+  test("one and a half days, in days and hours", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("P1DT12H")).toBeTruthy();
+  });
+  test("two weeks", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("P2W")).toBeTruthy();
+  });
+  test("weeks cannot be combined with other units", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("P1Y2W")).toBeFalsy();
+  });
+  test("invalid non-ASCII '\u09E8' (a Bengali 2)", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("P\u09E8Y")).toBeFalsy();
+  });
+  test("element without unit", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("P1")).toBeFalsy();
+  });
 });

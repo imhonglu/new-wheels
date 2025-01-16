@@ -16,5 +16,5 @@
  * ```
  */
 export function clonePrototype<T>(source: T) {
-	return Object.create(Object.getPrototypeOf(source));
+  return Object.create(Object.getPrototypeOf(source));
 }

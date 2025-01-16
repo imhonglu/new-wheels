@@ -14,6 +14,6 @@ import type { Primitive } from "./primitive.js";
  * @see {@link https://github.com/microsoft/TypeScript/issues/29729 | Literal Union}
  */
 export type LiteralUnion<
-	LiteralType,
-	BaseType extends Primitive.Type = string,
+  LiteralType,
+  BaseType extends Primitive.Type = string,
 > = LiteralType | (BaseType & Record<never, never>);

@@ -16,13 +16,13 @@ import { pick } from "./pick.js";
  * ```
  */
 export function omit<T extends object, const K extends ObjectKey<T>>(
-	source: T,
-	...args: K[]
+  source: T,
+  ...args: K[]
 ): Omit<T, K> {
-	const set = new Set<ObjectKey<T>>(args);
+  const set = new Set<ObjectKey<T>>(args);
 
-	return pick(
-		source,
-		...keys(source).filter((key) => !set.has(key)),
-	) as unknown as Omit<T, K>;
+  return pick(
+    source,
+    ...keys(source).filter((key) => !set.has(key)),
+  ) as unknown as Omit<T, K>;
 }

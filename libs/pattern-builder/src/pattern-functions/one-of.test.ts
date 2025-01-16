@@ -3,13 +3,13 @@ import { alpha, digit } from "./character-set.js";
 import { oneOf } from "./one-of.js";
 
 test("oneOf with strings", () => {
-	const pattern = oneOf("a", "b", "c");
+  const pattern = oneOf("a", "b", "c");
 
-	expect(pattern.toString()).toBe("a|b|c");
+  expect(pattern.toString()).toBe("a|b|c");
 });
 
 test("oneOf with character set", () => {
-	const pattern = oneOf(alpha, digit, /c/);
+  const pattern = oneOf(alpha, digit, /c/);
 
-	expect(pattern.toString()).toBe("[a-zA-Z]|[0-9]|c");
+  expect(pattern.toString()).toBe("[a-zA-Z]|[0-9]|c");
 });

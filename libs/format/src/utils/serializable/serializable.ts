@@ -1,7 +1,7 @@
 import {
-	type Fn,
-	type SafeResult,
-	createSafeExecutor,
+  type Fn,
+  type SafeResult,
+  createSafeExecutor,
 } from "@imhonglu/toolkit";
 
 /**
@@ -55,25 +55,25 @@ import {
  * @see {@link https://imhonglu.github.io/toolkit/docs/utils/create-safe-executor/create-safe-executor.html | createSafeExecutor}
  */
 export function Serializable<
-	T extends Fn.Newable & {
-		parse: Fn.Callable<{ return: InstanceType<T> }>;
-		safeParse: Fn.Callable<{ return: SafeResult<InstanceType<T>> }>;
-		stringify: Fn.Callable<{ args: [InstanceType<T>]; return: string }>;
-	},
+  T extends Fn.Newable & {
+    parse: Fn.Callable<{ return: InstanceType<T> }>;
+    safeParse: Fn.Callable<{ return: SafeResult<InstanceType<T>> }>;
+    stringify: Fn.Callable<{ args: [InstanceType<T>]; return: string }>;
+  },
 >(targetClass: T) {
-	const serialize = function (this: InstanceType<T>) {
-		return targetClass.stringify(this);
-	};
+  const serialize = function (this: InstanceType<T>) {
+    return targetClass.stringify(this);
+  };
 
-	Object.defineProperties(targetClass.prototype, {
-		toString: { value: serialize },
-		toJSON: { value: serialize },
-	});
+  Object.defineProperties(targetClass.prototype, {
+    toString: { value: serialize },
+    toJSON: { value: serialize },
+  });
 
-	const safeParse = createSafeExecutor(targetClass.parse);
+  const safeParse = createSafeExecutor(targetClass.parse);
 
-	return new Proxy(targetClass, {
-		get: (target, prop) =>
-			prop === "safeParse" ? safeParse : target[prop as keyof T],
-	});
+  return new Proxy(targetClass, {
+    get: (target, prop) =>
+      prop === "safeParse" ? safeParse : target[prop as keyof T],
+  });
 }

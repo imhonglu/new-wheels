@@ -23,44 +23,44 @@ import { InvalidEmailDomainError } from "./errors/invalid-email-domain-error.js"
  */
 @Serializable
 export class AddressLiteral {
-	public readonly address: IPv4Address | IPv6Address;
+  public readonly address: IPv4Address | IPv6Address;
 
-	constructor({ address }: AddressLiteral) {
-		this.address = address;
-	}
+  constructor({ address }: AddressLiteral) {
+    this.address = address;
+  }
 
-	public static safeParse: SafeExecutor<typeof AddressLiteral.parse>;
+  public static safeParse: SafeExecutor<typeof AddressLiteral.parse>;
 
-	/**
-	 * Converts a AddressLiteral string to a {@link AddressLiteral} object.
-	 *
-	 * @param text - A valid AddressLiteral string. e.g. "[IPv6:::1]".
-	 * @throws - {@link InvalidEmailDomainError}
-	 */
-	public static parse(text: string): AddressLiteral {
-		const isIPv6Address = text.startsWith("[IPv6:");
-		const ipAddress = isIPv6Address ? IPv6Address : IPv4Address;
-		const result = ipAddress.safeParse(text.slice(isIPv6Address ? 6 : 1, -1));
+  /**
+   * Converts a AddressLiteral string to a {@link AddressLiteral} object.
+   *
+   * @param text - A valid AddressLiteral string. e.g. "[IPv6:::1]".
+   * @throws - {@link InvalidEmailDomainError}
+   */
+  public static parse(text: string): AddressLiteral {
+    const isIPv6Address = text.startsWith("[IPv6:");
+    const ipAddress = isIPv6Address ? IPv6Address : IPv4Address;
+    const result = ipAddress.safeParse(text.slice(isIPv6Address ? 6 : 1, -1));
 
-		if (!result.ok) {
-			throw new InvalidEmailDomainError(text);
-		}
+    if (!result.ok) {
+      throw new InvalidEmailDomainError(text);
+    }
 
-		return new AddressLiteral({
-			address: result.data,
-		});
-	}
+    return new AddressLiteral({
+      address: result.data,
+    });
+  }
 
-	/**
-	 * Converts an {@link AddressLiteral} object to an AddressLiteral string.
-	 *
-	 * @param value - An {@link AddressLiteral} object.
-	 */
-	public static stringify(domain: AddressLiteral) {
-		if (domain.address instanceof IPv6Address) {
-			return `[IPv6:${domain.address}]`;
-		}
+  /**
+   * Converts an {@link AddressLiteral} object to an AddressLiteral string.
+   *
+   * @param value - An {@link AddressLiteral} object.
+   */
+  public static stringify(domain: AddressLiteral) {
+    if (domain.address instanceof IPv6Address) {
+      return `[IPv6:${domain.address}]`;
+    }
 
-		return `[${domain.address}]`;
-	}
+    return `[${domain.address}]`;
+  }
 }

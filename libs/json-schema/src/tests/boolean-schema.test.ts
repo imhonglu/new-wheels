@@ -2,80 +2,80 @@
 import { describe, expect, test } from "vitest";
 import { Schema } from "../schema.js";
 describe("boolean schema 'true'", () => {
-	const schema = true;
-	test("number is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(1)).toBeTruthy();
-	});
-	test("string is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("foo")).toBeTruthy();
-	});
-	test("boolean true is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(true)).toBeTruthy();
-	});
-	test("boolean false is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(false)).toBeTruthy();
-	});
-	test("null is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(null)).toBeTruthy();
-	});
-	test("object is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ foo: "bar" })).toBeTruthy();
-	});
-	test("empty object is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({})).toBeTruthy();
-	});
-	test("array is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(["foo"])).toBeTruthy();
-	});
-	test("empty array is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate([])).toBeTruthy();
-	});
+  const schema = true;
+  test("number is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(1)).toBeTruthy();
+  });
+  test("string is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("foo")).toBeTruthy();
+  });
+  test("boolean true is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(true)).toBeTruthy();
+  });
+  test("boolean false is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(false)).toBeTruthy();
+  });
+  test("null is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(null)).toBeTruthy();
+  });
+  test("object is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ foo: "bar" })).toBeTruthy();
+  });
+  test("empty object is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({})).toBeTruthy();
+  });
+  test("array is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(["foo"])).toBeTruthy();
+  });
+  test("empty array is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate([])).toBeTruthy();
+  });
 });
 describe("boolean schema 'false'", () => {
-	const schema = false;
-	test("number is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(1)).toBeFalsy();
-	});
-	test("string is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("foo")).toBeFalsy();
-	});
-	test("boolean true is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(true)).toBeFalsy();
-	});
-	test("boolean false is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(false)).toBeFalsy();
-	});
-	test("null is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(null)).toBeFalsy();
-	});
-	test("object is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ foo: "bar" })).toBeFalsy();
-	});
-	test("empty object is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({})).toBeFalsy();
-	});
-	test("array is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(["foo"])).toBeFalsy();
-	});
-	test("empty array is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate([])).toBeFalsy();
-	});
+  const schema = false;
+  test("number is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(1)).toBeFalsy();
+  });
+  test("string is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("foo")).toBeFalsy();
+  });
+  test("boolean true is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(true)).toBeFalsy();
+  });
+  test("boolean false is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(false)).toBeFalsy();
+  });
+  test("null is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(null)).toBeFalsy();
+  });
+  test("object is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ foo: "bar" })).toBeFalsy();
+  });
+  test("empty object is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({})).toBeFalsy();
+  });
+  test("array is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(["foo"])).toBeFalsy();
+  });
+  test("empty array is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate([])).toBeFalsy();
+  });
 });

@@ -2,174 +2,174 @@
 import { describe, expect, test } from "vitest";
 import { Schema } from "../../../schema.js";
 describe("validation of IPv6 addresses", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		format: "ipv6",
-	};
-	test("all string formats ignore integers", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(12)).toBeTruthy();
-	});
-	test("all string formats ignore floats", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(13.7)).toBeTruthy();
-	});
-	test("all string formats ignore objects", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({})).toBeTruthy();
-	});
-	test("all string formats ignore arrays", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate([])).toBeTruthy();
-	});
-	test("all string formats ignore booleans", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(false)).toBeTruthy();
-	});
-	test("all string formats ignore nulls", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(null)).toBeTruthy();
-	});
-	test("a valid IPv6 address", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("::1")).toBeTruthy();
-	});
-	test("an IPv6 address with out-of-range values", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("12345::")).toBeFalsy();
-	});
-	test("trailing 4 hex symbols is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("::abef")).toBeTruthy();
-	});
-	test("trailing 5 hex symbols is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("::abcef")).toBeFalsy();
-	});
-	test("an IPv6 address with too many components", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1")).toBeFalsy();
-	});
-	test("an IPv6 address containing illegal characters", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("::laptop")).toBeFalsy();
-	});
-	test("no digits is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("::")).toBeTruthy();
-	});
-	test("leading colons is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("::42:ff:1")).toBeTruthy();
-	});
-	test("trailing colons is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("d6::")).toBeTruthy();
-	});
-	test("missing leading octet is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(":2:3:4:5:6:7:8")).toBeFalsy();
-	});
-	test("missing trailing octet is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("1:2:3:4:5:6:7:")).toBeFalsy();
-	});
-	test("missing leading octet with omitted octets later", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(":2:3:4::8")).toBeFalsy();
-	});
-	test("single set of double colons in the middle is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("1:d6::42")).toBeTruthy();
-	});
-	test("two sets of double colons is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("1::d6::42")).toBeFalsy();
-	});
-	test("mixed format with the ipv4 section as decimal octets", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("1::d6:192.168.0.1")).toBeTruthy();
-	});
-	test("mixed format with double colons between the sections", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("1:2::192.168.0.1")).toBeTruthy();
-	});
-	test("mixed format with ipv4 section with octet out of range", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("1::2:192.168.256.1")).toBeFalsy();
-	});
-	test("mixed format with ipv4 section with a hex octet", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("1::2:192.168.ff.1")).toBeFalsy();
-	});
-	test("mixed format with leading double colons (ipv4-mapped ipv6 address)", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("::ffff:192.168.0.1")).toBeTruthy();
-	});
-	test("triple colons is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("1:2:3:4:5:::8")).toBeFalsy();
-	});
-	test("8 octets", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("1:2:3:4:5:6:7:8")).toBeTruthy();
-	});
-	test("insufficient octets without double colons", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("1:2:3:4:5:6:7")).toBeFalsy();
-	});
-	test("no colons is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("1")).toBeFalsy();
-	});
-	test("ipv4 is not ipv6", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("127.0.0.1")).toBeFalsy();
-	});
-	test("ipv4 segment must have 4 octets", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("1:2:3:4:1.2.3")).toBeFalsy();
-	});
-	test("leading whitespace is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("  ::1")).toBeFalsy();
-	});
-	test("trailing whitespace is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("::1  ")).toBeFalsy();
-	});
-	test("netmask is not a part of ipv6 address", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("fe80::/64")).toBeFalsy();
-	});
-	test("zone id is not a part of ipv6 address", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("fe80::a%eth1")).toBeFalsy();
-	});
-	test("a long valid ipv6", () => {
-		const instance = new Schema(schema);
-		expect(
-			instance.validate("1000:1000:1000:1000:1000:1000:255.255.255.255"),
-		).toBeTruthy();
-	});
-	test("a long invalid ipv6, below length limit, first", () => {
-		const instance = new Schema(schema);
-		expect(
-			instance.validate("100:100:100:100:100:100:255.255.255.255.255"),
-		).toBeFalsy();
-	});
-	test("a long invalid ipv6, below length limit, second", () => {
-		const instance = new Schema(schema);
-		expect(
-			instance.validate("100:100:100:100:100:100:100:255.255.255.255"),
-		).toBeFalsy();
-	});
-	test("invalid non-ASCII '\u09EA' (a Bengali 4)", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("1:2:3:4:5:6:7:\u09EA")).toBeFalsy();
-	});
-	test("invalid non-ASCII '\u09EA' (a Bengali 4) in the IPv4 portion", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("1:2::192.16\u09EA.0.1")).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    format: "ipv6",
+  };
+  test("all string formats ignore integers", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(12)).toBeTruthy();
+  });
+  test("all string formats ignore floats", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(13.7)).toBeTruthy();
+  });
+  test("all string formats ignore objects", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({})).toBeTruthy();
+  });
+  test("all string formats ignore arrays", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate([])).toBeTruthy();
+  });
+  test("all string formats ignore booleans", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(false)).toBeTruthy();
+  });
+  test("all string formats ignore nulls", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(null)).toBeTruthy();
+  });
+  test("a valid IPv6 address", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("::1")).toBeTruthy();
+  });
+  test("an IPv6 address with out-of-range values", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("12345::")).toBeFalsy();
+  });
+  test("trailing 4 hex symbols is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("::abef")).toBeTruthy();
+  });
+  test("trailing 5 hex symbols is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("::abcef")).toBeFalsy();
+  });
+  test("an IPv6 address with too many components", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("1:1:1:1:1:1:1:1:1:1:1:1:1:1:1:1")).toBeFalsy();
+  });
+  test("an IPv6 address containing illegal characters", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("::laptop")).toBeFalsy();
+  });
+  test("no digits is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("::")).toBeTruthy();
+  });
+  test("leading colons is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("::42:ff:1")).toBeTruthy();
+  });
+  test("trailing colons is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("d6::")).toBeTruthy();
+  });
+  test("missing leading octet is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(":2:3:4:5:6:7:8")).toBeFalsy();
+  });
+  test("missing trailing octet is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("1:2:3:4:5:6:7:")).toBeFalsy();
+  });
+  test("missing leading octet with omitted octets later", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(":2:3:4::8")).toBeFalsy();
+  });
+  test("single set of double colons in the middle is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("1:d6::42")).toBeTruthy();
+  });
+  test("two sets of double colons is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("1::d6::42")).toBeFalsy();
+  });
+  test("mixed format with the ipv4 section as decimal octets", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("1::d6:192.168.0.1")).toBeTruthy();
+  });
+  test("mixed format with double colons between the sections", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("1:2::192.168.0.1")).toBeTruthy();
+  });
+  test("mixed format with ipv4 section with octet out of range", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("1::2:192.168.256.1")).toBeFalsy();
+  });
+  test("mixed format with ipv4 section with a hex octet", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("1::2:192.168.ff.1")).toBeFalsy();
+  });
+  test("mixed format with leading double colons (ipv4-mapped ipv6 address)", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("::ffff:192.168.0.1")).toBeTruthy();
+  });
+  test("triple colons is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("1:2:3:4:5:::8")).toBeFalsy();
+  });
+  test("8 octets", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("1:2:3:4:5:6:7:8")).toBeTruthy();
+  });
+  test("insufficient octets without double colons", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("1:2:3:4:5:6:7")).toBeFalsy();
+  });
+  test("no colons is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("1")).toBeFalsy();
+  });
+  test("ipv4 is not ipv6", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("127.0.0.1")).toBeFalsy();
+  });
+  test("ipv4 segment must have 4 octets", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("1:2:3:4:1.2.3")).toBeFalsy();
+  });
+  test("leading whitespace is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("  ::1")).toBeFalsy();
+  });
+  test("trailing whitespace is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("::1  ")).toBeFalsy();
+  });
+  test("netmask is not a part of ipv6 address", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("fe80::/64")).toBeFalsy();
+  });
+  test("zone id is not a part of ipv6 address", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("fe80::a%eth1")).toBeFalsy();
+  });
+  test("a long valid ipv6", () => {
+    const instance = new Schema(schema);
+    expect(
+      instance.validate("1000:1000:1000:1000:1000:1000:255.255.255.255"),
+    ).toBeTruthy();
+  });
+  test("a long invalid ipv6, below length limit, first", () => {
+    const instance = new Schema(schema);
+    expect(
+      instance.validate("100:100:100:100:100:100:255.255.255.255.255"),
+    ).toBeFalsy();
+  });
+  test("a long invalid ipv6, below length limit, second", () => {
+    const instance = new Schema(schema);
+    expect(
+      instance.validate("100:100:100:100:100:100:100:255.255.255.255"),
+    ).toBeFalsy();
+  });
+  test("invalid non-ASCII '\u09EA' (a Bengali 4)", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("1:2:3:4:5:6:7:\u09EA")).toBeFalsy();
+  });
+  test("invalid non-ASCII '\u09EA' (a Bengali 4) in the IPv4 portion", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("1:2::192.16\u09EA.0.1")).toBeFalsy();
+  });
 });

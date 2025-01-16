@@ -1,8 +1,8 @@
 {
-	"recommendations": [
-		"biomejs.biome",
-		"streetsidesoftware.code-spell-checker",
-		"EditorConfig.EditorConfig",
-		"vitest.explorer"
-	]
+  "recommendations": [
+    "biomejs.biome",
+    "streetsidesoftware.code-spell-checker",
+    "EditorConfig.EditorConfig",
+    "vitest.explorer"
+  ]
 }

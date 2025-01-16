@@ -1,26 +1,26 @@
 const pattern = /[A-Z\W_][a-z]/g;
 
 function isAlphabet(character: string) {
-	const charCode = character.charCodeAt(0);
-	return charCode >= 65 && charCode <= 90;
+  const charCode = character.charCodeAt(0);
+  return charCode >= 65 && charCode <= 90;
 }
 
 function convert(string: string, defaultSeparator: string) {
-	return string.replace(pattern, ([separator, letter]) => {
-		let result = defaultSeparator;
+  return string.replace(pattern, ([separator, letter]) => {
+    let result = defaultSeparator;
 
-		if (isAlphabet(separator)) {
-			if (string.indexOf(separator) === 0) {
-				result = separator;
-			} else {
-				result += separator;
-			}
-		}
+    if (isAlphabet(separator)) {
+      if (string.indexOf(separator) === 0) {
+        result = separator;
+      } else {
+        result += separator;
+      }
+    }
 
-		result += letter;
+    result += letter;
 
-		return result.toLowerCase();
-	});
+    return result.toLowerCase();
+  });
 }
 
 /**
@@ -35,7 +35,7 @@ function convert(string: string, defaultSeparator: string) {
  * ```
  */
 export function kebabCase(string: string) {
-	return convert(string, "-");
+  return convert(string, "-");
 }
 
 /**
@@ -50,7 +50,7 @@ export function kebabCase(string: string) {
  * ```
  */
 export function snakeCase(string: string) {
-	return convert(string, "_");
+  return convert(string, "_");
 }
 
 /**
@@ -65,9 +65,9 @@ export function snakeCase(string: string) {
  * ```
  */
 export function camelCase(string: string) {
-	return kebabCase(string).replace(/-[\w]/g, ([, letter]) =>
-		letter.toUpperCase(),
-	);
+  return kebabCase(string).replace(/-[\w]/g, ([, letter]) =>
+    letter.toUpperCase(),
+  );
 }
 
 /**
@@ -82,9 +82,9 @@ export function camelCase(string: string) {
  * ```
  */
 export function pascalCase(string: string) {
-	return camelCase(string).replace(/^[\w]/, (firstLetter) =>
-		firstLetter.toUpperCase(),
-	);
+  return camelCase(string).replace(/^[\w]/, (firstLetter) =>
+    firstLetter.toUpperCase(),
+  );
 }
 
 /**
@@ -99,8 +99,8 @@ export function pascalCase(string: string) {
  * ```
  */
 export const stringCase = {
-	toCamel: camelCase,
-	toKebab: kebabCase,
-	toSnake: snakeCase,
-	toPascal: pascalCase,
+  toCamel: camelCase,
+  toKebab: kebabCase,
+  toSnake: snakeCase,
+  toPascal: pascalCase,
 };

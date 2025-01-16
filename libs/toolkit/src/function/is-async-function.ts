@@ -24,5 +24,5 @@ import type { Fn } from "../types/fn.js";
  * ```
  */
 export function isAsyncFunction(fn: Fn.Callable) {
-	return Symbol.toStringTag in fn && fn[Symbol.toStringTag] === "AsyncFunction";
+  return Symbol.toStringTag in fn && fn[Symbol.toStringTag] === "AsyncFunction";
 }

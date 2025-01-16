@@ -2,196 +2,196 @@
 import { describe, expect, test } from "vitest";
 import { Schema } from "../../../schema.js";
 describe("validation of date strings", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		format: "date",
-	};
-	test("all string formats ignore integers", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(12)).toBeTruthy();
-	});
-	test("all string formats ignore floats", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(13.7)).toBeTruthy();
-	});
-	test("all string formats ignore objects", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({})).toBeTruthy();
-	});
-	test("all string formats ignore arrays", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate([])).toBeTruthy();
-	});
-	test("all string formats ignore booleans", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(false)).toBeTruthy();
-	});
-	test("all string formats ignore nulls", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(null)).toBeTruthy();
-	});
-	test("a valid date string", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("1963-06-19")).toBeTruthy();
-	});
-	test("a valid date string with 31 days in January", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("2020-01-31")).toBeTruthy();
-	});
-	test("a invalid date string with 32 days in January", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("2020-01-32")).toBeFalsy();
-	});
-	test("a valid date string with 28 days in February (normal)", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("2021-02-28")).toBeTruthy();
-	});
-	test("a invalid date string with 29 days in February (normal)", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("2021-02-29")).toBeFalsy();
-	});
-	test("a valid date string with 29 days in February (leap)", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("2020-02-29")).toBeTruthy();
-	});
-	test("a invalid date string with 30 days in February (leap)", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("2020-02-30")).toBeFalsy();
-	});
-	test("a valid date string with 31 days in March", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("2020-03-31")).toBeTruthy();
-	});
-	test("a invalid date string with 32 days in March", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("2020-03-32")).toBeFalsy();
-	});
-	test("a valid date string with 30 days in April", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("2020-04-30")).toBeTruthy();
-	});
-	test("a invalid date string with 31 days in April", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("2020-04-31")).toBeFalsy();
-	});
-	test("a valid date string with 31 days in May", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("2020-05-31")).toBeTruthy();
-	});
-	test("a invalid date string with 32 days in May", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("2020-05-32")).toBeFalsy();
-	});
-	test("a valid date string with 30 days in June", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("2020-06-30")).toBeTruthy();
-	});
-	test("a invalid date string with 31 days in June", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("2020-06-31")).toBeFalsy();
-	});
-	test("a valid date string with 31 days in July", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("2020-07-31")).toBeTruthy();
-	});
-	test("a invalid date string with 32 days in July", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("2020-07-32")).toBeFalsy();
-	});
-	test("a valid date string with 31 days in August", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("2020-08-31")).toBeTruthy();
-	});
-	test("a invalid date string with 32 days in August", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("2020-08-32")).toBeFalsy();
-	});
-	test("a valid date string with 30 days in September", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("2020-09-30")).toBeTruthy();
-	});
-	test("a invalid date string with 31 days in September", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("2020-09-31")).toBeFalsy();
-	});
-	test("a valid date string with 31 days in October", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("2020-10-31")).toBeTruthy();
-	});
-	test("a invalid date string with 32 days in October", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("2020-10-32")).toBeFalsy();
-	});
-	test("a valid date string with 30 days in November", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("2020-11-30")).toBeTruthy();
-	});
-	test("a invalid date string with 31 days in November", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("2020-11-31")).toBeFalsy();
-	});
-	test("a valid date string with 31 days in December", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("2020-12-31")).toBeTruthy();
-	});
-	test("a invalid date string with 32 days in December", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("2020-12-32")).toBeFalsy();
-	});
-	test("a invalid date string with invalid month", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("2020-13-01")).toBeFalsy();
-	});
-	test("an invalid date string", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("06/19/1963")).toBeFalsy();
-	});
-	test("only RFC3339 not all of ISO 8601 are valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("2013-350")).toBeFalsy();
-	});
-	test("non-padded month dates are not valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("1998-1-20")).toBeFalsy();
-	});
-	test("non-padded day dates are not valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("1998-01-1")).toBeFalsy();
-	});
-	test("invalid month", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("1998-13-01")).toBeFalsy();
-	});
-	test("invalid month-day combination", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("1998-04-31")).toBeFalsy();
-	});
-	test("2021 is not a leap year", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("2021-02-29")).toBeFalsy();
-	});
-	test("2020 is a leap year", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("2020-02-29")).toBeTruthy();
-	});
-	test("invalid non-ASCII '\u09EA' (a Bengali 4)", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("1963-06-1\u09EA")).toBeFalsy();
-	});
-	test("ISO8601 / non-RFC3339: YYYYMMDD without dashes (2023-03-28)", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("20230328")).toBeFalsy();
-	});
-	test("ISO8601 / non-RFC3339: week number implicit day of week (2023-01-02)", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("2023-W01")).toBeFalsy();
-	});
-	test("ISO8601 / non-RFC3339: week number with day of week (2023-03-28)", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("2023-W13-2")).toBeFalsy();
-	});
-	test("ISO8601 / non-RFC3339: week number rollover to next year (2023-01-01)", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("2022W527")).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    format: "date",
+  };
+  test("all string formats ignore integers", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(12)).toBeTruthy();
+  });
+  test("all string formats ignore floats", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(13.7)).toBeTruthy();
+  });
+  test("all string formats ignore objects", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({})).toBeTruthy();
+  });
+  test("all string formats ignore arrays", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate([])).toBeTruthy();
+  });
+  test("all string formats ignore booleans", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(false)).toBeTruthy();
+  });
+  test("all string formats ignore nulls", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(null)).toBeTruthy();
+  });
+  test("a valid date string", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("1963-06-19")).toBeTruthy();
+  });
+  test("a valid date string with 31 days in January", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("2020-01-31")).toBeTruthy();
+  });
+  test("a invalid date string with 32 days in January", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("2020-01-32")).toBeFalsy();
+  });
+  test("a valid date string with 28 days in February (normal)", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("2021-02-28")).toBeTruthy();
+  });
+  test("a invalid date string with 29 days in February (normal)", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("2021-02-29")).toBeFalsy();
+  });
+  test("a valid date string with 29 days in February (leap)", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("2020-02-29")).toBeTruthy();
+  });
+  test("a invalid date string with 30 days in February (leap)", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("2020-02-30")).toBeFalsy();
+  });
+  test("a valid date string with 31 days in March", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("2020-03-31")).toBeTruthy();
+  });
+  test("a invalid date string with 32 days in March", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("2020-03-32")).toBeFalsy();
+  });
+  test("a valid date string with 30 days in April", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("2020-04-30")).toBeTruthy();
+  });
+  test("a invalid date string with 31 days in April", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("2020-04-31")).toBeFalsy();
+  });
+  test("a valid date string with 31 days in May", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("2020-05-31")).toBeTruthy();
+  });
+  test("a invalid date string with 32 days in May", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("2020-05-32")).toBeFalsy();
+  });
+  test("a valid date string with 30 days in June", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("2020-06-30")).toBeTruthy();
+  });
+  test("a invalid date string with 31 days in June", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("2020-06-31")).toBeFalsy();
+  });
+  test("a valid date string with 31 days in July", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("2020-07-31")).toBeTruthy();
+  });
+  test("a invalid date string with 32 days in July", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("2020-07-32")).toBeFalsy();
+  });
+  test("a valid date string with 31 days in August", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("2020-08-31")).toBeTruthy();
+  });
+  test("a invalid date string with 32 days in August", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("2020-08-32")).toBeFalsy();
+  });
+  test("a valid date string with 30 days in September", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("2020-09-30")).toBeTruthy();
+  });
+  test("a invalid date string with 31 days in September", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("2020-09-31")).toBeFalsy();
+  });
+  test("a valid date string with 31 days in October", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("2020-10-31")).toBeTruthy();
+  });
+  test("a invalid date string with 32 days in October", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("2020-10-32")).toBeFalsy();
+  });
+  test("a valid date string with 30 days in November", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("2020-11-30")).toBeTruthy();
+  });
+  test("a invalid date string with 31 days in November", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("2020-11-31")).toBeFalsy();
+  });
+  test("a valid date string with 31 days in December", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("2020-12-31")).toBeTruthy();
+  });
+  test("a invalid date string with 32 days in December", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("2020-12-32")).toBeFalsy();
+  });
+  test("a invalid date string with invalid month", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("2020-13-01")).toBeFalsy();
+  });
+  test("an invalid date string", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("06/19/1963")).toBeFalsy();
+  });
+  test("only RFC3339 not all of ISO 8601 are valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("2013-350")).toBeFalsy();
+  });
+  test("non-padded month dates are not valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("1998-1-20")).toBeFalsy();
+  });
+  test("non-padded day dates are not valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("1998-01-1")).toBeFalsy();
+  });
+  test("invalid month", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("1998-13-01")).toBeFalsy();
+  });
+  test("invalid month-day combination", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("1998-04-31")).toBeFalsy();
+  });
+  test("2021 is not a leap year", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("2021-02-29")).toBeFalsy();
+  });
+  test("2020 is a leap year", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("2020-02-29")).toBeTruthy();
+  });
+  test("invalid non-ASCII '\u09EA' (a Bengali 4)", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("1963-06-1\u09EA")).toBeFalsy();
+  });
+  test("ISO8601 / non-RFC3339: YYYYMMDD without dashes (2023-03-28)", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("20230328")).toBeFalsy();
+  });
+  test("ISO8601 / non-RFC3339: week number implicit day of week (2023-01-02)", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("2023-W01")).toBeFalsy();
+  });
+  test("ISO8601 / non-RFC3339: week number with day of week (2023-03-28)", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("2023-W13-2")).toBeFalsy();
+  });
+  test("ISO8601 / non-RFC3339: week number rollover to next year (2023-01-01)", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("2022W527")).toBeFalsy();
+  });
 });

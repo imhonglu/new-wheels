@@ -2,38 +2,38 @@
 import { describe, expect, test } from "vitest";
 import { Schema } from "../schema.js";
 describe("maxItems validation", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		maxItems: 2,
-	};
-	test("shorter is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate([1])).toBeTruthy();
-	});
-	test("exact length is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate([1, 2])).toBeTruthy();
-	});
-	test("too long is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate([1, 2, 3])).toBeFalsy();
-	});
-	test("ignores non-arrays", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate("foobar")).toBeTruthy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    maxItems: 2,
+  };
+  test("shorter is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate([1])).toBeTruthy();
+  });
+  test("exact length is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate([1, 2])).toBeTruthy();
+  });
+  test("too long is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate([1, 2, 3])).toBeFalsy();
+  });
+  test("ignores non-arrays", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate("foobar")).toBeTruthy();
+  });
 });
 describe("maxItems validation with a decimal", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		maxItems: 2,
-	};
-	test("shorter is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate([1])).toBeTruthy();
-	});
-	test("too long is invalid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate([1, 2, 3])).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    maxItems: 2,
+  };
+  test("shorter is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate([1])).toBeTruthy();
+  });
+  test("too long is invalid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate([1, 2, 3])).toBeFalsy();
+  });
 });

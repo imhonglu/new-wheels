@@ -8,7 +8,7 @@ import { extractPatternSource } from "./extract-pattern-source.js";
  * @returns Whether the pattern is a character set.
  */
 export function isCharacterSet(pattern: PatternInput): boolean {
-	const source = extractPatternSource(pattern);
+  const source = extractPatternSource(pattern);
 
-	return source.startsWith("[") && source.endsWith("]");
+  return source.startsWith("[") && source.endsWith("]");
 }

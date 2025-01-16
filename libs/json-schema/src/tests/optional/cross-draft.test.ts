@@ -2,13 +2,13 @@
 import { describe, expect, test } from "vitest";
 import { Schema } from "../../schema.js";
 describe("refs to historic drafts are processed as historic drafts", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		type: "array",
-		$ref: "http://localhost:1234/draft2019-09/ignore-prefixItems.json",
-	};
-	test("first item not a string is valid", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate([1, 2, 3])).toBeTruthy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    type: "array",
+    $ref: "http://localhost:1234/draft2019-09/ignore-prefixItems.json",
+  };
+  test("first item not a string is valid", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate([1, 2, 3])).toBeTruthy();
+  });
 });

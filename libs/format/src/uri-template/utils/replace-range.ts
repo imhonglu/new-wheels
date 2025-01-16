@@ -1,7 +1,7 @@
 export function replaceRange(
-	string: string,
-	[start, end]: [number, number],
-	replacement: string,
+  string: string,
+  [start, end]: [number, number],
+  replacement: string,
 ): string {
-	return string.slice(0, start) + replacement + string.slice(end);
+  return string.slice(0, start) + replacement + string.slice(end);
 }

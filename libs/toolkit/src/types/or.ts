@@ -27,5 +27,5 @@ export type Or<T, D> = T extends NonNullable<T> ? T : NonNullable<D>;
  * @typeParam T - The source type that might be undefined/null
  */
 export type OrAny<T> =
-	// biome-ignore lint/suspicious/noExplicitAny: Intentionally using any as fallback
-	Or<T, any>;
+  // biome-ignore lint/suspicious/noExplicitAny: Intentionally using any as fallback
+  Or<T, any>;

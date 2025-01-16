@@ -5,30 +5,30 @@ import { getEncoder } from "./get-encoder.js";
 import { getOperatorExpansionRule } from "./get-operator-expansion-rule.js";
 
 export function expandExpression(
-	expression: Expression,
-	values: Record<string, Variable>,
+  expression: Expression,
+  values: Record<string, Variable>,
 ) {
-	const rule = getOperatorExpansionRule(expression.operator);
-	const encode = getEncoder(rule);
+  const rule = getOperatorExpansionRule(expression.operator);
+  const encode = getEncoder(rule);
 
-	const expandedParts: string[] = [];
+  const expandedParts: string[] = [];
 
-	for (const [varname, varspec] of expression.variables) {
-		let inputValue = values[varname];
+  for (const [varname, varspec] of expression.variables) {
+    let inputValue = values[varname];
 
-		if (Array.isArray(inputValue) && varspec.modifier?.type !== "explode") {
-			inputValue = inputValue.join(VARIABLE_SEPARATOR);
-		}
+    if (Array.isArray(inputValue) && varspec.modifier?.type !== "explode") {
+      inputValue = inputValue.join(VARIABLE_SEPARATOR);
+    }
 
-		if (!Array.isArray(inputValue)) {
-			expandedParts.push(encode(varspec, inputValue));
-			continue;
-		}
+    if (!Array.isArray(inputValue)) {
+      expandedParts.push(encode(varspec, inputValue));
+      continue;
+    }
 
-		for (const item of inputValue) {
-			expandedParts.push(encode(varspec, item));
-		}
-	}
+    for (const item of inputValue) {
+      expandedParts.push(encode(varspec, item));
+    }
+  }
 
-	return rule.first + expandedParts.join(rule.sep);
+  return rule.first + expandedParts.join(rule.sep);
 }

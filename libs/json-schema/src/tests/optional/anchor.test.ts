@@ -2,33 +2,33 @@
 import { describe, expect, test } from "vitest";
 import { Schema } from "../../schema.js";
 describe("$anchor inside an enum is not a real identifier", () => {
-	const schema = {
-		$schema: "https://json-schema.org/draft/2020-12/schema",
-		$defs: {
-			anchor_in_enum: { enum: [{ $anchor: "my_anchor", type: "null" }] },
-			real_identifier_in_schema: { $anchor: "my_anchor", type: "string" },
-			zzz_anchor_in_const: { const: { $anchor: "my_anchor", type: "null" } },
-		},
-		anyOf: [{ $ref: "#/$defs/anchor_in_enum" }, { $ref: "#my_anchor" }],
-	};
-	test("exact match to enum, and type matches", () => {
-		const instance = new Schema(schema);
-		expect(
-			instance.validate({ $anchor: "my_anchor", type: "null" }),
-		).toBeTruthy();
-	});
-	test("in implementations that strip $anchor, this may match either $def", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate({ type: "null" })).toBeFalsy();
-	});
-	test("match $ref to $anchor", () => {
-		const instance = new Schema(schema);
-		expect(
-			instance.validate("a string to match #/$defs/anchor_in_enum"),
-		).toBeTruthy();
-	});
-	test("no match on enum or $ref to $anchor", () => {
-		const instance = new Schema(schema);
-		expect(instance.validate(1)).toBeFalsy();
-	});
+  const schema = {
+    $schema: "https://json-schema.org/draft/2020-12/schema",
+    $defs: {
+      anchor_in_enum: { enum: [{ $anchor: "my_anchor", type: "null" }] },
+      real_identifier_in_schema: { $anchor: "my_anchor", type: "string" },
+      zzz_anchor_in_const: { const: { $anchor: "my_anchor", type: "null" } },
+    },
+    anyOf: [{ $ref: "#/$defs/anchor_in_enum" }, { $ref: "#my_anchor" }],
+  };
+  test("exact match to enum, and type matches", () => {
+    const instance = new Schema(schema);
+    expect(
+      instance.validate({ $anchor: "my_anchor", type: "null" }),
+    ).toBeTruthy();
+  });
+  test("in implementations that strip $anchor, this may match either $def", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate({ type: "null" })).toBeFalsy();
+  });
+  test("match $ref to $anchor", () => {
+    const instance = new Schema(schema);
+    expect(
+      instance.validate("a string to match #/$defs/anchor_in_enum"),
+    ).toBeTruthy();
+  });
+  test("no match on enum or $ref to $anchor", () => {
+    const instance = new Schema(schema);
+    expect(instance.validate(1)).toBeFalsy();
+  });
 });

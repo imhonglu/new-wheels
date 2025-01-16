@@ -27,25 +27,25 @@
  * ```
  */
 export function chunk<T>(source: T[], size: number): IterableIterator<T[]> {
-	let index = 0;
+  let index = 0;
 
-	return {
-		[Symbol.iterator]() {
-			return this;
-		},
+  return {
+    [Symbol.iterator]() {
+      return this;
+    },
 
-		next() {
-			if (index < source.length) {
-				return {
-					// biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
-					value: source.slice(index, (index += size)),
-					done: false,
-				};
-			}
-			return {
-				value: undefined,
-				done: true,
-			};
-		},
-	};
+    next() {
+      if (index < source.length) {
+        return {
+          // biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
+          value: source.slice(index, (index += size)),
+          done: false,
+        };
+      }
+      return {
+        value: undefined,
+        done: true,
+      };
+    },
+  };
 }
