@@ -12,19 +12,28 @@
 		"pnpm": ">=9.15.2"
 	},
 	"scripts": {
+		"spellcheck": "cspell lint --no-progress --show-suggestions --show-context .",
 		"check": "biome check --write ./**/*",
-		"test": "vitest"
+		"lint": "pnpm run check && pnpm run spellcheck",
+		"test": "vitest",
+		"test:related": "vitest related --run",
+		"prepare": "husky"
 	},
 	"license": "MIT",
 	"devDependencies": {
 		"@biomejs/biome": "^1.9.4",
+		"@changesets/cli": "^2.27.11",
+		"@commitlint/cli": "^19.6.1",
+		"@commitlint/config-conventional": "^19.6.0",
 		"@faker-js/faker": "^9.4.0",
 		"@microsoft/api-documenter": "^7.26.5",
 		"@microsoft/api-extractor": "^7.49.1",
 		"@microsoft/api-extractor-model": "^7.30.2",
 		"@microsoft/tsdoc": "^0.15.1",
 		"@types/node": "^22.10.7",
+		"cspell": "^8.17.2",
 		"esbuild": "catalog:",
+		"husky": "^9.1.7",
 		"jest-extended": "catalog:",
 		"tslib": "catalog:",
 		"typescript": "catalog:",

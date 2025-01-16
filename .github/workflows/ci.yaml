@@ -1,0 +1,38 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [18, 20, 22]
+        platform:
+          - ubuntu-latest
+          - windows-latest
+
+    name: ${{matrix.platform}} / Node.js ${{ matrix.node-version }}
+    runs-on: ${{matrix.platform}}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node
+        run: pnpm env use -g ${{ matrix.node-version }}
+        timeout-minutes: 1
+
+      - name: Install dependencies
+        run: pnpm install
+        timeout-minutes: 1
+
+      - name: Run lint
+        run: pnpm run lint
+        timeout-minutes: 1
+
+      - name: Run tests
+        run: pnpm run test:related
+        timeout-minutes: 60
