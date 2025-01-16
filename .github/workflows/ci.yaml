@@ -32,9 +32,9 @@ jobs:
         timeout-minutes: 1
 
       - name: Run lint
-        run: pnpm run biome ci .
+        run: pnpm biome ci .
         timeout-minutes: 1
 
       - name: Run tests
-        run: pnpm run vitest --run
+        run: pnpm vitest --run
         timeout-minutes: 60
