@@ -6,13 +6,13 @@ const map = new Map<string, KeywordHandler>();
 
 export type EnsuredKeywordSchema<T> = T extends keyof ObjectSchema
 	? ObjectSchema & {
-			[P in T]-?: Exclude<ObjectSchema[P], undefined>;
+			[P in T]-?: Exclude<ObjectSchema[P], undefined> | Schema;
 		}
 	: ObjectSchema;
 
 export type KeywordHandlerParams<T> = [
 	schema: EnsuredKeywordSchema<T>,
-	context: Schema,
+	schemaContext: Schema,
 ];
 
 export type KeywordHandler<T = undefined> =

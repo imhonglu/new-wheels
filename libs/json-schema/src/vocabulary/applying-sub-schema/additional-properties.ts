@@ -1,10 +1,9 @@
 import { keys } from "@imhonglu/type-object";
-import { Schema } from "../../schema.js";
 import { is } from "../../utils/is.js";
 import { keywordHandler } from "../keyword-handler.js";
 
-keywordHandler.register("additionalProperties", (schema, context) => {
-	const subSchema = Schema.from(schema.additionalProperties, context);
+keywordHandler.register("additionalProperties", (schema, schemaContext) => {
+	const subSchema = schemaContext.resolveSubSchema("additionalProperties");
 
 	const propertyNames = new Set(Object.keys(schema.properties ?? {}));
 	const patterns = Object.keys(schema.patternProperties ?? {}).map(

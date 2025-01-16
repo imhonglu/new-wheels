@@ -3,6 +3,7 @@ import {
 	type SafeExecutor,
 	createSafeExecutor,
 } from "@imhonglu/toolkit";
+import { ValidationFailedError } from "./errors/validation-failed-error.js";
 import type {
 	ApplyingSubSchema,
 	BasicMetaData,
@@ -10,11 +11,18 @@ import type {
 	Core,
 	Format,
 	JsonSchema,
+	ObjectSchema,
 	StringEncodedData,
 	StructuralValidation,
 } from "./types/json-schema/index.js";
-import { buildParser } from "./utils/build-parser.js";
-import { buildValidator } from "./utils/build-validator.js";
+import type {
+	ValidationContext,
+	ValidationFunction,
+} from "./types/validation-function.js";
+import { buildValidationMap } from "./utils/build-validation-map.js";
+import { encodeJsonPointer } from "./utils/encode-json-pointer.js";
+import { initializeUri } from "./utils/initialize-uri.js";
+import { tryParseJson } from "./utils/try-parse-json.js";
 
 /**
  * JSON Schema validator and parser implementation that provides type-safe validation
@@ -71,11 +79,10 @@ import { buildValidator } from "./utils/build-validator.js";
  * ```
  */
 export class Schema<T extends SchemaDefinition.Type = SchemaDefinition.Type> {
+	public readonly uri?: string;
 	public readonly root: Schema;
 	public readonly refMap: Map<string, Schema>;
-	public readonly validate: (
-		data: unknown,
-	) => data is SchemaDefinition.Instance<T>;
+	public readonly validates?: Map<keyof ObjectSchema, ValidationFunction>;
 
 	constructor(
 		public readonly schema: Exclude<
@@ -83,42 +90,76 @@ export class Schema<T extends SchemaDefinition.Type = SchemaDefinition.Type> {
 			Schema
 		>,
 		public readonly parent?: Schema,
+		public readonly path = "#",
 	) {
-		this.refMap = parent?.refMap ?? new Map();
 		this.root = parent?.root ?? this;
-		this.validate = buildValidator(this.schema as JsonSchema, this);
-		this.parse = buildParser(this.schema as JsonSchema, this.validate);
+		this.refMap = parent?.refMap ?? new Map();
+
+		this.uri = initializeUri(this);
+		this.refMap.set(this.path, this);
+
+		this.validates = buildValidationMap(this);
 		this.safeParse = createSafeExecutor(this.parse);
 		this.stringify = JSON.stringify;
 	}
 
-	public parse: (data: unknown) => SchemaDefinition.Instance<T>;
+	public validate(data: unknown): data is SchemaDefinition.Instance<T> {
+		if (!this.validates) {
+			return this.schema as BooleanSchema;
+		}
+
+		const context: ValidationContext = new Map();
+
+		for (const [keyword, validate] of this.validates) {
+			if (!validate(data, context)) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	public parse(data: unknown): SchemaDefinition.Instance<T> {
+		const parsed = tryParseJson(data);
+
+		if (!this.validate(parsed)) {
+			throw new ValidationFailedError(data);
+		}
+
+		return parsed as SchemaDefinition.Instance<T>;
+	}
+
 	public safeParse: SafeExecutor<typeof this.parse>;
 	public stringify: (data: unknown) => string;
 
-	/**
-	 * Creates a new Schema instance with type assertion to JsonSchema.
-	 * This utility function breaks type inference chain to prevent TypeScript errors.
-	 *
-	 * @param schema - Source schema (Schema instance or JsonSchema object)
-	 * @param parent - Optional parent Schema for inheritance
-	 * @returns Schema instance with explicit JsonSchema type
-	 *
-	 * @example
-	 * ```ts
-	 * const rawSchema = { type: "string", pattern: "^[A-Z]+$" };
-	 * const schema = Schema.from(rawSchema);
-	 * ```
-	 */
-	public static from(
-		schema: Schema | JsonSchema,
-		parent?: Schema,
+	public resolveSubSchema<P extends keyof ObjectSchema>(
+		...[keyword, propertyName]: Exclude<
+			ObjectSchema[P],
+			undefined
+		> extends Record<infer K, unknown>
+			? [P, Exclude<K, symbol>]
+			: [P]
 	): Schema<JsonSchema> {
-		if (schema instanceof Schema) {
-			return schema as Schema<JsonSchema>;
+		let schemaValue = this.schema[keyword as unknown as keyof T] as
+			| Schema<JsonSchema>
+			| JsonSchema;
+
+		let path = `${this.path}/${keyword}`;
+
+		if (propertyName !== undefined) {
+			path += `/${encodeJsonPointer(propertyName)}`;
+			schemaValue = schemaValue[propertyName as keyof typeof schemaValue];
 		}
 
-		return new Schema(schema, parent);
+		if (schemaValue instanceof Schema) {
+			this.refMap.set(path, schemaValue);
+
+			return schemaValue;
+		}
+
+		const schema = new Schema(schemaValue, this, path);
+
+		return schema;
 	}
 }
 

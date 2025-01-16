@@ -1,20 +1,30 @@
 import { hasOwn } from "@imhonglu/type-object";
-import { Schema } from "../../schema.js";
 import { is } from "../../utils/is.js";
 import { keywordHandler } from "../keyword-handler.js";
 
-keywordHandler.register("properties", (schema, context) => {
-	const validators = Object.keys(schema.properties).map((propertyName) => ({
+keywordHandler.register("properties", (schema, schemaContext) => {
+	const properties = Object.keys(schema.properties).map((propertyName) => ({
 		propertyName,
-		subSchema: Schema.from(schema.properties[propertyName], context),
+		subSchema: schemaContext.resolveSubSchema("properties", propertyName),
 	}));
 
-	return (data) =>
-		is.object(data)
-			? !validators.some(({ propertyName, subSchema }) =>
-					hasOwn(data, propertyName)
-						? !subSchema.validate(data[propertyName])
-						: false,
-				)
-			: true;
+	return (data, context) => {
+		if (!is.object(data)) {
+			return true;
+		}
+
+		for (const { propertyName, subSchema } of properties) {
+			if (!hasOwn(data, propertyName)) {
+				continue;
+			}
+
+			context.set(propertyName, true);
+
+			if (!subSchema.validate(data[propertyName])) {
+				return false;
+			}
+		}
+
+		return true;
+	};
 });
