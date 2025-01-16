@@ -1,6 +1,6 @@
 export namespace StructuralValidation {
 	/**
-	 * @see https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-validation-01#name-type
+	 * @see {@link https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-validation-01#section-6.1.1 | Primitive Types}
 	 */
 	export type PrimitiveType =
 		| "null"
@@ -12,7 +12,7 @@ export namespace StructuralValidation {
 		| "integer";
 
 	/**
-	 * @see https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-validation-01#name-validation-keywords-for-any
+	 * @see {@link https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-validation-01#section-6.1 | Any}
 	 */
 	export interface Any {
 		type?: PrimitiveType | PrimitiveType[];
@@ -23,7 +23,7 @@ export namespace StructuralValidation {
 	}
 
 	/**
-	 * @see https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-validation-01#name-validation-keywords-for-num
+	 * @see {@link https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-validation-01#section-6.2 | Numeric}
 	 */
 	export interface Numeric {
 		multipleOf?: number;
@@ -34,7 +34,7 @@ export namespace StructuralValidation {
 	}
 
 	/**
-	 * @see https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-validation-01#name-validation-keywords-for-str
+	 * @see {@link https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-validation-01#section-6.3 | String}
 	 */
 	export interface String {
 		maxLength?: number;
@@ -43,7 +43,7 @@ export namespace StructuralValidation {
 	}
 
 	/**
-	 * @see https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-validation-01#name-validation-keywords-for-arr
+	 * @see {@link https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-validation-01#section-6.4 | Array}
 	 */
 	export interface Array {
 		maxItems?: number;
@@ -54,7 +54,7 @@ export namespace StructuralValidation {
 	}
 
 	/**
-	 * @see https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-validation-01#name-validation-keywords-for-obj
+	 * @see {@link https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-validation-01#section-6.5 | Object}
 	 */
 	export interface Object<T extends PropertyKey = string> {
 		maxProperties?: number;

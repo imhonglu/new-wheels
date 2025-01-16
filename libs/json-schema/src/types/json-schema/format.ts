@@ -1,5 +1,5 @@
 /**
- * @see https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-validation-01#name-vocabularies-for-semantic-c
+ * @see {@link https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-validation-01#section-7 | Format}
  */
 export interface Format {
 	format?:

@@ -15,7 +15,7 @@ export * from "./structural-validation.js";
 export * from "./unevaluated-locations.js";
 
 /**
- * @see https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-01#name-json-schema-objects-and-key
+ * @see {@link https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-01#section-4.3.1 | ObjectSchema}
  */
 export interface ObjectSchema
 	extends Core<JsonSchema>,
@@ -27,7 +27,7 @@ export interface ObjectSchema
 		UnevaluatedLocations.All<JsonSchema> {}
 
 /**
- * @see https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-01#name-boolean-json-schemas
+ * @see {@link https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-01#section-4.3.2 | BooleanSchema}
  */
 export type BooleanSchema = boolean;
 

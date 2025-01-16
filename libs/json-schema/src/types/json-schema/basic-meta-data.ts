@@ -1,5 +1,5 @@
 /**
- * @see https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-validation-01#name-a-vocabulary-for-basic-meta
+ * @see {@link https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-validation-01#section-9 | Basic Meta Data}
  */
 export interface BasicMetaData<T = unknown> {
 	title?: string;
