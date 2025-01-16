@@ -1,5 +1,7 @@
 import ts from "typescript";
 
+const RESERVED_KEYS = ["__proto__"];
+
 export function createVarExpression(value: unknown): ts.Expression {
 	if (typeof value === "string") {
 		return ts.factory.createStringLiteral(value);
@@ -36,7 +38,11 @@ export function createVarExpression(value: unknown): ts.Expression {
 	return ts.factory.createObjectLiteralExpression(
 		Object.entries(value).map(([key, value]) =>
 			ts.factory.createPropertyAssignment(
-				ts.factory.createStringLiteral(key),
+				RESERVED_KEYS.includes(key)
+					? ts.factory.createComputedPropertyName(
+							ts.factory.createStringLiteral(key),
+						)
+					: ts.factory.createStringLiteral(key),
 				createVarExpression(value),
 			),
 		),

@@ -16,4 +16,7 @@ test("should create a var expression", async () => {
 	expect(printNode(createVarExpression({ foo: "bar" }))).toBe(
 		'{ "foo": "bar" }',
 	);
+	expect(printNode(createVarExpression({ ["__proto__"]: "foo" }))).toBe(
+		'{ ["__proto__"]: "foo" }',
+	);
 });
