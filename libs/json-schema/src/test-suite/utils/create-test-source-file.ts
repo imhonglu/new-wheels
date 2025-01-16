@@ -11,7 +11,6 @@ const identifier = {
 	test: ts.factory.createIdentifier("test"),
 	expect: ts.factory.createIdentifier("expect"),
 	schemaClass: ts.factory.createIdentifier("Schema"),
-	schemaClassImport: ts.factory.createStringLiteral("../schema.js"),
 	schemaVariable: ts.factory.createIdentifier("schema"),
 	instanceVariable: ts.factory.createIdentifier("instance"),
 };
@@ -20,7 +19,10 @@ async function readTestGroups(filePath: string): Promise<TestGroup[]> {
 	return readFile(filePath, "utf-8").then(JSON.parse);
 }
 
-export async function createTestSourceFile(filePath: string) {
+export async function createTestSourceFile(
+	filePath: string,
+	schemaClassImport: string,
+) {
 	const statements: ts.Statement[] = [];
 
 	const vitestImportStatement = ts.factory.createImportDeclaration(
@@ -59,7 +61,7 @@ export async function createTestSourceFile(filePath: string) {
 				),
 			]),
 		),
-		identifier.schemaClassImport,
+		ts.factory.createStringLiteral(schemaClassImport),
 	);
 
 	statements.push(schemaClassImportStatement);

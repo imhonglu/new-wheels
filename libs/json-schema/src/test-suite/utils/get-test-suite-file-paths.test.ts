@@ -26,11 +26,17 @@ vi.mock("node:fs/promises", () => ({
 	]),
 }));
 
-test("getTestSuiteFilePaths", async () => {
+test("should return all json files in the test suite", async () => {
 	const paths = await getTestSuiteFilePaths("/test/path");
 
 	expect(paths).toEqual([
 		"/test/path/test1.json",
 		"/test/path/subdir/test4.json",
 	]);
+});
+
+test("should return all json files in the test suite excluding the given files", async () => {
+	const paths = await getTestSuiteFilePaths("/test/path", ["test1.json"]);
+
+	expect(paths).toEqual(["/test/path/subdir/test4.json"]);
 });
