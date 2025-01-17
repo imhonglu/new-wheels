@@ -12,11 +12,13 @@ jobs:
           - ubuntu-latest
           - windows-latest
 
-    name: ${{matrix.platform}} / Node.js ${{ matrix.node-version }}
-    runs-on: ${{matrix.platform}}
+    name: ${{ matrix.platform }} / Node.js ${{ matrix.node-version }}
+    runs-on: ${{ matrix.platform }}
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.base_ref }}
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
@@ -36,5 +38,5 @@ jobs:
         timeout-minutes: 1
 
       - name: Run tests
-        run: pnpm vitest related --run $(git diff origin/main origin/${GITHUB_HEAD_REF} --name-only)
+        run: pnpm vitest related --run $(git diff origin/${GITHUB_BASE_REF} --name-only)
         timeout-minutes: 60
