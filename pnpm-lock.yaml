@@ -78,96 +78,96 @@ importers:
   libs/format:
     dependencies:
       '@imhonglu/pattern-builder':
-        specifier: workspace:*
-        version: link:../pattern-builder
+        specifier: ^1.0.1
+        version: 1.0.1
       '@imhonglu/toolkit':
-        specifier: workspace:*
-        version: link:../toolkit
+        specifier: ^1.0.1
+        version: 1.0.1
     devDependencies:
       '@imhonglu/build-tools':
-        specifier: workspace:*
-        version: link:../../tools/build-tools
+        specifier: ^1.0.2
+        version: 1.0.2(esbuild@0.24.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.7.3)(vitest@3.0.1(@types/node@22.10.7)(jiti@2.4.2)(yaml@2.7.0))
       '@imhonglu/configs':
-        specifier: workspace:*
-        version: link:../../tools/configs
+        specifier: ^1.0.3
+        version: 1.0.3(jest-extended@4.0.2)(vitest@3.0.1(@types/node@22.10.7)(jiti@2.4.2)(yaml@2.7.0))
 
   libs/json-schema:
     dependencies:
       '@imhonglu/format':
-        specifier: workspace:*
-        version: link:../format
+        specifier: ^1.0.3
+        version: 1.0.3
       '@imhonglu/toolkit':
-        specifier: workspace:*
-        version: link:../toolkit
+        specifier: ^1.0.1
+        version: 1.0.1
       '@imhonglu/type-guard':
-        specifier: workspace:*
-        version: link:../type-guard
+        specifier: ^1.0.0
+        version: 1.0.0
       '@imhonglu/type-object':
-        specifier: workspace:*
-        version: link:../type-object
+        specifier: ^1.0.0
+        version: 1.0.0
     devDependencies:
       '@imhonglu/build-tools':
-        specifier: workspace:*
-        version: link:../../tools/build-tools
+        specifier: ^1.0.2
+        version: 1.0.2(esbuild@0.24.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.7.3)(vitest@3.0.1(@types/node@22.10.7)(jiti@2.4.2)(yaml@2.7.0))
       '@imhonglu/configs':
-        specifier: workspace:*
-        version: link:../../tools/configs
+        specifier: ^1.0.3
+        version: 1.0.3(jest-extended@4.0.2)(vitest@3.0.1(@types/node@22.10.7)(jiti@2.4.2)(yaml@2.7.0))
 
   libs/pattern-builder:
     devDependencies:
       '@imhonglu/build-tools':
-        specifier: workspace:*
-        version: link:../../tools/build-tools
+        specifier: ^1.0.2
+        version: 1.0.2(esbuild@0.24.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.7.3)(vitest@3.0.1(@types/node@22.10.7)(jiti@2.4.2)(yaml@2.7.0))
       '@imhonglu/configs':
-        specifier: workspace:*
-        version: link:../../tools/configs
+        specifier: ^1.0.3
+        version: 1.0.3(jest-extended@4.0.2)(vitest@3.0.1(@types/node@22.10.7)(jiti@2.4.2)(yaml@2.7.0))
 
   libs/toolkit:
     dependencies:
       '@imhonglu/type-guard':
-        specifier: workspace:*
-        version: link:../type-guard
+        specifier: ^1.0.0
+        version: 1.0.0
       '@imhonglu/type-object':
-        specifier: workspace:*
-        version: link:../type-object
+        specifier: ^1.0.0
+        version: 1.0.0
     devDependencies:
       '@imhonglu/build-tools':
-        specifier: workspace:*
-        version: link:../../tools/build-tools
+        specifier: ^1.0.2
+        version: 1.0.2(esbuild@0.24.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.7.3)(vitest@3.0.1(@types/node@22.10.7)(jiti@2.4.2)(yaml@2.7.0))
       '@imhonglu/configs':
-        specifier: workspace:*
-        version: link:../../tools/configs
+        specifier: ^1.0.3
+        version: 1.0.3(jest-extended@4.0.2)(vitest@3.0.1(@types/node@22.10.7)(jiti@2.4.2)(yaml@2.7.0))
 
   libs/type-guard:
     devDependencies:
       '@imhonglu/build-tools':
-        specifier: workspace:*
-        version: link:../../tools/build-tools
+        specifier: ^1.0.2
+        version: 1.0.2(esbuild@0.24.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.7.3)(vitest@3.0.1(@types/node@22.10.7)(jiti@2.4.2)(yaml@2.7.0))
       '@imhonglu/configs':
-        specifier: workspace:*
-        version: link:../../tools/configs
+        specifier: ^1.0.3
+        version: 1.0.3(jest-extended@4.0.2)(vitest@3.0.1(@types/node@22.10.7)(jiti@2.4.2)(yaml@2.7.0))
 
   libs/type-object:
     dependencies:
       '@imhonglu/type-guard':
-        specifier: workspace:*
-        version: link:../type-guard
+        specifier: ^1.0.0
+        version: 1.0.0
     devDependencies:
       '@imhonglu/build-tools':
-        specifier: workspace:*
-        version: link:../../tools/build-tools
+        specifier: ^1.0.2
+        version: 1.0.2(esbuild@0.24.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.7.3)(vitest@3.0.1(@types/node@22.10.7)(jiti@2.4.2)(yaml@2.7.0))
       '@imhonglu/configs':
-        specifier: workspace:*
-        version: link:../../tools/configs
+        specifier: ^1.0.3
+        version: 1.0.3(jest-extended@4.0.2)(vitest@3.0.1(@types/node@22.10.7)(jiti@2.4.2)(yaml@2.7.0))
 
   tools/build-tools:
     dependencies:
       '@imhonglu/configs':
-        specifier: workspace:*
-        version: link:../configs
+        specifier: ^1.0.3
+        version: 1.0.3(jest-extended@4.0.2)(vitest@3.0.1(@types/node@22.10.7)(jiti@2.4.2)(yaml@2.7.0))
       '@imhonglu/toolkit':
-        specifier: workspace:*
-        version: link:../../libs/toolkit
+        specifier: ^1.0.1
+        version: 1.0.1
       esbuild:
         specifier: 'catalog:'
         version: 0.24.2
@@ -188,8 +188,8 @@ importers:
         version: 3.0.1(@types/node@22.10.7)(jiti@2.4.2)(yaml@2.7.0)
     devDependencies:
       '@imhonglu/build-tools':
-        specifier: workspace:*
-        version: link:../build-tools
+        specifier: ^1.0.2
+        version: 1.0.2(esbuild@0.24.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.7.3)(vitest@3.0.1(@types/node@22.10.7)(jiti@2.4.2)(yaml@2.7.0))
 
 packages:
 
@@ -775,6 +775,35 @@ packages:
   '@faker-js/faker@9.4.0':
     resolution: {integrity: sha512-85+k0AxaZSTowL0gXp8zYWDIrWclTbRPg/pm/V0dSFZ6W6D4lhcG3uuZl4zLsEKfEvs69xDbLN2cHQudwp95JA==}
     engines: {node: '>=18.0.0', npm: '>=9.0.0'}
+
+  '@imhonglu/build-tools@1.0.2':
+    resolution: {integrity: sha512-nbYUvneXcQXMCiZry405NcvYg5MwMHi5uWCKWBCDZX3s7tDZwW1rYjAfebGCVG3maT1bPVwK8MP1dpd45v1w6Q==}
+    hasBin: true
+    peerDependencies:
+      esbuild: ^0.24.2
+      tslib: ^2.8.1
+      typescript: ^5.7.2
+
+  '@imhonglu/configs@1.0.3':
+    resolution: {integrity: sha512-4VlHP2Hnd7QpCZly+zEwzRAxsRi9GZu2VgCzYnIyscjCmFn76SkCi3wg2F65zF+Cac6fvjzoiuygHBPNNgpMHw==}
+    peerDependencies:
+      jest-extended: ^4.0.2
+      vitest: ^2.1.8
+
+  '@imhonglu/format@1.0.3':
+    resolution: {integrity: sha512-rxQYI0YkeGLZzNLNe+bAQHYoxELZ4beYTefsS2DxMprIOnVpRvSL9NnhMqf2zBewu6gzYTMqWkb/N+ruDG8WWA==}
+
+  '@imhonglu/pattern-builder@1.0.1':
+    resolution: {integrity: sha512-OCZzT3TCcsO9LgpVLNKhBpZvsTZGrPLXBGfoGvzHFhe6ZnEcYm5fcPBbBha+JTkRGq/MikUR6oGQXbuYZxh+Rg==}
+
+  '@imhonglu/toolkit@1.0.1':
+    resolution: {integrity: sha512-bMyRyunGgUG8pKzuUk/RjMfqciRxuQXsYMXpqNPk1/v4bkzp9/dw7GVvLBsjoG5TSeqnAEK8ZKMiYZCts1PRgw==}
+
+  '@imhonglu/type-guard@1.0.0':
+    resolution: {integrity: sha512-qd5XkQTeAMZAetkUddo6j9fQ4O0/2ui/cyZyP6vxklX+Z0kzpmty8iK3yewk1hM0Y+VOkOaDhDzqKdM2D0TS4w==}
+
+  '@imhonglu/type-object@1.0.0':
+    resolution: {integrity: sha512-aHSol8WEwYHFRWf5sdvzO7d0wcEKr5updVsuosXvimbKWKIVlHdNx8/YlqpJI6ZQ+KneNUDBzyLjhbvy9K69QQ==}
 
   '@isaacs/cliui@8.0.2':
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
@@ -2772,6 +2801,40 @@ snapshots:
     optional: true
 
   '@faker-js/faker@9.4.0': {}
+
+  '@imhonglu/build-tools@1.0.2(esbuild@0.24.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.7.3)(vitest@3.0.1(@types/node@22.10.7)(jiti@2.4.2)(yaml@2.7.0))':
+    dependencies:
+      '@imhonglu/configs': 1.0.3(jest-extended@4.0.2)(vitest@3.0.1(@types/node@22.10.7)(jiti@2.4.2)(yaml@2.7.0))
+      '@imhonglu/toolkit': 1.0.1
+      esbuild: 0.24.2
+      tslib: 2.8.1
+      typescript: 5.7.3
+    transitivePeerDependencies:
+      - jest-extended
+      - vitest
+
+  '@imhonglu/configs@1.0.3(jest-extended@4.0.2)(vitest@3.0.1(@types/node@22.10.7)(jiti@2.4.2)(yaml@2.7.0))':
+    dependencies:
+      jest-extended: 4.0.2
+      vitest: 3.0.1(@types/node@22.10.7)(jiti@2.4.2)(yaml@2.7.0)
+
+  '@imhonglu/format@1.0.3':
+    dependencies:
+      '@imhonglu/pattern-builder': 1.0.1
+      '@imhonglu/toolkit': 1.0.1
+
+  '@imhonglu/pattern-builder@1.0.1': {}
+
+  '@imhonglu/toolkit@1.0.1':
+    dependencies:
+      '@imhonglu/type-guard': 1.0.0
+      '@imhonglu/type-object': 1.0.0
+
+  '@imhonglu/type-guard@1.0.0': {}
+
+  '@imhonglu/type-object@1.0.0':
+    dependencies:
+      '@imhonglu/type-guard': 1.0.0
 
   '@isaacs/cliui@8.0.2':
     dependencies:
