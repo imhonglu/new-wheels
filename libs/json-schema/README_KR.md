@@ -10,28 +10,48 @@
 
 ![demo-1](./assets/demo.gif)
 
+## Table of Contents
+
+- [Features](#features)
+- [Implementation Status](#implementation-status)
+- [Installation](#installation)
+- [Usage](#usage)
+- [API Reference](#api-reference)
+
 ## Features
 
 - [x] 타입 안전성이 보장된 스키마 정의와 중첩 지원
 - [ ] 스키마 유효성 검사 메시지 및 오류 처리 사용자 정의
 
-## Specification
+## Implementation Status
 
-- [ ] [Core](https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-01#name-the-json-schema-core-vocabu)
-  - [x] defs
-  - [x] ref
-- [ ] [Basic Meta Data](https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-validation-01#name-a-vocabulary-for-basic-meta)
-- [x] [StructuralValidation](https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-validation-01#name-a-vocabulary-for-structural)
-- [x] [Applying Sub-schema](https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-01#name-keywords-for-applying-subschema)
-- [x] [Format](https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-validation-01#name-vocabularies-for-semantic-c)
-  - [ ] ~~relative-json-pointer~~ (draft 사양으로 구현 계획 없습니다.)
-- [ ] [String Encoded Data](https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-validation-01#name-a-vocabulary-for-the-conten)
+현재 총 1,747개의 테스트 케이스 중 1,581개가 통과되었습니다 (89.3%)
 
-## Table of Contents
+다음 항목들은 제외되었습니다:
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [API Reference](#api-reference)
+- `defs`: 스키마 정의 관련 테스트로, 유효성 검사와 무관하여 제외
+- `format`: optional 카테고리에 속하는 기능으로 제외
+
+### Test Suite Status
+
+| 이름 | 진행률 (통과/전체) | 상태 |
+|---------|-----------------|------|
+| not | 89% (8/9) | 🟢 완료 |
+| ref | 83% (64/77) | 🟡 진행중 |
+| optional/format | 76% (16/21) | 🟡 진행중 |
+| optional/ecmascript-regex | 80% (16/20) | 🟡 진행중 |
+| unevaluated-properties | 73% (89/122) | 🟡 진행중 |
+| unevaluated-items | 70% (46/66) | 🟡 진행중 |
+| dynamicRef | 20% (4/20) | 🔴 시작 |
+| optional/dependencies-compatibility | 14% (1/7) | 🔴 시작 |
+| anchor | 0% (0/4) | ⚪ 미시작 |
+| optional/anchor | 0% (0/1) | ⚪ 미시작 |
+| optional/dynamicRef | 0% (0/1) | ⚪ 미시작 |
+| optional/float-overflow | 0% (0/1) | ⚪ 미시작 |
+| optional/non-bmp-regex | 0% (0/2) | ⚪ 미시작 |
+| optional/ref-of-unknown-keyword | 0% (0/3) | ⚪ 미시작 |
+| ref-remote | 0% (0/15) | ⚪ 미시작 |
+| vocabularies | 0% (0/5) | ⚪ 미시작 |
 
 ## Installation
 

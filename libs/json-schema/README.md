@@ -6,32 +6,52 @@
 
 - A library that complies with JSON Schema 2020-12-draft specification
 - Validated based on [JSON-Schema-test-suite](https://github.com/json-schema-org/JSON-Schema-Test-Suite)
-- Keywords types are automatically inferred based on schema definitions
+- Types for available keywords are automatically inferred based on schema definitions
 
 ![demo-1](./assets/demo.gif)
+
+## Table of Contents
+
+- [Features](#features)
+- [Implementation Status](#implementation-status)
+- [Installation](#installation)
+- [Usage](#usage)
+- [API Reference](#api-reference)
 
 ## Features
 
 - [x] Type-safe schema definitions with nesting support
 - [ ] Customizable schema validation messages and error handling
 
-## Specification
+## Implementation Status
 
-- [ ] [Core](https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-01#name-the-json-schema-core-vocabu)
-  - [x] defs
-  - [x] ref
-- [ ] [Basic Meta Data](https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-validation-01#name-a-vocabulary-for-basic-meta)
-- [x] [StructuralValidation](https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-validation-01#name-a-vocabulary-for-structural)
-- [x] [Applying Sub-schema](https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-01#name-keywords-for-applying-subschema)
-- [x] [Format](https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-validation-01#name-vocabularies-for-semantic-c)
-  - [ ] ~~relative-json-pointer~~ (No plans to implement as draft specification)
-- [ ] [String Encoded Data](https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-validation-01#name-a-vocabulary-for-the-conten)
+Currently, 1,581 out of 1,747 test cases have passed (89.3%)
 
-## Table of Contents
+The following items have been excluded:
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [API Reference](#api-reference)
+- `defs`: Schema definition tests, excluded as they are not related to validation
+- `format`: Excluded as it belongs to the optional category
+
+### Test Suite Status
+
+| Name | Progress (Passed/Total) | Status |
+|---------|-----------------|------|
+| not | 89% (8/9) | 🟢 Complete |
+| ref | 83% (64/77) | 🟡 In Progress |
+| optional/format | 76% (16/21) | 🟡 In Progress |
+| optional/ecmascript-regex | 80% (16/20) | 🟡 In Progress |
+| unevaluated-properties | 73% (89/122) | 🟡 In Progress |
+| unevaluated-items | 70% (46/66) | 🟡 In Progress |
+| dynamicRef | 20% (4/20) | 🔴 Started |
+| optional/dependencies-compatibility | 14% (1/7) | 🔴 Started |
+| anchor | 0% (0/4) | ⚪ Not Started |
+| optional/anchor | 0% (0/1) | ⚪ Not Started |
+| optional/dynamicRef | 0% (0/1) | ⚪ Not Started |
+| optional/float-overflow | 0% (0/1) | ⚪ Not Started |
+| optional/non-bmp-regex | 0% (0/2) | ⚪ Not Started |
+| optional/ref-of-unknown-keyword | 0% (0/3) | ⚪ Not Started |
+| ref-remote | 0% (0/15) | ⚪ Not Started |
+| vocabularies | 0% (0/5) | ⚪ Not Started |
 
 ## Installation
 
