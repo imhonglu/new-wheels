@@ -36,6 +36,6 @@ jobs:
         timeout-minutes: 1
 
       - name: Run tests
-        shell: bash
-        run: git fetch origin ${GITHUB_BASE_REF} && pnpm vitest related --run $(git diff origin/${GITHUB_BASE_REF} --name-only)
+        # TODO: run only related tests
+        run: pnpm vitest --run
         timeout-minutes: 60
