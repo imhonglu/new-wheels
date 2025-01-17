@@ -32,7 +32,8 @@
   "scripts": {
     "test": "vitest",
     "build": "tsc -b",
-    "postbuild": "esm-to-cjs"
+    "postbuild": "esm-to-cjs",
+    "prepublishOnly": "pnpm run build"
   },
   "keywords": [],
   "author": "imhonglu <anonymouser.unknown@gmail.com>",

@@ -24,7 +24,8 @@
     "test": "vitest",
     "build": "tsc -p tsconfig.build.json",
     "postbuild": "esm-to-cjs",
-    "generate-docs": "pnpm api-extractor run && pnpm api-documenter markdown -i ./temp -o ./docs"
+    "generate-docs": "pnpm api-extractor run && pnpm api-documenter markdown -i ./temp -o ./docs",
+    "prepublishOnly": "pnpm run build"
   },
   "keywords": [
     "typescript",

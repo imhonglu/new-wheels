@@ -27,7 +27,8 @@
     "test": "vitest",
     "build": "tsc -p tsconfig.build.json",
     "postbuild": "pnpm esm-to-cjs",
-    "esm-to-cjs": "node dist/esm-to-cjs.cli.js"
+    "esm-to-cjs": "node dist/esm-to-cjs.cli.js",
+    "prepublishOnly": "pnpm run build"
   },
   "keywords": [],
   "author": "imhonglu <anonymouser.unknown@gmail.com>",
