@@ -1,8 +1,9 @@
-name: Changesets
+name: Release
 on:
   push:
     # branches:
     #   - main
+  workflow_dispatch:
 
 env:
   CI: true
@@ -31,7 +32,15 @@ jobs:
         timeout-minutes: 1
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm -r install
+        timeout-minutes: 1
+
+      - name: Build
+        run: pnpm -r build
+        timeout-minutes: 1
+
+      - name: Generate Documentation
+        run: pnpm -r generate-docs
         timeout-minutes: 1
 
       - name: Setup npmrc
@@ -48,6 +57,6 @@ jobs:
           version: pnpm changeset version
           commit: "chore: update versions"
           title: "chore: update versions"
-          publish: pnpm -r publish --dry-run
+          publish: pnpm -r publish --dry-run --no-git-checks
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
