@@ -19,13 +19,14 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: setup node.js
-        uses: actions/setup-node@v4
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
         with:
-          node-version: 22
+          version: latest
 
-      - name: install pnpm
-        run: npm i pnpm@latest -g
+      - name: Setup Node
+        run: pnpm env use -g 22
+        timeout-minutes: 1
 
       - name: Setup npmrc
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
@@ -35,6 +36,7 @@ jobs:
 
       - name: install dependencies
         run: pnpm install
+        timeout-minutes: 1
 
       - name: create and publish versions
         uses: changesets/action@v1
