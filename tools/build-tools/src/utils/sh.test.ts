@@ -3,7 +3,7 @@ import { isExecException, safeSh, sh } from "./sh.js";
 
 test("sh should execute command and return stdout", async () => {
   const result = await sh('echo "This is a test"');
-  expect(result).toBe("This is a test\n");
+  expect(result.trim()).toBe("This is a test");
 });
 
 test("sh should handle errors correctly", async () => {
@@ -20,7 +20,7 @@ test("sh should handle errors correctly", async () => {
 test("safeSh should return result if no error", async () => {
   const result = await safeSh('echo "This is a test"');
 
-  expect(result.ok && result.data).toBe("This is a test\n");
+  expect(result.ok && result.data.trim()).toBe("This is a test");
 });
 
 test("safeSh should return error if error", async () => {

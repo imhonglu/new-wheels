@@ -20,7 +20,7 @@ test("should display the progress of a task", async () => {
     sh('sleep 0.1 && echo "This is a test"'),
   );
 
-  expect(result).toBe("This is a test\n");
+  expect(result.trim()).toBe("This is a test");
   expect(groupMock).toHaveBeenCalledOnce();
   expect(groupMock).toHaveBeenCalledWith(label);
   expect(infoMock).toHaveBeenLastCalledWith(
