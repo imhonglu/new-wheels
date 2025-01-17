@@ -26,14 +26,6 @@ jobs:
         run: pnpm -r install
         timeout-minutes: 1
 
-      - name: Build
-        run: pnpm -r build
-        timeout-minutes: 1
-
-      - name: Generate Documentation
-        run: pnpm -r generate-docs
-        timeout-minutes: 1
-
       - name: Setup npmrc
         run: |
           cat << EOF > "$HOME/.npmrc"
