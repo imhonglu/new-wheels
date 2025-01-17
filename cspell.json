@@ -19,7 +19,8 @@
     "abempty",
     "noscheme",
     "hexdig",
-    "vitest"
+    "vitest",
+    "npmjs"
   ],
   "dictionaries": ["typescript", "node"],
   "ignorePaths": ["pnpm-*.yaml", "dist/", "docs/", "tsconfig.base.json"],
