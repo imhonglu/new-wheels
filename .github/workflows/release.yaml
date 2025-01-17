@@ -1,8 +1,8 @@
 name: Release
 on:
   push:
-    # branches:
-    #   - main
+    branches:
+      - main
   workflow_dispatch:
 
 env:
@@ -57,6 +57,6 @@ jobs:
           version: pnpm changeset version
           commit: "chore: update versions"
           title: "chore: update versions"
-          publish: pnpm -r publish --dry-run --no-git-checks
+          publish: pnpm -r publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
