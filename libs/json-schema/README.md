@@ -6,7 +6,7 @@
 
 - A library that complies with JSON Schema 2020-12-draft specification
 - Validated based on [JSON-Schema-test-suite](https://github.com/json-schema-org/JSON-Schema-Test-Suite)
-- Types for available keywords are automatically inferred based on schema definitions
+- Supports **static type inference** for schema definitions
 
 ![demo-1](./assets/demo.gif)
 

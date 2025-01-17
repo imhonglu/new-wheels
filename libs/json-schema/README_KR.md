@@ -6,7 +6,7 @@
 
 - JSON Schema 2020-12-draft 사양을 준수하는 라이브러리입니다.
 - [JSON-Schema-test-suite](https://github.com/json-schema-org/JSON-Schema-Test-Suite)를 기반으로 검증되었습니다.
-- 스키마 정의에 따라 사용 가능한 키워드의 타입이 자동으로 추론됩니다.
+- 스키마 정의에 기반한 **정적 유형 추론**을 지원합니다.
 
 ![demo-1](./assets/demo.gif)
 
