@@ -11,7 +11,6 @@ env:
 
 jobs:
   release:
-    timeout-minutes: 15
     runs-on: ubuntu-latest
 
     steps:
@@ -60,3 +59,4 @@ jobs:
           publish: pnpm -r publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        timeout-minutes: 3
