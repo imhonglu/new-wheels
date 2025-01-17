@@ -23,7 +23,8 @@
   "scripts": {
     "test": "vitest",
     "build": "tsc -p tsconfig.build.json",
-    "postbuild": "pnpm esm-to-cjs && pnpm api-extractor run && pnpm api-documenter markdown -i ./temp -o ./docs"
+    "postbuild": "pnpm esm-to-cjs",
+    "generate-docs": "pnpm api-extractor run && pnpm api-documenter markdown -i ./temp -o ./docs"
   },
   "keywords": [
     "format",
