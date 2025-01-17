@@ -32,7 +32,7 @@
 - `defs`: 스키마 정의 관련 테스트로, 유효성 검사와 무관하여 제외
 - `format`: optional 카테고리에 속하는 기능으로 제외
 
-### Test Suite Status
+### Remaining Test Suite Status
 
 | 이름 | 진행률 (통과/전체) | 상태 |
 |---------|-----------------|------|

@@ -32,7 +32,7 @@ The following items have been excluded:
 - `defs`: Schema definition tests, excluded as they are not related to validation
 - `format`: Excluded as it belongs to the optional category
 
-### Test Suite Status
+### Remaining Test Suite Status
 
 | Name | Progress (Passed/Total) | Status |
 |---------|-----------------|------|
