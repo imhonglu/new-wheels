@@ -9,7 +9,7 @@ Constructs a new instance of the `Schema` class
 **Signature:**
 
 ```typescript
-constructor(schema: Exclude<SchemaDefinition.InferRequiredProperty<T>, Schema>, parent?: Schema | undefined);
+constructor(schema: Exclude<SchemaDefinition.InferRequiredProperty<T>, Schema>, parent?: Schema | undefined, path?: string);
 ```
 
 ## Parameters
@@ -52,6 +52,22 @@ parent
 </td><td>
 
 [Schema](./json-schema.schema.md) \| undefined
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+path
+
+
+</td><td>
+
+string
 
 
 </td><td>

@@ -1,0 +1,42 @@
+name: CI
+
+on: [pull_request]
+
+jobs:
+  ci:
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [18, 20, 22]
+        platform:
+          - ubuntu-latest
+
+    name: ${{ matrix.platform }} / Node.js ${{ matrix.node-version }}
+    runs-on: ${{ matrix.platform }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: latest
+
+      - name: Setup Node
+        run: pnpm env use -g ${{ matrix.node-version }}
+        timeout-minutes: 1
+
+      - name: Install dependencies
+        run: pnpm install
+        timeout-minutes: 1
+
+      - name: Run lint
+        run: |
+          pnpm cspell --no-summary --no-progress .
+          pnpm biome ci .
+        timeout-minutes: 1
+
+      - name: Run tests
+        # TODO: run only related tests
+        run: pnpm vitest --run --exclude "src/generated-tests/**"
+        timeout-minutes: 1

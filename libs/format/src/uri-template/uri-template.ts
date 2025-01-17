@@ -45,127 +45,127 @@ import { Varspec } from "./varspec.js";
  */
 @Serializable
 export class URITemplate {
-	public readonly text: string;
-	public readonly expressions: Set<Expression>;
+  public readonly text: string;
+  public readonly expressions: Set<Expression>;
 
-	public constructor({ text, expressions }: URITemplate) {
-		this.text = text;
-		this.expressions = expressions;
-	}
+  public constructor({ text, expressions }: URITemplate) {
+    this.text = text;
+    this.expressions = expressions;
+  }
 
-	public static safeParse: SafeExecutor<typeof URITemplate.parse>;
+  public static safeParse: SafeExecutor<typeof URITemplate.parse>;
 
-	/**
-	 * Converts a URITemplate string to a {@link URITemplate} object.
-	 *
-	 * @param text - A valid URITemplate string. e.g. "https://api.example.com/users/\{userId\}/posts/\{postId\}"
-	 * @throws - {@link InvalidURITemplateError}
-	 * @throws - {@link InvalidVarspecError}
-	 */
-	public static parse(text: string): URITemplate {
-		const expressions = new Set<Expression>();
+  /**
+   * Converts a URITemplate string to a {@link URITemplate} object.
+   *
+   * @param text - A valid URITemplate string. e.g. "https://api.example.com/users/\{userId\}/posts/\{postId\}"
+   * @throws - {@link InvalidURITemplateError}
+   * @throws - {@link InvalidVarspecError}
+   */
+  public static parse(text: string): URITemplate {
+    const expressions = new Set<Expression>();
 
-		let startIndex = -1;
-		let variableList = "";
+    let startIndex = -1;
+    let variableList = "";
 
-		for (let i = 0; i < text.length; i++) {
-			const char = text[i];
+    for (let i = 0; i < text.length; i++) {
+      const char = text[i];
 
-			if (char === "{") {
-				startIndex = i;
-				continue;
-			}
+      if (char === "{") {
+        startIndex = i;
+        continue;
+      }
 
-			if (char !== "}") {
-				if (startIndex !== -1) {
-					variableList += char;
-				}
-				continue;
-			}
+      if (char !== "}") {
+        if (startIndex !== -1) {
+          variableList += char;
+        }
+        continue;
+      }
 
-			if (startIndex === -1 || variableList.length === 0) {
-				throw new InvalidURITemplateError(text);
-			}
+      if (startIndex === -1 || variableList.length === 0) {
+        throw new InvalidURITemplateError(text);
+      }
 
-			let operator: Operator | undefined;
+      let operator: Operator | undefined;
 
-			if (isOperator(variableList[0])) {
-				operator = variableList[0];
-				variableList = variableList.slice(1);
-			}
+      if (isOperator(variableList[0])) {
+        operator = variableList[0];
+        variableList = variableList.slice(1);
+      }
 
-			expressions.add({
-				operator,
-				variables: variableList
-					.split(VARIABLE_SEPARATOR)
-					.reduce((acc, varSpec) => {
-						const spec = Varspec.parse(varSpec);
+      expressions.add({
+        operator,
+        variables: variableList
+          .split(VARIABLE_SEPARATOR)
+          .reduce((acc, varSpec) => {
+            const spec = Varspec.parse(varSpec);
 
-						if (acc.has(spec.name)) {
-							throw new InvalidURITemplateError(text);
-						}
+            if (acc.has(spec.name)) {
+              throw new InvalidURITemplateError(text);
+            }
 
-						return acc.set(spec.name, spec);
-					}, new Map<string, Varspec>()),
-				index: [startIndex, i + 1],
-			});
+            return acc.set(spec.name, spec);
+          }, new Map<string, Varspec>()),
+        index: [startIndex, i + 1],
+      });
 
-			startIndex = -1;
-			variableList = "";
-		}
+      startIndex = -1;
+      variableList = "";
+    }
 
-		if (variableList.length > 0) {
-			throw new InvalidURITemplateError(text);
-		}
+    if (variableList.length > 0) {
+      throw new InvalidURITemplateError(text);
+    }
 
-		return new URITemplate({
-			text,
-			expressions: expressions,
-		});
-	}
+    return new URITemplate({
+      text,
+      expressions: expressions,
+    });
+  }
 
-	/**
-	 * Expands a {@link URITemplate} with provided values
-	 *
-	 * @param template - {@link URITemplate} object or string
-	 * @param values - Values to substitute into the template
-	 * @example
-	 * ```ts
-	 * URITemplate.expand("/users/\{id\}", \{ id: "123" \})
-	 * // => "/users/123"
-	 *
-	 * URITemplate.expand("/search\{?q,page\}", \{ q: "test", page: "1" \})
-	 * // => "/search?q=test&page=1"
-	 * ```
-	 */
-	public static expand(
-		template: URITemplate | string,
-		values: Record<string, Variable>,
-	): string {
-		const parsed =
-			typeof template === "string" ? URITemplate.parse(template) : template;
+  /**
+   * Expands a {@link URITemplate} with provided values
+   *
+   * @param template - {@link URITemplate} object or string
+   * @param values - Values to substitute into the template
+   * @example
+   * ```ts
+   * URITemplate.expand("/users/\{id\}", \{ id: "123" \})
+   * // => "/users/123"
+   *
+   * URITemplate.expand("/search\{?q,page\}", \{ q: "test", page: "1" \})
+   * // => "/search?q=test&page=1"
+   * ```
+   */
+  public static expand(
+    template: URITemplate | string,
+    values: Record<string, Variable>,
+  ): string {
+    const parsed =
+      typeof template === "string" ? URITemplate.parse(template) : template;
 
-		let result = parsed.text;
-		let offset = 0;
+    let result = parsed.text;
+    let offset = 0;
 
-		for (const expression of parsed.expressions) {
-			const start = expression.index[0] + offset;
-			const end = expression.index[1] + offset;
-			const expanded = expandExpression(expression, values);
+    for (const expression of parsed.expressions) {
+      const start = expression.index[0] + offset;
+      const end = expression.index[1] + offset;
+      const expanded = expandExpression(expression, values);
 
-			result = replaceRange(result, [start, end], expanded);
-			offset += expanded.length - (end - start);
-		}
+      result = replaceRange(result, [start, end], expanded);
+      offset += expanded.length - (end - start);
+    }
 
-		return result;
-	}
+    return result;
+  }
 
-	/**
-	 * Converts an {@link URITemplate} object to a URITemplate string.
-	 *
-	 * @param value - An {@link URITemplate} object.
-	 */
-	public static stringify(value: URITemplate): string {
-		return value.text;
-	}
+  /**
+   * Converts an {@link URITemplate} object to a URITemplate string.
+   *
+   * @param value - An {@link URITemplate} object.
+   */
+  public static stringify(value: URITemplate): string {
+    return value.text;
+  }
 }

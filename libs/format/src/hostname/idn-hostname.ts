@@ -23,91 +23,91 @@ import { isValidLabel } from "./utils/is-valid-label.js";
  */
 @Serializable
 export class IdnHostname {
-	public readonly unicode: {
-		labels: string[];
-		tld?: string;
-	};
-	public readonly ascii: {
-		labels: string[];
-		tld?: string;
-	};
+  public readonly unicode: {
+    labels: string[];
+    tld?: string;
+  };
+  public readonly ascii: {
+    labels: string[];
+    tld?: string;
+  };
 
-	constructor({ unicode, ascii }: IdnHostname) {
-		this.unicode = unicode;
-		this.ascii = ascii;
-	}
+  constructor({ unicode, ascii }: IdnHostname) {
+    this.unicode = unicode;
+    this.ascii = ascii;
+  }
 
-	public static safeParse: SafeExecutor<typeof IdnHostname.parse>;
+  public static safeParse: SafeExecutor<typeof IdnHostname.parse>;
 
-	/**
-	 * Converts a IdnHostname string to a {@link IdnHostname} object.
-	 *
-	 * @param text - A valid IdnHostname string. e.g. "한국.com".
-	 * @throws - {@link InvalidIdnHostnameError}
-	 */
-	public static parse(text: string): IdnHostname {
-		if (!hasValidHostnameLength(text)) {
-			throw new InvalidIdnHostnameError(text);
-		}
+  /**
+   * Converts a IdnHostname string to a {@link IdnHostname} object.
+   *
+   * @param text - A valid IdnHostname string. e.g. "한국.com".
+   * @throws - {@link InvalidIdnHostnameError}
+   */
+  public static parse(text: string): IdnHostname {
+    if (!hasValidHostnameLength(text)) {
+      throw new InvalidIdnHostnameError(text);
+    }
 
-		const labels = text.split(".");
+    const labels = text.split(".");
 
-		const unicode = [];
-		const ascii = [];
+    const unicode = [];
+    const ascii = [];
 
-		for (const label of labels) {
-			if (!isValidIdnLabel(label)) {
-				throw new InvalidIdnHostnameError(text);
-			}
+    for (const label of labels) {
+      if (!isValidIdnLabel(label)) {
+        throw new InvalidIdnHostnameError(text);
+      }
 
-			const asciiLabel = punycode.toASCII(label);
+      const asciiLabel = punycode.toASCII(label);
 
-			if (!isValidLabel(asciiLabel)) {
-				throw new InvalidIdnHostnameError(text);
-			}
+      if (!isValidLabel(asciiLabel)) {
+        throw new InvalidIdnHostnameError(text);
+      }
 
-			unicode.push(punycode.toUnicode(label));
-			ascii.push(asciiLabel);
-		}
+      unicode.push(punycode.toUnicode(label));
+      ascii.push(asciiLabel);
+    }
 
-		const tld = labels.length > 1 ? labels[labels.length - 1] : undefined;
+    const tld = labels.length > 1 ? labels[labels.length - 1] : undefined;
 
-		return new IdnHostname({
-			unicode: {
-				labels: unicode,
-				tld: tld ? `.${punycode.toUnicode(tld)}` : undefined,
-			},
-			ascii: {
-				labels: ascii,
-				tld: tld ? `.${punycode.toASCII(tld)}` : undefined,
-			},
-		});
-	}
+    return new IdnHostname({
+      unicode: {
+        labels: unicode,
+        tld: tld ? `.${punycode.toUnicode(tld)}` : undefined,
+      },
+      ascii: {
+        labels: ascii,
+        tld: tld ? `.${punycode.toASCII(tld)}` : undefined,
+      },
+    });
+  }
 
-	/**
-	 * Converts an {@link IdnHostname} object to a Unicode IdnHostname string.
-	 *
-	 * @param idnHostname - An {@link IdnHostname} object.
-	 */
-	public static toUnicode({ unicode }: IdnHostname): string {
-		return unicode.labels.join(".");
-	}
+  /**
+   * Converts an {@link IdnHostname} object to a Unicode IdnHostname string.
+   *
+   * @param idnHostname - An {@link IdnHostname} object.
+   */
+  public static toUnicode({ unicode }: IdnHostname): string {
+    return unicode.labels.join(".");
+  }
 
-	/**
-	 * Converts an {@link IdnHostname} object to an ASCII IdnHostname string.
-	 *
-	 * @param idnHostname - An {@link IdnHostname} object.
-	 */
-	public static toAscii({ ascii }: IdnHostname): string {
-		return ascii.labels.join(".");
-	}
+  /**
+   * Converts an {@link IdnHostname} object to an ASCII IdnHostname string.
+   *
+   * @param idnHostname - An {@link IdnHostname} object.
+   */
+  public static toAscii({ ascii }: IdnHostname): string {
+    return ascii.labels.join(".");
+  }
 
-	/**
-	 * Converts an {@link IdnHostname} object to an IdnHostname string.
-	 *
-	 * @param value - An {@link IdnHostname} object.
-	 */
-	public static stringify(idnHostname: IdnHostname) {
-		return IdnHostname.toAscii(idnHostname);
-	}
+  /**
+   * Converts an {@link IdnHostname} object to an IdnHostname string.
+   *
+   * @param value - An {@link IdnHostname} object.
+   */
+  public static stringify(idnHostname: IdnHostname) {
+    return IdnHostname.toAscii(idnHostname);
+  }
 }

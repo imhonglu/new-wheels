@@ -1,47 +1,48 @@
 {
-	"name": "@imhonglu/format",
-	"version": "1.0.1",
-	"description": "String formatting library based on RFC specifications",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/imhonglu/new-wheels.git",
-		"directory": "libs/format"
-	},
-	"type": "module",
-	"main": "./dist/index.cjs",
-	"module": "./dist/index.js",
-	"typings": "./dist/index.d.ts",
-	"exports": {
-		".": {
-			"types": "./dist/index.d.ts",
-			"import": "./dist/index.js",
-			"require": "./dist/index.cjs",
-			"default": "./dist/index.js"
-		}
-	},
-	"files": ["dist"],
-	"scripts": {
-		"test": "vitest",
-		"build": "tsc -p tsconfig.build.json",
-		"postbuild": "pnpm esm-to-cjs && pnpm api-extractor run && pnpm api-documenter markdown -i ./temp -o ./docs"
-	},
-	"keywords": [
-		"format",
-		"date-time",
-		"ip-address",
-		"hostname",
-		"email",
-		"uri",
-		"uri-template"
-	],
-	"author": "imhonglu <anonymouser.unknown@gmail.com>",
-	"license": "MIT",
-	"devDependencies": {
-		"@imhonglu/build-tools": "^1.0.0",
-		"@imhonglu/configs": "^1.0.2"
-	},
-	"dependencies": {
-		"@imhonglu/pattern-builder": "^1.0.0",
-		"@imhonglu/toolkit": "^1.0.1"
-	}
+  "name": "@imhonglu/format",
+  "version": "1.0.3",
+  "description": "String formatting library based on RFC specifications",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imhonglu/new-wheels.git",
+    "directory": "libs/format"
+  },
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "test": "vitest",
+    "build": "tsc -p tsconfig.build.json",
+    "postbuild": "pnpm esm-to-cjs",
+    "generate-docs": "pnpm api-extractor run && pnpm api-documenter markdown -i ./temp -o ./docs"
+  },
+  "keywords": [
+    "format",
+    "date-time",
+    "ip-address",
+    "hostname",
+    "email",
+    "uri",
+    "uri-template"
+  ],
+  "author": "imhonglu <anonymouser.unknown@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@imhonglu/build-tools": "^1.0.2",
+    "@imhonglu/configs": "^1.0.3"
+  },
+  "dependencies": {
+    "@imhonglu/pattern-builder": "^1.0.1",
+    "@imhonglu/toolkit": "^1.0.1"
+  }
 }

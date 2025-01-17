@@ -47,43 +47,43 @@ import { URIReference } from "./uri-reference.js";
  */
 @Serializable
 export class URI extends URIReference {
-	public readonly scheme: Scheme;
+  public readonly scheme: Scheme;
 
-	public constructor(reference: URI) {
-		super(reference);
-		this.scheme = reference.scheme;
-	}
+  public constructor(reference: URI) {
+    super(reference);
+    this.scheme = reference.scheme;
+  }
 
-	public static safeParse: SafeExecutor<typeof URI.parse>;
+  public static safeParse: SafeExecutor<typeof URI.parse>;
 
-	/**
-	 * Converts a URI string to a {@link URI} object.
-	 *
-	 * @param text - A valid URI string. e.g. "https://example.com/path?query#fragment"
-	 * @throws
-	 * - {@link InvalidURIError}
-	 * - {@link InvalidSchemeError}
-	 * - {@link InvalidAuthorityError}
-	 * - {@link InvalidPathError}
-	 * - {@link InvalidQueryError}
-	 * - {@link InvalidFragmentError}
-	 */
-	public static parse(text: string, options?: URIParseOptions): URI {
-		const reference = URIReference.parse(text, options);
+  /**
+   * Converts a URI string to a {@link URI} object.
+   *
+   * @param text - A valid URI string. e.g. "https://example.com/path?query#fragment"
+   * @throws
+   * - {@link InvalidURIError}
+   * - {@link InvalidSchemeError}
+   * - {@link InvalidAuthorityError}
+   * - {@link InvalidPathError}
+   * - {@link InvalidQueryError}
+   * - {@link InvalidFragmentError}
+   */
+  public static parse(text: string, options?: URIParseOptions): URI {
+    const reference = URIReference.parse(text, options);
 
-		if (!reference.scheme) {
-			throw new InvalidURIError(text);
-		}
+    if (!reference.scheme) {
+      throw new InvalidURIError(text);
+    }
 
-		return new URI(reference as URI);
-	}
+    return new URI(reference as URI);
+  }
 
-	/**
-	 * Converts an {@link URI} object to a URI string.
-	 *
-	 * @param value - An {@link URI} object.
-	 */
-	public static stringify(value: URI) {
-		return URIReference.stringify(value);
-	}
+  /**
+   * Converts an {@link URI} object to a URI string.
+   *
+   * @param value - An {@link URI} object.
+   */
+  public static stringify(value: URI) {
+    return URIReference.stringify(value);
+  }
 }

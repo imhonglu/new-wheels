@@ -8,17 +8,17 @@ const atom = characterSet(alpha, digit, /[!#$%&'*+\-/=?^_`{|}~]/).oneOrMore();
 const dot = characterSet(".");
 
 const pattern = {
-	dotString: concat(atom, concat(dot, atom).nonCapturingGroup().zeroOrMore())
-		.anchor()
-		.toRegExp(),
+  dotString: concat(atom, concat(dot, atom).nonCapturingGroup().zeroOrMore())
+    .anchor()
+    .toRegExp(),
 
-	quotedString: concat(
-		'"',
-		characterSet(/[\x5c\x20-\x7E]/, /[\x20\x21\x23-\x5B\x5D-\x7E]/).oneOrMore(),
-		'"',
-	)
-		.anchor()
-		.toRegExp(),
+  quotedString: concat(
+    '"',
+    characterSet(/[\x5c\x20-\x7E]/, /[\x20\x21\x23-\x5B\x5D-\x7E]/).oneOrMore(),
+    '"',
+  )
+    .anchor()
+    .toRegExp(),
 };
 
 /**
@@ -39,50 +39,50 @@ const pattern = {
  */
 @Serializable
 export class LocalPart {
-	public readonly text: string;
-	public readonly type: "dotString" | "quotedString";
+  public readonly text: string;
+  public readonly type: "dotString" | "quotedString";
 
-	constructor({ text, type }: LocalPart) {
-		this.text = text;
-		this.type = type;
-	}
+  constructor({ text, type }: LocalPart) {
+    this.text = text;
+    this.type = type;
+  }
 
-	public static safeParse: SafeExecutor<typeof LocalPart.parse>;
+  public static safeParse: SafeExecutor<typeof LocalPart.parse>;
 
-	/**
-	 * Converts a LocalPart string to a {@link LocalPart} object.
-	 *
-	 * @param text - A valid LocalPart string. e.g. "john.doe".
-	 * @throws - {@link InvalidLocalPartError}
-	 */
-	public static parse(text: string): LocalPart {
-		if (!hasValidLocalPartLength(text)) {
-			throw new InvalidLocalPartError(text);
-		}
+  /**
+   * Converts a LocalPart string to a {@link LocalPart} object.
+   *
+   * @param text - A valid LocalPart string. e.g. "john.doe".
+   * @throws - {@link InvalidLocalPartError}
+   */
+  public static parse(text: string): LocalPart {
+    if (!hasValidLocalPartLength(text)) {
+      throw new InvalidLocalPartError(text);
+    }
 
-		if (pattern.quotedString.test(text)) {
-			return new LocalPart({
-				text,
-				type: "quotedString",
-			});
-		}
+    if (pattern.quotedString.test(text)) {
+      return new LocalPart({
+        text,
+        type: "quotedString",
+      });
+    }
 
-		if (!pattern.dotString.test(text)) {
-			throw new InvalidLocalPartError(text);
-		}
+    if (!pattern.dotString.test(text)) {
+      throw new InvalidLocalPartError(text);
+    }
 
-		return new LocalPart({
-			text,
-			type: "dotString",
-		});
-	}
+    return new LocalPart({
+      text,
+      type: "dotString",
+    });
+  }
 
-	/**
-	 * Converts an {@link LocalPart} object to a LocalPart string.
-	 *
-	 * @param value - An {@link LocalPart} object.
-	 */
-	public static stringify(value: LocalPart) {
-		return value.text;
-	}
+  /**
+   * Converts an {@link LocalPart} object to a LocalPart string.
+   *
+   * @param value - An {@link LocalPart} object.
+   */
+  public static stringify(value: LocalPart) {
+    return value.text;
+  }
 }

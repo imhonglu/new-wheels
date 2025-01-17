@@ -11,9 +11,9 @@ const separator = characterSet("t", "T");
 const notSeparators = separator.clone().negate().oneOrMore().group();
 
 const pattern = concat(notSeparators, separator, notSeparators)
-	.nonCapturingGroup()
-	.anchor()
-	.toRegExp();
+  .nonCapturingGroup()
+  .anchor()
+  .toRegExp();
 
 const DATE_TIME_MAX_LENGTH = 29;
 const DATE_TIME_MIN_LENGTH = 20;
@@ -34,51 +34,51 @@ const DATE_TIME_MIN_LENGTH = 20;
  */
 @Serializable
 export class DateTime {
-	public readonly date: FullDate;
-	public readonly time: FullTime;
+  public readonly date: FullDate;
+  public readonly time: FullTime;
 
-	constructor({ date, time }: DateTime) {
-		this.date = date;
-		this.time = time;
-	}
+  constructor({ date, time }: DateTime) {
+    this.date = date;
+    this.time = time;
+  }
 
-	public static safeParse: SafeExecutor<typeof DateTime.parse>;
-	/**
-	 * Converts a DateTime string to a {@link DateTime} object.
-	 *
-	 * @param text - A valid DateTime string. e.g. "2021-01-01T12:34:56Z".
-	 * @throws - {@link InvalidDateTimeError}
-	 * @throws - {@link InvalidFullDateError}
-	 * @throws - {@link InvalidFullTimeError}
-	 */
-	public static parse(text: string): DateTime {
-		if (
-			text.length < DATE_TIME_MIN_LENGTH ||
-			text.length > DATE_TIME_MAX_LENGTH
-		) {
-			throw new InvalidDateTimeError(text);
-		}
+  public static safeParse: SafeExecutor<typeof DateTime.parse>;
+  /**
+   * Converts a DateTime string to a {@link DateTime} object.
+   *
+   * @param text - A valid DateTime string. e.g. "2021-01-01T12:34:56Z".
+   * @throws - {@link InvalidDateTimeError}
+   * @throws - {@link InvalidFullDateError}
+   * @throws - {@link InvalidFullTimeError}
+   */
+  public static parse(text: string): DateTime {
+    if (
+      text.length < DATE_TIME_MIN_LENGTH ||
+      text.length > DATE_TIME_MAX_LENGTH
+    ) {
+      throw new InvalidDateTimeError(text);
+    }
 
-		const match = pattern.exec(text);
-		if (!match) {
-			throw new InvalidDateTimeError(text);
-		}
+    const match = pattern.exec(text);
+    if (!match) {
+      throw new InvalidDateTimeError(text);
+    }
 
-		const [, dateText, timeText] = match;
-		const date = FullDate.parse(dateText);
+    const [, dateText, timeText] = match;
+    const date = FullDate.parse(dateText);
 
-		return new DateTime({
-			date,
-			time: FullTime.parse(timeText, date),
-		});
-	}
+    return new DateTime({
+      date,
+      time: FullTime.parse(timeText, date),
+    });
+  }
 
-	/**
-	 * Converts an {@link DateTime} object to a DateTime string.
-	 *
-	 * @param value - An {@link DateTime} object.
-	 */
-	public static stringify({ date, time }: DateTime) {
-		return `${FullDate.stringify(date)}T${FullTime.stringify(time)}`;
-	}
+  /**
+   * Converts an {@link DateTime} object to a DateTime string.
+   *
+   * @param value - An {@link DateTime} object.
+   */
+  public static stringify({ date, time }: DateTime) {
+    return `${FullDate.stringify(date)}T${FullTime.stringify(time)}`;
+  }
 }

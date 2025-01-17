@@ -7,5 +7,7 @@
 **Signature:**
 
 ```typescript
-export type ValidationFunction = (data: unknown) => boolean;
+export type ValidationFunction = (data: unknown, context: ValidationContext) => boolean;
 ```
+**References:** [ValidationContext](./json-schema.validationcontext.md)
+

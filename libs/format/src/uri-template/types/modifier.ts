@@ -1,12 +1,12 @@
 export type LiteralModifier = "*" | `:${number}` | undefined;
 
 export interface PrefixModifier {
-	type: "prefix";
-	maxLength?: number;
+  type: "prefix";
+  maxLength?: number;
 }
 
 export interface ExplodeModifier {
-	type: "explode";
+  type: "explode";
 }
 
 export type Modifier = PrefixModifier | ExplodeModifier;

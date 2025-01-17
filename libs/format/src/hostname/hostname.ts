@@ -16,45 +16,45 @@ import { isValidLabel } from "./utils/is-valid-label.js";
  */
 @Serializable
 export class Hostname {
-	public readonly labels: string[];
-	public readonly tld?: string;
+  public readonly labels: string[];
+  public readonly tld?: string;
 
-	constructor({ labels, tld }: Hostname) {
-		this.labels = labels;
-		this.tld = tld;
-	}
+  constructor({ labels, tld }: Hostname) {
+    this.labels = labels;
+    this.tld = tld;
+  }
 
-	public static safeParse: SafeExecutor<typeof Hostname.parse>;
+  public static safeParse: SafeExecutor<typeof Hostname.parse>;
 
-	/**
-	 * Converts a Hostname string to a {@link Hostname} object.
-	 *
-	 * @param text - A valid Hostname string. e.g. "example.com".
-	 * @throws - {@link InvalidHostnameError}
-	 */
-	public static parse(text: string): Hostname {
-		if (!hasValidHostnameLength(text)) {
-			throw new InvalidHostnameError(text);
-		}
+  /**
+   * Converts a Hostname string to a {@link Hostname} object.
+   *
+   * @param text - A valid Hostname string. e.g. "example.com".
+   * @throws - {@link InvalidHostnameError}
+   */
+  public static parse(text: string): Hostname {
+    if (!hasValidHostnameLength(text)) {
+      throw new InvalidHostnameError(text);
+    }
 
-		const labels = text.split(".");
+    const labels = text.split(".");
 
-		if (!labels.every(isValidLabel)) {
-			throw new InvalidHostnameError(text);
-		}
+    if (!labels.every(isValidLabel)) {
+      throw new InvalidHostnameError(text);
+    }
 
-		return new Hostname({
-			labels,
-			tld: labels.length > 1 ? `.${labels[labels.length - 1]}` : undefined,
-		});
-	}
+    return new Hostname({
+      labels,
+      tld: labels.length > 1 ? `.${labels[labels.length - 1]}` : undefined,
+    });
+  }
 
-	/**
-	 * Converts an {@link Hostname} object to a Hostname string.
-	 *
-	 * @param value - An {@link Hostname} object.
-	 */
-	public static stringify({ labels }: Hostname) {
-		return labels.join(".");
-	}
+  /**
+   * Converts an {@link Hostname} object to a Hostname string.
+   *
+   * @param value - An {@link Hostname} object.
+   */
+  public static stringify({ labels }: Hostname) {
+    return labels.join(".");
+  }
 }

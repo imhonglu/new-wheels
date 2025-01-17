@@ -7,5 +7,5 @@ import type { PatternInput } from "../types/pattern-input.js";
  * @returns The source of the pattern.
  */
 export function extractPatternSource(pattern: PatternInput): string {
-	return typeof pattern === "string" ? pattern : pattern.source;
+  return typeof pattern === "string" ? pattern : pattern.source;
 }

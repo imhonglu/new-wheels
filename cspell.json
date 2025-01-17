@@ -1,0 +1,28 @@
+{
+  "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+  "version": "0.2",
+  "words": [
+    "imhonglu",
+    "callsite",
+    "callsites",
+    "newable",
+    "secfrac",
+    "varspec",
+    "keraia",
+    "geresh",
+    "gereshim",
+    "virama",
+    "gershayim",
+    "ifemp",
+    "pchar",
+    "ucschar",
+    "abempty",
+    "noscheme",
+    "hexdig",
+    "vitest",
+    "npmjs"
+  ],
+  "dictionaries": ["typescript", "node"],
+  "ignorePaths": ["pnpm-*.yaml", "dist/", "docs/", "tsconfig.base.json"],
+  "useGitignore": true
+}

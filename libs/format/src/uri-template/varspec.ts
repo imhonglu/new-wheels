@@ -1,9 +1,9 @@
 import {
-	alpha,
-	characterSet,
-	concat,
-	digit,
-	oneOf,
+  alpha,
+  characterSet,
+  concat,
+  digit,
+  oneOf,
 } from "@imhonglu/pattern-builder";
 import type { SafeExecutor } from "@imhonglu/toolkit";
 import { pctEncoded } from "../uri/constants.js";
@@ -13,16 +13,16 @@ import type { Modifier } from "./types/modifier.js";
 import { parseModifier } from "./utils/parse-modifier.js";
 
 const pattern = concat(
-	oneOf(characterSet(alpha, digit, /[_.]/), pctEncoded)
-		.nonCapturingGroup()
-		.oneOrMore()
-		.group(),
-	oneOf(concat(":", digit.clone().repeat(1, 3)), /\*/)
-		.group()
-		.optional(),
+  oneOf(characterSet(alpha, digit, /[_.]/), pctEncoded)
+    .nonCapturingGroup()
+    .oneOrMore()
+    .group(),
+  oneOf(concat(":", digit.clone().repeat(1, 3)), /\*/)
+    .group()
+    .optional(),
 )
-	.anchor()
-	.toRegExp();
+  .anchor()
+  .toRegExp();
 
 /**
  * The Varspec formatter based on RFC 6570.
@@ -46,45 +46,45 @@ const pattern = concat(
  */
 @Serializable
 export class Varspec {
-	public readonly name: string;
-	public readonly modifier?: Modifier;
+  public readonly name: string;
+  public readonly modifier?: Modifier;
 
-	public constructor({ name, modifier }: Varspec) {
-		this.name = name;
-		this.modifier = modifier;
-	}
+  public constructor({ name, modifier }: Varspec) {
+    this.name = name;
+    this.modifier = modifier;
+  }
 
-	public static safeParse: SafeExecutor<typeof Varspec.parse>;
+  public static safeParse: SafeExecutor<typeof Varspec.parse>;
 
-	/**
-	 * Converts a Varspec string into a {@link Varspec} object.
-	 *
-	 * @param text - A valid Varspec string. e.g. "name:3"
-	 * @throws - {@link InvalidVarspecError}
-	 */
-	public static parse(text: string): Varspec {
-		const match = text.match(pattern);
-		if (!match) {
-			throw new InvalidVarspecError(text);
-		}
-		if (text.startsWith(".") || text.endsWith(".")) {
-			throw new InvalidVarspecError(text);
-		}
+  /**
+   * Converts a Varspec string into a {@link Varspec} object.
+   *
+   * @param text - A valid Varspec string. e.g. "name:3"
+   * @throws - {@link InvalidVarspecError}
+   */
+  public static parse(text: string): Varspec {
+    const match = text.match(pattern);
+    if (!match) {
+      throw new InvalidVarspecError(text);
+    }
+    if (text.startsWith(".") || text.endsWith(".")) {
+      throw new InvalidVarspecError(text);
+    }
 
-		const [, name, modifier] = match;
+    const [, name, modifier] = match;
 
-		return new Varspec({
-			name,
-			modifier: modifier ? parseModifier(modifier) : undefined,
-		});
-	}
+    return new Varspec({
+      name,
+      modifier: modifier ? parseModifier(modifier) : undefined,
+    });
+  }
 
-	/**
-	 * Converts an {@link Varspec} object to a Varspec string.
-	 *
-	 * @param value - An {@link Varspec} object.
-	 */
-	public static stringify({ name, modifier }: Varspec) {
-		return `${name}${modifier ? modifier.type : ""}`;
-	}
+  /**
+   * Converts an {@link Varspec} object to a Varspec string.
+   *
+   * @param value - An {@link Varspec} object.
+   */
+  public static stringify({ name, modifier }: Varspec) {
+    return `${name}${modifier ? modifier.type : ""}`;
+  }
 }

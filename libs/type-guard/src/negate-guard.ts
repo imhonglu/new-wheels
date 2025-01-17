@@ -3,7 +3,7 @@ import type { Guard } from "./types/guard.js";
 export type InferTypeGuard<T> = T extends Guard<infer R> ? R : never;
 
 export type NegateTypeGuard<Guard> = <T>(
-	value: T | InferTypeGuard<Guard>,
+  value: T | InferTypeGuard<Guard>,
 ) => value is T;
 
 /**
@@ -32,9 +32,9 @@ export type NegateTypeGuard<Guard> = <T>(
  * @see {@link NegateTypeGuard} - The type of the returned function
  */
 export function negateGuard<T extends Guard>(guard: T) {
-	return new Proxy(guard, {
-		apply(target, thisArg, args: Parameters<T>) {
-			return !target.apply(thisArg, args);
-		},
-	}) as NegateTypeGuard<T>;
+  return new Proxy(guard, {
+    apply(target, thisArg, args: Parameters<T>) {
+      return !target.apply(thisArg, args);
+    },
+  }) as NegateTypeGuard<T>;
 }

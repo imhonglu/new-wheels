@@ -15,7 +15,7 @@
  * ```
  */
 export type ObjectHasOwn<T, K> = T & {
-	[P in Extract<K, PropertyKey>]: P extends keyof T ? T[P] : unknown;
+  [P in Extract<K, PropertyKey>]: P extends keyof T ? T[P] : unknown;
 };
 
 /**
@@ -46,8 +46,8 @@ export type ObjectHasOwn<T, K> = T & {
  * ```
  */
 export function hasOwn<T, const K extends PropertyKey>(
-	source: T,
-	key: K,
+  source: T,
+  key: K,
 ): source is ObjectHasOwn<T, K> {
-	return Object.hasOwn(source as object, key);
+  return Object.hasOwn(source as object, key);
 }

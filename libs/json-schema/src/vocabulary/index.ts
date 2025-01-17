@@ -9,6 +9,18 @@ import "./applying-sub-schema/items.js";
 import "./applying-sub-schema/contains.js";
 import "./applying-sub-schema/prefix-items.js";
 
+import "./applying-sub-schema/all-of.js";
+import "./applying-sub-schema/any-of.js";
+import "./applying-sub-schema/one-of.js";
+import "./applying-sub-schema/not.js";
+
+import "./applying-sub-schema/if-then-else.js";
+import "./applying-sub-schema/dependent-schemas.js";
+
+import "./core/defs.js";
+import "./core/ref.js";
+import "./core/id.js";
+
 import "./format/format.js";
 
 import "./string-encoded-data/content-encoding.js";
@@ -38,7 +50,7 @@ import "./structural-validation/min-properties.js";
 import "./structural-validation/required.js";
 import "./structural-validation/dependent-required.js";
 
-import "./core/defs.js";
-import "./core/ref.js";
+import "./unevaluated-locations/unevaluated-items.js";
+import "./unevaluated-locations/unevaluated-properties.js";
 
 export { keywordHandler };

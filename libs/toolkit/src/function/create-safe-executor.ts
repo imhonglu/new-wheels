@@ -7,8 +7,8 @@ import { isAsyncFunction } from "./is-async-function.js";
  * @typeParam T - The type of the data payload
  */
 export interface SuccessResult<T = unknown> {
-	ok: true;
-	data: T;
+  ok: true;
+  data: T;
 }
 
 /**
@@ -17,8 +17,8 @@ export interface SuccessResult<T = unknown> {
  * @typeParam E - The type of the error payload
  */
 export interface FailureResult<E = unknown> {
-	ok: false;
-	error: E;
+  ok: false;
+  error: E;
 }
 
 /**
@@ -36,8 +36,8 @@ export type SafeResult<T, E = unknown> = SuccessResult<T> | FailureResult<E>;
  * @typeParam E - The type of the error payload
  */
 export type SafeExecutorResult<T, E = unknown> = T extends Promise<infer U>
-	? Promise<SafeResult<U, E>>
-	: SafeResult<T, E>;
+  ? Promise<SafeResult<U, E>>
+  : SafeResult<T, E>;
 
 /**
  * Represents a safe executor function that wraps the provided function.
@@ -46,7 +46,7 @@ export type SafeExecutorResult<T, E = unknown> = T extends Promise<infer U>
  * @typeParam E - The type of the error payload
  */
 export type SafeExecutor<T extends Fn.Callable, E = unknown> = (
-	...args: Parameters<T>
+  ...args: Parameters<T>
 ) => SafeExecutorResult<ReturnType<T>, E>;
 
 /**
@@ -66,33 +66,33 @@ export type SafeExecutor<T extends Fn.Callable, E = unknown> = (
  * ```
  */
 export function createSafeExecutor<T extends Fn.Callable, E = unknown>(fn: T) {
-	return new Proxy(fn, {
-		apply: isAsyncFunction(fn)
-			? async (target, thisArg, args) => {
-					try {
-						return {
-							ok: true,
-							data: await target.apply(thisArg, args),
-						};
-					} catch (error) {
-						return {
-							ok: false,
-							error,
-						};
-					}
-				}
-			: (target, thisArg, args) => {
-					try {
-						return {
-							ok: true,
-							data: target.apply(thisArg, args),
-						};
-					} catch (error) {
-						return {
-							ok: false,
-							error,
-						};
-					}
-				},
-	}) as SafeExecutor<T, E>;
+  return new Proxy(fn, {
+    apply: isAsyncFunction(fn)
+      ? async (target, thisArg, args) => {
+          try {
+            return {
+              ok: true,
+              data: await target.apply(thisArg, args),
+            };
+          } catch (error) {
+            return {
+              ok: false,
+              error,
+            };
+          }
+        }
+      : (target, thisArg, args) => {
+          try {
+            return {
+              ok: true,
+              data: target.apply(thisArg, args),
+            };
+          } catch (error) {
+            return {
+              ok: false,
+              error,
+            };
+          }
+        },
+  }) as SafeExecutor<T, E>;
 }

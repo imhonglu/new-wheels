@@ -24,62 +24,62 @@ import { hasValidMailboxLength } from "./utils/has-valid-mailbox-length.js";
  */
 @Serializable
 export class Mailbox {
-	public readonly localPart: LocalPart;
-	public readonly domain: AddressLiteral | Hostname;
+  public readonly localPart: LocalPart;
+  public readonly domain: AddressLiteral | Hostname;
 
-	constructor({ localPart, domain }: Mailbox) {
-		this.localPart = localPart;
-		this.domain = domain;
-	}
+  constructor({ localPart, domain }: Mailbox) {
+    this.localPart = localPart;
+    this.domain = domain;
+  }
 
-	public static readonly safeParse: SafeExecutor<typeof Mailbox.parse>;
+  public static readonly safeParse: SafeExecutor<typeof Mailbox.parse>;
 
-	/**
-	 * Converts a Mailbox string to a {@link Mailbox} object.
-	 *
-	 * @param text - A valid Mailbox string. e.g. "john.doe\@example.com".
-	 * @throws - {@link InvalidMailboxError}
-	 * @throws - {@link InvalidLocalPartError}
-	 * @throws - {@link InvalidEmailDomainError}
-	 */
-	public static parse(text: string): Mailbox {
-		if (!hasValidMailboxLength(text)) {
-			throw new InvalidMailboxError(text);
-		}
+  /**
+   * Converts a Mailbox string to a {@link Mailbox} object.
+   *
+   * @param text - A valid Mailbox string. e.g. "john.doe\@example.com".
+   * @throws - {@link InvalidMailboxError}
+   * @throws - {@link InvalidLocalPartError}
+   * @throws - {@link InvalidEmailDomainError}
+   */
+  public static parse(text: string): Mailbox {
+    if (!hasValidMailboxLength(text)) {
+      throw new InvalidMailboxError(text);
+    }
 
-		const atPos = text.lastIndexOf("@");
+    const atPos = text.lastIndexOf("@");
 
-		if (atPos === -1) {
-			throw new InvalidMailboxError(text);
-		}
+    if (atPos === -1) {
+      throw new InvalidMailboxError(text);
+    }
 
-		const localPart = LocalPart.parse(text.slice(0, atPos));
-		const domainText = text.slice(atPos + 1);
+    const localPart = LocalPart.parse(text.slice(0, atPos));
+    const domainText = text.slice(atPos + 1);
 
-		if (domainText.startsWith("[") && domainText.endsWith("]")) {
-			return new Mailbox({
-				localPart,
-				domain: AddressLiteral.parse(domainText),
-			});
-		}
+    if (domainText.startsWith("[") && domainText.endsWith("]")) {
+      return new Mailbox({
+        localPart,
+        domain: AddressLiteral.parse(domainText),
+      });
+    }
 
-		const result = Hostname.safeParse(domainText);
-		if (!result.ok) {
-			throw new InvalidEmailDomainError(text);
-		}
+    const result = Hostname.safeParse(domainText);
+    if (!result.ok) {
+      throw new InvalidEmailDomainError(text);
+    }
 
-		return new Mailbox({
-			localPart,
-			domain: result.data,
-		});
-	}
+    return new Mailbox({
+      localPart,
+      domain: result.data,
+    });
+  }
 
-	/**
-	 * Converts an {@link Mailbox} object to a Mailbox string.
-	 *
-	 * @param value - An {@link Mailbox} object.
-	 */
-	public static stringify({ localPart, domain }: Mailbox) {
-		return `${localPart}@${domain}`;
-	}
+  /**
+   * Converts an {@link Mailbox} object to a Mailbox string.
+   *
+   * @param value - An {@link Mailbox} object.
+   */
+  public static stringify({ localPart, domain }: Mailbox) {
+    return `${localPart}@${domain}`;
+  }
 }

@@ -20,46 +20,46 @@ const IPV4_PARTS_COUNT = 4;
  */
 @Serializable
 export class IPv4Address {
-	public readonly segments: [string, string, string, string];
+  public readonly segments: [string, string, string, string];
 
-	constructor({ segments }: IPv4Address) {
-		this.segments = segments;
-	}
+  constructor({ segments }: IPv4Address) {
+    this.segments = segments;
+  }
 
-	public static safeParse: SafeExecutor<typeof IPv4Address.parse>;
+  public static safeParse: SafeExecutor<typeof IPv4Address.parse>;
 
-	/**
-	 * Converts a IPv4Address string to an {@link IPv4Address} object.
-	 *
-	 * @param text - A valid IPv4Address string. e.g. "127.0.0.1".
-	 * @throws - {@link InvalidIpAddressError}
-	 */
-	public static parse(text: string): IPv4Address {
-		if (text.length < IPV4_MIN_LENGTH || text.length > IPV4_MAX_LENGTH) {
-			throw new InvalidIpAddressError(text);
-		}
+  /**
+   * Converts a IPv4Address string to an {@link IPv4Address} object.
+   *
+   * @param text - A valid IPv4Address string. e.g. "127.0.0.1".
+   * @throws - {@link InvalidIpAddressError}
+   */
+  public static parse(text: string): IPv4Address {
+    if (text.length < IPV4_MIN_LENGTH || text.length > IPV4_MAX_LENGTH) {
+      throw new InvalidIpAddressError(text);
+    }
 
-		const segments = text.split(".");
+    const segments = text.split(".");
 
-		if (segments.length !== IPV4_PARTS_COUNT) {
-			throw new InvalidIpAddressError(text);
-		}
+    if (segments.length !== IPV4_PARTS_COUNT) {
+      throw new InvalidIpAddressError(text);
+    }
 
-		if (!segments.every(isValidIPv4Part)) {
-			throw new InvalidIpAddressError(text);
-		}
+    if (!segments.every(isValidIPv4Part)) {
+      throw new InvalidIpAddressError(text);
+    }
 
-		return new IPv4Address({
-			segments: segments as [string, string, string, string],
-		});
-	}
+    return new IPv4Address({
+      segments: segments as [string, string, string, string],
+    });
+  }
 
-	/**
-	 * Converts an {@link IPv4Address} object to a IPv4Address string.
-	 *
-	 * @param value - An {@link IPv4Address} object.
-	 */
-	public static stringify(value: IPv4Address) {
-		return value.segments.join(".");
-	}
+  /**
+   * Converts an {@link IPv4Address} object to a IPv4Address string.
+   *
+   * @param value - An {@link IPv4Address} object.
+   */
+  public static stringify(value: IPv4Address) {
+    return value.segments.join(".");
+  }
 }

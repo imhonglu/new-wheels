@@ -12,18 +12,18 @@ import { alpha, characterSet, concat, digit } from "@imhonglu/pattern-builder";
 const alphaDigit = characterSet(alpha, digit);
 const hyphen = characterSet("\\-");
 const pattern = concat(
-	/**
-	 * leading digit is allowed by RFC 1123
-	 * @see {@link https://datatracker.ietf.org/doc/html/rfc1123#page-13 | RFC 1123#page-13}
-	 * @see {@link https://serverfault.com/a/638270 | ServerFault#a/638270}
-	 */
-	alphaDigit,
-	characterSet(alphaDigit, hyphen).zeroOrMore(),
-	hyphen.clone().negateLookbehind(),
+  /**
+   * leading digit is allowed by RFC 1123
+   * @see {@link https://datatracker.ietf.org/doc/html/rfc1123#page-13 | RFC 1123#page-13}
+   * @see {@link https://serverfault.com/a/638270 | ServerFault#a/638270}
+   */
+  alphaDigit,
+  characterSet(alphaDigit, hyphen).zeroOrMore(),
+  hyphen.clone().negateLookbehind(),
 )
-	.anchor()
-	.toRegExp();
+  .anchor()
+  .toRegExp();
 
 export function isValidLabel(label: string): boolean {
-	return label.length >= 1 && label.length <= 63 && pattern.test(label);
+  return label.length >= 1 && label.length <= 63 && pattern.test(label);
 }

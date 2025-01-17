@@ -33,9 +33,9 @@
  * ```
  */
 export type Mutable<T> = T extends object
-	? {
-			-readonly [P in keyof T]: T[P] extends ReadonlyArray<infer U>
-				? [Mutable<U>]
-				: Mutable<T[P]>;
-		}
-	: T;
+  ? {
+      -readonly [P in keyof T]: T[P] extends ReadonlyArray<infer U>
+        ? [Mutable<U>]
+        : Mutable<T[P]>;
+    }
+  : T;

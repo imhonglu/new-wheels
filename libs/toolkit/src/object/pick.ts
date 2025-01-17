@@ -17,33 +17,33 @@ import { clonePrototype } from "./clone-prototype.js";
  * ```
  */
 export function pick<T, K extends ObjectKey<T>>(
-	source: T,
-	...args: K[]
+  source: T,
+  ...args: K[]
 ): Pick<T, K> {
-	if (!is.nonNullableObject(source)) {
-		return source;
-	}
+  if (!is.nonNullableObject(source)) {
+    return source;
+  }
 
-	if (source instanceof Map) {
-		return args.reduce(
-			(acc, key) => acc.set(key, source.get(key)),
-			clonePrototype(source),
-		);
-	}
+  if (source instanceof Map) {
+    return args.reduce(
+      (acc, key) => acc.set(key, source.get(key)),
+      clonePrototype(source),
+    );
+  }
 
-	if (source instanceof Set) {
-		return args.reduce((acc, key) => acc.add(key), clonePrototype(source));
-	}
+  if (source instanceof Set) {
+    return args.reduce((acc, key) => acc.add(key), clonePrototype(source));
+  }
 
-	if (Array.isArray(source)) {
-		return args.reduce(
-			(acc, key) => acc.push(source[key]),
-			clonePrototype(source),
-		);
-	}
+  if (Array.isArray(source)) {
+    return args.reduce(
+      (acc, key) => acc.push(source[key]),
+      clonePrototype(source),
+    );
+  }
 
-	return args.reduce((acc, key) => {
-		acc[key] = source[key];
-		return acc;
-	}, clonePrototype(source));
+  return args.reduce((acc, key) => {
+    acc[key] = source[key];
+    return acc;
+  }, clonePrototype(source));
 }

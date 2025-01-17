@@ -13,10 +13,10 @@ import type { NotIterable } from "../types/not-iterable.js";
  * ```
  */
 export type ObjectEntry<T> = T extends NotIterable
-	? never
-	: {
-			[K in keyof T]: [K, T[K]];
-		}[keyof T];
+  ? never
+  : {
+      [K in keyof T]: [K, T[K]];
+    }[keyof T];
 
 /**
  * Type-safe wrapper around `Object.entries()` that enhances TypeScript's type inference.
@@ -36,7 +36,7 @@ export type ObjectEntry<T> = T extends NotIterable
  * ```
  */
 export function entries<const T extends object>(source: T) {
-	return Object.entries(source).map(
-		([key, value]) => [key, value] as ObjectEntry<T>,
-	);
+  return Object.entries(source).map(
+    ([key, value]) => [key, value] as ObjectEntry<T>,
+  );
 }

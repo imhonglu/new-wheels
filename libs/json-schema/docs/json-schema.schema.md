@@ -89,7 +89,7 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-[(constructor)(schema, parent)](./json-schema.schema._constructor_.md)
+[(constructor)(schema, parent, path)](./json-schema.schema._constructor_.md)
 
 
 </td><td>
@@ -149,15 +149,17 @@ _(Optional)_
 </td></tr>
 <tr><td>
 
-[parse](./json-schema.schema.parse.md)
+[path](./json-schema.schema.path.md)
 
 
 </td><td>
 
+`readonly`
+
 
 </td><td>
 
-(data: unknown) =&gt; [SchemaDefinition.Instance](./json-schema.schemadefinition.instance.md)<!-- -->&lt;T&gt;
+string
 
 
 </td><td>
@@ -212,7 +214,7 @@ Map&lt;string, [Schema](./json-schema.schema.md)<!-- -->&gt;
 
 </td><td>
 
-SafeExecutor&lt;typeof [this.parse](./json-schema.schema.parse.md)<!-- -->&gt;
+SafeExecutor&lt;typeof this.parse&gt;
 
 
 </td><td>
@@ -257,7 +259,7 @@ Exclude&lt;[SchemaDefinition.InferRequiredProperty](./json-schema.schemadefiniti
 </td></tr>
 <tr><td>
 
-[validate](./json-schema.schema.validate.md)
+[uri?](./json-schema.schema.uri.md)
 
 
 </td><td>
@@ -267,10 +269,33 @@ Exclude&lt;[SchemaDefinition.InferRequiredProperty](./json-schema.schemadefiniti
 
 </td><td>
 
-(data: unknown) =&gt; data is [SchemaDefinition.Instance](./json-schema.schemadefinition.instance.md)<!-- -->&lt;T&gt;
+string
 
 
 </td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+[validates?](./json-schema.schema.validates.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+Map&lt;keyof [ObjectSchema](./json-schema.objectschema.md)<!-- -->, [ValidationFunction](./json-schema.validationfunction.md)<!-- -->&gt;
+
+
+</td><td>
+
+_(Optional)_
 
 
 </td></tr>
@@ -296,17 +321,37 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-[from(schema, parent)](./json-schema.schema.from.md)
+[parse(data)](./json-schema.schema.parse.md)
 
 
 </td><td>
 
-`static`
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[resolveSubSchema(\[keyword, propertyName\])](./json-schema.schema.resolvesubschema.md)
 
 
 </td><td>
 
-Creates a new Schema instance with type assertion to JsonSchema. This utility function breaks type inference chain to prevent TypeScript errors.
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[validate(data)](./json-schema.schema.validate.md)
+
+
+</td><td>
+
+
+</td><td>
 
 
 </td></tr>

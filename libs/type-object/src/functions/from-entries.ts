@@ -12,13 +12,13 @@
  * ```
  */
 export type ObjectFromEntries<T> = T extends [unknown, unknown][]
-	? {
-			[K in Extract<T[number][0], PropertyKey>]: Extract<
-				T[number],
-				[K, unknown]
-			>[1];
-		}
-	: never;
+  ? {
+      [K in Extract<T[number][0], PropertyKey>]: Extract<
+        T[number],
+        [K, unknown]
+      >[1];
+    }
+  : never;
 
 /**
  * Type-safe wrapper around `Object.fromEntries()` that enhances TypeScript's type inference.
@@ -42,5 +42,5 @@ export type ObjectFromEntries<T> = T extends [unknown, unknown][]
  * ```
  */
 export function fromEntries<const T extends [unknown, unknown][]>(source: T) {
-	return Object.fromEntries(source) as ObjectFromEntries<T>;
+  return Object.fromEntries(source) as ObjectFromEntries<T>;
 }

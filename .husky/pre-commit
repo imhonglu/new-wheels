@@ -1,0 +1,4 @@
+COMMIT_FILES=$(git diff --cached --name-only)
+
+echo "$COMMIT_FILES" | pnpm cspell --no-summary --no-progress --no-must-find-files --file-list stdin
+pnpm biome check --write --no-errors-on-unmatched $COMMIT_FILES

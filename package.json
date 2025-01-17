@@ -1,33 +1,39 @@
 {
-	"name": "@imhonglu/new-wheels",
-	"description": "A project to create sustainable new wheels.",
-	"author": "imhonglu <anonymouser.unknown@gmail.com>",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/imhonglu/new-wheels.git"
-	},
-	"type": "module",
-	"engines": {
-		"node": ">=22.12.0",
-		"pnpm": ">=9.15.2"
-	},
-	"scripts": {
-		"check": "biome check --write ./**/*",
-		"test": "vitest"
-	},
-	"license": "MIT",
-	"devDependencies": {
-		"@biomejs/biome": "^1.9.4",
-		"@faker-js/faker": "^9.3.0",
-		"@microsoft/api-documenter": "^7.26.5",
-		"@microsoft/api-extractor": "^7.49.1",
-		"@microsoft/api-extractor-model": "^7.30.2",
-		"@microsoft/tsdoc": "^0.15.1",
-		"@types/node": "^22.10.5",
-		"esbuild": "catalog:",
-		"jest-extended": "catalog:",
-		"tslib": "catalog:",
-		"typescript": "catalog:",
-		"vitest": "catalog:"
-	}
+  "name": "@imhonglu/new-wheels",
+  "description": "A project to create sustainable new wheels.",
+  "author": "imhonglu <anonymouser.unknown@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imhonglu/new-wheels.git"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0",
+    "pnpm": ">=9.15.2"
+  },
+  "scripts": {
+    "lint:cspell": "cspell --no-progress --show-suggestions --show-context .",
+    "lint:biome": "biome check .",
+    "lint": "pnpm run lint:cspell && pnpm run lint:biome",
+    "test": "vitest",
+    "prepare": "husky"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@changesets/cli": "^2.27.11",
+    "@commitlint/cli": "^19.6.1",
+    "@commitlint/config-conventional": "^19.6.0",
+    "@faker-js/faker": "^9.4.0",
+    "@microsoft/api-documenter": "^7.26.5",
+    "@microsoft/api-extractor": "^7.49.1",
+    "@types/node": "^22.10.7",
+    "cspell": "^8.17.2",
+    "esbuild": "catalog:",
+    "husky": "^9.1.7",
+    "jest-extended": "catalog:",
+    "tslib": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
+  }
 }

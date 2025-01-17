@@ -4,11 +4,11 @@ import { Serializable } from "../utils/serializable/serializable.js";
 import { InvalidSchemeError } from "./errors/invalid-scheme-error.js";
 
 const pattern = concat(
-	characterSet(alpha),
-	characterSet(alpha, digit, "+\\-.").nonCapturingGroup().zeroOrMore(),
+  characterSet(alpha),
+  characterSet(alpha, digit, "+\\-.").nonCapturingGroup().zeroOrMore(),
 )
-	.anchor()
-	.toRegExp();
+  .anchor()
+  .toRegExp();
 
 /**
  * The Scheme formatter based on RFC 3986.
@@ -25,35 +25,35 @@ const pattern = concat(
  */
 @Serializable
 export class Scheme {
-	public readonly text: string;
+  public readonly text: string;
 
-	public constructor({ text }: Scheme) {
-		this.text = text;
-	}
+  public constructor({ text }: Scheme) {
+    this.text = text;
+  }
 
-	public static safeParse: SafeExecutor<typeof Scheme.parse>;
+  public static safeParse: SafeExecutor<typeof Scheme.parse>;
 
-	/**
-	 * Converts a Scheme string to a {@link Scheme} object.
-	 *
-	 * @param text - A valid Scheme string. e.g. "http"
-	 * @throws - {@link InvalidSchemeError}
-	 */
-	public static parse(text: string): Scheme {
-		if (!pattern.test(text)) {
-			throw new InvalidSchemeError(text);
-		}
+  /**
+   * Converts a Scheme string to a {@link Scheme} object.
+   *
+   * @param text - A valid Scheme string. e.g. "http"
+   * @throws - {@link InvalidSchemeError}
+   */
+  public static parse(text: string): Scheme {
+    if (!pattern.test(text)) {
+      throw new InvalidSchemeError(text);
+    }
 
-		return new Scheme({ text });
-	}
+    return new Scheme({ text });
+  }
 
-	/**
-	 * Converts a {@link Scheme} object to a Scheme string.
-	 *
-	 * @param value - A {@link Scheme} object.
-	 * @returns - A Scheme string.
-	 */
-	public static stringify(value: Scheme): string {
-		return value.text;
-	}
+  /**
+   * Converts a {@link Scheme} object to a Scheme string.
+   *
+   * @param value - A {@link Scheme} object.
+   * @returns - A Scheme string.
+   */
+  public static stringify(value: Scheme): string {
+    return value.text;
+  }
 }

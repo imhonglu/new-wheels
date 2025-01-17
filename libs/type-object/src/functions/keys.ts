@@ -13,11 +13,11 @@ import type { NotIterable } from "../types/not-iterable.js";
  * ```
  */
 export type ObjectKey<T> = T extends NotIterable
-	? never
-	: // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-		T extends string | Array<any>
-		? number & keyof T
-		: keyof T;
+  ? never
+  : // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+    T extends string | Array<any>
+    ? number & keyof T
+    : keyof T;
 
 /**
  * Type-safe wrapper around `Object.keys()` that enhances TypeScript's type inference.
@@ -56,13 +56,13 @@ export type ObjectKey<T> = T extends NotIterable
  * @see {@link ObjectKey} - Type helper for key extraction
  */
 export function keys<T>(source: T): ObjectKey<T>[] {
-	return (
-		Array.isArray(source) || typeof source === "string"
-			? /**
-				 * `Object.keys` returns keys as strings for `array`, `string` types.
-				 * To maintain type consistency, we handle keys as numbers for these types.
-				 */
-				Array.from({ length: source.length }, (_, i) => i)
-			: Object.keys(source as object)
-	) as ObjectKey<T>[];
+  return (
+    Array.isArray(source) || typeof source === "string"
+      ? /**
+         * `Object.keys` returns keys as strings for `array`, `string` types.
+         * To maintain type consistency, we handle keys as numbers for these types.
+         */
+        Array.from({ length: source.length }, (_, i) => i)
+      : Object.keys(source as object)
+  ) as ObjectKey<T>[];
 }

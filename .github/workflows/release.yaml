@@ -1,0 +1,62 @@
+name: Release
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+env:
+  CI: true
+  PNPM_CACHE_FOLDER: .pnpm-store
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: latest
+
+      - name: Setup Node
+        run: |
+          pnpm env use -g 22
+          pnpm config set store-dir $PNPM_CACHE_FOLDER
+        timeout-minutes: 1
+
+      - name: Install dependencies
+        run: pnpm -r install
+        timeout-minutes: 1
+
+      - name: Build
+        run: pnpm -r build
+        timeout-minutes: 1
+
+      - name: Generate Documentation
+        run: pnpm -r generate-docs
+        timeout-minutes: 1
+
+      - name: Setup npmrc
+        run: |
+          cat << EOF > "$HOME/.npmrc"
+            //registry.npmjs.org/:_authToken=$NPM_TOKEN
+          EOF
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Create and publish versions
+        uses: changesets/action@v1
+        with:
+          version: pnpm changeset version
+          commit: "chore: update versions"
+          title: "chore: update versions"
+          publish: pnpm -r publish
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        timeout-minutes: 3

@@ -15,7 +15,7 @@ import { clonePrototype } from "./clone-prototype.js";
  * ```
  */
 export type InvertObject<T> = {
-	[P in keyof T as T[P] & PropertyKey]: P;
+  [P in keyof T as T[P] & PropertyKey]: P;
 };
 
 /**
@@ -35,10 +35,10 @@ export type InvertObject<T> = {
  * ```
  */
 export function invert<const T extends object>(source: T) {
-	return Object.entries(source).reduce((acc, [key, value]) => {
-		if (is.propertyKey(value)) {
-			acc[value] = key;
-		}
-		return acc;
-	}, clonePrototype(source)) as Mutable<InvertObject<T>>;
+  return Object.entries(source).reduce((acc, [key, value]) => {
+    if (is.propertyKey(value)) {
+      acc[value] = key;
+    }
+    return acc;
+  }, clonePrototype(source)) as Mutable<InvertObject<T>>;
 }

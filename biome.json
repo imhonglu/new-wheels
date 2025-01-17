@@ -1,37 +1,41 @@
 {
-	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
-	"organizeImports": {
-		"enabled": true
-	},
-	"vcs": {
-		"enabled": true,
-		"clientKind": "git",
-		"useIgnoreFile": true,
-		"defaultBranch": "main"
-	},
-	"files": {
-		"ignore": ["node_modules", "dist"],
-		"ignoreUnknown": true
-	},
-	"json": {
-		"parser": {
-			"allowComments": true,
-			"allowTrailingCommas": true
-		}
-	},
-	"overrides": [
-		{
-			"include": ["**/*.test.ts", "**/*.d.ts"],
-			"linter": {
-				"rules": {
-					"suspicious": {
-						"noExplicitAny": "off"
-					},
-					"complexity": {
-						"noBannedTypes": "off"
-					}
-				}
-			}
-		}
-	]
+  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "organizeImports": {
+    "enabled": true
+  },
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true,
+    "defaultBranch": "main"
+  },
+  "files": {
+    "ignore": ["node_modules", "dist"],
+    "ignoreUnknown": true
+  },
+  "formatter": {
+    "useEditorconfig": true
+  },
+  "json": {
+    "parser": {
+      "allowComments": true,
+      "allowTrailingCommas": true
+    }
+  },
+  "overrides": [
+    {
+      "include": ["**/*.test.ts", "**/*.d.ts"],
+      "linter": {
+        "rules": {
+          "suspicious": {
+            "noExplicitAny": "off",
+            "noThenProperty": "off"
+          },
+          "complexity": {
+            "noBannedTypes": "off"
+          }
+        }
+      }
+    }
+  ]
 }

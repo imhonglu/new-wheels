@@ -2,11 +2,11 @@ import type { Fn } from "../types/fn.js";
 import { isAsyncFunction } from "./is-async-function.js";
 
 export interface MemoizeOptions<T extends Fn.Callable> {
-	store?: {
-		get(key: string): ReturnType<T> | undefined;
-		set(key: string, value: ReturnType<T>): unknown;
-	};
-	resolver?: (...args: Parameters<T>) => string;
+  store?: {
+    get(key: string): ReturnType<T> | undefined;
+    set(key: string, value: ReturnType<T>): unknown;
+  };
+  resolver?: (...args: Parameters<T>) => string;
 }
 
 /**
@@ -28,38 +28,38 @@ export interface MemoizeOptions<T extends Fn.Callable> {
  * ```
  */
 export function memoize<T extends Fn.Callable>(
-	fn: T,
-	options?: MemoizeOptions<T>,
+  fn: T,
+  options?: MemoizeOptions<T>,
 ): T {
-	const store = options?.store ?? new Map<string, ReturnType<T>>();
-	const resolver = options?.resolver ?? JSON.stringify;
+  const store = options?.store ?? new Map<string, ReturnType<T>>();
+  const resolver = options?.resolver ?? JSON.stringify;
 
-	const set = (key: string, value: ReturnType<T>) => {
-		store.set(key, value);
-		return value;
-	};
+  const set = (key: string, value: ReturnType<T>) => {
+    store.set(key, value);
+    return value;
+  };
 
-	return new Proxy(fn, {
-		apply: isAsyncFunction(fn)
-			? async (target, thisArg, args) => {
-					const key = resolver(args);
-					const cached = store.get(key);
-					if (cached !== undefined) {
-						return cached;
-					}
+  return new Proxy(fn, {
+    apply: isAsyncFunction(fn)
+      ? async (target, thisArg, args) => {
+          const key = resolver(args);
+          const cached = store.get(key);
+          if (cached !== undefined) {
+            return cached;
+          }
 
-					const result = await target.apply(thisArg, args);
-					return set(key, result);
-				}
-			: (target, thisArg, args) => {
-					const key = resolver(args);
-					const cached = store.get(key);
-					if (cached !== undefined) {
-						return cached;
-					}
+          const result = await target.apply(thisArg, args);
+          return set(key, result);
+        }
+      : (target, thisArg, args) => {
+          const key = resolver(args);
+          const cached = store.get(key);
+          if (cached !== undefined) {
+            return cached;
+          }
 
-					const result = target.apply(thisArg, args);
-					return set(key, result);
-				},
-	});
+          const result = target.apply(thisArg, args);
+          return set(key, result);
+        },
+  });
 }

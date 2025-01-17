@@ -1,3 +1,3 @@
 export interface URIParseOptions {
-	isIri?: boolean;
+  isIri?: boolean;
 }

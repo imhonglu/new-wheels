@@ -8,8 +8,8 @@ import { padZero } from "./utils/pad-zero.js";
 const fourDigits = digit.clone().exact(4).group();
 const twoDigits = digit.clone().exact(2).group();
 const pattern = concat(fourDigits, "-", twoDigits, "-", twoDigits)
-	.anchor()
-	.toRegExp();
+  .anchor()
+  .toRegExp();
 
 const FULL_DATE_LENGTH = 10;
 
@@ -26,54 +26,54 @@ const FULL_DATE_LENGTH = 10;
  */
 @Serializable
 export class FullDate {
-	public readonly year: number;
-	public readonly month: number;
-	public readonly day: number;
+  public readonly year: number;
+  public readonly month: number;
+  public readonly day: number;
 
-	constructor({ year, month, day }: FullDate) {
-		this.year = year;
-		this.month = month;
-		this.day = day;
-	}
+  constructor({ year, month, day }: FullDate) {
+    this.year = year;
+    this.month = month;
+    this.day = day;
+  }
 
-	public static safeParse: SafeExecutor<typeof FullDate.parse>;
+  public static safeParse: SafeExecutor<typeof FullDate.parse>;
 
-	/**
-	 * Converts a FullDate string to a {@link FullDate} object.
-	 *
-	 * @param text - A valid FullDate string. e.g. "2021-01-01".
-	 * @throws - {@link InvalidFullDateError}
-	 */
-	public static parse(text: string) {
-		if (text.length !== FULL_DATE_LENGTH) {
-			throw new InvalidFullDateError(text);
-		}
+  /**
+   * Converts a FullDate string to a {@link FullDate} object.
+   *
+   * @param text - A valid FullDate string. e.g. "2021-01-01".
+   * @throws - {@link InvalidFullDateError}
+   */
+  public static parse(text: string) {
+    if (text.length !== FULL_DATE_LENGTH) {
+      throw new InvalidFullDateError(text);
+    }
 
-		const match = text.match(pattern);
+    const match = text.match(pattern);
 
-		if (!match) {
-			throw new InvalidFullDateError(text);
-		}
+    if (!match) {
+      throw new InvalidFullDateError(text);
+    }
 
-		const [, year, month, day] = match.map(Number);
+    const [, year, month, day] = match.map(Number);
 
-		if (!isValidDay(day, { year, month })) {
-			throw new InvalidFullDateError(text);
-		}
+    if (!isValidDay(day, { year, month })) {
+      throw new InvalidFullDateError(text);
+    }
 
-		return new FullDate({
-			year,
-			month,
-			day,
-		});
-	}
+    return new FullDate({
+      year,
+      month,
+      day,
+    });
+  }
 
-	/**
-	 * Converts an {@link FullDate} object to a FullDate string.
-	 *
-	 * @param value - An {@link FullDate} object.
-	 */
-	public static stringify({ year, month, day }: FullDate) {
-		return `${year}-${padZero(month)}-${padZero(day)}`;
-	}
+  /**
+   * Converts an {@link FullDate} object to a FullDate string.
+   *
+   * @param value - An {@link FullDate} object.
+   */
+  public static stringify({ year, month, day }: FullDate) {
+    return `${year}-${padZero(month)}-${padZero(day)}`;
+  }
 }
