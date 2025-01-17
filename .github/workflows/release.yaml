@@ -23,7 +23,7 @@ jobs:
         timeout-minutes: 1
 
       - name: Install dependencies
-        run: pnpm -r install
+        run: pnpm install
         timeout-minutes: 1
 
       - name: Setup npmrc
