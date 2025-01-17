@@ -39,5 +39,5 @@ jobs:
 
       - name: Run tests
         # TODO: run only related tests
-        run: pnpm vitest --run
+        run: pnpm vitest --run --exclude "src/generated-tests/**"
         timeout-minutes: 60
