@@ -12,11 +12,10 @@
     "pnpm": ">=9.15.2"
   },
   "scripts": {
-    "spellcheck": "cspell --no-progress --show-suggestions --show-context .",
-    "check": "biome check --write ./**/*",
-    "lint": "pnpm run check && pnpm run spellcheck",
+    "lint:cspell": "cspell --no-progress --show-suggestions --show-context .",
+    "lint:biome": "biome check .",
+    "lint": "pnpm run lint:cspell && pnpm run lint:biome",
     "test": "vitest",
-    "test:related": "vitest related --run",
     "prepare": "husky"
   },
   "license": "MIT",

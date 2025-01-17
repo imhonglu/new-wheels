@@ -25,7 +25,7 @@
     "build": "tsc -p tsconfig.build.json",
     "postbuild": "esm-to-cjs && pnpm api-extractor run && pnpm api-documenter markdown -i ./temp -o ./docs",
     "generate-tests": "./src/test-suite/cli.ts",
-    "postgenerate-tests": "pnpm -w run check"
+    "postgenerate-tests": "pnpm -w run lint:biome --write"
   },
   "keywords": [
     "typescript",
