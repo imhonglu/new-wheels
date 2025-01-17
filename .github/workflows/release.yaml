@@ -1,23 +1,17 @@
 name: Release
+
 on:
   push:
     branches:
       - main
   workflow_dispatch:
 
-env:
-  CI: true
-  PNPM_CACHE_FOLDER: .pnpm-store
-
 jobs:
   release:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+      - uses: actions/checkout@v4
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
@@ -25,9 +19,7 @@ jobs:
           version: latest
 
       - name: Setup Node
-        run: |
-          pnpm env use -g 22
-          pnpm config set store-dir $PNPM_CACHE_FOLDER
+        run: pnpm env use -g 22
         timeout-minutes: 1
 
       - name: Install dependencies
