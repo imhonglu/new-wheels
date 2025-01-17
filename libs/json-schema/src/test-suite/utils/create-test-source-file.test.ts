@@ -33,10 +33,10 @@ test("should create test source file", async () => {
 import { describe, test, expect } from "vitest";
 import { Schema } from "../schema.js";
 describe("test group 1", () => {
-    const schema = JSON.parse("{\\"type\\":\\"string\\"}");
+    const schema = { "type": "string" };
     test("test case 1", () => {
         const instance = new Schema(schema);
-        expect(instance.validate(JSON.parse("\\"valid string\\""))).toBeTruthy();
+        expect(instance.validate("valid string")).toBeTruthy();
     });
 });
 `.trimStart(),

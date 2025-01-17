@@ -17,7 +17,7 @@ const SRC_DIR = join(
   "src",
 );
 const WORKING_DIR = join(SRC_DIR, "test-suite");
-const GENERATED_TESTS_DIR = join(SRC_DIR, "tests");
+const GENERATED_TESTS_DIR = join(SRC_DIR, "generated-tests");
 const EXCLUDE_TESTS = [
   // `format.json` is for not implementing optional features
   "format.json",
