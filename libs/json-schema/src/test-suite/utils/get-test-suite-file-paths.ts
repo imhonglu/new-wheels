@@ -1,5 +1,5 @@
 import { readdir } from "node:fs/promises";
-import { join } from "node:path";
+import { join, relative } from "node:path";
 
 export async function getTestSuiteFilePaths(
   testSuitePath: string,
@@ -10,12 +10,18 @@ export async function getTestSuiteFilePaths(
     recursive: true,
   });
 
+  const excludeSet = new Set(exclude);
+
   return direntList
-    .filter(
-      (dirent) =>
+    .filter((dirent) => {
+      const parent = relative(testSuitePath, dirent.parentPath);
+      const name = join(parent, dirent.name);
+
+      return (
         dirent.isFile() &&
         dirent.name.endsWith(".json") &&
-        !exclude?.includes(dirent.name),
-    )
+        !excludeSet.has(name)
+      );
+    })
     .map((dirent) => join(dirent.parentPath, dirent.name));
 }
