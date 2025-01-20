@@ -17,15 +17,18 @@ keywordHandler.register("$ref", (schema, schemaContext) => {
 
     // Copy related references to new context
     for (const [existingRefPath, referencedSchema] of schemaContext.refMap) {
-      const isUnrelatedRef = !existingRefPath.startsWith(referencedSchema.path);
+      const isUnrelatedRef = !existingRefPath.startsWith(targetSchema.path);
       const isSelfReference = existingRefPath === schemaContext.path;
+      const isExistingContextPath =
+        schemaContext.path !== "#" &&
+        existingRefPath.startsWith(schemaContext.path);
 
-      if (isUnrelatedRef || isSelfReference) {
+      if (isUnrelatedRef || isSelfReference || isExistingContextPath) {
         continue;
       }
 
       const newReferencePath = existingRefPath.replace(
-        referencedSchema.path,
+        targetSchema.path,
         schemaContext.path,
       );
 
