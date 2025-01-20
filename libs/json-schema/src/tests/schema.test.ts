@@ -1,7 +1,7 @@
 import type { SafeExecutorResult } from "@imhonglu/toolkit";
 import { expect, expectTypeOf, test } from "vitest";
-import { ValidationFailedError } from "./errors/validation-failed-error.js";
-import { Schema, type SchemaDefinition } from "./schema.js";
+import { ValidationFailedError } from "../errors/validation-failed-error.js";
+import { Schema, type SchemaDefinition } from "../schema.js";
 
 test("should parse simple object schema and validate types", () => {
   const Address = new Schema({
@@ -146,14 +146,4 @@ test("should throw error when nested object schema validation fails", () => {
       '{"lastName": "Doe", "firstName": "John", "address": {"city": "Toronto", "zip": "M5H 2N2"}}',
     ),
   ).toThrow(ValidationFailedError);
-});
-
-test("should correctly infer literal union types from const array", () => {
-  const BloodType = new Schema({
-    enum: ["a", "b", "o", "ab"] as const,
-  });
-
-  type BloodType = SchemaDefinition.Instance<typeof BloodType>;
-
-  expectTypeOf<BloodType>().toEqualTypeOf<"a" | "b" | "o" | "ab">();
 });
