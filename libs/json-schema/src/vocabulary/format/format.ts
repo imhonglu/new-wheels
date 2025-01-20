@@ -73,11 +73,7 @@ function createFormatValidator(
     case "uuid":
       return (data) => UUID.safeParse(data).ok;
     default: {
-      if (format === undefined) {
-        return () => true;
-      }
-
-      throw new InvalidFormatError(format);
+      return () => true;
     }
   }
 }
