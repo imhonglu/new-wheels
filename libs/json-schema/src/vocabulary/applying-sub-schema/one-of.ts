@@ -5,6 +5,7 @@ keywordHandler.register("oneOf", (schema, schemaContext) => {
     schemaContext.resolveSubSchema("oneOf", index),
   );
 
-  return (data) =>
-    subSchemas.filter((subSchema) => subSchema.validate(data)).length === 1;
+  return (data, context) =>
+    subSchemas.filter((subSchema) => subSchema.validate(data, context))
+      .length === 1;
 });

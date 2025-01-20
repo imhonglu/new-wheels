@@ -5,5 +5,6 @@ keywordHandler.register("allOf", (schema, schemaContext) => {
     schemaContext.resolveSubSchema("allOf", index),
   );
 
-  return (data) => subSchemas.every((subSchema) => subSchema.validate(data));
+  return (data, context) =>
+    subSchemas.every((subSchema) => subSchema.validate(data, context));
 });

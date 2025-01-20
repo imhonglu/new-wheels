@@ -81,6 +81,7 @@ import { tryParseJson } from "./utils/try-parse-json.js";
 export class Schema<T extends SchemaDefinition.Type = SchemaDefinition.Type> {
   public readonly uri?: string;
   public readonly root: Schema;
+
   public readonly refMap: Map<string, Schema>;
   public readonly validates?: Map<keyof ObjectSchema, ValidationFunction>;
 
@@ -103,12 +104,13 @@ export class Schema<T extends SchemaDefinition.Type = SchemaDefinition.Type> {
     this.stringify = JSON.stringify;
   }
 
-  public validate(data: unknown): data is SchemaDefinition.Instance<T> {
+  public validate(
+    data: unknown,
+    context: ValidationContext = new Map(),
+  ): data is SchemaDefinition.Instance<T> {
     if (!this.validates) {
       return this.schema as BooleanSchema;
     }
-
-    const context: ValidationContext = new Map();
 
     for (const [keyword, validate] of this.validates) {
       if (!validate(data, context)) {
