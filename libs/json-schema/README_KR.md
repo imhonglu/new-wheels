@@ -25,33 +25,24 @@
 
 ## Implementation Status
 
-현재 총 1,747개의 테스트 케이스 중 1,581개가 통과되었습니다 (89.3%)
+현재 총 1,487개의 테스트 케이스 중 1,563개가 통과되었습니다 (95.1%)
 
 다음 항목들은 제외되었습니다:
 
 - `defs`: 스키마 정의 관련 테스트로, 유효성 검사와 무관하여 제외
 - `format`: optional 카테고리에 속하는 기능으로 제외
 
-### Remaining Test Suite Status
+다음 항목들은 지원되지 않습니다:
 
-| 이름 | 진행률 (통과/전체) | 상태 |
-|---------|-----------------|------|
-| not | 89% (8/9) | 🟢 완료 |
-| ref | 83% (64/77) | 🟡 진행중 |
-| optional/format | 76% (16/21) | 🟡 진행중 |
-| optional/ecmascript-regex | 80% (16/20) | 🟡 진행중 |
-| unevaluated-properties | 73% (89/122) | 🟡 진행중 |
-| unevaluated-items | 70% (46/66) | 🟡 진행중 |
-| dynamicRef | 20% (4/20) | 🔴 시작 |
-| optional/dependencies-compatibility | 14% (1/7) | 🔴 시작 |
-| anchor | 0% (0/4) | ⚪ 미시작 |
-| optional/anchor | 0% (0/1) | ⚪ 미시작 |
-| optional/dynamicRef | 0% (0/1) | ⚪ 미시작 |
-| optional/float-overflow | 0% (0/1) | ⚪ 미시작 |
-| optional/non-bmp-regex | 0% (0/2) | ⚪ 미시작 |
-| optional/ref-of-unknown-keyword | 0% (0/3) | ⚪ 미시작 |
-| ref-remote | 0% (0/15) | ⚪ 미시작 |
-| vocabularies | 0% (0/5) | ⚪ 미시작 |
+- `anchor`: 지원되지 않음
+- `refRemote`: 지원되지 않음
+- `vocabulary`: 지원되지 않음
+- `dynamicRef`: 지원되지 않음
+- `optional/anchor`: 지원되지 않음
+- `optional/dynamicRef`: 지원되지 않음
+- `optional/dependencies-compatibility`: 지원되지 않음
+- `optional/format/relative-json-pointer`: 지원되지 않음
+- `optional/format/json-pointer`: 지원되지 않음
 
 ## Installation
 

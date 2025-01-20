@@ -25,33 +25,24 @@
 
 ## Implementation Status
 
-Currently, 1,581 out of 1,747 test cases have passed (89.3%)
+Currently, 1,487 out of 1,563 test cases have passed (95.1%)
 
 The following items have been excluded:
 
 - `defs`: Schema definition tests, excluded as they are not related to validation
 - `format`: Excluded as it belongs to the optional category
 
-### Remaining Test Suite Status
+The following items are not supported:
 
-| Name | Progress (Passed/Total) | Status |
-|---------|-----------------|------|
-| not | 89% (8/9) | 🟢 Complete |
-| ref | 83% (64/77) | 🟡 In Progress |
-| optional/format | 76% (16/21) | 🟡 In Progress |
-| optional/ecmascript-regex | 80% (16/20) | 🟡 In Progress |
-| unevaluated-properties | 73% (89/122) | 🟡 In Progress |
-| unevaluated-items | 70% (46/66) | 🟡 In Progress |
-| dynamicRef | 20% (4/20) | 🔴 Started |
-| optional/dependencies-compatibility | 14% (1/7) | 🔴 Started |
-| anchor | 0% (0/4) | ⚪ Not Started |
-| optional/anchor | 0% (0/1) | ⚪ Not Started |
-| optional/dynamicRef | 0% (0/1) | ⚪ Not Started |
-| optional/float-overflow | 0% (0/1) | ⚪ Not Started |
-| optional/non-bmp-regex | 0% (0/2) | ⚪ Not Started |
-| optional/ref-of-unknown-keyword | 0% (0/3) | ⚪ Not Started |
-| ref-remote | 0% (0/15) | ⚪ Not Started |
-| vocabularies | 0% (0/5) | ⚪ Not Started |
+- `anchor`: Not supported
+- `refRemote`: Not supported
+- `vocabulary`: Not supported
+- `dynamicRef`: Not supported
+- `optional/anchor`: Not supported
+- `optional/dynamicRef`: Not supported
+- `optional/dependencies-compatibility`: Not supported
+- `optional/format/relative-json-pointer`: Not supported
+- `optional/format/json-pointer`: Not supported
 
 ## Installation
 
