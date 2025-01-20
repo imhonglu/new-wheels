@@ -23,6 +23,17 @@ const EXCLUDE_TESTS = [
   "format.json",
   // `defs.json` is not validation tests
   "defs.json",
+
+  // not supported
+  "anchor.json",
+  "refRemote.json",
+  "vocabulary.json",
+  "dynamicRef.json",
+  "optional/anchor.json",
+  "optional/dynamicRef.json",
+  "optional/dependencies-compatibility.json",
+  "optional/format/relative-json-pointer.json",
+  "optional/format/json-pointer.json",
 ];
 
 // clean up generated tests directory
