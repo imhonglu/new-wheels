@@ -1,5 +1,11 @@
 # @imhonglu/json-schema
 
+## 1.0.5
+
+### Patch Changes
+
+- 2cfbb22: improve $ref handling
+
 ## 1.0.4
 
 ### Patch Changes
