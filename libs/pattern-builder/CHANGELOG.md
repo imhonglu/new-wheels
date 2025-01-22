@@ -1,5 +1,11 @@
 # @imhonglu/pattern-builder
 
+## 1.0.3
+
+### Patch Changes
+
+- 1ced049: add error handling to `toRegExp()` method
+
 ## 1.0.2
 
 ### Patch Changes
