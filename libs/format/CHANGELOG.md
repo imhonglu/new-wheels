@@ -1,5 +1,11 @@
 # @imhonglu/format
 
+## 1.0.7
+
+### Patch Changes
+
+- avoid babel transpile
+
 ## 1.0.6
 
 ### Patch Changes
