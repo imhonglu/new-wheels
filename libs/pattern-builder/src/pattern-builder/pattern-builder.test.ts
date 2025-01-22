@@ -40,3 +40,12 @@ test("chain", () => {
     new PatternBuilder("abc").anchor("start").group().oneOrMore().source,
   ).toBe("(^abc)+");
 });
+
+test("toRegExp", () => {
+  expect(new PatternBuilder("abc").toRegExp("g", "i").flags).toBe("gi");
+  // @ts-expect-error
+  expect(() => new PatternBuilder("[a-z]").toRegExp("a")).toThrowWithMessage(
+    Error,
+    'Failed to create RegExp from "[a-z]" with flags "a"',
+  );
+});

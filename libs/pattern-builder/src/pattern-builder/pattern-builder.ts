@@ -79,6 +79,18 @@ export class PatternBuilder {
   }
 
   toRegExp(...flags: PatternFlag[]) {
-    return new RegExp(this.toString(), flags.join(""));
+    const pattern = this.toString();
+    const flag = flags.join("");
+
+    try {
+      return new RegExp(pattern, flag);
+    } catch (error) {
+      throw new Error(
+        `Failed to create RegExp from "${pattern}" with flags "${flag}"`,
+        {
+          cause: error,
+        },
+      );
+    }
   }
 }

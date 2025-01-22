@@ -78,96 +78,96 @@ importers:
   libs/format:
     dependencies:
       '@imhonglu/pattern-builder':
-        specifier: ^1.0.1
-        version: 1.0.1
+        specifier: ^1.0.2
+        version: 1.0.2
       '@imhonglu/toolkit':
-        specifier: ^1.0.1
-        version: 1.0.1
+        specifier: ^1.0.2
+        version: 1.0.2
     devDependencies:
       '@imhonglu/build-tools':
-        specifier: ^1.0.2
-        version: 1.0.2(esbuild@0.24.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.7.3)(vitest@3.0.2(@types/node@22.10.7)(@vitest/ui@3.0.1(vitest@3.0.1))(jiti@2.4.2)(yaml@2.7.0))
+        specifier: ^1.0.3
+        version: 1.0.3(esbuild@0.24.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.7.3)(vitest@3.0.2(@types/node@22.10.7)(@vitest/ui@3.0.1(vitest@3.0.1))(jiti@2.4.2)(yaml@2.7.0))
       '@imhonglu/configs':
-        specifier: ^1.0.4
-        version: 1.0.4(jest-extended@4.0.2)(vitest@3.0.2(@types/node@22.10.7)(@vitest/ui@3.0.1(vitest@3.0.1))(jiti@2.4.2)(yaml@2.7.0))
+        specifier: ^1.0.6
+        version: 1.0.6(jest-extended@4.0.2)(vitest@3.0.2(@types/node@22.10.7)(@vitest/ui@3.0.1(vitest@3.0.1))(jiti@2.4.2)(yaml@2.7.0))
 
   libs/json-schema:
     dependencies:
       '@imhonglu/format':
-        specifier: ^1.0.3
-        version: 1.0.3
+        specifier: ^1.0.4
+        version: 1.0.4
       '@imhonglu/toolkit':
+        specifier: ^1.0.2
+        version: 1.0.2
+      '@imhonglu/type-guard':
         specifier: ^1.0.1
         version: 1.0.1
-      '@imhonglu/type-guard':
-        specifier: ^1.0.0
-        version: 1.0.0
       '@imhonglu/type-object':
-        specifier: ^1.0.0
-        version: 1.0.0
+        specifier: ^1.0.1
+        version: 1.0.1
     devDependencies:
       '@imhonglu/build-tools':
-        specifier: ^1.0.2
-        version: 1.0.2(esbuild@0.24.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.7.3)(vitest@3.0.2(@types/node@22.10.7)(@vitest/ui@3.0.1(vitest@3.0.1))(jiti@2.4.2)(yaml@2.7.0))
+        specifier: ^1.0.3
+        version: 1.0.3(esbuild@0.24.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.7.3)(vitest@3.0.2(@types/node@22.10.7)(@vitest/ui@3.0.1(vitest@3.0.1))(jiti@2.4.2)(yaml@2.7.0))
       '@imhonglu/configs':
-        specifier: ^1.0.4
-        version: 1.0.4(jest-extended@4.0.2)(vitest@3.0.2(@types/node@22.10.7)(@vitest/ui@3.0.1(vitest@3.0.1))(jiti@2.4.2)(yaml@2.7.0))
+        specifier: ^1.0.6
+        version: 1.0.6(jest-extended@4.0.2)(vitest@3.0.2(@types/node@22.10.7)(@vitest/ui@3.0.1(vitest@3.0.1))(jiti@2.4.2)(yaml@2.7.0))
 
   libs/pattern-builder:
     devDependencies:
       '@imhonglu/build-tools':
-        specifier: ^1.0.2
-        version: 1.0.2(esbuild@0.24.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.7.3)(vitest@3.0.2(@types/node@22.10.7)(@vitest/ui@3.0.1(vitest@3.0.1))(jiti@2.4.2)(yaml@2.7.0))
+        specifier: ^1.0.3
+        version: 1.0.3(esbuild@0.24.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.7.3)(vitest@3.0.2(@types/node@22.10.7)(@vitest/ui@3.0.1(vitest@3.0.1))(jiti@2.4.2)(yaml@2.7.0))
       '@imhonglu/configs':
-        specifier: ^1.0.4
-        version: 1.0.4(jest-extended@4.0.2)(vitest@3.0.2(@types/node@22.10.7)(@vitest/ui@3.0.1(vitest@3.0.1))(jiti@2.4.2)(yaml@2.7.0))
+        specifier: ^1.0.6
+        version: 1.0.6(jest-extended@4.0.2)(vitest@3.0.2(@types/node@22.10.7)(@vitest/ui@3.0.1(vitest@3.0.1))(jiti@2.4.2)(yaml@2.7.0))
 
   libs/toolkit:
     dependencies:
       '@imhonglu/type-guard':
-        specifier: ^1.0.0
-        version: 1.0.0
+        specifier: ^1.0.1
+        version: 1.0.1
       '@imhonglu/type-object':
-        specifier: ^1.0.0
-        version: 1.0.0
+        specifier: ^1.0.1
+        version: 1.0.1
     devDependencies:
       '@imhonglu/build-tools':
-        specifier: ^1.0.2
-        version: 1.0.2(esbuild@0.24.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.7.3)(vitest@3.0.2(@types/node@22.10.7)(@vitest/ui@3.0.1(vitest@3.0.1))(jiti@2.4.2)(yaml@2.7.0))
+        specifier: ^1.0.3
+        version: 1.0.3(esbuild@0.24.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.7.3)(vitest@3.0.2(@types/node@22.10.7)(@vitest/ui@3.0.1(vitest@3.0.1))(jiti@2.4.2)(yaml@2.7.0))
       '@imhonglu/configs':
-        specifier: ^1.0.4
-        version: 1.0.4(jest-extended@4.0.2)(vitest@3.0.2(@types/node@22.10.7)(@vitest/ui@3.0.1(vitest@3.0.1))(jiti@2.4.2)(yaml@2.7.0))
+        specifier: ^1.0.6
+        version: 1.0.6(jest-extended@4.0.2)(vitest@3.0.2(@types/node@22.10.7)(@vitest/ui@3.0.1(vitest@3.0.1))(jiti@2.4.2)(yaml@2.7.0))
 
   libs/type-guard:
     devDependencies:
       '@imhonglu/build-tools':
-        specifier: ^1.0.2
-        version: 1.0.2(esbuild@0.24.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.7.3)(vitest@3.0.2(@types/node@22.10.7)(@vitest/ui@3.0.1(vitest@3.0.1))(jiti@2.4.2)(yaml@2.7.0))
+        specifier: ^1.0.3
+        version: 1.0.3(esbuild@0.24.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.7.3)(vitest@3.0.2(@types/node@22.10.7)(@vitest/ui@3.0.1(vitest@3.0.1))(jiti@2.4.2)(yaml@2.7.0))
       '@imhonglu/configs':
-        specifier: ^1.0.4
-        version: 1.0.4(jest-extended@4.0.2)(vitest@3.0.2(@types/node@22.10.7)(@vitest/ui@3.0.1(vitest@3.0.1))(jiti@2.4.2)(yaml@2.7.0))
+        specifier: ^1.0.6
+        version: 1.0.6(jest-extended@4.0.2)(vitest@3.0.2(@types/node@22.10.7)(@vitest/ui@3.0.1(vitest@3.0.1))(jiti@2.4.2)(yaml@2.7.0))
 
   libs/type-object:
     dependencies:
       '@imhonglu/type-guard':
-        specifier: ^1.0.0
-        version: 1.0.0
+        specifier: ^1.0.1
+        version: 1.0.1
     devDependencies:
       '@imhonglu/build-tools':
-        specifier: ^1.0.2
-        version: 1.0.2(esbuild@0.24.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.7.3)(vitest@3.0.2(@types/node@22.10.7)(@vitest/ui@3.0.1(vitest@3.0.1))(jiti@2.4.2)(yaml@2.7.0))
+        specifier: ^1.0.3
+        version: 1.0.3(esbuild@0.24.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.7.3)(vitest@3.0.2(@types/node@22.10.7)(@vitest/ui@3.0.1(vitest@3.0.1))(jiti@2.4.2)(yaml@2.7.0))
       '@imhonglu/configs':
-        specifier: ^1.0.4
-        version: 1.0.4(jest-extended@4.0.2)(vitest@3.0.2(@types/node@22.10.7)(@vitest/ui@3.0.1(vitest@3.0.1))(jiti@2.4.2)(yaml@2.7.0))
+        specifier: ^1.0.6
+        version: 1.0.6(jest-extended@4.0.2)(vitest@3.0.2(@types/node@22.10.7)(@vitest/ui@3.0.1(vitest@3.0.1))(jiti@2.4.2)(yaml@2.7.0))
 
   tools/build-tools:
     dependencies:
       '@imhonglu/configs':
-        specifier: ^1.0.4
-        version: 1.0.4(jest-extended@4.0.2)(vitest@3.0.2(@types/node@22.10.7)(@vitest/ui@3.0.1(vitest@3.0.1))(jiti@2.4.2)(yaml@2.7.0))
+        specifier: ^1.0.6
+        version: 1.0.6(jest-extended@4.0.2)(vitest@3.0.2(@types/node@22.10.7)(@vitest/ui@3.0.1(vitest@3.0.1))(jiti@2.4.2)(yaml@2.7.0))
       '@imhonglu/toolkit':
-        specifier: ^1.0.1
-        version: 1.0.1
+        specifier: ^1.0.2
+        version: 1.0.2
       esbuild:
         specifier: 'catalog:'
         version: 0.24.2
@@ -188,8 +188,8 @@ importers:
         version: 3.0.1(@types/node@22.10.7)(@vitest/ui@3.0.1)(jiti@2.4.2)(yaml@2.7.0)
     devDependencies:
       '@imhonglu/build-tools':
-        specifier: ^1.0.2
-        version: 1.0.2(esbuild@0.24.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.7.3)(vitest@3.0.1)
+        specifier: ^1.0.3
+        version: 1.0.3(esbuild@0.24.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.7.3)(vitest@3.0.1)
 
 packages:
 
@@ -776,34 +776,34 @@ packages:
     resolution: {integrity: sha512-85+k0AxaZSTowL0gXp8zYWDIrWclTbRPg/pm/V0dSFZ6W6D4lhcG3uuZl4zLsEKfEvs69xDbLN2cHQudwp95JA==}
     engines: {node: '>=18.0.0', npm: '>=9.0.0'}
 
-  '@imhonglu/build-tools@1.0.2':
-    resolution: {integrity: sha512-nbYUvneXcQXMCiZry405NcvYg5MwMHi5uWCKWBCDZX3s7tDZwW1rYjAfebGCVG3maT1bPVwK8MP1dpd45v1w6Q==}
+  '@imhonglu/build-tools@1.0.3':
+    resolution: {integrity: sha512-ppMQd3GdpnGszuEfnYozkRlFqm2r68ZZpU8cQ/XpjRPs1DAf1F8LexNiczNfzHFZM/UEL4zD9+EkTStfreqmFg==}
     hasBin: true
     peerDependencies:
       esbuild: ^0.24.2
       tslib: ^2.8.1
-      typescript: ^5.7.2
+      typescript: ^5.7.3
 
-  '@imhonglu/configs@1.0.4':
-    resolution: {integrity: sha512-rpEYBfx2WZrfi1lZ+gNLOh+pYeSHBFut5T4YqpU3U6VJTFdu9MOCmv8uzx6lzyh1cM5H9COYXsUTJ1mCRJOJdg==}
+  '@imhonglu/configs@1.0.6':
+    resolution: {integrity: sha512-apPHHgVl4aq3Zguom5VWH9VTGpupFnDP0wrpGv0/yKGcTXrmIQBL3D96NjX7YQikJmielbe2FxoNOgtqHOQfiQ==}
     peerDependencies:
       jest-extended: ^4.0.2
-      vitest: ^3.0.1
+      vitest: ^3.0.2
 
-  '@imhonglu/format@1.0.3':
-    resolution: {integrity: sha512-rxQYI0YkeGLZzNLNe+bAQHYoxELZ4beYTefsS2DxMprIOnVpRvSL9NnhMqf2zBewu6gzYTMqWkb/N+ruDG8WWA==}
+  '@imhonglu/format@1.0.4':
+    resolution: {integrity: sha512-fBEK8EeHE9xrHZUTJ6vmXH6uOd1BFG07nY53GvOvbPi/mJgrXvKBd1xfPhNSB+AC6laYULx8c7t9NuF5PVNOgw==}
 
-  '@imhonglu/pattern-builder@1.0.1':
-    resolution: {integrity: sha512-OCZzT3TCcsO9LgpVLNKhBpZvsTZGrPLXBGfoGvzHFhe6ZnEcYm5fcPBbBha+JTkRGq/MikUR6oGQXbuYZxh+Rg==}
+  '@imhonglu/pattern-builder@1.0.2':
+    resolution: {integrity: sha512-oDPYl/qBP3stC9KN9ZLbabEEwxfzkZDhRW7kT2vV6JkQepNExtDEjYYSxX3PPA9GSM9n8m9XQz2bR55NeCD0ow==}
 
-  '@imhonglu/toolkit@1.0.1':
-    resolution: {integrity: sha512-bMyRyunGgUG8pKzuUk/RjMfqciRxuQXsYMXpqNPk1/v4bkzp9/dw7GVvLBsjoG5TSeqnAEK8ZKMiYZCts1PRgw==}
+  '@imhonglu/toolkit@1.0.2':
+    resolution: {integrity: sha512-+s5feScaIgLNdMtMkx/w2kyAZyyeY0WiIyjUw7kGDX7wmIrB8M0sMdeBd0WidBJT6Ly+lbCnEEh3ocPjG5JpsA==}
 
-  '@imhonglu/type-guard@1.0.0':
-    resolution: {integrity: sha512-qd5XkQTeAMZAetkUddo6j9fQ4O0/2ui/cyZyP6vxklX+Z0kzpmty8iK3yewk1hM0Y+VOkOaDhDzqKdM2D0TS4w==}
+  '@imhonglu/type-guard@1.0.1':
+    resolution: {integrity: sha512-vqNTEFXHuOrGuL96Lor6nJqoC7coDEz9xFdTkmFPzUtBJHRsokM0fuFuvIwP/y9ZuzWZNJ2/1B4mB9/NyGxE/w==}
 
-  '@imhonglu/type-object@1.0.0':
-    resolution: {integrity: sha512-aHSol8WEwYHFRWf5sdvzO7d0wcEKr5updVsuosXvimbKWKIVlHdNx8/YlqpJI6ZQ+KneNUDBzyLjhbvy9K69QQ==}
+  '@imhonglu/type-object@1.0.1':
+    resolution: {integrity: sha512-acWkG0hyGtUVtbFErcMTniq9ahCcUiErHcQIx0wLYk6w4L016MsJeUx5yLQm0mA3uaEzOjm/n+VHNhfl4erFGg==}
 
   '@isaacs/cliui@8.0.2':
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
@@ -2884,10 +2884,10 @@ snapshots:
 
   '@faker-js/faker@9.4.0': {}
 
-  '@imhonglu/build-tools@1.0.2(esbuild@0.24.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.7.3)(vitest@3.0.1)':
+  '@imhonglu/build-tools@1.0.3(esbuild@0.24.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.7.3)(vitest@3.0.1)':
     dependencies:
-      '@imhonglu/configs': 1.0.4(jest-extended@4.0.2)(vitest@3.0.1)
-      '@imhonglu/toolkit': 1.0.1
+      '@imhonglu/configs': 1.0.6(jest-extended@4.0.2)(vitest@3.0.1)
+      '@imhonglu/toolkit': 1.0.2
       esbuild: 0.24.2
       tslib: 2.8.1
       typescript: 5.7.3
@@ -2895,10 +2895,10 @@ snapshots:
       - jest-extended
       - vitest
 
-  '@imhonglu/build-tools@1.0.2(esbuild@0.24.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.7.3)(vitest@3.0.2(@types/node@22.10.7)(@vitest/ui@3.0.1(vitest@3.0.1))(jiti@2.4.2)(yaml@2.7.0))':
+  '@imhonglu/build-tools@1.0.3(esbuild@0.24.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.7.3)(vitest@3.0.2(@types/node@22.10.7)(@vitest/ui@3.0.1(vitest@3.0.1))(jiti@2.4.2)(yaml@2.7.0))':
     dependencies:
-      '@imhonglu/configs': 1.0.4(jest-extended@4.0.2)(vitest@3.0.2(@types/node@22.10.7)(@vitest/ui@3.0.1(vitest@3.0.1))(jiti@2.4.2)(yaml@2.7.0))
-      '@imhonglu/toolkit': 1.0.1
+      '@imhonglu/configs': 1.0.6(jest-extended@4.0.2)(vitest@3.0.2(@types/node@22.10.7)(@vitest/ui@3.0.1(vitest@3.0.1))(jiti@2.4.2)(yaml@2.7.0))
+      '@imhonglu/toolkit': 1.0.2
       esbuild: 0.24.2
       tslib: 2.8.1
       typescript: 5.7.3
@@ -2906,33 +2906,33 @@ snapshots:
       - jest-extended
       - vitest
 
-  '@imhonglu/configs@1.0.4(jest-extended@4.0.2)(vitest@3.0.1)':
+  '@imhonglu/configs@1.0.6(jest-extended@4.0.2)(vitest@3.0.1)':
     dependencies:
       jest-extended: 4.0.2
       vitest: 3.0.1(@types/node@22.10.7)(@vitest/ui@3.0.1)(jiti@2.4.2)(yaml@2.7.0)
 
-  '@imhonglu/configs@1.0.4(jest-extended@4.0.2)(vitest@3.0.2(@types/node@22.10.7)(@vitest/ui@3.0.1(vitest@3.0.1))(jiti@2.4.2)(yaml@2.7.0))':
+  '@imhonglu/configs@1.0.6(jest-extended@4.0.2)(vitest@3.0.2(@types/node@22.10.7)(@vitest/ui@3.0.1(vitest@3.0.1))(jiti@2.4.2)(yaml@2.7.0))':
     dependencies:
       jest-extended: 4.0.2
       vitest: 3.0.2(@types/node@22.10.7)(@vitest/ui@3.0.1(vitest@3.0.1))(jiti@2.4.2)(yaml@2.7.0)
 
-  '@imhonglu/format@1.0.3':
+  '@imhonglu/format@1.0.4':
     dependencies:
-      '@imhonglu/pattern-builder': 1.0.1
-      '@imhonglu/toolkit': 1.0.1
+      '@imhonglu/pattern-builder': 1.0.2
+      '@imhonglu/toolkit': 1.0.2
 
-  '@imhonglu/pattern-builder@1.0.1': {}
+  '@imhonglu/pattern-builder@1.0.2': {}
 
-  '@imhonglu/toolkit@1.0.1':
+  '@imhonglu/toolkit@1.0.2':
     dependencies:
-      '@imhonglu/type-guard': 1.0.0
-      '@imhonglu/type-object': 1.0.0
+      '@imhonglu/type-guard': 1.0.1
+      '@imhonglu/type-object': 1.0.1
 
-  '@imhonglu/type-guard@1.0.0': {}
+  '@imhonglu/type-guard@1.0.1': {}
 
-  '@imhonglu/type-object@1.0.0':
+  '@imhonglu/type-object@1.0.1':
     dependencies:
-      '@imhonglu/type-guard': 1.0.0
+      '@imhonglu/type-guard': 1.0.1
 
   '@isaacs/cliui@8.0.2':
     dependencies:
