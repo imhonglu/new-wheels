@@ -1,6 +1,6 @@
 {
   "name": "@imhonglu/configs",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Configuration files for the project.",
   "repository": {
     "type": "git",
@@ -43,6 +43,6 @@
     "vitest": "catalog:"
   },
   "devDependencies": {
-    "@imhonglu/build-tools": "^1.0.2"
+    "@imhonglu/build-tools": "^1.0.3"
   }
 }

@@ -1,5 +1,16 @@
 # @imhonglu/json-schema
 
+## 1.0.6
+
+### Patch Changes
+
+- 260bc0c: change build target to ES2015
+- Updated dependencies [260bc0c]
+  - @imhonglu/type-object@1.0.1
+  - @imhonglu/type-guard@1.0.1
+  - @imhonglu/toolkit@1.0.2
+  - @imhonglu/format@1.0.4
+
 ## 1.0.5
 
 ### Patch Changes
