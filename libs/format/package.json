@@ -1,6 +1,6 @@
 {
   "name": "@imhonglu/format",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "String formatting library based on RFC specifications",
   "repository": {
     "type": "git",

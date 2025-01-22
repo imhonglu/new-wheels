@@ -1,5 +1,11 @@
 # @imhonglu/format
 
+## 1.0.5
+
+### Patch Changes
+
+- update @imhonglu/pattern-builder to version 1.0.4
+
 ## 1.0.4
 
 ### Patch Changes
