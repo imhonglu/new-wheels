@@ -94,8 +94,8 @@ importers:
   libs/json-schema:
     dependencies:
       '@imhonglu/format':
-        specifier: ^1.0.6
-        version: 1.0.6
+        specifier: ^1.0.7
+        version: 1.0.7
       '@imhonglu/toolkit':
         specifier: ^1.0.2
         version: 1.0.2
@@ -790,8 +790,8 @@ packages:
       jest-extended: ^4.0.2
       vitest: ^3.0.2
 
-  '@imhonglu/format@1.0.6':
-    resolution: {integrity: sha512-u4RatVz8EgNpi8C+JWV10TVAiKke2qr8vFrsvE3CwClr5xVIVwOVH62LcJYxyxBWSHCJ2tN49bAEqhmUkM411w==}
+  '@imhonglu/format@1.0.7':
+    resolution: {integrity: sha512-9sdrWhKUZXuvA9ChvhHGEOIke3PDBNax6CoBeY6KN1VAz6i9dvvGI5khxoHFM2lEdfxx+Ylgm82jPqjv+iH7cg==}
 
   '@imhonglu/pattern-builder@1.0.4':
     resolution: {integrity: sha512-6ZFIRfu/JgKMCeHmoUEad4xzOYJl0J0roex8wkw3gIVnXRCzL+rdAxy41Da1JXQaADJUDVoJcuG0ymT2U1UaCw==}
@@ -2818,7 +2818,7 @@ snapshots:
       jest-extended: 4.0.2
       vitest: 3.0.3(@types/node@22.10.7)(jiti@2.4.2)(yaml@2.7.0)
 
-  '@imhonglu/format@1.0.6':
+  '@imhonglu/format@1.0.7':
     dependencies:
       '@imhonglu/pattern-builder': 1.0.4
       '@imhonglu/toolkit': 1.0.2

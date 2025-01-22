@@ -1,5 +1,11 @@
 # @imhonglu/json-schema
 
+## 1.0.8
+
+### Patch Changes
+
+- update @imhonglu/format to version 1.0.7
+
 ## 1.0.7
 
 ### Patch Changes
