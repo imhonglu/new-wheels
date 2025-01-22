@@ -1,4 +1,7 @@
 {
   "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "target": "ES2015"
+  },
   "exclude": ["**/*.test.ts", "./src/test-suite/**"]
 }
