@@ -1,5 +1,11 @@
 # @imhonglu/configs
 
+## 1.0.6
+
+### Patch Changes
+
+- 260bc0c: change build target to ES2015
+
 ## 1.0.5
 
 ### Patch Changes

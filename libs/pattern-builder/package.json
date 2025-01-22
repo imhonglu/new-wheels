@@ -1,6 +1,6 @@
 {
   "name": "@imhonglu/pattern-builder",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Type-safe regular expression pattern builder for TypeScript with fluent API",
   "repository": {
     "type": "git",
@@ -31,7 +31,7 @@
   "author": "imhonglu <anonymouser.unknown@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "@imhonglu/build-tools": "^1.0.2",
-    "@imhonglu/configs": "^1.0.4"
+    "@imhonglu/build-tools": "^1.0.3",
+    "@imhonglu/configs": "^1.0.6"
   }
 }

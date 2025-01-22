@@ -1,6 +1,6 @@
 {
   "name": "@imhonglu/type-object",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Type-safe wrapper for JavaScript Object API with zero external dependencies",
   "repository": {
     "type": "git",
@@ -38,10 +38,10 @@
   "author": "imhonglu <anonymouser.unknown@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "@imhonglu/build-tools": "^1.0.2",
-    "@imhonglu/configs": "^1.0.4"
+    "@imhonglu/build-tools": "^1.0.3",
+    "@imhonglu/configs": "^1.0.6"
   },
   "dependencies": {
-    "@imhonglu/type-guard": "^1.0.0"
+    "@imhonglu/type-guard": "^1.0.1"
   }
 }

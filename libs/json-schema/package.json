@@ -1,6 +1,6 @@
 {
   "name": "@imhonglu/json-schema",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Type-safe JSON Schema specification library",
   "repository": {
     "type": "git",
@@ -40,13 +40,13 @@
   "author": "imhonglu <anonymouser.unknown@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "@imhonglu/build-tools": "^1.0.2",
-    "@imhonglu/configs": "^1.0.4"
+    "@imhonglu/build-tools": "^1.0.3",
+    "@imhonglu/configs": "^1.0.6"
   },
   "dependencies": {
-    "@imhonglu/format": "^1.0.3",
-    "@imhonglu/toolkit": "^1.0.1",
-    "@imhonglu/type-guard": "^1.0.0",
-    "@imhonglu/type-object": "^1.0.0"
+    "@imhonglu/format": "^1.0.4",
+    "@imhonglu/toolkit": "^1.0.2",
+    "@imhonglu/type-guard": "^1.0.1",
+    "@imhonglu/type-object": "^1.0.1"
   }
 }
