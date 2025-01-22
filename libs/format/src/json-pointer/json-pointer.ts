@@ -4,10 +4,9 @@ import { Serializable } from "../utils/serializable/serializable.js";
 import { InvalidJsonPointerError } from "./errors/invalid-json-pointer-error.js";
 
 const unescaped = characterSet(
-  // biome-ignore lint/suspicious/noControlCharactersInRegex: <explanation>
-  /[\u{00}-\u{2E}]/u,
-  /[\u{30}-\u{7D}]/u,
-  /[\u{7F}-\u{10FFFF}]/u,
+  "\\u{00}-\\u{2E}",
+  "\\u{30}-\\u{7D}",
+  "\\u{7F}-\\u{10FFFF}",
 );
 const escapeTilde = "~0";
 const escapeSlash = "~1";
