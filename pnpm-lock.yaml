@@ -78,8 +78,8 @@ importers:
   libs/format:
     dependencies:
       '@imhonglu/pattern-builder':
-        specifier: ^1.0.3
-        version: 1.0.3
+        specifier: ^1.0.4
+        version: 1.0.4
       '@imhonglu/toolkit':
         specifier: ^1.0.2
         version: 1.0.2
@@ -95,7 +95,7 @@ importers:
     dependencies:
       '@imhonglu/format':
         specifier: ^1.0.4
-        version: 1.0.4
+        version: 1.0.5
       '@imhonglu/toolkit':
         specifier: ^1.0.2
         version: 1.0.2
@@ -790,11 +790,11 @@ packages:
       jest-extended: ^4.0.2
       vitest: ^3.0.2
 
-  '@imhonglu/format@1.0.4':
-    resolution: {integrity: sha512-fBEK8EeHE9xrHZUTJ6vmXH6uOd1BFG07nY53GvOvbPi/mJgrXvKBd1xfPhNSB+AC6laYULx8c7t9NuF5PVNOgw==}
+  '@imhonglu/format@1.0.5':
+    resolution: {integrity: sha512-LaKq+Li1+T7ZeMepDoQWikPf7lg28HEUsJcLrAJ7hHhQC2PnvslcCjv2ttBZ8ezgUWJoxeAF3Y5YVqZMQLFi3w==}
 
-  '@imhonglu/pattern-builder@1.0.3':
-    resolution: {integrity: sha512-tMHw+rdHb/BS0Q9R3ZSL74q3ST7EF3+f0C12XulNUKnKM+dr8LDaEoSMudMIlpZ+rYLaSCuxZOOc3EJ/BZXnpA==}
+  '@imhonglu/pattern-builder@1.0.4':
+    resolution: {integrity: sha512-6ZFIRfu/JgKMCeHmoUEad4xzOYJl0J0roex8wkw3gIVnXRCzL+rdAxy41Da1JXQaADJUDVoJcuG0ymT2U1UaCw==}
 
   '@imhonglu/toolkit@1.0.2':
     resolution: {integrity: sha512-+s5feScaIgLNdMtMkx/w2kyAZyyeY0WiIyjUw7kGDX7wmIrB8M0sMdeBd0WidBJT6Ly+lbCnEEh3ocPjG5JpsA==}
@@ -2818,12 +2818,12 @@ snapshots:
       jest-extended: 4.0.2
       vitest: 3.0.3(@types/node@22.10.7)(jiti@2.4.2)(yaml@2.7.0)
 
-  '@imhonglu/format@1.0.4':
+  '@imhonglu/format@1.0.5':
     dependencies:
-      '@imhonglu/pattern-builder': 1.0.3
+      '@imhonglu/pattern-builder': 1.0.4
       '@imhonglu/toolkit': 1.0.2
 
-  '@imhonglu/pattern-builder@1.0.3': {}
+  '@imhonglu/pattern-builder@1.0.4': {}
 
   '@imhonglu/toolkit@1.0.2':
     dependencies:
