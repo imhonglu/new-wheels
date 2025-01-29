@@ -6,7 +6,7 @@ test("should return parent URI when schema has parent", () => {
   const parentUri = "http://example.com/schemas/";
   const schema = {
     parent: { uri: parentUri } as Schema,
-    schema: {},
+    definition: {},
   } as unknown as Schema;
 
   expect(initializeUri(schema)).toBe(parentUri);
@@ -14,7 +14,7 @@ test("should return parent URI when schema has parent", () => {
 
 test("should return URI without last path segment when schema has valid $id", () => {
   const schema = {
-    schema: {
+    definition: {
       $id: "http://example.com/schemas/person.json",
     },
   } as unknown as Schema;
@@ -24,7 +24,7 @@ test("should return URI without last path segment when schema has valid $id", ()
 
 test("should return undefined when schema content is not an object", () => {
   const schema = {
-    schema: "invalid",
+    definition: "invalid",
   } as unknown as Schema;
 
   expect(initializeUri(schema)).toBeUndefined();
@@ -32,7 +32,7 @@ test("should return undefined when schema content is not an object", () => {
 
 test("should return undefined when schema has no $id", () => {
   const schema = {
-    schema: {},
+    definition: {},
   } as unknown as Schema;
 
   expect(initializeUri(schema)).toBeUndefined();
@@ -40,7 +40,7 @@ test("should return undefined when schema has no $id", () => {
 
 test("should throw error when $id pathname is empty", () => {
   const schema = {
-    schema: {
+    definition: {
       $id: "http://example.com",
     },
   } as unknown as Schema;

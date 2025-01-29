@@ -1,6 +1,6 @@
 import { keys } from "@imhonglu/type-object";
 import type { Schema } from "../schema.js";
-import type { JsonSchema, ObjectSchema } from "../types/json-schema/index.js";
+import type { ObjectSchema } from "../types/json-schema/index.js";
 import type { ValidationFunction } from "../types/validation-function.js";
 import { keywordHandler } from "../vocabulary/index.js";
 import { is } from "./is.js";
@@ -16,19 +16,18 @@ const ORDERED_KEYWORDS: ReadonlySet<keyof ObjectSchema> = new Set([
 export function buildValidationMap(
   schema: Schema,
 ): Map<keyof ObjectSchema, ValidationFunction> | undefined {
-  const { schema: schemaDefinition } = schema as unknown as Schema<JsonSchema>;
-
-  if (is.boolean(schemaDefinition)) {
+  if (!is.objectSchema(schema)) {
     return undefined;
   }
+  const { definition } = schema;
 
   const validationMap = new Map<keyof ObjectSchema, ValidationFunction>();
-  const normalKeywords = keys(schemaDefinition).filter(
+  const normalKeywords = keys(definition).filter(
     (keyword) => !ORDERED_KEYWORDS.has(keyword),
   );
 
   for (const keyword of [...normalKeywords, ...ORDERED_KEYWORDS]) {
-    if (schemaDefinition[keyword] === undefined) {
+    if (definition[keyword] === undefined) {
       continue;
     }
 
@@ -37,7 +36,7 @@ export function buildValidationMap(
       continue;
     }
 
-    const validationFunction = handler(schemaDefinition, schema);
+    const validationFunction = handler(definition, schema);
     if (validationFunction) {
       validationMap.set(keyword, validationFunction);
     }
