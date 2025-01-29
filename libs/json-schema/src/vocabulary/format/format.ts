@@ -16,7 +16,6 @@ import {
   UUID,
 } from "@imhonglu/format";
 import { createSafeExecutor } from "@imhonglu/toolkit";
-import { InvalidFormatError } from "../../errors/invalid-format-error.js";
 import type { Format } from "../../types/json-schema/format.js";
 import { is } from "../../utils/is.js";
 import { keywordHandler } from "../keyword-handler.js";
