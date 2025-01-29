@@ -1,12 +1,14 @@
 import { keys } from "@imhonglu/type-object";
 import { is } from "../../utils/is.js";
+import { resolveSubSchema } from "../../utils/resolve-sub-schema.js";
 import { keywordHandler } from "../keyword-handler.js";
 
 keywordHandler.register("patternProperties", (schema, schemaContext) => {
   const patternProperties = Object.keys(schema.patternProperties).map(
     (propertyName) => ({
       pattern: new RegExp(propertyName),
-      subSchema: schemaContext.resolveSubSchema(
+      subSchema: resolveSubSchema(
+        schemaContext,
         "patternProperties",
         propertyName,
       ),

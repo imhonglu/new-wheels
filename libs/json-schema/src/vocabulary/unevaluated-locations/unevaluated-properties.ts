@@ -1,9 +1,10 @@
 import { keys } from "@imhonglu/type-object";
 import { is } from "../../utils/is.js";
+import { resolveSubSchema } from "../../utils/resolve-sub-schema.js";
 import { keywordHandler } from "../keyword-handler.js";
 
 keywordHandler.register("unevaluatedProperties", (schema, schemaContext) => {
-  const subSchema = schemaContext.resolveSubSchema("unevaluatedProperties");
+  const subSchema = resolveSubSchema(schemaContext, "unevaluatedProperties");
 
   return (data, context) => {
     if (!is.object(data) || schema.unevaluatedProperties === true) {

@@ -1,5 +1,6 @@
+import { resolveSubSchema } from "../../utils/resolve-sub-schema.js";
 import { keywordHandler } from "../keyword-handler.js";
 
 keywordHandler.register("else", (schema, schemaContext) => {
-  schemaContext.resolveSubSchema("else");
+  resolveSubSchema(schemaContext, "else");
 });
