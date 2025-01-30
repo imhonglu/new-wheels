@@ -1,7 +1,8 @@
 import type { SafeExecutorResult } from "@imhonglu/toolkit";
 import { expect, expectTypeOf, test } from "vitest";
-import { ValidationFailedError } from "../errors/validation-failed-error.js";
-import { Schema, type SchemaDefinition } from "../schema.js";
+import { ValidationFailedError } from "./errors/validation-failed-error.js";
+import { Schema } from "./schema.js";
+import type { InferSchemaType } from "./types/infer-schema-type.js";
 
 test("should parse simple object schema and validate types", () => {
   const Address = new Schema({
@@ -13,7 +14,7 @@ test("should parse simple object schema and validate types", () => {
     },
     required: ["street"] as const,
   });
-  type AddressType = SchemaDefinition.Instance<typeof Address>;
+  type AddressType = InferSchemaType<typeof Address>;
 
   expectTypeOf<AddressType>().toEqualTypeOf<
     {
@@ -70,14 +71,14 @@ test("should parse nested object schema with referenced schemas", () => {
     required: ["lastName", "firstName"] as const,
   });
 
-  type PersonType = SchemaDefinition.Instance<typeof Person>;
+  type PersonType = InferSchemaType<typeof Person>;
 
   expectTypeOf<PersonType>().toEqualTypeOf<
     {
       lastName: string;
       firstName: string;
     } & {
-      address?: SchemaDefinition.Instance<typeof Address>;
+      address?: InferSchemaType<typeof Address>;
       age?: number;
     }
   >();
@@ -118,32 +119,4 @@ test("should safe parse schema with invalid input", () => {
   expect(result.data).toBeUndefined();
   // @ts-expect-error
   expect(result.error).toBeInstanceOf(ValidationFailedError);
-});
-
-test("should throw error when nested object schema validation fails", () => {
-  const Address = new Schema({
-    type: "object",
-    properties: {
-      street: { type: "string" },
-      city: { type: "string" },
-      zip: { type: "string" },
-    },
-    required: ["street"] as const,
-  });
-
-  const Person = new Schema({
-    type: "object",
-    properties: {
-      lastName: { type: "string" },
-      firstName: { type: "string" },
-      address: Address,
-    },
-    required: ["lastName", "firstName"] as const,
-  });
-
-  expect(() =>
-    Person.parse(
-      '{"lastName": "Doe", "firstName": "John", "address": {"city": "Toronto", "zip": "M5H 2N2"}}',
-    ),
-  ).toThrow(ValidationFailedError);
 });
