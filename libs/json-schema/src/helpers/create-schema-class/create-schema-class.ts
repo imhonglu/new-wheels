@@ -42,7 +42,7 @@ export function createSchemaClass<const T extends SchemaInput>(
     }
 
     toJSON() {
-      return JSON.stringify(this.data);
+      return this.data;
     }
   } as {
     [SchemaSymbol]: typeof SchemaSymbol;
