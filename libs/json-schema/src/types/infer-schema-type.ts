@@ -30,7 +30,8 @@ export type InferSchemaType<T> = T extends BooleanSchema
       : T extends { type: infer U }
         ? Match<U, InferSchemaTypeMap<T>>
         : T extends Schema<infer U>
-          ? T extends { new (...args: unknown[]): infer U }
+          ? // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+            T extends { new (...args: any[]): infer U }
             ? U
             : InferSchemaType<U>
           : never;
