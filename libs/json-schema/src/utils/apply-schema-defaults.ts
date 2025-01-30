@@ -1,12 +1,14 @@
+import type { Fn } from "@imhonglu/toolkit";
 import { Schema } from "../schema.js";
+import type { JsonSchema } from "../types/json-schema/index.js";
 import type { SchemaVariant } from "../types/schema-variant.js";
 import { is } from "./is.js";
 
 export function applySchemaDefaults<T>(
   data: T,
-  schemaDefinition: SchemaVariant,
+  schemaDefinition: SchemaVariant | Fn.Newable,
 ): T {
-  if (schemaDefinition instanceof Schema) {
+  if (schemaDefinition instanceof Schema && "definition" in schemaDefinition) {
     // biome-ignore lint/style/noParameterAssign: <explanation>
     schemaDefinition = schemaDefinition.definition;
   }
@@ -33,17 +35,31 @@ export function applySchemaDefaults<T>(
     }
 
     for (const property in schemaDefinition.properties) {
-      const subSchema = schemaDefinition.properties[property];
+      const subSchema = schemaDefinition.properties[property] as
+        | JsonSchema
+        | Fn.Newable;
+
       const value = applySchemaDefaults(
         (defaultValue as Record<string, unknown>)[property],
         subSchema,
       );
+
+      if (typeof subSchema === "boolean") {
+        continue;
+      }
 
       if (
         (defaultValue as Record<string, unknown>)[property] === undefined &&
         value !== undefined
       ) {
         (defaultValue as Record<string, unknown>)[property] = value;
+      }
+
+      // if the subSchema is a class, we need to instantiate it
+      if (Symbol.hasInstance in subSchema) {
+        (defaultValue as Record<string, unknown>)[property] = new subSchema(
+          value,
+        );
       }
     }
 
