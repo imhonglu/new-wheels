@@ -7,5 +7,5 @@
 **Signature:**
 
 ```typescript
-required?: T[];
+required?: [T, ...T[]];
 ```

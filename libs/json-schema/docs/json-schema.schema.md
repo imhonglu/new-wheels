@@ -9,7 +9,7 @@ JSON Schema validator and parser implementation that provides type-safe validati
 **Signature:**
 
 ```typescript
-export declare class Schema<T extends SchemaDefinition.Type = SchemaDefinition.Type> 
+export declare class Schema<T extends SchemaVariant = SchemaVariant> 
 ```
 
 ## Example 1
@@ -89,7 +89,7 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-[(constructor)(schema, parent, path)](./json-schema.schema._constructor_.md)
+[(constructor)(definition, parent, path)](./json-schema.schema._constructor_.md)
 
 
 </td><td>
@@ -127,6 +127,44 @@ Description
 
 </th></tr></thead>
 <tbody><tr><td>
+
+[\[SchemaSymbol\]](./json-schema.schema._schemasymbol_.md)
+
+
+</td><td>
+
+`static`
+
+
+</td><td>
+
+symbol
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[definition](./json-schema.schema.definition.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+Exclude&lt;T, [Schema](./json-schema.schema.md)<!-- -->&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
 
 [parent?](./json-schema.schema.parent.md)
 
@@ -197,60 +235,7 @@ Map&lt;string, [Schema](./json-schema.schema.md)<!-- -->&gt;
 
 </td><td>
 
-[Schema](./json-schema.schema.md)
-
-
-</td><td>
-
-
-</td></tr>
-<tr><td>
-
-[safeParse](./json-schema.schema.safeparse.md)
-
-
-</td><td>
-
-
-</td><td>
-
-SafeExecutor&lt;typeof this.parse&gt;
-
-
-</td><td>
-
-
-</td></tr>
-<tr><td>
-
-[schema](./json-schema.schema.schema.md)
-
-
-</td><td>
-
-`readonly`
-
-
-</td><td>
-
-Exclude&lt;[SchemaDefinition.InferRequiredProperty](./json-schema.schemadefinition.inferrequiredproperty.md)<!-- -->&lt;T&gt;, [Schema](./json-schema.schema.md)<!-- -->&gt;
-
-
-</td><td>
-
-
-</td></tr>
-<tr><td>
-
-[stringify](./json-schema.schema.stringify.md)
-
-
-</td><td>
-
-
-</td><td>
-
-(data: unknown) =&gt; string
+[Schema](./json-schema.schema.md)<!-- -->&lt;[SchemaVariant](./json-schema.schemavariant.md)<!-- -->&gt;
 
 
 </td><td>
@@ -321,6 +306,20 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
+[\[Symbol.hasInstance\](obj)](./json-schema.schema._symbol.hasinstance_.md)
+
+
+</td><td>
+
+`static`
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
 [parse(data)](./json-schema.schema.parse.md)
 
 
@@ -333,7 +332,7 @@ Description
 </td></tr>
 <tr><td>
 
-[resolveSubSchema(\[keyword, propertyName\])](./json-schema.schema.resolvesubschema.md)
+[safeParse(args)](./json-schema.schema.safeparse.md)
 
 
 </td><td>
@@ -345,7 +344,19 @@ Description
 </td></tr>
 <tr><td>
 
-[validate(data)](./json-schema.schema.validate.md)
+[stringify(data)](./json-schema.schema.stringify.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[validate(data, context)](./json-schema.schema.validate.md)
 
 
 </td><td>

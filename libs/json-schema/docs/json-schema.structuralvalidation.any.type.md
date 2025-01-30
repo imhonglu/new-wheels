@@ -7,5 +7,5 @@
 **Signature:**
 
 ```typescript
-type?: PrimitiveType | PrimitiveType[];
+type?: PrimitiveType | [PrimitiveType, ...PrimitiveType[]];
 ```

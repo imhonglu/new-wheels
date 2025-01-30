@@ -62,7 +62,7 @@ _(Optional)_
 
 </td><td>
 
-any\[\]
+\[any, ...any\[\]\]
 
 
 </td><td>
@@ -81,7 +81,7 @@ _(Optional)_
 
 </td><td>
 
-[PrimitiveType](./json-schema.structuralvalidation.primitivetype.md) \| [PrimitiveType](./json-schema.structuralvalidation.primitivetype.md)<!-- -->\[\]
+[PrimitiveType](./json-schema.structuralvalidation.primitivetype.md) \| \[[PrimitiveType](./json-schema.structuralvalidation.primitivetype.md)<!-- -->, ...[PrimitiveType](./json-schema.structuralvalidation.primitivetype.md)<!-- -->\[\]\]
 
 
 </td><td>

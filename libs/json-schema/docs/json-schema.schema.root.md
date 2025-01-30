@@ -7,5 +7,5 @@
 **Signature:**
 
 ```typescript
-readonly root: Schema;
+readonly root: Schema<SchemaVariant>;
 ```
