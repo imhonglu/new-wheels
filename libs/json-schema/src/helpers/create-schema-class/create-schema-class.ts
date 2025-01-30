@@ -44,9 +44,7 @@ export function createSchemaClass<const T extends SchemaInput>(
     toJSON() {
       return this.data;
     }
-  } as {
-    [SchemaSymbol]: typeof SchemaSymbol;
-
+  } as unknown as {
     new (
       data: InferSchemaType<T>,
     ): InferSchemaType<T> extends Exclude<object, null>
