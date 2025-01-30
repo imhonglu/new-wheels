@@ -4,7 +4,8 @@
 
 ### Minor Changes
 
-- e79702c: ## Breaking Changes
+- e79702c:
+  ## Breaking Changes
 
   ### Schema Type Definitions Restructured
 
