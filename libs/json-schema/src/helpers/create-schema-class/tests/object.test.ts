@@ -159,3 +159,75 @@ test("should handle nested objects", () => {
 
   expect(() => ObjectSchema.parse(123)).toThrow();
 });
+
+test("should handle nested objects", () => {
+  class Address extends createSchemaClass({
+    type: "object",
+    properties: {
+      street: { type: "string" },
+      city: { type: "string" },
+      zip: { type: "string" },
+    },
+    required: ["street"],
+  }) {}
+
+  class Person extends createSchemaClass({
+    type: "object",
+    properties: {
+      name: { type: "string" },
+      address: Address,
+      deletedAt: {
+        type: ["string", "null"],
+        default: null,
+      },
+    },
+    required: ["name"],
+  }) {}
+
+  const johnDoe = new Person({
+    name: "John Doe",
+    address: {
+      street: "123 Main St",
+      city: "Toronto",
+      zip: "M5H 2N2",
+    },
+  });
+
+  expect(johnDoe.name).toBe("John Doe");
+  expect(johnDoe.address?.city).toBe("Toronto");
+  expect(johnDoe.address?.street).toBe("123 Main St");
+  expect(johnDoe.address?.zip).toBe("M5H 2N2");
+  expect(johnDoe.deletedAt).toBeNull();
+  expect(JSON.stringify(johnDoe)).toBe(
+    JSON.stringify({
+      name: "John Doe",
+      address: {
+        street: "123 Main St",
+        city: "Toronto",
+        zip: "M5H 2N2",
+      },
+      deletedAt: null,
+    }),
+  );
+
+  const maryDoe = new Person({
+    name: "Mary Doe",
+    address: new Address({
+      street: "456 Main St",
+      city: "Toronto",
+      zip: "M5H 2N2",
+    }),
+  });
+
+  expect(JSON.stringify(maryDoe)).toBe(
+    JSON.stringify({
+      name: "Mary Doe",
+      address: {
+        street: "456 Main St",
+        city: "Toronto",
+        zip: "M5H 2N2",
+      },
+      deletedAt: null,
+    }),
+  );
+});

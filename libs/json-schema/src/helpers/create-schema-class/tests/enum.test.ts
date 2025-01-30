@@ -10,6 +10,10 @@ test("should correctly infer literal union types from const array", () => {
   expect(new BloodType("b").data).toEqual("b");
   expect(new BloodType("o").data).toEqual("o");
   expect(new BloodType("ab").data).toEqual("ab");
+  expect(JSON.stringify(new BloodType("a"))).toBe('"a"');
+  expect(JSON.stringify(new BloodType("b"))).toBe('"b"');
+  expect(JSON.stringify(new BloodType("o"))).toBe('"o"');
+  expect(JSON.stringify(new BloodType("ab"))).toBe('"ab"');
 
   expectTypeOf(new BloodType("a")).toEqualTypeOf<{
     data: "a" | "b" | "o" | "ab";

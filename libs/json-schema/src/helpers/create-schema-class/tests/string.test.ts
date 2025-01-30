@@ -8,6 +8,7 @@ test("should successfully parse valid string input", () => {
 
   expect(new StringSchema("hello").data).toEqual("hello");
   expect(StringSchema.parse("hello").data).toEqual("hello");
+  expect(JSON.stringify(StringSchema.parse("hello"))).toBe('"hello"');
 
   expectTypeOf(new StringSchema("hello")).toEqualTypeOf<{
     data: string;

@@ -8,6 +8,7 @@ test("should correctly infer string literal type", () => {
 
   expect(new Hello("hello").data).toEqual("hello");
   expect(Hello.parse("hello").data).toEqual("hello");
+  expect(JSON.stringify(Hello.parse("hello"))).toBe('"hello"');
 
   expectTypeOf(new Hello("hello")).toEqualTypeOf<{
     data: "hello";

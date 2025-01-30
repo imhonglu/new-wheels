@@ -8,6 +8,7 @@ test("should successfully parse valid null input", () => {
 
   expect(new NullSchema(null).data).toBeNull();
   expect(NullSchema.parse(null).data).toBeNull();
+  expect(JSON.stringify(NullSchema.parse(null))).toBe("null");
 
   expectTypeOf(new NullSchema(null)).toEqualTypeOf<{
     data: null;

@@ -19,6 +19,9 @@ test("should successfully parse string array", () => {
     "string",
     "string",
   ]);
+  expect(
+    JSON.stringify(StringArray.parse('["string", "string", "string"]')),
+  ).toBe('["string","string","string"]');
 
   expectTypeOf(new StringArray([])).toEqualTypeOf<string[]>();
   expectTypeOf(new StringArray([])).toEqualTypeOf<StringArray>();
@@ -78,7 +81,7 @@ test("should successfully parse array of objects", () => {
       name: { type: "string" },
       age: { type: "number" },
     },
-    required: ["name"] as const,
+    required: ["name"],
   }) {}
 
   class ObjectArraySchema extends createSchemaClass({

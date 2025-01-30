@@ -8,6 +8,8 @@ test("should successfully parse valid boolean input", () => {
 
   expect(BooleanSchema.parse(true).data).toEqual(true);
   expect(BooleanSchema.parse(false).data).toEqual(false);
+  expect(JSON.stringify(BooleanSchema.parse(true))).toBe("true");
+  expect(JSON.stringify(BooleanSchema.parse(false))).toBe("false");
 
   expectTypeOf(new BooleanSchema(true)).toEqualTypeOf<{
     data: boolean;
