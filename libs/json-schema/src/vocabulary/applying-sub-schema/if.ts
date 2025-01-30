@@ -1,14 +1,15 @@
+import { resolveSubSchema } from "../../utils/resolve-sub-schema.js";
 import { keywordHandler } from "../keyword-handler.js";
 
 keywordHandler.register("if", (schema, schemaContext) => {
-  const ifSchema = schemaContext.resolveSubSchema("if");
+  const ifSchema = resolveSubSchema(schemaContext, "if");
 
   const thenSchema = schema.then
-    ? schemaContext.resolveSubSchema("then")
+    ? resolveSubSchema(schemaContext, "then")
     : undefined;
 
   const elseSchema = schema.else
-    ? schemaContext.resolveSubSchema("else")
+    ? resolveSubSchema(schemaContext, "else")
     : undefined;
 
   return (data, context) => {

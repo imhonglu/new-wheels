@@ -15,11 +15,11 @@ export namespace StructuralValidation {
    * @see {@link https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-validation-01#section-6.1 | Any}
    */
   export interface Any {
-    type?: PrimitiveType | PrimitiveType[];
+    type?: PrimitiveType | [PrimitiveType, ...PrimitiveType[]];
     // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     const?: any;
     // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-    enum?: any[];
+    enum?: [any, ...any[]];
   }
 
   /**
@@ -59,9 +59,9 @@ export namespace StructuralValidation {
   export interface Object<T extends PropertyKey = string> {
     maxProperties?: number;
     minProperties?: number;
-    required?: T[];
+    required?: [T, ...T[]];
     dependentRequired?: {
-      [key in T]: T[];
+      [key in T]: [T, ...T[]];
     };
   }
 

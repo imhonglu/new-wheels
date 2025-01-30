@@ -1,9 +1,10 @@
 import { is } from "../../utils/is.js";
+import { resolveSubSchema } from "../../utils/resolve-sub-schema.js";
 import { keywordHandler } from "../keyword-handler.js";
 
 keywordHandler.register("prefixItems", (schema, schemaContext) => {
   const subSchemas = schema.prefixItems.map((_, index) =>
-    schemaContext.resolveSubSchema("prefixItems", index),
+    resolveSubSchema(schemaContext, "prefixItems", index),
   );
 
   return (data, context) => {

@@ -1,8 +1,9 @@
 import { is } from "../../utils/is.js";
+import { resolveSubSchema } from "../../utils/resolve-sub-schema.js";
 import { keywordHandler } from "../keyword-handler.js";
 
 keywordHandler.register("contains", (schema, schemaContext) => {
-  const subSchema = schemaContext.resolveSubSchema("contains");
+  const subSchema = resolveSubSchema(schemaContext, "contains");
   const maxContains = schema.maxContains ?? Number.POSITIVE_INFINITY;
   const minContains = schema.minContains ?? 1;
 

@@ -19,12 +19,56 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
+[InvalidTypeError](./json-schema.invalidtypeerror.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
 [Schema](./json-schema.schema.md)
 
 
 </td><td>
 
 JSON Schema validator and parser implementation that provides type-safe validation and parsing of JSON data according to a schema definition.
+
+
+</td></tr>
+<tr><td>
+
+[ValidationFailedError](./json-schema.validationfailederror.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
+
+## Functions
+
+<table><thead><tr><th>
+
+Function
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[createSchemaClass(schemaDefinition)](./json-schema.createschemaclass.md)
+
+
+</td><td>
+
+Creates a class based on a JSON schema definition that provides type-safe instantiation and validation.
 
 
 </td></tr>
@@ -54,6 +98,24 @@ Description
 </td></tr>
 <tr><td>
 
+[ConstSchema](./json-schema.constschema.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[ConstSchemaInput](./json-schema.constschemainput.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
 [Core](./json-schema.core.md)
 
 
@@ -63,7 +125,43 @@ Description
 </td></tr>
 <tr><td>
 
+[EnumSchema](./json-schema.enumschema.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[EnumSchemaInput](./json-schema.enumschemainput.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
 [Format](./json-schema.format.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[InferSchemaMap](./json-schema.inferschemamap.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[InferSchemaTypeMap](./json-schema.inferschematypemap.md)
 
 
 </td><td>
@@ -82,6 +180,24 @@ Description
 <tr><td>
 
 [StringEncodedData](./json-schema.stringencodeddata.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TypeSchema](./json-schema.typeschema.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[TypeSchemaInput](./json-schema.typeschemainput.md)
 
 
 </td><td>
@@ -114,15 +230,6 @@ Description
 </td></tr>
 <tr><td>
 
-[SchemaDefinition](./json-schema.schemadefinition.md)
-
-
-</td><td>
-
-
-</td></tr>
-<tr><td>
-
 [StructuralValidation](./json-schema.structuralvalidation.md)
 
 
@@ -133,6 +240,30 @@ Description
 <tr><td>
 
 [UnevaluatedLocations](./json-schema.unevaluatedlocations.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
+
+## Variables
+
+<table><thead><tr><th>
+
+Variable
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[SchemaSymbol](./json-schema.schemasymbol.md)
 
 
 </td><td>
@@ -165,7 +296,61 @@ Description
 </td></tr>
 <tr><td>
 
+[InferPropertyKey](./json-schema.inferpropertykey.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[InferSchema](./json-schema.inferschema.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[InferSchemaType](./json-schema.inferschematype.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
 [JsonSchema](./json-schema.jsonschema.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Match](./json-schema.match.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[SchemaInput](./json-schema.schemainput.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[SchemaVariant](./json-schema.schemavariant.md)
 
 
 </td><td>

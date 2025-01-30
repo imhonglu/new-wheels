@@ -2,10 +2,48 @@
 
 [Home](./index.md) &gt; [@imhonglu/json-schema](./json-schema.md) &gt; [Schema](./json-schema.schema.md) &gt; [stringify](./json-schema.schema.stringify.md)
 
-## Schema.stringify property
+## Schema.stringify() method
 
 **Signature:**
 
 ```typescript
-stringify: (data: unknown) => string;
+stringify(data: unknown): string;
 ```
+
+## Parameters
+
+<table><thead><tr><th>
+
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+data
+
+
+</td><td>
+
+unknown
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
+**Returns:**
+
+string
+

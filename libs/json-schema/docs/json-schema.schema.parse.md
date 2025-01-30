@@ -7,7 +7,7 @@
 **Signature:**
 
 ```typescript
-parse(data: unknown): SchemaDefinition.Instance<T>;
+parse(data: unknown): InferSchemaType<T>;
 ```
 
 ## Parameters
@@ -45,5 +45,5 @@ unknown
 </tbody></table>
 **Returns:**
 
-[SchemaDefinition.Instance](./json-schema.schemadefinition.instance.md)<!-- -->&lt;T&gt;
+[InferSchemaType](./json-schema.inferschematype.md)<!-- -->&lt;T&gt;
 

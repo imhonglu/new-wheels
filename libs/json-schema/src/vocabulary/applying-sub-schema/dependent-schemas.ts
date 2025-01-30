@@ -1,11 +1,13 @@
 import { is } from "../../utils/is.js";
+import { resolveSubSchema } from "../../utils/resolve-sub-schema.js";
 import { keywordHandler } from "../keyword-handler.js";
 
 keywordHandler.register("dependentSchemas", (schema, schemaContext) => {
   const dependentSchemas = Object.keys(schema.dependentSchemas).map(
     (propertyName) => ({
       propertyName,
-      subSchema: schemaContext.resolveSubSchema(
+      subSchema: resolveSubSchema(
+        schemaContext,
         "dependentSchemas",
         propertyName,
       ),

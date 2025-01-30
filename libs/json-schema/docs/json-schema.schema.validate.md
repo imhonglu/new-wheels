@@ -7,7 +7,7 @@
 **Signature:**
 
 ```typescript
-validate(data: unknown): data is SchemaDefinition.Instance<T>;
+validate(data: unknown, context?: ValidationContext): data is InferSchemaType<T>;
 ```
 
 ## Parameters
@@ -42,8 +42,24 @@ unknown
 
 
 </td></tr>
+<tr><td>
+
+context
+
+
+</td><td>
+
+[ValidationContext](./json-schema.validationcontext.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
 </tbody></table>
 **Returns:**
 
-data is [SchemaDefinition.Instance](./json-schema.schemadefinition.instance.md)<!-- -->&lt;T&gt;
+data is [InferSchemaType](./json-schema.inferschematype.md)<!-- -->&lt;T&gt;
 

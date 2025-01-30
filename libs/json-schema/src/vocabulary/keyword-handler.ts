@@ -12,7 +12,7 @@ export type EnsuredKeywordSchema<T> = T extends keyof ObjectSchema
 
 export type KeywordHandlerParams<T> = [
   schema: EnsuredKeywordSchema<T>,
-  schemaContext: Schema,
+  schemaContext: Schema<EnsuredKeywordSchema<T>>,
 ];
 
 export type KeywordHandler<T = undefined> =

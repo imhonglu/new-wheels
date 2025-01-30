@@ -9,7 +9,7 @@ Constructs a new instance of the `Schema` class
 **Signature:**
 
 ```typescript
-constructor(schema: Exclude<SchemaDefinition.InferRequiredProperty<T>, Schema>, parent?: Schema | undefined, path?: string);
+constructor(definition: Exclude<T, Schema>, parent?: Schema | undefined, path?: string);
 ```
 
 ## Parameters
@@ -32,12 +32,12 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-schema
+definition
 
 
 </td><td>
 
-Exclude&lt;[SchemaDefinition.InferRequiredProperty](./json-schema.schemadefinition.inferrequiredproperty.md)<!-- -->&lt;T&gt;, [Schema](./json-schema.schema.md)<!-- -->&gt;
+Exclude&lt;T, [Schema](./json-schema.schema.md)<!-- -->&gt;
 
 
 </td><td>

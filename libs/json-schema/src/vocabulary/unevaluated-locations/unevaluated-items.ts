@@ -1,8 +1,9 @@
 import { is } from "../../utils/is.js";
+import { resolveSubSchema } from "../../utils/resolve-sub-schema.js";
 import { keywordHandler } from "../keyword-handler.js";
 
 keywordHandler.register("unevaluatedItems", (schema, schemaContext) => {
-  const subSchema = schemaContext.resolveSubSchema("unevaluatedItems");
+  const subSchema = resolveSubSchema(schemaContext, "unevaluatedItems");
 
   return (data, context) => {
     if (!is.array(data) || schema.unevaluatedItems === true) {

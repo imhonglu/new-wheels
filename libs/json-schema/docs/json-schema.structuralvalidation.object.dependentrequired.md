@@ -8,6 +8,6 @@
 
 ```typescript
 dependentRequired?: {
-            [key in T]: T[];
+            [key in T]: [T, ...T[]];
         };
 ```

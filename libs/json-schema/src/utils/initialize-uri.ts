@@ -6,17 +6,17 @@ export function initializeUri(schema: Schema) {
     return schema.parent.uri;
   }
 
-  const { schema: schemaDefinition } = schema;
-  if (!is.object(schemaDefinition) || !schemaDefinition.$id) {
+  const { definition } = schema;
+  if (!is.object(definition) || !definition.$id) {
     return;
   }
 
-  const schemaUrl = new URL(schemaDefinition.$id);
+  const schemaUrl = new URL(definition.$id);
   const lastPathSegment = schemaUrl.pathname.split("/").pop();
 
   if (!lastPathSegment) {
     throw Error("Invalid $id: URL pathname must have at least one segment");
   }
 
-  return schemaDefinition.$id.replace(lastPathSegment, "");
+  return definition.$id.replace(lastPathSegment, "");
 }

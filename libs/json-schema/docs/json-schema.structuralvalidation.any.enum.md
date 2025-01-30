@@ -7,5 +7,5 @@
 **Signature:**
 
 ```typescript
-enum?: any[];
+enum?: [any, ...any[]];
 ```

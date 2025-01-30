@@ -43,7 +43,7 @@ Description
 
 </td><td>
 
-{ \[key in T\]: T\[\]; }
+{ \[key in T\]: \[T, ...T\[\]\]; }
 
 
 </td><td>
@@ -100,7 +100,7 @@ _(Optional)_
 
 </td><td>
 
-T\[\]
+\[T, ...T\[\]\]
 
 
 </td><td>

@@ -1,8 +1,9 @@
+import { resolveSubSchema } from "../../utils/resolve-sub-schema.js";
 import { keywordHandler } from "../keyword-handler.js";
 
 keywordHandler.register("oneOf", (schema, schemaContext) => {
   const subSchemas = schema.oneOf.map((_, index) =>
-    schemaContext.resolveSubSchema("oneOf", index),
+    resolveSubSchema(schemaContext, "oneOf", index),
   );
 
   return (data, context) =>
