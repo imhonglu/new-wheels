@@ -1,10 +1,17 @@
 # @imhonglu/json-schema
 
+## 1.1.1
+
+### Patch Changes
+
+- 6a531be: implement type inference for schema default values
+
 ## 1.1.0
 
 ### Minor Changes
 
 - e79702c:
+
   ## Breaking Changes
 
   ### Schema Type Definitions Restructured
