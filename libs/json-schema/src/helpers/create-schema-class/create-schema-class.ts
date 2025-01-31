@@ -1,5 +1,6 @@
 import type { ValidationFailedError } from "../../errors/validation-failed-error.js";
 import { Schema, SchemaSymbol } from "../../schema.js";
+import type { InferSchemaInputType } from "../../types/infer-schema-input-type.js";
 import type { InferSchemaType } from "../../types/infer-schema-type.js";
 import type { InferSchema } from "../../types/infer-schema.js";
 import type { SchemaInput } from "../../types/schema-input.js";
@@ -100,9 +101,9 @@ export function createSchemaClass<const T extends SchemaInput>(
   const SchemaBasedClass = class {
     static [SchemaSymbol] = Schema[SchemaSymbol];
 
-    public data: InferSchemaType<T>;
+    data: InferSchemaType<T>;
 
-    constructor(data: InferSchemaType<T>) {
+    constructor(data: InferSchemaInputType<T>) {
       this.data = applySchemaDefaults(data, schemaDefinition);
 
       if (typeof data === "object" && data !== null) {
@@ -125,7 +126,7 @@ export function createSchemaClass<const T extends SchemaInput>(
 
     static parse(data: unknown) {
       // biome-ignore lint/complexity/noThisInStatic: <explanation>
-      return new this(schemaContext.parse(data));
+      return new this(schemaContext.parse(data) as InferSchemaInputType<T>);
     }
 
     toJSON() {
@@ -133,7 +134,7 @@ export function createSchemaClass<const T extends SchemaInput>(
     }
   } as unknown as {
     new (
-      data: InferSchemaType<T>,
+      data: InferSchemaInputType<T>,
     ): InferSchemaType<T> extends Exclude<object, null>
       ? T extends { type: unknown }
         ? InferSchemaType<T>
@@ -146,7 +147,7 @@ export function createSchemaClass<const T extends SchemaInput>(
 
     parse: <T>(
       this: {
-        new (data: InferSchemaType<T>): T;
+        new (data: InferSchemaInputType<T>): T;
       },
       data: unknown,
     ) => T;
