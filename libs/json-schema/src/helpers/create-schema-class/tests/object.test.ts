@@ -13,7 +13,7 @@ test("should successfully parse valid object input", () => {
         default: () => new Date().toISOString(),
       },
     },
-    required: ["name", "age"],
+    required: ["name", "age", "createdAt"],
   }) {}
 
   expect(
@@ -48,7 +48,7 @@ test("should successfully parse valid object input", () => {
     name: string;
     age: number;
     active?: boolean;
-    createdAt?: string | null;
+    createdAt: string | null;
   }>();
   expectTypeOf(
     new ObjectSchema({ name: "John", age: 30 }),
@@ -57,7 +57,7 @@ test("should successfully parse valid object input", () => {
     name: string;
     age: number;
     active?: boolean;
-    createdAt?: string | null;
+    createdAt: string | null;
   }>();
 
   expect(() => ObjectSchema.parse(123)).toThrow();
@@ -96,6 +96,7 @@ test("should handle nested objects", () => {
             default: () => new Date().toISOString(),
           },
         },
+        required: ["createdAt"],
       },
     },
   }) {}
@@ -181,7 +182,7 @@ test("should handle nested objects", () => {
         default: null,
       },
     },
-    required: ["name"],
+    required: ["name", "deletedAt"],
   }) {}
 
   const johnDoe = new Person({
