@@ -7,6 +7,7 @@ import type {
   ValidationContext,
   ValidationFunction,
 } from "./types/validation-function.js";
+import { applySchemaDefaults } from "./utils/apply-schema-defaults.js";
 import { buildValidationMap } from "./utils/build-validation-map.js";
 import { initializeUri } from "./utils/initialize-uri.js";
 import { tryParseJson } from "./utils/try-parse-json.js";
@@ -108,7 +109,7 @@ export class Schema<T extends SchemaVariant = SchemaVariant> {
   }
 
   public parse(data: unknown): InferSchemaType<T> {
-    const parsed = tryParseJson(data);
+    const parsed = applySchemaDefaults(tryParseJson(data), this.definition);
 
     if (!this.validate(parsed)) {
       throw new ValidationFailedError(data);
