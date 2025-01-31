@@ -152,6 +152,15 @@ Description
 </td></tr>
 <tr><td>
 
+[InferSchemaInputTypeMap](./json-schema.inferschemainputtypemap.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
 [InferSchemaMap](./json-schema.inferschemamap.md)
 
 
@@ -305,7 +314,25 @@ Description
 </td></tr>
 <tr><td>
 
+[InferPropertyKeyWithDefault](./json-schema.inferpropertykeywithdefault.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
 [InferSchema](./json-schema.inferschema.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[InferSchemaInputType](./json-schema.inferschemainputtype.md)
 
 
 </td><td>
@@ -333,6 +360,15 @@ Description
 <tr><td>
 
 [Match](./json-schema.match.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Optional](./json-schema.optional.md)
 
 
 </td><td>
