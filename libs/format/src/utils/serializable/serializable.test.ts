@@ -28,4 +28,5 @@ test("should create instance using constructor", () => {
   const example = new Example(TEST_STRING);
   expect(example.toString()).toBe(TEST_STRING);
   expect(JSON.stringify(example)).toBe(`"${TEST_STRING}"`);
+  expect(Example.safeParse(TEST_STRING)).toEqual({ ok: true, data: example });
 });
