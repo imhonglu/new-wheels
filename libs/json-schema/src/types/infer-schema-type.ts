@@ -5,11 +5,17 @@ import type { Match } from "./match.js";
 
 export interface InferSchemaTypeMap<T> {
   null: null;
+
   boolean: boolean;
+
   number: number;
+
   integer: number;
+
   array: T extends { items: infer U } ? InferSchemaType<U>[] : unknown[];
+
   string: string;
+
   object: T extends { properties: Record<infer K, unknown> }
     ? T extends {
         required: Array<infer U extends K>;
