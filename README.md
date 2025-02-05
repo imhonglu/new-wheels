@@ -6,9 +6,9 @@
 
 ## Introduction
 
-This project started with the mindset of "Let's create type-safe libraries that match my preferences."
-
-The goal is to minimize unnecessary dependencies while maintaining high test coverage.
+This project started with the mindset of "Let's create type-safe libraries that match my preferences."  
+The goal is to minimize unnecessary dependencies while maintaining high test coverage,   
+focusing on designing libraries with excellent type inference capabilities.
 
 ## Libraries
 
