@@ -9,7 +9,7 @@ import { type UnwrapResult, unwrapOr } from "./unwrap-or.js";
  * @param maybe - The value to unwrap
  * @param error - The error to throw if input is null or undefined
  * @returns The input value if it exists, otherwise throws an error
- * @throws - {Error} When the input value is null or undefined
+ * @throws - When the input value is null or undefined
  *
  * @example
  * ```ts
