@@ -4,7 +4,12 @@
 
 ## Introduction
 
-A library containing commonly used utility functions and types.
+A utility library containing frequently used functions and types with the following features:
+
+- Can be used independently without unnecessary dependencies
+- Provides utilities across various categories including arrays, objects, functions, and types
+- Strong type inference support based on TypeScript
+- All utilities come with detailed documentation and examples
 
 ## Table of Contents
 
@@ -20,52 +25,54 @@ npm install @imhonglu/toolkit
 
 ## Usage
 
-Let's introduce a simple example of the utility type `Fn.Callable`.
+Let's look at the basic usage of the utility type `Fn.Callable`.
 
-For detailed usage examples, please refer to the [API Reference](#api-reference).
+For more detailed examples, please refer to the [API Reference](#api-reference).
 
 ```ts
 import type { Fn } from '@imhonglu/toolkit';
 
-// Provides a type alias for function type '(...args: any[]) => any'
+// Provides a type alias for the function type '(...args: any[]) => any'
 Fn.Callable // (...args: any[]) => any
 
-// Define argument types only through generics
+// Can define argument types only through generics
 Fn.Callable<{ args: [number, number] }> // (...args: [number, number]) => any
 
-// Define return type only through generics
+// Can define return type only through generics
 Fn.Callable<{ return: string }> // (...args: any[]) => string
 
-// Define both argument and return types through generics
+// Can define both argument and return types through generics
 Fn.Callable<{ args: [number, number], return: string }> // (...args: [number, number]) => string
 ```
 
 ## API Reference
 
 ### Array Utilities
-- [combinations](./docs/toolkit.combinations.md) - Generate all combinations of an array
-- [chunk](./docs/toolkit.chunk.md) - Split array into chunks of specified size
+- [combinations](./docs/toolkit.combinations.md) - Generates all possible combinations from a given array
+- [chunk](./docs/toolkit.chunk.md) - Splits a large array into smaller arrays of specified size
 
 ### Object Utilities
-- [clone-prototype](./docs/toolkit.cloneprototype.md) - Clone object including prototype
-- [invert](./docs/toolkit.invert.md) - Invert object keys and values
-- [pick](./docs/toolkit.pick.md) - Pick specified properties from object
-- [omit](./docs/toolkit.omit.md) - Omit specified properties from object
+- [clone-prototype](./docs/toolkit.cloneprototype.md) - Clones an object including its prototype chain
+- [invert](./docs/toolkit.invert.md) - Swaps the keys and values of an object
+- [pick](./docs/toolkit.pick.md) - Creates a new object with selected properties from an object
+- [omit](./docs/toolkit.omit.md) - Creates a new object excluding specified properties from an object
 
 ### Function Utilities
-- [memoize](./docs/toolkit.memoize.md) - Memoize function results
-- [get-callsites](./docs/toolkit.getcallsites.md) - Get call stack information
-- [create-safe-executor](./docs/toolkit.createsafeexecutor.md) - Create safe function executor
-- [is-async-function](./docs/toolkit.isasyncfunction.md) - Check if function is async
+- [memoize](./docs/toolkit.memoize.md) - Caches function results to prevent recalculation for identical inputs
+- [get-callsites](./docs/toolkit.getcallsites.md) - Retrieves call stack information of currently executing code
+- [create-safe-executor](./docs/toolkit.createsafeexecutor.md) - Creates a safe function executor with exception handling
+- [is-async-function](./docs/toolkit.isasyncfunction.md) - Checks if a given function is asynchronous
+- [unwrap](./docs/toolkit.unwrap.md) - Unwraps an Optional value and returns the actual value
+- [unwrap-or](./docs/toolkit.unwrapor.md) - Returns a default value if the Optional value is empty
 
 ### Type Utilities
-- [literal-union](./docs/toolkit.literalunion.md) - Literal union type
-- [array-element](./docs/toolkit.arrayelement.md) - Array element type
-- [fn](./docs/toolkit.fn.md) - Function type utilities
-- [or](./docs/toolkit.or.md) - Union type utilities
-- [primitive](./docs/toolkit.primitive.md) - Primitive type utilities
-- [mutable](./docs/toolkit.mutable.md) - Mutable type utilities
-- [nullish-value](./docs/toolkit.nullishvalue.md) - Nullish type
+- [literal-union](./docs/toolkit.literalunion.md) - Creates a string literal union type
+- [array-element](./docs/toolkit.arrayelement.md) - Extracts the element type of an array
+- [fn](./docs/toolkit.fn.md) - Provides function type utilities
+- [or](./docs/toolkit.or.md) - Provides union type utilities
+- [primitive](./docs/toolkit.primitive.md) - Provides primitive type utilities
+- [mutable](./docs/toolkit.mutable.md) - Converts readonly types to mutable types
+- [nullish-value](./docs/toolkit.nullishvalue.md) - Provides Nullish type including null and undefined
 
 ### String Utilities
-- [string-case](./docs/toolkit.stringcase.md) - String case conversion
+- [string-case](./docs/toolkit.stringcase.md) - Provides string case conversion and case style transformation functionality
