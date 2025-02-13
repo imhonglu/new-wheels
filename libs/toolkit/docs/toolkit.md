@@ -173,6 +173,32 @@ Converts a string to snake case.
 
 
 </td></tr>
+<tr><td>
+
+[unwrap(maybe, error)](./toolkit.unwrap.md)
+
+
+</td><td>
+
+Unwraps a value and ensures it is not null or undefined.
+
+Inspired by rust's `unwrap` function.
+
+
+</td></tr>
+<tr><td>
+
+[unwrapOr(maybe, fallback)](./toolkit.unwrapor.md)
+
+
+</td><td>
+
+Unwraps a value and ensures it is not null or undefined.
+
+Inspired by rust's `unwrap_or` function.
+
+
+</td></tr>
 </tbody></table>
 
 ## Interfaces
@@ -417,6 +443,15 @@ Represents the result of a safe execution, either successful or failed.
 </td><td>
 
 Represents the result of a safe execution, either successful or failed.
+
+
+</td></tr>
+<tr><td>
+
+[UnwrapResult](./toolkit.unwrapresult.md)
+
+
+</td><td>
 
 
 </td></tr>
