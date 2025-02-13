@@ -1,5 +1,11 @@
 # @imhonglu/toolkit
 
+## 1.0.3
+
+### Patch Changes
+
+- d5dc521: add unwrap and unwrapOr utility functions
+
 ## 1.0.2
 
 ### Patch Changes
