@@ -30,6 +30,12 @@ test("should parse a valid FullTime string", () => {
   expect(JSON.stringify(FullTime.parse("12:34:56.111+09:00"))).toBe(
     '"12:34:56.111+09:00"',
   );
+  expect(
+    JSON.stringify({
+      name: "John",
+      time: FullTime.parse("12:34:56.111+09:00"),
+    }),
+  ).toBe('{"name":"John","time":"12:34:56.111+09:00"}');
 });
 
 test("should parse a valid FullTime string with case-insensitive Z", () => {
