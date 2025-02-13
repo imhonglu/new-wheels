@@ -8,6 +8,8 @@ export * from "./function/memoize.js";
 export * from "./function/get-callsites.js";
 export * from "./function/create-safe-executor.js";
 export * from "./function/is-async-function.js";
+export * from "./function/unwrap.js";
+export * from "./function/unwrap-or.js";
 export * from "./types/literal-union.js";
 export * from "./types/array-element.js";
 export * from "./types/fn.js";
