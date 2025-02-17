@@ -368,7 +368,16 @@ Description
 </td></tr>
 <tr><td>
 
-[Optional](./json-schema.optional.md)
+[PickRequired](./json-schema.pickrequired.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[SchemaConstructorParams](./json-schema.schemaconstructorparams.md)
 
 
 </td><td>

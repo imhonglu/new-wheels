@@ -128,7 +128,7 @@ number
 
 </td><td>
 
-T extends { properties: Record&lt;infer K, unknown&gt;; } ? T extends { required: Array&lt;infer U extends K&gt;; } ? { \[P in K &amp; U\]: [InferSchemaType](./json-schema.inferschematype.md)<!-- -->&lt;T\["properties"\]\[P\]&gt;; } &amp; { \[P in Exclude&lt;K, U&gt;\]?: [InferSchemaType](./json-schema.inferschematype.md)<!-- -->&lt;T\["properties"\]\[P\]&gt;; } : { \[P in K\]?: [InferSchemaType](./json-schema.inferschematype.md)<!-- -->&lt;T\["properties"\]\[P\]&gt;; } : Record&lt;string, unknown&gt;
+T extends { properties: Record&lt;infer K, unknown&gt;; } ? T extends { required: Array&lt;infer U extends K&gt;; } ? Exclude&lt;K, U&gt; extends never ? { \[P in K &amp; U\]: [InferSchemaType](./json-schema.inferschematype.md)<!-- -->&lt;T\["properties"\]\[P\]&gt;; } : \[ U \] extends \[never\] ? { \[P in K\]?: [InferSchemaType](./json-schema.inferschematype.md)<!-- -->&lt;T\["properties"\]\[P\]&gt;; } : { \[P in K &amp; U\]: [InferSchemaType](./json-schema.inferschematype.md)<!-- -->&lt;T\["properties"\]\[P\]&gt;; } &amp; { \[P in Exclude&lt;K, U&gt;\]?: [InferSchemaType](./json-schema.inferschematype.md)<!-- -->&lt;T\["properties"\]\[P\]&gt;; } : { \[P in K\]?: [InferSchemaType](./json-schema.inferschematype.md)<!-- -->&lt;T\["properties"\]\[P\]&gt;; } : Record&lt;string, unknown&gt;
 
 
 </td><td>
