@@ -88,8 +88,8 @@ importers:
         specifier: ^1.0.3
         version: 1.0.3(esbuild@0.24.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.7.3)(vitest@3.0.5(@types/node@22.13.4)(jiti@2.4.2)(yaml@2.7.0))
       '@imhonglu/configs':
-        specifier: ^1.0.6
-        version: 1.0.6(jest-extended@4.0.2)(vitest@3.0.5(@types/node@22.13.4)(jiti@2.4.2)(yaml@2.7.0))
+        specifier: ^1.0.7
+        version: 1.0.7(jest-extended@4.0.2)(vitest@3.0.5(@types/node@22.13.4)(jiti@2.4.2)(yaml@2.7.0))
 
   libs/json-schema:
     dependencies:
@@ -110,8 +110,8 @@ importers:
         specifier: ^1.0.3
         version: 1.0.3(esbuild@0.24.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.7.3)(vitest@3.0.5(@types/node@22.13.4)(jiti@2.4.2)(yaml@2.7.0))
       '@imhonglu/configs':
-        specifier: ^1.0.6
-        version: 1.0.6(jest-extended@4.0.2)(vitest@3.0.5(@types/node@22.13.4)(jiti@2.4.2)(yaml@2.7.0))
+        specifier: ^1.0.7
+        version: 1.0.7(jest-extended@4.0.2)(vitest@3.0.5(@types/node@22.13.4)(jiti@2.4.2)(yaml@2.7.0))
 
   libs/pattern-builder:
     devDependencies:
@@ -119,8 +119,8 @@ importers:
         specifier: ^1.0.3
         version: 1.0.3(esbuild@0.24.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.7.3)(vitest@3.0.5(@types/node@22.13.4)(jiti@2.4.2)(yaml@2.7.0))
       '@imhonglu/configs':
-        specifier: ^1.0.6
-        version: 1.0.6(jest-extended@4.0.2)(vitest@3.0.5(@types/node@22.13.4)(jiti@2.4.2)(yaml@2.7.0))
+        specifier: ^1.0.7
+        version: 1.0.7(jest-extended@4.0.2)(vitest@3.0.5(@types/node@22.13.4)(jiti@2.4.2)(yaml@2.7.0))
 
   libs/toolkit:
     dependencies:
@@ -135,8 +135,8 @@ importers:
         specifier: ^1.0.3
         version: 1.0.3(esbuild@0.24.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.7.3)(vitest@3.0.5(@types/node@22.13.4)(jiti@2.4.2)(yaml@2.7.0))
       '@imhonglu/configs':
-        specifier: ^1.0.6
-        version: 1.0.6(jest-extended@4.0.2)(vitest@3.0.5(@types/node@22.13.4)(jiti@2.4.2)(yaml@2.7.0))
+        specifier: ^1.0.7
+        version: 1.0.7(jest-extended@4.0.2)(vitest@3.0.5(@types/node@22.13.4)(jiti@2.4.2)(yaml@2.7.0))
 
   libs/type-guard:
     devDependencies:
@@ -144,8 +144,8 @@ importers:
         specifier: ^1.0.3
         version: 1.0.3(esbuild@0.24.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.7.3)(vitest@3.0.5(@types/node@22.13.4)(jiti@2.4.2)(yaml@2.7.0))
       '@imhonglu/configs':
-        specifier: ^1.0.6
-        version: 1.0.6(jest-extended@4.0.2)(vitest@3.0.5(@types/node@22.13.4)(jiti@2.4.2)(yaml@2.7.0))
+        specifier: ^1.0.7
+        version: 1.0.7(jest-extended@4.0.2)(vitest@3.0.5(@types/node@22.13.4)(jiti@2.4.2)(yaml@2.7.0))
 
   libs/type-object:
     dependencies:
@@ -157,14 +157,14 @@ importers:
         specifier: ^1.0.3
         version: 1.0.3(esbuild@0.24.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.7.3)(vitest@3.0.5(@types/node@22.13.4)(jiti@2.4.2)(yaml@2.7.0))
       '@imhonglu/configs':
-        specifier: ^1.0.6
-        version: 1.0.6(jest-extended@4.0.2)(vitest@3.0.5(@types/node@22.13.4)(jiti@2.4.2)(yaml@2.7.0))
+        specifier: ^1.0.7
+        version: 1.0.7(jest-extended@4.0.2)(vitest@3.0.5(@types/node@22.13.4)(jiti@2.4.2)(yaml@2.7.0))
 
   tools/build-tools:
     dependencies:
       '@imhonglu/configs':
-        specifier: ^1.0.6
-        version: 1.0.6(jest-extended@4.0.2)(vitest@3.0.5(@types/node@22.13.4)(jiti@2.4.2)(yaml@2.7.0))
+        specifier: ^1.0.7
+        version: 1.0.7(jest-extended@4.0.2)(vitest@3.0.5(@types/node@22.13.4)(jiti@2.4.2)(yaml@2.7.0))
       '@imhonglu/toolkit':
         specifier: ^1.0.3
         version: 1.0.3
@@ -784,11 +784,11 @@ packages:
       tslib: ^2.8.1
       typescript: ^5.7.3
 
-  '@imhonglu/configs@1.0.6':
-    resolution: {integrity: sha512-apPHHgVl4aq3Zguom5VWH9VTGpupFnDP0wrpGv0/yKGcTXrmIQBL3D96NjX7YQikJmielbe2FxoNOgtqHOQfiQ==}
+  '@imhonglu/configs@1.0.7':
+    resolution: {integrity: sha512-pP6HX9YZgESTa5bdgI+1RB8tt4t7Hd37hSwKfUc2A0BQJVCz5yl4cBMyzJ1lZqhmD1eJpo2uzBKQqALFfoZuAg==}
     peerDependencies:
       jest-extended: ^4.0.2
-      vitest: ^3.0.2
+      vitest: ^3.0.5
 
   '@imhonglu/format@1.0.7':
     resolution: {integrity: sha512-9sdrWhKUZXuvA9ChvhHGEOIke3PDBNax6CoBeY6KN1VAz6i9dvvGI5khxoHFM2lEdfxx+Ylgm82jPqjv+iH7cg==}
@@ -2880,7 +2880,7 @@ snapshots:
 
   '@imhonglu/build-tools@1.0.3(esbuild@0.24.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.7.3)(vitest@3.0.4(@types/node@22.13.4)(jiti@2.4.2)(yaml@2.7.0))':
     dependencies:
-      '@imhonglu/configs': 1.0.6(jest-extended@4.0.2)(vitest@3.0.4(@types/node@22.13.4)(jiti@2.4.2)(yaml@2.7.0))
+      '@imhonglu/configs': 1.0.7(jest-extended@4.0.2)(vitest@3.0.4(@types/node@22.13.4)(jiti@2.4.2)(yaml@2.7.0))
       '@imhonglu/toolkit': 1.0.3
       esbuild: 0.24.2
       tslib: 2.8.1
@@ -2891,7 +2891,7 @@ snapshots:
 
   '@imhonglu/build-tools@1.0.3(esbuild@0.24.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.7.3)(vitest@3.0.5(@types/node@22.13.4)(jiti@2.4.2)(yaml@2.7.0))':
     dependencies:
-      '@imhonglu/configs': 1.0.6(jest-extended@4.0.2)(vitest@3.0.5(@types/node@22.13.4)(jiti@2.4.2)(yaml@2.7.0))
+      '@imhonglu/configs': 1.0.7(jest-extended@4.0.2)(vitest@3.0.5(@types/node@22.13.4)(jiti@2.4.2)(yaml@2.7.0))
       '@imhonglu/toolkit': 1.0.3
       esbuild: 0.24.2
       tslib: 2.8.1
@@ -2900,12 +2900,12 @@ snapshots:
       - jest-extended
       - vitest
 
-  '@imhonglu/configs@1.0.6(jest-extended@4.0.2)(vitest@3.0.4(@types/node@22.13.4)(jiti@2.4.2)(yaml@2.7.0))':
+  '@imhonglu/configs@1.0.7(jest-extended@4.0.2)(vitest@3.0.4(@types/node@22.13.4)(jiti@2.4.2)(yaml@2.7.0))':
     dependencies:
       jest-extended: 4.0.2
       vitest: 3.0.4(@types/node@22.13.4)(jiti@2.4.2)(yaml@2.7.0)
 
-  '@imhonglu/configs@1.0.6(jest-extended@4.0.2)(vitest@3.0.5(@types/node@22.13.4)(jiti@2.4.2)(yaml@2.7.0))':
+  '@imhonglu/configs@1.0.7(jest-extended@4.0.2)(vitest@3.0.5(@types/node@22.13.4)(jiti@2.4.2)(yaml@2.7.0))':
     dependencies:
       jest-extended: 4.0.2
       vitest: 3.0.5(@types/node@22.13.4)(jiti@2.4.2)(yaml@2.7.0)

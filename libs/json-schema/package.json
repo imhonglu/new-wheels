@@ -41,11 +41,11 @@
   "license": "MIT",
   "devDependencies": {
     "@imhonglu/build-tools": "^1.0.3",
-    "@imhonglu/configs": "^1.0.6"
+    "@imhonglu/configs": "^1.0.7"
   },
   "dependencies": {
     "@imhonglu/format": "^1.0.7",
-    "@imhonglu/toolkit": "^1.0.2",
+    "@imhonglu/toolkit": "^1.0.3",
     "@imhonglu/type-guard": "^1.0.1",
     "@imhonglu/type-object": "^1.0.1"
   }

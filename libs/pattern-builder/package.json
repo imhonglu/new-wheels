@@ -32,6 +32,6 @@
   "license": "MIT",
   "devDependencies": {
     "@imhonglu/build-tools": "^1.0.3",
-    "@imhonglu/configs": "^1.0.6"
+    "@imhonglu/configs": "^1.0.7"
   }
 }
