@@ -1,11 +1,12 @@
 export type InferPropertyKeyWithDefault<T> = T extends {
-  properties: Record<string, unknown>;
+  properties: Record<infer K, unknown>;
+  required: Array<infer U>;
 }
   ? {
-      [K in keyof T["properties"]]: T["properties"][K] extends {
+      [P in K & U]: T["properties"][P] extends {
         default: unknown;
       }
-        ? K
+        ? P
         : never;
-    }[keyof T["properties"]]
+    }[K & U]
   : never;

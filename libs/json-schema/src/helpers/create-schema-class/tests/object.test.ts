@@ -12,8 +12,12 @@ test("should successfully parse valid object input", () => {
         type: ["string", "null"],
         default: () => new Date().toISOString(),
       },
+      updatedAt: {
+        type: ["string", "null"],
+        default: () => new Date().toISOString(),
+      },
     },
-    required: ["name", "age", "createdAt"],
+    required: ["name", "age", "createdAt", "updatedAt"],
   }) {}
 
   expect(
@@ -28,6 +32,7 @@ test("should successfully parse valid object input", () => {
       age: 30,
       active: true,
       createdAt: expect.toBeString(),
+      updatedAt: expect.toBeString(),
     },
   });
 
@@ -41,6 +46,7 @@ test("should successfully parse valid object input", () => {
       name: "John",
       age: 30,
       createdAt: expect.toBeString(),
+      updatedAt: expect.toBeString(),
     },
   });
 
@@ -49,6 +55,7 @@ test("should successfully parse valid object input", () => {
     age: number;
     active?: boolean;
     createdAt: string | null;
+    updatedAt: string | null;
   }>();
   expectTypeOf(
     new ObjectSchema({ name: "John", age: 30 }),
@@ -58,6 +65,7 @@ test("should successfully parse valid object input", () => {
     age: number;
     active?: boolean;
     createdAt: string | null;
+    updatedAt: string | null;
   }>();
 
   expect(() => ObjectSchema.parse(123)).toThrow();
@@ -131,7 +139,11 @@ test("should handle nested objects", () => {
     },
   });
   expect(ObjectSchema.parse({})).toEqual({
-    data: {},
+    data: {
+      user: {
+        createdAt: expect.any(String),
+      },
+    },
   });
 
   expectTypeOf(
@@ -231,4 +243,45 @@ test("should handle nested objects", () => {
       deletedAt: null,
     }),
   );
+});
+
+test("should handle all properties are optional", () => {
+  class Person extends createSchemaClass({
+    type: "object",
+    properties: {
+      name: { type: "string", default: "John Doe" },
+      age: { type: "number", default: 20 },
+      isActive: { type: "boolean", default: true },
+    },
+    required: ["name"],
+  }) {}
+
+  const johnDoe = new Person();
+
+  expect(johnDoe.name).toBe("John Doe");
+  expect(johnDoe.age).toBe(20);
+  expect(johnDoe.isActive).toBe(true);
+
+  expect(JSON.stringify(johnDoe)).toBe(
+    JSON.stringify({
+      name: "John Doe",
+      age: 20,
+      isActive: true,
+    }),
+  );
+});
+
+test("should return empty data object when instantiated without properties", () => {
+  class Person extends createSchemaClass({
+    type: "object",
+    properties: {
+      name: { type: "string" },
+    },
+  }) {}
+
+  const johnDoe = new Person();
+
+  expect(johnDoe).toEqual({
+    data: {},
+  });
 });

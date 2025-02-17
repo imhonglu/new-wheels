@@ -3,6 +3,7 @@ import { Schema, SchemaSymbol } from "../../schema.js";
 import type { InferSchemaInputType } from "../../types/infer-schema-input-type.js";
 import type { InferSchemaType } from "../../types/infer-schema-type.js";
 import type { InferSchema } from "../../types/infer-schema.js";
+import type { SchemaConstructorParams } from "../../types/schema-constructor-params.js";
 import type { SchemaInput } from "../../types/schema-input.js";
 import { applySchemaDefaults } from "../../utils/apply-schema-defaults.js";
 
@@ -103,9 +104,14 @@ export function createSchemaClass<const T extends SchemaInput>(
 
     data: InferSchemaType<T>;
 
-    constructor(data: InferSchemaInputType<T>) {
-      this.data = applySchemaDefaults(data, schemaDefinition);
+    constructor(...[data]: SchemaConstructorParams<T>) {
+      data = applySchemaDefaults(data, schemaDefinition);
 
+      this.data = data as InferSchemaType<T>;
+
+      // Set up a proxy for object type schemas to enable direct property access
+      // This allows accessing properties directly (e.g., instance.propertyName)
+      // instead of going through the data object (instance.data.propertyName)
       if (typeof data === "object" && data !== null) {
         // biome-ignore lint/correctness/noConstructorReturn: <explanation>
         return new Proxy(this, {
@@ -115,15 +121,18 @@ export function createSchemaClass<const T extends SchemaInput>(
 
               return typeof value === "function" ? value.bind(data) : value;
             }
+            if (prop in target) {
+              return target[prop as keyof typeof target];
+            }
 
-            return prop in target
-              ? target[prop as keyof typeof target]
-              : undefined;
+            return undefined;
           },
         });
       }
     }
 
+    // Parses schema data and returns a class instance.
+    // Overrides Schema.parse() to return a class instance instead of a plain object.
     static parse(data: unknown) {
       // biome-ignore lint/complexity/noThisInStatic: <explanation>
       return new this(schemaContext.parse(data) as InferSchemaInputType<T>);
@@ -134,7 +143,7 @@ export function createSchemaClass<const T extends SchemaInput>(
     }
   } as unknown as {
     new (
-      data: InferSchemaInputType<T>,
+      ...args: SchemaConstructorParams<T>
     ): InferSchemaType<T> extends Exclude<object, null>
       ? T extends { type: unknown }
         ? InferSchemaType<T>
@@ -155,11 +164,17 @@ export function createSchemaClass<const T extends SchemaInput>(
 
   return new Proxy(SchemaBasedClass, {
     get(target, prop) {
-      return prop in target
-        ? target[prop as keyof typeof target]
-        : prop in schemaContext
-          ? schemaContext[prop as keyof typeof schemaContext]
-          : undefined;
+      // if the property is in the target, return the target
+      if (prop in target) {
+        return target[prop as keyof typeof target];
+      }
+
+      // if the property is in the schema context, return the schema context
+      if (prop in schemaContext) {
+        return schemaContext[prop as keyof typeof schemaContext];
+      }
+
+      return undefined;
     },
   }) as typeof SchemaBasedClass & typeof schemaContext;
 }
