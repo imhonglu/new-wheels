@@ -1,6 +1,5 @@
 ---
 "@imhonglu/json-schema": patch
-"@package-name": minor
 ---
 
 ### Bug Fixes
