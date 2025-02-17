@@ -128,7 +128,7 @@ Description
 
 </td><td>
 
-[InferPropertyKeyWithDefault](./json-schema.inferpropertykeywithdefault.md)<!-- -->&lt;T&gt; extends never ? [InferSchemaType](./json-schema.inferschematype.md)<!-- -->&lt;T&gt; : [Optional](./json-schema.optional.md)<!-- -->&lt;[InferSchemaType](./json-schema.inferschematype.md)<!-- -->&lt;T&gt;, [InferPropertyKeyWithDefault](./json-schema.inferpropertykeywithdefault.md)<!-- -->&lt;T&gt;&gt;
+[InferPropertyKeyWithDefault](./json-schema.inferpropertykeywithdefault.md)<!-- -->&lt;T&gt; extends never ? [InferSchemaType](./json-schema.inferschematype.md)<!-- -->&lt;T&gt; : T extends { properties: Record&lt;infer K, unknown&gt;; required: Array&lt;infer U&gt;; } ? Exclude&lt;K &amp; U, [InferPropertyKeyWithDefault](./json-schema.inferpropertykeywithdefault.md)<!-- -->&lt;T&gt;&gt; extends never ? { \[P in K\]?: [InferSchemaType](./json-schema.inferschematype.md)<!-- -->&lt;T\["properties"\]\[P\]&gt;; } : { \[P in Exclude&lt;K &amp; U, [InferPropertyKeyWithDefault](./json-schema.inferpropertykeywithdefault.md)<!-- -->&lt;T&gt;&gt;\]: [InferSchemaType](./json-schema.inferschematype.md)<!-- -->&lt;T\["properties"\]\[P\]&gt;; } &amp; { \[P in Exclude&lt;K, Exclude&lt;U, [InferPropertyKeyWithDefault](./json-schema.inferpropertykeywithdefault.md)<!-- -->&lt;T&gt;&gt;&gt;\]?: [InferSchemaType](./json-schema.inferschematype.md)<!-- -->&lt;T\["properties"\]\[P\]&gt;; } : [InferSchemaType](./json-schema.inferschematype.md)<!-- -->&lt;T&gt;
 
 
 </td><td>

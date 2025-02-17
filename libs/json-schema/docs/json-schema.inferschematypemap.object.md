@@ -11,7 +11,13 @@ object: T extends {
         properties: Record<infer K, unknown>;
     } ? T extends {
         required: Array<infer U extends K>;
-    } ? {
+    } ? Exclude<K, U> extends never ? {
+        [P in K & U]: InferSchemaType<T["properties"][P]>;
+    } : [
+        U
+    ] extends [never] ? {
+        [P in K]?: InferSchemaType<T["properties"][P]>;
+    } : {
         [P in K & U]: InferSchemaType<T["properties"][P]>;
     } & {
         [P in Exclude<K, U>]?: InferSchemaType<T["properties"][P]>;

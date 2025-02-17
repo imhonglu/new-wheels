@@ -7,7 +7,7 @@ import { is } from "./is.js";
 export function applySchemaDefaults<T>(
   data: T,
   schemaDefinition: SchemaVariant | Fn.Newable,
-): T {
+): NonNullable<T> {
   if (schemaDefinition instanceof Schema && "definition" in schemaDefinition) {
     // biome-ignore lint/style/noParameterAssign: <explanation>
     schemaDefinition = schemaDefinition.definition;
@@ -25,13 +25,17 @@ export function applySchemaDefaults<T>(
       defaultValue = defaultValue();
     }
 
+    if (data === undefined && is.objectTypeSchema(schemaDefinition)) {
+      defaultValue = {};
+    }
+
     if (
       !is.objectTypeSchema(schemaDefinition) ||
       !schemaDefinition.properties ||
       defaultValue === undefined ||
       defaultValue === null
     ) {
-      return defaultValue as T;
+      return defaultValue as NonNullable<T>;
     }
 
     for (const property in schemaDefinition.properties) {
@@ -63,8 +67,8 @@ export function applySchemaDefaults<T>(
       }
     }
 
-    return defaultValue as T;
+    return defaultValue as NonNullable<T>;
   }
 
-  return data;
+  return data as NonNullable<T>;
 }

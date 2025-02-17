@@ -7,5 +7,14 @@
 **Signature:**
 
 ```typescript
-object: InferPropertyKeyWithDefault<T> extends never ? InferSchemaType<T> : Optional<InferSchemaType<T>, InferPropertyKeyWithDefault<T>>;
+object: InferPropertyKeyWithDefault<T> extends never ? InferSchemaType<T> : T extends {
+        properties: Record<infer K, unknown>;
+        required: Array<infer U>;
+    } ? Exclude<K & U, InferPropertyKeyWithDefault<T>> extends never ? {
+        [P in K]?: InferSchemaType<T["properties"][P]>;
+    } : {
+        [P in Exclude<K & U, InferPropertyKeyWithDefault<T>>]: InferSchemaType<T["properties"][P]>;
+    } & {
+        [P in Exclude<K, Exclude<U, InferPropertyKeyWithDefault<T>>>]?: InferSchemaType<T["properties"][P]>;
+    } : InferSchemaType<T>;
 ```

@@ -10,7 +10,7 @@ Creates a class based on a JSON schema definition that provides type-safe instan
 
 ```typescript
 export declare function createSchemaClass<const T extends SchemaInput>(schemaDefinition: InferSchema<T>): {
-    new (data: InferSchemaInputType<T>): InferSchemaType<T> extends Exclude<object, null> ? T extends {
+    new (...args: SchemaConstructorParams<T>): InferSchemaType<T> extends Exclude<object, null> ? T extends {
         type: unknown;
     } ? InferSchemaType<T> : {
         data: InferSchemaType<T>;
@@ -60,7 +60,7 @@ The JSON schema definition that describes the structure and validation rules
 </tbody></table>
 **Returns:**
 
-{ new (data: [InferSchemaInputType](./json-schema.inferschemainputtype.md)<!-- -->&lt;T&gt;): [InferSchemaType](./json-schema.inferschematype.md)<!-- -->&lt;T&gt; extends Exclude&lt;object, null&gt; ? T extends { type: unknown; } ? [InferSchemaType](./json-schema.inferschematype.md)<!-- -->&lt;T&gt; : { data: [InferSchemaType](./json-schema.inferschematype.md)<!-- -->&lt;T&gt;; } : { data: [InferSchemaType](./json-schema.inferschematype.md)<!-- -->&lt;T&gt;; }; parse: &lt;T\_1&gt;(this: { new (data: [InferSchemaInputType](./json-schema.inferschemainputtype.md)<!-- -->&lt;T\_1&gt;): T\_1; }, data: unknown) =&gt; T\_1; } &amp; [Schema](./json-schema.schema.md)<!-- -->&lt;T&gt;
+{ new (...args: [SchemaConstructorParams](./json-schema.schemaconstructorparams.md)<!-- -->&lt;T&gt;): [InferSchemaType](./json-schema.inferschematype.md)<!-- -->&lt;T&gt; extends Exclude&lt;object, null&gt; ? T extends { type: unknown; } ? [InferSchemaType](./json-schema.inferschematype.md)<!-- -->&lt;T&gt; : { data: [InferSchemaType](./json-schema.inferschematype.md)<!-- -->&lt;T&gt;; } : { data: [InferSchemaType](./json-schema.inferschematype.md)<!-- -->&lt;T&gt;; }; parse: &lt;T\_1&gt;(this: { new (data: [InferSchemaInputType](./json-schema.inferschemainputtype.md)<!-- -->&lt;T\_1&gt;): T\_1; }, data: unknown) =&gt; T\_1; } &amp; [Schema](./json-schema.schema.md)<!-- -->&lt;T&gt;
 
 A class constructor with the following features: - Type-safe instantiation with schema validation - Static `parse()` method for validating unknown data - Proxy-based property access to the underlying data - Automatic schema validation and default value application - JSON serialization support via `toJSON()`
 

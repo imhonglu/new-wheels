@@ -20,10 +20,17 @@ export interface InferSchemaTypeMap<T> {
     ? T extends {
         required: Array<infer U extends K>;
       }
-      ? { [P in K & U]: InferSchemaType<T["properties"][P]> } & {
-          [P in Exclude<K, U>]?: InferSchemaType<T["properties"][P]>;
-        }
-      : { [P in K]?: InferSchemaType<T["properties"][P]> }
+      ? // if every required property is included in the properties, then all properties are required
+        Exclude<K, U> extends never
+        ? { [P in K & U]: InferSchemaType<T["properties"][P]> }
+        : // When required array is empty (U extends never), all properties become optional
+          [U] extends [never]
+          ? { [P in K]?: InferSchemaType<T["properties"][P]> }
+          : { [P in K & U]: InferSchemaType<T["properties"][P]> } & {
+              [P in Exclude<K, U>]?: InferSchemaType<T["properties"][P]>;
+            }
+      : // When required array is undefined, all properties are optional
+        { [P in K]?: InferSchemaType<T["properties"][P]> }
     : Record<string, unknown>;
 }
 
