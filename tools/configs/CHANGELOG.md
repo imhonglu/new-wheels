@@ -1,5 +1,11 @@
 # @imhonglu/configs
 
+## 1.0.8
+
+### Patch Changes
+
+- a5e3106: update dependencies
+
 ## 1.0.7
 
 ### Patch Changes
