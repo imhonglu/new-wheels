@@ -63,6 +63,21 @@ test("should successfully parse valid object input", () => {
     updatedAt: expect.toBeString(),
   });
 
+  expect(ObjectSchema.safeParse({ name: "John", age: 30 })).toEqual({
+    ok: true,
+    data: {
+      name: "John",
+      age: 30,
+      createdAt: expect.toBeString(),
+      updatedAt: expect.toBeString(),
+    },
+  });
+
+  expect(ObjectSchema.safeParse({ name: "John", age: 30 })).toEqual({
+    ok: true,
+    data: expect.any(ObjectSchema),
+  });
+
   expectTypeOf(new ObjectSchema({ name: "John", age: 30 })).toEqualTypeOf<{
     name: string;
     age: number;

@@ -1,4 +1,4 @@
-import type { Fn } from "@imhonglu/toolkit";
+import type { Fn, SafeResult } from "@imhonglu/toolkit";
 import type { ValidationFailedError } from "../../errors/validation-failed-error.js";
 import { Schema, SchemaSymbol } from "../../schema.js";
 import type { InferSchemaInputType } from "../../types/infer-schema-input-type.js";
@@ -176,6 +176,13 @@ export function createSchemaClass<const T extends SchemaInput>(
       },
       data: unknown,
     ) => T;
+
+    safeParse: <T>(
+      this: {
+        new (data: InferSchemaInputType<T>): T;
+      },
+      data: unknown,
+    ) => SafeResult<T>;
   };
 
   return new Proxy(SchemaBasedClass, {
