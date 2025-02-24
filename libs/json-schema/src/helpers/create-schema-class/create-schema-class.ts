@@ -122,7 +122,7 @@ export function createSchemaClass<const T extends SchemaInput>(
       if (typeof originalValue === "object" && originalValue !== null) {
         // biome-ignore lint/correctness/noConstructorReturn: <explanation>
         return new Proxy(this, {
-          ownKeys: () => Object.keys(originalValue),
+          ownKeys: () => [...Object.keys(originalValue), OriginalValueSymbol],
 
           getOwnPropertyDescriptor: (target, prop) =>
             prop in target
