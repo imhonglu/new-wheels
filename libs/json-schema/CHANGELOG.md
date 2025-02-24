@@ -1,5 +1,11 @@
 # @imhonglu/json-schema
 
+## 1.1.4
+
+### Patch Changes
+
+- 6e07430: include originalValue symbol in proxy ownKeys trap
+
 ## 1.1.3
 
 ### Patch Changes
