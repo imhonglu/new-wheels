@@ -1,3 +1,4 @@
+import type { Fn } from "@imhonglu/toolkit";
 import type { ValidationFailedError } from "../../errors/validation-failed-error.js";
 import { Schema, SchemaSymbol } from "../../schema.js";
 import type { InferSchemaInputType } from "../../types/infer-schema-input-type.js";
@@ -110,23 +111,32 @@ export function createSchemaClass<const T extends SchemaInput>(
 
       this.data = data as InferSchemaType<T>;
 
+      Object.defineProperty(this, "data", {
+        enumerable: false,
+      });
+
       // Set up a proxy for object type schemas to enable direct property access
       // This allows accessing properties directly (e.g., instance.propertyName)
       // instead of going through the data object (instance.data.propertyName)
       if (typeof data === "object" && data !== null) {
         // biome-ignore lint/correctness/noConstructorReturn: <explanation>
         return new Proxy(this, {
-          get(target, prop) {
-            if (prop in data) {
-              const value = data[prop as keyof typeof data];
+          ownKeys: () => Object.keys(data),
 
-              return typeof value === "function" ? value.bind(data) : value;
-            }
-            if (prop in target) {
-              return target[prop as keyof typeof target];
-            }
+          getOwnPropertyDescriptor: (target, prop) =>
+            prop in target
+              ? Object.getOwnPropertyDescriptor(target, prop)
+              : Object.getOwnPropertyDescriptor(data, prop),
 
-            return undefined;
+          get: (target, prop) => {
+            const value =
+              prop in target
+                ? target[prop as keyof typeof target]
+                : data[prop as keyof typeof data];
+
+            return typeof value === "function"
+              ? (value as Fn.Callable).bind(this)
+              : value;
           },
         });
       }
@@ -141,6 +151,10 @@ export function createSchemaClass<const T extends SchemaInput>(
 
     toJSON() {
       return this.data;
+    }
+
+    [Symbol.iterator]() {
+      return this.data[Symbol.iterator]();
     }
   } as unknown as {
     new (

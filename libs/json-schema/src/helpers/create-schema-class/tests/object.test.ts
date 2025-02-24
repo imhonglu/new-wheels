@@ -27,13 +27,25 @@ test("should successfully parse valid object input", () => {
       active: true,
     }),
   ).toEqual({
-    data: {
+    name: "John",
+    age: 30,
+    active: true,
+    createdAt: expect.toBeString(),
+    updatedAt: expect.toBeString(),
+  });
+
+  expect({
+    ...new ObjectSchema({
       name: "John",
       age: 30,
       active: true,
-      createdAt: expect.toBeString(),
-      updatedAt: expect.toBeString(),
-    },
+    }),
+  }).toEqual({
+    name: "John",
+    age: 30,
+    active: true,
+    createdAt: expect.toBeString(),
+    updatedAt: expect.toBeString(),
   });
 
   expect(
@@ -42,20 +54,25 @@ test("should successfully parse valid object input", () => {
       age: 30,
     }),
   ).toEqual({
-    data: {
-      name: "John",
-      age: 30,
-      createdAt: expect.toBeString(),
-      updatedAt: expect.toBeString(),
-    },
+    name: "John",
+    age: 30,
+    createdAt: expect.toBeString(),
+    updatedAt: expect.toBeString(),
   });
 
   expectTypeOf(new ObjectSchema({ name: "John", age: 30 })).toEqualTypeOf<{
     name: string;
     age: number;
-    active?: boolean;
+    active: boolean | undefined;
     createdAt: string | null;
     updatedAt: string | null;
+    data: {
+      name: string;
+      age: number;
+      active: boolean | undefined;
+      createdAt: string | null;
+      updatedAt: string | null;
+    };
   }>();
   expectTypeOf(
     new ObjectSchema({ name: "John", age: 30 }),
@@ -63,9 +80,16 @@ test("should successfully parse valid object input", () => {
   expectTypeOf<ObjectSchema>().toEqualTypeOf<{
     name: string;
     age: number;
-    active?: boolean;
+    active: boolean | undefined;
     createdAt: string | null;
     updatedAt: string | null;
+    data: {
+      name: string;
+      age: number;
+      active: boolean | undefined;
+      createdAt: string | null;
+      updatedAt: string | null;
+    };
   }>();
 
   expect(() => ObjectSchema.parse(123)).toThrow();
@@ -76,18 +100,15 @@ test("should successfully parse valid empty object input", () => {
     type: "object",
   }) {}
 
-  expect(new ObjectSchema({})).toEqual({
-    data: {},
-  });
-  expect(ObjectSchema.parse({})).toEqual({
-    data: {},
-  });
+  expect(new ObjectSchema({})).toEqual({});
+  expect(ObjectSchema.parse({})).toEqual({});
 
-  expectTypeOf(new ObjectSchema({})).toEqualTypeOf<{
-    [key: string]: unknown;
-  }>();
+  expectTypeOf(new ObjectSchema({})).toHaveProperty("data");
+  expectTypeOf(new ObjectSchema({})).toHaveProperty("toJSON");
   expectTypeOf(new ObjectSchema({})).toEqualTypeOf<ObjectSchema>();
-  expectTypeOf<ObjectSchema>().toEqualTypeOf<{ [key: string]: unknown }>();
+  expectTypeOf(ObjectSchema).toHaveProperty("parse");
+  expectTypeOf(ObjectSchema).toHaveProperty("stringify");
+  expectTypeOf(ObjectSchema).toHaveProperty("safeParse");
 });
 
 test("should handle nested objects", () => {
@@ -116,11 +137,9 @@ test("should handle nested objects", () => {
       },
     }),
   ).toEqual({
-    data: {
-      user: {
-        name: "John",
-        createdAt: expect.any(String),
-      },
+    user: {
+      name: "John",
+      createdAt: expect.any(String),
     },
   });
 
@@ -131,18 +150,14 @@ test("should handle nested objects", () => {
       },
     }),
   ).toEqual({
-    data: {
-      user: {
-        name: "John",
-        createdAt: expect.any(String),
-      },
+    user: {
+      name: "John",
+      createdAt: expect.any(String),
     },
   });
   expect(ObjectSchema.parse({})).toEqual({
-    data: {
-      user: {
-        createdAt: expect.any(String),
-      },
+    user: {
+      createdAt: expect.any(String),
     },
   });
 
@@ -158,6 +173,13 @@ test("should handle nested objects", () => {
       age?: number;
       createdAt?: string;
     };
+    data: {
+      user?: {
+        name?: string;
+        age?: number;
+        createdAt?: string;
+      };
+    };
   }>();
   expectTypeOf(
     new ObjectSchema({
@@ -167,7 +189,14 @@ test("should handle nested objects", () => {
     }),
   ).toEqualTypeOf<ObjectSchema>();
   expectTypeOf<ObjectSchema>().toEqualTypeOf<{
-    user?: { name?: string; age?: number; createdAt?: string };
+    user?: {
+      name?: string;
+      age?: number;
+      createdAt?: string;
+    };
+    data: {
+      user?: { name?: string; age?: number; createdAt?: string };
+    };
   }>();
 
   expect(() => ObjectSchema.parse(123)).toThrow();
@@ -281,7 +310,5 @@ test("should return empty data object when instantiated without properties", () 
 
   const johnDoe = new Person();
 
-  expect(johnDoe).toEqual({
-    data: {},
-  });
+  expect(johnDoe).toEqual({});
 });
