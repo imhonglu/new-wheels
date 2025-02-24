@@ -1,21 +1,24 @@
 import { expect, expectTypeOf, test } from "vitest";
-import { createSchemaClass } from "../create-schema-class.js";
+import {
+  OriginalValueSymbol,
+  createSchemaClass,
+} from "../create-schema-class.js";
 
 test("should successfully parse valid null input", () => {
   class NullSchema extends createSchemaClass({
     type: "null",
   }) {}
 
-  expect(new NullSchema(null).data).toBeNull();
-  expect(NullSchema.parse(null).data).toBeNull();
+  expect(new NullSchema(null)[OriginalValueSymbol]).toBeNull();
+  expect(NullSchema.parse(null)[OriginalValueSymbol]).toBeNull();
   expect(JSON.stringify(NullSchema.parse(null))).toBe("null");
 
   expectTypeOf(new NullSchema(null)).toEqualTypeOf<{
-    data: null;
+    [OriginalValueSymbol]: null;
   }>();
   expectTypeOf(new NullSchema(null)).toEqualTypeOf<NullSchema>();
   expectTypeOf<NullSchema>().toEqualTypeOf<{
-    data: null;
+    [OriginalValueSymbol]: null;
   }>();
 
   expect(() => NullSchema.parse(undefined)).toThrow();

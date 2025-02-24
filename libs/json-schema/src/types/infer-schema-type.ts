@@ -2,6 +2,7 @@ import type { ArrayElement } from "@imhonglu/toolkit";
 import type { Schema } from "../schema.js";
 import type { BooleanSchema } from "./json-schema/index.js";
 import type { Match } from "./match.js";
+import type { SchemaClassProperty } from "./schema-class-property.js";
 
 export interface InferSchemaTypeMap<T> {
   null: null;
@@ -45,6 +46,6 @@ export type InferSchemaType<T> = T extends BooleanSchema
         : T extends Schema<infer U>
           ? // biome-ignore lint/suspicious/noExplicitAny: <explanation>
             T extends { new (...args: any[]): infer U }
-            ? U
+            ? Omit<U, keyof SchemaClassProperty>
             : InferSchemaType<U>
           : never;

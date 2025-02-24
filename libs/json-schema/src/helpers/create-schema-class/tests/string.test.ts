@@ -1,21 +1,24 @@
 import { expect, expectTypeOf, test } from "vitest";
-import { createSchemaClass } from "../create-schema-class.js";
+import {
+  OriginalValueSymbol,
+  createSchemaClass,
+} from "../create-schema-class.js";
 
 test("should successfully parse valid string input", () => {
   class StringSchema extends createSchemaClass({
     type: ["string"],
   }) {}
 
-  expect(new StringSchema("hello").data).toEqual("hello");
-  expect(StringSchema.parse("hello").data).toEqual("hello");
+  expect(new StringSchema("hello")[OriginalValueSymbol]).toEqual("hello");
+  expect(StringSchema.parse("hello")[OriginalValueSymbol]).toEqual("hello");
   expect(JSON.stringify(StringSchema.parse("hello"))).toBe('"hello"');
 
   expectTypeOf(new StringSchema("hello")).toEqualTypeOf<{
-    data: string;
+    [OriginalValueSymbol]: string;
   }>();
   expectTypeOf(new StringSchema("hello")).toEqualTypeOf<StringSchema>();
   expectTypeOf<StringSchema>().toEqualTypeOf<{
-    data: string;
+    [OriginalValueSymbol]: string;
   }>();
 
   expect(() => StringSchema.parse(123)).toThrow();
@@ -26,13 +29,13 @@ test("should handle empty string", () => {
     type: "string",
   }) {}
 
-  expect(new StringSchema("").data).toEqual("");
-  expect(StringSchema.parse("").data).toEqual("");
+  expect(new StringSchema("")[OriginalValueSymbol]).toEqual("");
+  expect(StringSchema.parse("")[OriginalValueSymbol]).toEqual("");
 
-  expect(new StringSchema("").data).toEqual("");
+  expect(new StringSchema("")[OriginalValueSymbol]).toEqual("");
   expectTypeOf(new StringSchema("")).toEqualTypeOf<StringSchema>();
   expectTypeOf<StringSchema>().toEqualTypeOf<{
-    data: string;
+    [OriginalValueSymbol]: string;
   }>();
 
   expect(() => StringSchema.parse(123)).toThrow();

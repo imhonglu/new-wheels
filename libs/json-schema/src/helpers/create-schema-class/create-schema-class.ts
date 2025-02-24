@@ -1,11 +1,15 @@
+import type { Fn } from "@imhonglu/toolkit";
 import type { ValidationFailedError } from "../../errors/validation-failed-error.js";
 import { Schema, SchemaSymbol } from "../../schema.js";
 import type { InferSchemaInputType } from "../../types/infer-schema-input-type.js";
 import type { InferSchemaType } from "../../types/infer-schema-type.js";
 import type { InferSchema } from "../../types/infer-schema.js";
+import type { SchemaClassProperty } from "../../types/schema-class-property.js";
 import type { SchemaConstructorParams } from "../../types/schema-constructor-params.js";
 import type { SchemaInput } from "../../types/schema-input.js";
 import { applySchemaDefaults } from "../../utils/apply-schema-defaults.js";
+
+export const OriginalValueSymbol = Symbol("originalValue");
 
 /**
  * Creates a class based on a JSON schema definition that provides type-safe instantiation and validation.
@@ -102,30 +106,38 @@ export function createSchemaClass<const T extends SchemaInput>(
   const SchemaBasedClass = class {
     static [SchemaSymbol] = Schema[SchemaSymbol];
 
-    data: InferSchemaType<T>;
+    [OriginalValueSymbol]!: InferSchemaType<T>;
 
     constructor(...[data]: SchemaConstructorParams<T>) {
-      data = applySchemaDefaults(data, schemaDefinition);
+      const originalValue = applySchemaDefaults(data, schemaDefinition);
 
-      this.data = data as InferSchemaType<T>;
+      Object.defineProperty(this, OriginalValueSymbol, {
+        enumerable: false,
+        value: originalValue,
+      });
 
       // Set up a proxy for object type schemas to enable direct property access
       // This allows accessing properties directly (e.g., instance.propertyName)
       // instead of going through the data object (instance.data.propertyName)
-      if (typeof data === "object" && data !== null) {
+      if (typeof originalValue === "object" && originalValue !== null) {
         // biome-ignore lint/correctness/noConstructorReturn: <explanation>
         return new Proxy(this, {
-          get(target, prop) {
-            if (prop in data) {
-              const value = data[prop as keyof typeof data];
+          ownKeys: () => Object.keys(originalValue),
 
-              return typeof value === "function" ? value.bind(data) : value;
-            }
-            if (prop in target) {
-              return target[prop as keyof typeof target];
-            }
+          getOwnPropertyDescriptor: (target, prop) =>
+            prop in target
+              ? Object.getOwnPropertyDescriptor(target, prop)
+              : Object.getOwnPropertyDescriptor(originalValue, prop),
 
-            return undefined;
+          get: (target, prop) => {
+            const value =
+              prop in target
+                ? target[prop as keyof typeof target]
+                : originalValue[prop as keyof typeof originalValue];
+
+            return typeof value === "function"
+              ? (value as Fn.Callable).bind(this)
+              : value;
           },
         });
       }
@@ -139,20 +151,20 @@ export function createSchemaClass<const T extends SchemaInput>(
     }
 
     toJSON() {
-      return this.data;
+      return this[OriginalValueSymbol];
+    }
+
+    [Symbol.iterator]() {
+      return this[OriginalValueSymbol][Symbol.iterator]();
     }
   } as unknown as {
     new (
       ...args: SchemaConstructorParams<T>
     ): InferSchemaType<T> extends Exclude<object, null>
       ? T extends { type: unknown }
-        ? InferSchemaType<T>
-        : {
-            data: InferSchemaType<T>;
-          }
-      : {
-          data: InferSchemaType<T>;
-        };
+        ? InferSchemaType<T> & SchemaClassProperty<InferSchemaType<T>>
+        : SchemaClassProperty<InferSchemaType<T>>
+      : SchemaClassProperty<InferSchemaType<T>>;
 
     parse: <T>(
       this: {

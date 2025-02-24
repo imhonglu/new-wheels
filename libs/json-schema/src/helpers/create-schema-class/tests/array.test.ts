@@ -1,5 +1,8 @@
 import { expect, expectTypeOf, test } from "vitest";
-import { createSchemaClass } from "../create-schema-class.js";
+import {
+  OriginalValueSymbol,
+  createSchemaClass,
+} from "../create-schema-class.js";
 
 test("should successfully parse string array", () => {
   class StringArray extends createSchemaClass({
@@ -23,9 +26,17 @@ test("should successfully parse string array", () => {
     JSON.stringify(StringArray.parse('["string", "string", "string"]')),
   ).toBe('["string","string","string"]');
 
-  expectTypeOf(new StringArray([])).toEqualTypeOf<string[]>();
+  expectTypeOf(new StringArray([])).branded.toEqualTypeOf<
+    string[] & {
+      [OriginalValueSymbol]: string[];
+    }
+  >();
   expectTypeOf(new StringArray([])).toEqualTypeOf<StringArray>();
-  expectTypeOf<StringArray>().toEqualTypeOf<string[]>();
+  expectTypeOf<StringArray>().branded.toEqualTypeOf<
+    string[] & {
+      [OriginalValueSymbol]: string[];
+    }
+  >();
 
   expect(() => StringArray.parse([1, "string", true])).toThrow();
 });
@@ -41,10 +52,17 @@ test("should successfully parse number array", () => {
   expect([...new NumberArraySchema([1, 2, 3])]).toEqual([1, 2, 3]);
   expect([...NumberArraySchema.parse([1, 2, 3])]).toEqual([1, 2, 3]);
 
-  expectTypeOf(new NumberArraySchema([])).toEqualTypeOf<number[]>();
+  expectTypeOf(new NumberArraySchema([])).branded.toEqualTypeOf<
+    number[] & {
+      [OriginalValueSymbol]: number[];
+    }
+  >();
   expectTypeOf(new NumberArraySchema([])).toEqualTypeOf<NumberArraySchema>();
-  expectTypeOf<NumberArraySchema>().toEqualTypeOf<number[]>();
-
+  expectTypeOf<NumberArraySchema>().branded.toEqualTypeOf<
+    number[] & {
+      [OriginalValueSymbol]: number[];
+    }
+  >();
   expect(() => NumberArraySchema.parse([1, "string", true])).toThrow();
 });
 
@@ -67,10 +85,17 @@ test("should successfully parse boolean array", () => {
     true,
   ]);
 
-  expectTypeOf(new BooleanArraySchema([])).toEqualTypeOf<boolean[]>();
+  expectTypeOf(new BooleanArraySchema([])).branded.toEqualTypeOf<
+    boolean[] & {
+      [OriginalValueSymbol]: boolean[];
+    }
+  >();
   expectTypeOf(new BooleanArraySchema([])).toEqualTypeOf<BooleanArraySchema>();
-  expectTypeOf<BooleanArraySchema>().toEqualTypeOf<boolean[]>();
-
+  expectTypeOf<BooleanArraySchema>().branded.toEqualTypeOf<
+    boolean[] & {
+      [OriginalValueSymbol]: boolean[];
+    }
+  >();
   expect(() => BooleanArraySchema.parse([1, "string", true])).toThrow();
 });
 
@@ -96,9 +121,28 @@ test("should successfully parse array of objects", () => {
     { name: "John", age: 30 },
   ]);
 
-  expectTypeOf(new ObjectArraySchema([])).toEqualTypeOf<ObjectSchema[]>();
+  expectTypeOf(new ObjectArraySchema([])).branded.toEqualTypeOf<
+    {
+      name: string;
+      age: number | undefined;
+    }[] & {
+      [OriginalValueSymbol]: {
+        name: string;
+        age: number | undefined;
+      }[];
+    }
+  >();
   expectTypeOf(new ObjectArraySchema([])).toEqualTypeOf<ObjectArraySchema>();
-  expectTypeOf<ObjectArraySchema>().toEqualTypeOf<ObjectSchema[]>();
-
+  expectTypeOf<ObjectArraySchema>().branded.toEqualTypeOf<
+    {
+      name: string;
+      age: number | undefined;
+    }[] & {
+      [OriginalValueSymbol]: {
+        name: string;
+        age: number | undefined;
+      }[];
+    }
+  >();
   expect(() => ObjectArraySchema.parse([1, "string", true])).toThrow();
 });
