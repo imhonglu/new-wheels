@@ -139,6 +139,10 @@ export function createSchemaClass<const T extends SchemaInput>(
               ? (value as Fn.Callable).bind(this)
               : value;
           },
+
+          set: () => {
+            return true;
+          },
         });
       }
     }

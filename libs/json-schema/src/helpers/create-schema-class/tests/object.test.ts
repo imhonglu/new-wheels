@@ -305,6 +305,15 @@ test("should handle all properties are optional", () => {
   johnDoe.age = 23;
 
   expect(johnDoe.age).toBe(20);
+
+  const janeDoe = {
+    ...johnDoe,
+    name: "Jane Doe",
+  };
+
+  expect(janeDoe.name).toBe("Jane Doe");
+  expect(janeDoe.age).toBe(20);
+  expect(janeDoe.isActive).toBe(true);
 });
 
 test("should return empty data object when instantiated without properties", () => {
