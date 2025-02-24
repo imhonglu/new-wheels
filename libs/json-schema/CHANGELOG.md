@@ -1,5 +1,11 @@
 # @imhonglu/json-schema
 
+## 1.1.5
+
+### Patch Changes
+
+- 01de79e: enhance safeParse return type inference
+
 ## 1.1.4
 
 ### Patch Changes
