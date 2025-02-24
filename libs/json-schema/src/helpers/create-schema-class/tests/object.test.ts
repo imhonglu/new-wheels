@@ -301,6 +301,10 @@ test("should handle all properties are optional", () => {
       isActive: true,
     }),
   );
+
+  johnDoe.age = 23;
+
+  expect(johnDoe.age).toBe(20);
 });
 
 test("should return empty data object when instantiated without properties", () => {

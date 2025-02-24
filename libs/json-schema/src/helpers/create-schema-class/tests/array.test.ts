@@ -12,11 +12,12 @@ test("should successfully parse string array", () => {
     },
   }) {}
 
-  expect([...new StringArray(["string", "string", "string"])]).toEqual([
-    "string",
-    "string",
-    "string",
-  ]);
+  const items = new StringArray(["string", "string", "string"]);
+
+  expect([...items]).toEqual(["string", "string", "string"]);
+  expect(items.length).toBe(3);
+  items[0] = "new string";
+  expect([...items]).toEqual(["string", "string", "string"]);
   expect([...StringArray.parse('["string", "string", "string"]')]).toEqual([
     "string",
     "string",
