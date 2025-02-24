@@ -3,6 +3,7 @@ import { Schema, SchemaSymbol } from "../../schema.js";
 import type { InferSchemaInputType } from "../../types/infer-schema-input-type.js";
 import type { InferSchemaType } from "../../types/infer-schema-type.js";
 import type { InferSchema } from "../../types/infer-schema.js";
+import type { SchemaClassProperty } from "../../types/schema-class-property.js";
 import type { SchemaConstructorParams } from "../../types/schema-constructor-params.js";
 import type { SchemaInput } from "../../types/schema-input.js";
 import { applySchemaDefaults } from "../../utils/apply-schema-defaults.js";
@@ -146,13 +147,9 @@ export function createSchemaClass<const T extends SchemaInput>(
       ...args: SchemaConstructorParams<T>
     ): InferSchemaType<T> extends Exclude<object, null>
       ? T extends { type: unknown }
-        ? InferSchemaType<T>
-        : {
-            data: InferSchemaType<T>;
-          }
-      : {
-          data: InferSchemaType<T>;
-        };
+        ? InferSchemaType<T> & SchemaClassProperty<InferSchemaType<T>>
+        : SchemaClassProperty<InferSchemaType<T>>
+      : SchemaClassProperty<InferSchemaType<T>>;
 
     parse: <T>(
       this: {
