@@ -9,6 +9,8 @@ import type { SchemaConstructorParams } from "../../types/schema-constructor-par
 import type { SchemaInput } from "../../types/schema-input.js";
 import { applySchemaDefaults } from "../../utils/apply-schema-defaults.js";
 
+export const OriginalValueSymbol = Symbol("originalValue");
+
 /**
  * Creates a class based on a JSON schema definition that provides type-safe instantiation and validation.
  *
@@ -104,35 +106,34 @@ export function createSchemaClass<const T extends SchemaInput>(
   const SchemaBasedClass = class {
     static [SchemaSymbol] = Schema[SchemaSymbol];
 
-    data: InferSchemaType<T>;
+    [OriginalValueSymbol]!: InferSchemaType<T>;
 
     constructor(...[data]: SchemaConstructorParams<T>) {
-      data = applySchemaDefaults(data, schemaDefinition);
+      const originalValue = applySchemaDefaults(data, schemaDefinition);
 
-      this.data = data as InferSchemaType<T>;
-
-      Object.defineProperty(this, "data", {
+      Object.defineProperty(this, OriginalValueSymbol, {
         enumerable: false,
+        value: originalValue,
       });
 
       // Set up a proxy for object type schemas to enable direct property access
       // This allows accessing properties directly (e.g., instance.propertyName)
       // instead of going through the data object (instance.data.propertyName)
-      if (typeof data === "object" && data !== null) {
+      if (typeof originalValue === "object" && originalValue !== null) {
         // biome-ignore lint/correctness/noConstructorReturn: <explanation>
         return new Proxy(this, {
-          ownKeys: () => Object.keys(data),
+          ownKeys: () => Object.keys(originalValue),
 
           getOwnPropertyDescriptor: (target, prop) =>
             prop in target
               ? Object.getOwnPropertyDescriptor(target, prop)
-              : Object.getOwnPropertyDescriptor(data, prop),
+              : Object.getOwnPropertyDescriptor(originalValue, prop),
 
           get: (target, prop) => {
             const value =
               prop in target
                 ? target[prop as keyof typeof target]
-                : data[prop as keyof typeof data];
+                : originalValue[prop as keyof typeof originalValue];
 
             return typeof value === "function"
               ? (value as Fn.Callable).bind(this)
@@ -150,11 +151,11 @@ export function createSchemaClass<const T extends SchemaInput>(
     }
 
     toJSON() {
-      return this.data;
+      return this[OriginalValueSymbol];
     }
 
     [Symbol.iterator]() {
-      return this.data[Symbol.iterator]();
+      return this[OriginalValueSymbol][Symbol.iterator]();
     }
   } as unknown as {
     new (

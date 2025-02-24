@@ -1,5 +1,8 @@
 import { expect, expectTypeOf, test } from "vitest";
-import { createSchemaClass } from "../create-schema-class.js";
+import {
+  OriginalValueSymbol,
+  createSchemaClass,
+} from "../create-schema-class.js";
 
 test("should successfully parse valid object input", () => {
   class ObjectSchema extends createSchemaClass({
@@ -66,7 +69,7 @@ test("should successfully parse valid object input", () => {
     active: boolean | undefined;
     createdAt: string | null;
     updatedAt: string | null;
-    data: {
+    [OriginalValueSymbol]: {
       name: string;
       age: number;
       active: boolean | undefined;
@@ -83,7 +86,7 @@ test("should successfully parse valid object input", () => {
     active: boolean | undefined;
     createdAt: string | null;
     updatedAt: string | null;
-    data: {
+    [OriginalValueSymbol]: {
       name: string;
       age: number;
       active: boolean | undefined;
@@ -173,7 +176,7 @@ test("should handle nested objects", () => {
       age?: number;
       createdAt?: string;
     };
-    data: {
+    [OriginalValueSymbol]: {
       user?: {
         name?: string;
         age?: number;
@@ -194,7 +197,7 @@ test("should handle nested objects", () => {
       age?: number;
       createdAt?: string;
     };
-    data: {
+    [OriginalValueSymbol]: {
       user?: { name?: string; age?: number; createdAt?: string };
     };
   }>();

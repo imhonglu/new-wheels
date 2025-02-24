@@ -1,5 +1,8 @@
 import { expect, expectTypeOf, test } from "vitest";
-import { createSchemaClass } from "../create-schema-class.js";
+import {
+  OriginalValueSymbol,
+  createSchemaClass,
+} from "../create-schema-class.js";
 
 test("should successfully parse string array", () => {
   class StringArray extends createSchemaClass({
@@ -25,13 +28,13 @@ test("should successfully parse string array", () => {
 
   expectTypeOf(new StringArray([])).branded.toEqualTypeOf<
     string[] & {
-      data: string[];
+      [OriginalValueSymbol]: string[];
     }
   >();
   expectTypeOf(new StringArray([])).toEqualTypeOf<StringArray>();
   expectTypeOf<StringArray>().branded.toEqualTypeOf<
     string[] & {
-      data: string[];
+      [OriginalValueSymbol]: string[];
     }
   >();
 
@@ -51,13 +54,13 @@ test("should successfully parse number array", () => {
 
   expectTypeOf(new NumberArraySchema([])).branded.toEqualTypeOf<
     number[] & {
-      data: number[];
+      [OriginalValueSymbol]: number[];
     }
   >();
   expectTypeOf(new NumberArraySchema([])).toEqualTypeOf<NumberArraySchema>();
   expectTypeOf<NumberArraySchema>().branded.toEqualTypeOf<
     number[] & {
-      data: number[];
+      [OriginalValueSymbol]: number[];
     }
   >();
   expect(() => NumberArraySchema.parse([1, "string", true])).toThrow();
@@ -84,13 +87,13 @@ test("should successfully parse boolean array", () => {
 
   expectTypeOf(new BooleanArraySchema([])).branded.toEqualTypeOf<
     boolean[] & {
-      data: boolean[];
+      [OriginalValueSymbol]: boolean[];
     }
   >();
   expectTypeOf(new BooleanArraySchema([])).toEqualTypeOf<BooleanArraySchema>();
   expectTypeOf<BooleanArraySchema>().branded.toEqualTypeOf<
     boolean[] & {
-      data: boolean[];
+      [OriginalValueSymbol]: boolean[];
     }
   >();
   expect(() => BooleanArraySchema.parse([1, "string", true])).toThrow();
@@ -118,15 +121,12 @@ test("should successfully parse array of objects", () => {
     { name: "John", age: 30 },
   ]);
 
-  const objectArraySchema = new ObjectArraySchema([]);
-  objectArraySchema.data;
-
   expectTypeOf(new ObjectArraySchema([])).branded.toEqualTypeOf<
     {
       name: string;
       age: number | undefined;
     }[] & {
-      data: {
+      [OriginalValueSymbol]: {
         name: string;
         age: number | undefined;
       }[];
@@ -138,7 +138,7 @@ test("should successfully parse array of objects", () => {
       name: string;
       age: number | undefined;
     }[] & {
-      data: {
+      [OriginalValueSymbol]: {
         name: string;
         age: number | undefined;
       }[];
