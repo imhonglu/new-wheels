@@ -1,5 +1,11 @@
 # @imhonglu/json-schema
 
+## 1.1.3
+
+### Patch Changes
+
+- ca804c9: improve type safety and spread operator support
+
 ## 1.1.2
 
 ### Patch Changes
