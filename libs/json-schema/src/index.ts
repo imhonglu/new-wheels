@@ -10,6 +10,8 @@ export * from "./types/infer-schema-type.js";
 export * from "./types/infer-schema.js";
 export * from "./types/match.js";
 export * from "./types/pick-required.js";
+export * from "./types/schema-class.js";
+export * from "./types/schema-class-property.js";
 export * from "./types/schema-constructor-params.js";
 export * from "./types/schema-input.js";
 export * from "./types/schema-variant.js";

@@ -1,10 +1,10 @@
-import type { Fn, SafeResult } from "@imhonglu/toolkit";
+import type { Fn } from "@imhonglu/toolkit";
 import type { ValidationFailedError } from "../../errors/validation-failed-error.js";
 import { Schema, SchemaSymbol } from "../../schema.js";
 import type { InferSchemaInputType } from "../../types/infer-schema-input-type.js";
 import type { InferSchemaType } from "../../types/infer-schema-type.js";
 import type { InferSchema } from "../../types/infer-schema.js";
-import type { SchemaClassProperty } from "../../types/schema-class-property.js";
+import type { SchemaClass } from "../../types/schema-class.js";
 import type { SchemaConstructorParams } from "../../types/schema-constructor-params.js";
 import type { SchemaInput } from "../../types/schema-input.js";
 import { applySchemaDefaults } from "../../utils/apply-schema-defaults.js";
@@ -161,29 +161,7 @@ export function createSchemaClass<const T extends SchemaInput>(
     [Symbol.iterator]() {
       return this[OriginalValueSymbol][Symbol.iterator]();
     }
-  } as unknown as {
-    new (
-      ...args: SchemaConstructorParams<T>
-    ): InferSchemaType<T> extends Exclude<object, null>
-      ? T extends { type: unknown }
-        ? InferSchemaType<T> & SchemaClassProperty<InferSchemaType<T>>
-        : SchemaClassProperty<InferSchemaType<T>>
-      : SchemaClassProperty<InferSchemaType<T>>;
-
-    parse: <T>(
-      this: {
-        new (data: InferSchemaInputType<T>): T;
-      },
-      data: unknown,
-    ) => T;
-
-    safeParse: <T>(
-      this: {
-        new (data: InferSchemaInputType<T>): T;
-      },
-      data: unknown,
-    ) => SafeResult<T>;
-  };
+  } as unknown as SchemaClass<T>;
 
   return new Proxy(SchemaBasedClass, {
     get(target, prop) {
