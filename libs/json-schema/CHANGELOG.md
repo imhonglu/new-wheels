@@ -1,5 +1,11 @@
 # @imhonglu/json-schema
 
+## 1.1.7
+
+### Patch Changes
+
+- 44f98b1: Add stringify and validate methods to SchemaClass type
+
 ## 1.1.6
 
 ### Patch Changes
