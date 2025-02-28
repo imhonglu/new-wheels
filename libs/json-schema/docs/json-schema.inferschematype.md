@@ -15,7 +15,7 @@ export type InferSchemaType<T> = T extends BooleanSchema ? unknown : T extends {
     type: infer U;
 } ? Match<U, InferSchemaTypeMap<T>> : T extends Schema<infer U> ? T extends {
     new (...args: any[]): infer U;
-} ? U : InferSchemaType<U> : never;
+} ? Omit<U, keyof SchemaClassProperty> : InferSchemaType<U> : never;
 ```
-**References:** [BooleanSchema](./json-schema.booleanschema.md)<!-- -->, [Match](./json-schema.match.md)<!-- -->, [InferSchemaTypeMap](./json-schema.inferschematypemap.md)<!-- -->, [Schema](./json-schema.schema.md)<!-- -->, [InferSchemaType](./json-schema.inferschematype.md)
+**References:** [BooleanSchema](./json-schema.booleanschema.md)<!-- -->, [Match](./json-schema.match.md)<!-- -->, [InferSchemaTypeMap](./json-schema.inferschematypemap.md)<!-- -->, [Schema](./json-schema.schema.md)<!-- -->, [SchemaClassProperty](./json-schema.schemaclassproperty.md)<!-- -->, [InferSchemaType](./json-schema.inferschematype.md)
 
