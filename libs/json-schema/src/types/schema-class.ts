@@ -21,4 +21,6 @@ export type SchemaClass<T> = {
   new (...args: SchemaConstructorParams<T>): SchemaConstructorReturn<T>;
   parse: <T>(this: SchemaParseContext<T>, data: unknown) => T;
   safeParse: <T>(this: SchemaParseContext<T>, data: unknown) => SafeResult<T>;
+  stringify: <T>(this: SchemaParseContext<T>, data: T) => string;
+  validate: <T>(this: SchemaParseContext<T>, data: unknown) => data is T;
 };
