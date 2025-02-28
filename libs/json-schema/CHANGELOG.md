@@ -1,5 +1,11 @@
 # @imhonglu/json-schema
 
+## 1.1.6
+
+### Patch Changes
+
+- 8634f62: Reorganize schema class types for better maintainability
+
 ## 1.1.5
 
 ### Patch Changes
