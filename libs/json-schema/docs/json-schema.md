@@ -188,6 +188,15 @@ Description
 </td></tr>
 <tr><td>
 
+[SchemaClassProperty](./json-schema.schemaclassproperty.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
 [StringEncodedData](./json-schema.stringencodeddata.md)
 
 
@@ -271,6 +280,15 @@ Description
 
 </th></tr></thead>
 <tbody><tr><td>
+
+[OriginalValueSymbol](./json-schema.originalvaluesymbol.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
 
 [SchemaSymbol](./json-schema.schemasymbol.md)
 
@@ -377,6 +395,15 @@ Description
 </td></tr>
 <tr><td>
 
+[SchemaClass](./json-schema.schemaclass.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
 [SchemaConstructorParams](./json-schema.schemaconstructorparams.md)
 
 
@@ -386,7 +413,25 @@ Description
 </td></tr>
 <tr><td>
 
+[SchemaConstructorReturn](./json-schema.schemaconstructorreturn.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
 [SchemaInput](./json-schema.schemainput.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[SchemaParseContext](./json-schema.schemaparsecontext.md)
 
 
 </td><td>
