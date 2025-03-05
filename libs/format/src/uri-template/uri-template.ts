@@ -45,8 +45,8 @@ import { Varspec } from "./varspec.js";
  */
 @Serializable
 export class URITemplate {
-  public readonly text: string;
-  public readonly expressions: Set<Expression>;
+  public text: string;
+  public expressions: Set<Expression>;
 
   public constructor({ text, expressions }: URITemplate) {
     this.text = text;

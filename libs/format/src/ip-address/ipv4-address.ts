@@ -20,7 +20,7 @@ const IPV4_PARTS_COUNT = 4;
  */
 @Serializable
 export class IPv4Address {
-  public readonly segments: [string, string, string, string];
+  public segments: [string, string, string, string];
 
   constructor({ segments }: IPv4Address) {
     this.segments = segments;

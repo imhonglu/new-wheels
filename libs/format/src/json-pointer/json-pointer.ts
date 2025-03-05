@@ -51,7 +51,7 @@ const pattern = concat("/", referenceToken)
  */
 @Serializable
 export class JsonPointer {
-  public readonly segments: string[];
+  public segments: string[];
 
   constructor({ segments }: JsonPointer) {
     this.segments = segments;

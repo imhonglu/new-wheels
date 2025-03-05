@@ -23,11 +23,11 @@ import { isValidLabel } from "./utils/is-valid-label.js";
  */
 @Serializable
 export class IdnHostname {
-  public readonly unicode: {
+  public unicode: {
     labels: string[];
     tld?: string;
   };
-  public readonly ascii: {
+  public ascii: {
     labels: string[];
     tld?: string;
   };

@@ -41,13 +41,13 @@ const pattern = oneOf(
  */
 @Serializable
 export class Duration {
-  public readonly year?: number;
-  public readonly month?: number;
-  public readonly week?: number;
-  public readonly day?: number;
-  public readonly hour?: number;
-  public readonly minute?: number;
-  public readonly second?: number;
+  public year?: number;
+  public month?: number;
+  public week?: number;
+  public day?: number;
+  public hour?: number;
+  public minute?: number;
+  public second?: number;
 
   constructor(duration: Duration) {
     this.year = duration.year;

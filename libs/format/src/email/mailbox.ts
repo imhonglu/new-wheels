@@ -24,8 +24,8 @@ import { hasValidMailboxLength } from "./utils/has-valid-mailbox-length.js";
  */
 @Serializable
 export class Mailbox {
-  public readonly localPart: LocalPart;
-  public readonly domain: AddressLiteral | Hostname;
+  public localPart: LocalPart;
+  public domain: AddressLiteral | Hostname;
 
   constructor({ localPart, domain }: Mailbox) {
     this.localPart = localPart;

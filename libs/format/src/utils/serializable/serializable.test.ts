@@ -4,7 +4,7 @@ import { Serializable } from "./serializable.js";
 
 @Serializable
 class Example {
-  constructor(public readonly text: string) {}
+  constructor(public text: string) {}
 
   public static safeParse: SafeExecutor<typeof this.parse>;
 

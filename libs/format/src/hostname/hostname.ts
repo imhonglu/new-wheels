@@ -16,8 +16,8 @@ import { isValidLabel } from "./utils/is-valid-label.js";
  */
 @Serializable
 export class Hostname {
-  public readonly labels: string[];
-  public readonly tld?: string;
+  public labels: string[];
+  public tld?: string;
 
   constructor({ labels, tld }: Hostname) {
     this.labels = labels;

@@ -56,10 +56,10 @@ const pattern = {
  */
 @Serializable
 export class Authority {
-  public readonly userinfo?: string;
-  public readonly host: IdnHostname | IPv4Address | IPv6Address | IPvFuture;
-  public readonly port?: number;
-  public readonly options?: URIParseOptions;
+  public userinfo?: string;
+  public host: IdnHostname | IPv4Address | IPv6Address | IPvFuture;
+  public port?: number;
+  public options?: URIParseOptions;
 
   public constructor({ userinfo, host, port, options }: Authority) {
     this.userinfo = userinfo;

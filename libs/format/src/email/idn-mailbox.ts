@@ -33,11 +33,11 @@ import { hasValidMailboxLength } from "./utils/has-valid-mailbox-length.js";
  */
 @Serializable
 export class IdnMailbox {
-  public readonly localPart: {
+  public localPart: {
     unicode: string;
     ascii: string;
   };
-  public readonly domain: AddressLiteral | IdnHostname;
+  public domain: AddressLiteral | IdnHostname;
 
   constructor({ localPart, domain }: IdnMailbox) {
     this.localPart = localPart;

@@ -23,7 +23,7 @@ import { InvalidEmailDomainError } from "./errors/invalid-email-domain-error.js"
  */
 @Serializable
 export class AddressLiteral {
-  public readonly address: IPv4Address | IPv6Address;
+  public address: IPv4Address | IPv6Address;
 
   constructor({ address }: AddressLiteral) {
     this.address = address;

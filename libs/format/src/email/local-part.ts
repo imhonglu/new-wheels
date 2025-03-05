@@ -39,8 +39,8 @@ const pattern = {
  */
 @Serializable
 export class LocalPart {
-  public readonly text: string;
-  public readonly type: "dotString" | "quotedString";
+  public text: string;
+  public type: "dotString" | "quotedString";
 
   constructor({ text, type }: LocalPart) {
     this.text = text;

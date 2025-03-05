@@ -34,12 +34,12 @@ import { parseURIComponents } from "./utils/parse-uri-components.js";
  */
 @Serializable
 export class URIReference {
-  public readonly scheme?: Scheme;
-  public readonly authority?: Authority;
-  public readonly path?: Path;
-  public readonly query?: Query;
-  public readonly fragment?: Fragment;
-  public readonly options?: URIParseOptions;
+  public scheme?: Scheme;
+  public authority?: Authority;
+  public path?: Path;
+  public query?: Query;
+  public fragment?: Fragment;
+  public options?: URIParseOptions;
 
   public constructor({
     scheme,

@@ -36,8 +36,8 @@ const pattern = {
  */
 @Serializable
 export class Query {
-  public readonly pairs: Map<string, string | string[]>;
-  public readonly options?: URIParseOptions;
+  public pairs: Map<string, string | string[]>;
+  public options?: URIParseOptions;
 
   public constructor({ pairs, options }: Query) {
     this.pairs = pairs;

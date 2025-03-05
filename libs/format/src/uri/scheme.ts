@@ -25,7 +25,7 @@ const pattern = concat(
  */
 @Serializable
 export class Scheme {
-  public readonly text: string;
+  public text: string;
 
   public constructor({ text }: Scheme) {
     this.text = text;
