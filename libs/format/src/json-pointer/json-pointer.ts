@@ -105,8 +105,8 @@ export class JsonPointer {
   /**
    * Retrieves a value from an object using a JSON Pointer.
    *
-   * @template T - The type of the source object
-   * @template P - The type of valid pointer paths for the object
+   * @typeParam T - The type of the source object
+   * @typeParam P - The type of valid pointer paths for the object
    * @param object - The source object to get value from
    * @param pointer - JSON Pointer string (e.g., "/path/to/value")
    * @returns The value at the specified path or undefined if path doesn't exist
@@ -145,7 +145,7 @@ export class JsonPointer {
   /**
    * Unescapes a JSON Pointer token.
    *
-   * @template T - The type of the input string
+   * @typeParam T - The type of the input string
    * @param text - The JSON Pointer string to unescape
    * @returns The unescaped JSON Pointer string
    *
@@ -173,7 +173,7 @@ export class JsonPointer {
   /**
    * Escapes a string for use as a JSON Pointer token.
    *
-   * @template T - The type of the input string
+   * @typeParam T - The type of the input string
    * @param text - The string to escape as a JSON Pointer token
    * @returns The escaped JSON Pointer string
    *

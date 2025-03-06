@@ -28,6 +28,31 @@ export type ResolvePointerSegments<T, P extends string[]> = P extends []
         : never
     : never;
 
+/**
+ * Resolves the type of value at a given JSON Pointer path.
+ *
+ * @typeParam T - The source object type
+ * @typeParam P - The JSON Pointer path type
+ *
+ * @example
+ * ```ts
+ * interface Example {
+ *   items: Array<{ id: number }>;
+ * }
+ *
+ * type T1 = ResolveJsonPointer<Example, "">; // Example
+ * type T2 = ResolveJsonPointer<Example, "/items">; // Array<{ id: number }>
+ * type T3 = ResolveJsonPointer<Example, "/items/0/id">; // number
+ * ```
+ *
+ * @remarks
+ * - Returns the source type for empty path ("")
+ * - Returns the type at the specified path if it exists
+ * - Handles array indices and nested object properties
+ * - Automatically unescapes special characters in the path
+ *
+ * @see {@link https://datatracker.ietf.org/doc/html/rfc6901#section-4 | RFC 6901 - Evaluation}
+ */
 export type ResolveJsonPointer<
   T,
   // @ts-expect-error
