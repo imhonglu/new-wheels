@@ -7,5 +7,5 @@
 **Signature:**
 
 ```typescript
-readonly segments: string[];
+segments: string[];
 ```

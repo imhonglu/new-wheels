@@ -7,5 +7,5 @@
 **Signature:**
 
 ```typescript
-readonly query?: Query;
+query?: Query;
 ```

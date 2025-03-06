@@ -7,5 +7,5 @@
 **Signature:**
 
 ```typescript
-readonly address: IPv4Address | IPv6Address;
+address: IPv4Address | IPv6Address;
 ```

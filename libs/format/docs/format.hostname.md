@@ -83,8 +83,6 @@ Description
 
 </td><td>
 
-`readonly`
-
 
 </td><td>
 
@@ -120,8 +118,6 @@ SafeExecutor&lt;typeof Hostname.parse&gt;
 
 
 </td><td>
-
-`readonly`
 
 
 </td><td>

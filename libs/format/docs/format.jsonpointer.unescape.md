@@ -4,12 +4,12 @@
 
 ## JsonPointer.unescape() method
 
-Unescapes the special characters in a JsonPointer string.
+Unescapes a JSON Pointer token.
 
 **Signature:**
 
 ```typescript
-static unescape(text: string): string;
+static unescape<T extends string>(text: T): Unescape<T>;
 ```
 
 ## Parameters
@@ -37,19 +37,27 @@ text
 
 </td><td>
 
-string
+T
 
 
 </td><td>
 
-The JsonPointer string to unescape.
+The JSON Pointer string to unescape
 
 
 </td></tr>
 </tbody></table>
 **Returns:**
 
-string
+[Unescape](./format.unescape.md)<!-- -->&lt;T&gt;
 
-The unescaped JsonPointer string.
+The unescaped JSON Pointer string
+
+## Example
+
+
+```typescript
+JsonPointer.unescape("foo~1bar"); // returns "foo/bar"
+JsonPointer.unescape("foo~0bar"); // returns "foo~bar"
+```
 

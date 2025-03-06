@@ -84,8 +84,6 @@ Description
 
 </td><td>
 
-`readonly`
-
 
 </td><td>
 
@@ -103,8 +101,6 @@ number
 
 </td><td>
 
-`readonly`
-
 
 </td><td>
 
@@ -121,8 +117,6 @@ number
 
 
 </td><td>
-
-`readonly`
 
 
 </td><td>
@@ -162,8 +156,6 @@ SafeExecutor&lt;typeof FullTime.parse&gt;
 
 </td><td>
 
-`readonly`
-
 
 </td><td>
 
@@ -182,8 +174,6 @@ _(Optional)_
 
 
 </td><td>
-
-`readonly`
 
 
 </td><td>

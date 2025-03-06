@@ -7,5 +7,5 @@
 **Signature:**
 
 ```typescript
-readonly path?: Path;
+path?: Path;
 ```

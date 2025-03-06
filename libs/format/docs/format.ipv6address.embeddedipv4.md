@@ -7,5 +7,5 @@
 **Signature:**
 
 ```typescript
-readonly embeddedIPv4?: IPv4Address;
+embeddedIPv4?: IPv4Address;
 ```

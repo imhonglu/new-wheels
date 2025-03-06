@@ -104,8 +104,6 @@ Description
 
 </td><td>
 
-`readonly`
-
 
 </td><td>
 
@@ -122,8 +120,6 @@ Description
 
 
 </td><td>
-
-`readonly`
 
 
 </td><td>
@@ -143,8 +139,6 @@ _(Optional)_
 
 
 </td><td>
-
-`readonly`
 
 
 </td><td>
@@ -183,8 +177,6 @@ SafeExecutor&lt;typeof Authority.parse&gt;
 
 
 </td><td>
-
-`readonly`
 
 
 </td><td>

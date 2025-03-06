@@ -4,12 +4,12 @@
 
 ## JsonPointer.escape() method
 
-Escapes the special characters in a JsonPointer string.
+Escapes a string for use as a JSON Pointer token.
 
 **Signature:**
 
 ```typescript
-static escape(text: string): string;
+static escape<T extends string>(text: T): Escape<T>;
 ```
 
 ## Parameters
@@ -37,19 +37,27 @@ text
 
 </td><td>
 
-string
+T
 
 
 </td><td>
 
-The JsonPointer string to escape.
+The string to escape as a JSON Pointer token
 
 
 </td></tr>
 </tbody></table>
 **Returns:**
 
-string
+[Escape](./format.escape.md)<!-- -->&lt;T&gt;
 
-The escaped JsonPointer string.
+The escaped JSON Pointer string
+
+## Example
+
+
+```typescript
+JsonPointer.escape("foo/bar"); // returns "foo~1bar"
+JsonPointer.escape("foo~bar"); // returns "foo~0bar"
+```
 

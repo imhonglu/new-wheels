@@ -109,8 +109,6 @@ SafeExecutor&lt;typeof LocalPart.parse&gt;
 
 </td><td>
 
-`readonly`
-
 
 </td><td>
 
@@ -127,8 +125,6 @@ string
 
 
 </td><td>
-
-`readonly`
 
 
 </td><td>

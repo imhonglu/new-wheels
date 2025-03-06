@@ -7,5 +7,5 @@
 **Signature:**
 
 ```typescript
-readonly options?: URIParseOptions;
+options?: URIParseOptions;
 ```

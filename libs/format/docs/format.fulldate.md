@@ -84,8 +84,6 @@ Description
 
 </td><td>
 
-`readonly`
-
 
 </td><td>
 
@@ -102,8 +100,6 @@ number
 
 
 </td><td>
-
-`readonly`
 
 
 </td><td>
@@ -140,8 +136,6 @@ SafeExecutor&lt;typeof FullDate.parse&gt;
 
 
 </td><td>
-
-`readonly`
 
 
 </td><td>

@@ -7,7 +7,7 @@
 **Signature:**
 
 ```typescript
-readonly localPart: {
+localPart: {
         unicode: string;
         ascii: string;
     };

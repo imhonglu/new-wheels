@@ -109,8 +109,6 @@ Description
 
 </td><td>
 
-`readonly`
-
 
 </td><td>
 
@@ -146,8 +144,6 @@ SafeExecutor&lt;typeof URITemplate.parse&gt;
 
 
 </td><td>
-
-`readonly`
 
 
 </td><td>

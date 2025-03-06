@@ -7,5 +7,5 @@
 **Signature:**
 
 ```typescript
-readonly pairs: Map<string, string | string[]>;
+pairs: Map<string, string | string[]>;
 ```

@@ -137,8 +137,6 @@ SafeExecutor&lt;typeof URI.parse&gt;
 
 </td><td>
 
-`readonly`
-
 
 </td><td>
 

@@ -7,5 +7,5 @@
 **Signature:**
 
 ```typescript
-readonly tld?: string;
+tld?: string;
 ```

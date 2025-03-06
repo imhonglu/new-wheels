@@ -105,8 +105,6 @@ SafeExecutor&lt;typeof Scheme.parse&gt;
 
 </td><td>
 
-`readonly`
-
 
 </td><td>
 

@@ -83,8 +83,6 @@ Description
 
 </td><td>
 
-`readonly`
-
 
 </td><td>
 
@@ -122,8 +120,6 @@ SafeExecutor&lt;typeof Fragment.parse&gt;
 
 
 </td><td>
-
-`readonly`
 
 
 </td><td>

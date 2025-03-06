@@ -7,5 +7,5 @@
 **Signature:**
 
 ```typescript
-readonly isAbsolute: boolean;
+isAbsolute: boolean;
 ```

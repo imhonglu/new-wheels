@@ -7,5 +7,5 @@
 **Signature:**
 
 ```typescript
-readonly expressions: Set<Expression>;
+expressions: Set<Expression>;
 ```

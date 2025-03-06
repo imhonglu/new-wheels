@@ -513,6 +513,17 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
+[EscapeMapping](./format.escapemapping.md)
+
+
+</td><td>
+
+Mapping for JSON Pointer escape sequences. Defines the transformation rules for special characters.
+
+
+</td></tr>
+<tr><td>
+
 [ExplodeModifier](./format.explodemodifier.md)
 
 
@@ -549,6 +560,17 @@ Description
 </td></tr>
 <tr><td>
 
+[UnescapeMapping](./format.unescapemapping.md)
+
+
+</td><td>
+
+Mapping for JSON Pointer unescape sequences. Defines the reverse transformation rules for escape sequences.
+
+
+</td></tr>
+<tr><td>
+
 [URIParseOptions](./format.uriparseoptions.md)
 
 
@@ -573,6 +595,19 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
+[Escape](./format.escape.md)
+
+
+</td><td>
+
+Type that converts special characters in a string to JSON Pointer escape sequences. According to RFC 6901, the following transformations are applied
+
+- "<!-- -->\~<!-- -->" is encoded as "<!-- -->\~<!-- -->0" - "<!-- -->/<!-- -->" is encoded as "<!-- -->\~<!-- -->1"
+
+
+</td></tr>
+<tr><td>
+
 [LiteralModifier](./format.literalmodifier.md)
 
 
@@ -592,6 +627,66 @@ Description
 <tr><td>
 
 [Operator](./format.operator.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PointerPaths](./format.pointerpaths.md)
+
+
+</td><td>
+
+Generates all possible JSON Pointer paths for a given type. Supports nested objects, arrays, and special characters in property names.
+
+
+</td></tr>
+<tr><td>
+
+[ResolveJsonPointer](./format.resolvejsonpointer.md)
+
+
+</td><td>
+
+Resolves the type of value at a given JSON Pointer path.
+
+
+</td></tr>
+<tr><td>
+
+[ResolvePointerSegments](./format.resolvepointersegments.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[SplitJsonPointer](./format.splitjsonpointer.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Unescape](./format.unescape.md)
+
+
+</td><td>
+
+Type that converts JSON Pointer escape sequences back to their original characters. According to RFC 6901, the following transformations are applied: - "\~0" is decoded as "\~" - "\~1" is decoded as "/"
+
+
+</td></tr>
+<tr><td>
+
+[UnescapeSegment](./format.unescapesegment.md)
 
 
 </td><td>

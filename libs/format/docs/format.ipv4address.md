@@ -102,8 +102,6 @@ SafeExecutor&lt;typeof IPv4Address.parse&gt;
 
 </td><td>
 
-`readonly`
-
 
 </td><td>
 

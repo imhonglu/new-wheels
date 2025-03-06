@@ -9,5 +9,5 @@ The version flag does not indicate the IP version rather, it indicates future ve
 **Signature:**
 
 ```typescript
-readonly version: number;
+version: number;
 ```

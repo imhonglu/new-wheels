@@ -7,5 +7,5 @@
 **Signature:**
 
 ```typescript
-readonly date: FullDate;
+date: FullDate;
 ```

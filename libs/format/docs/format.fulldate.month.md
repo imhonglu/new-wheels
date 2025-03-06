@@ -7,5 +7,5 @@
 **Signature:**
 
 ```typescript
-readonly month: number;
+month: number;
 ```

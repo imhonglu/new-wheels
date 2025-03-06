@@ -87,8 +87,6 @@ Description
 
 </td><td>
 
-`readonly`
-
 
 </td><td>
 
@@ -124,8 +122,6 @@ SafeExecutor&lt;typeof IdnHostname.parse&gt;
 
 
 </td><td>
-
-`readonly`
 
 
 </td><td>

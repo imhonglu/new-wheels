@@ -7,5 +7,5 @@
 **Signature:**
 
 ```typescript
-readonly type: "dotString" | "quotedString";
+type: "dotString" | "quotedString";
 ```

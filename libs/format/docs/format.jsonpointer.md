@@ -127,8 +127,6 @@ SafeExecutor&lt;typeof JsonPointer.parse&gt;
 
 </td><td>
 
-`readonly`
-
 
 </td><td>
 
@@ -171,7 +169,23 @@ Description
 
 </td><td>
 
-Escapes the special characters in a JsonPointer string.
+Escapes a string for use as a JSON Pointer token.
+
+
+</td></tr>
+<tr><td>
+
+[get(object, pointer)](./format.jsonpointer.get.md)
+
+
+</td><td>
+
+`static`
+
+
+</td><td>
+
+Retrieves a value from an object using a JSON Pointer.
 
 
 </td></tr>
@@ -219,7 +233,7 @@ Converts an [JsonPointer](./format.jsonpointer.md) object to a JsonPointer strin
 
 </td><td>
 
-Unescapes the special characters in a JsonPointer string.
+Unescapes a JSON Pointer token.
 
 
 </td></tr>

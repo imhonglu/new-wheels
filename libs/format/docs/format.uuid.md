@@ -102,8 +102,6 @@ SafeExecutor&lt;typeof UUID.parse&gt;
 
 </td><td>
 
-`readonly`
-
 
 </td><td>
 

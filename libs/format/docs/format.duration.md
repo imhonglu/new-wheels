@@ -84,8 +84,6 @@ Description
 
 </td><td>
 
-`readonly`
-
 
 </td><td>
 
@@ -104,8 +102,6 @@ _(Optional)_
 
 
 </td><td>
-
-`readonly`
 
 
 </td><td>
@@ -126,8 +122,6 @@ _(Optional)_
 
 </td><td>
 
-`readonly`
-
 
 </td><td>
 
@@ -146,8 +140,6 @@ _(Optional)_
 
 
 </td><td>
-
-`readonly`
 
 
 </td><td>
@@ -187,8 +179,6 @@ SafeExecutor&lt;typeof Duration.parse&gt;
 
 </td><td>
 
-`readonly`
-
 
 </td><td>
 
@@ -208,8 +198,6 @@ _(Optional)_
 
 </td><td>
 
-`readonly`
-
 
 </td><td>
 
@@ -228,8 +216,6 @@ _(Optional)_
 
 
 </td><td>
-
-`readonly`
 
 
 </td><td>
