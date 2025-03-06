@@ -2,6 +2,10 @@ import { characterSet, concat, oneOf } from "@imhonglu/pattern-builder";
 import type { SafeExecutor } from "@imhonglu/toolkit";
 import { Serializable } from "../utils/serializable/serializable.js";
 import { InvalidJsonPointerError } from "./errors/invalid-json-pointer-error.js";
+import type { Escape } from "./types/escape.js";
+import type { PointerPaths } from "./types/pointer-paths.js";
+import type { ResolveJsonPointer } from "./types/resolve-json-pointer.js";
+import type { Unescape } from "./types/unescape.js";
 
 const unescaped = characterSet(
   "\\u{00}-\\u{2E}",
@@ -99,22 +103,98 @@ export class JsonPointer {
   }
 
   /**
-   * Escapes the special characters in a JsonPointer string.
+   * Retrieves a value from an object using a JSON Pointer.
    *
-   * @param text - The JsonPointer string to escape.
-   * @returns The escaped JsonPointer string.
+   * @template T - The type of the source object
+   * @template P - The type of valid pointer paths for the object
+   * @param object - The source object to get value from
+   * @param pointer - JSON Pointer string (e.g., "/path/to/value")
+   * @returns The value at the specified path or undefined if path doesn't exist
+   *
+   * @example
+   * ```typescript
+   * const obj = { foo: { bar: [1, 2, 3] } };
+   * JsonPointer.get(obj, "/foo/bar/0"); // returns 1
+   * JsonPointer.get(obj, "/foo/bar"); // returns [1, 2, 3]
+   * JsonPointer.get(obj, ""); // returns the entire object
+   * ```
+   *
+   * @see {@link https://datatracker.ietf.org/doc/html/rfc6901#section-4 | RFC 6901 - Evaluation}
    */
-  public static escape(text: string) {
-    return text.replace("~", escapeTilde).replace("/", escapeSlash);
+  public static get<T extends object, P extends PointerPaths<T>>(
+    object: T,
+    pointer: P = "" as P,
+  ): ResolveJsonPointer<T, P> {
+    if (pointer === "") {
+      return object as ResolveJsonPointer<T, P>;
+    }
+
+    return pointer
+      .split("/")
+      .slice(1)
+      .map((token) => JsonPointer.unescape(token))
+      .reduce<unknown>(
+        (acc, token) =>
+          typeof acc === "object" && acc !== null
+            ? (acc as Record<string, unknown>)[token]
+            : undefined,
+        object,
+      ) as ResolveJsonPointer<T, P>;
   }
 
   /**
-   * Unescapes the special characters in a JsonPointer string.
+   * Unescapes a JSON Pointer token.
    *
-   * @param text - The JsonPointer string to unescape.
-   * @returns The unescaped JsonPointer string.
+   * @template T - The type of the input string
+   * @param text - The JSON Pointer string to unescape
+   * @returns The unescaped JSON Pointer string
+   *
+   * @example
+   * ```typescript
+   * JsonPointer.unescape("foo~1bar"); // returns "foo/bar"
+   * JsonPointer.unescape("foo~0bar"); // returns "foo~bar"
+   * ```
+   *
+   * @see {@link https://datatracker.ietf.org/doc/html/rfc6901#section-3 | RFC 6901 - Syntax}
    */
-  public static unescape(text: string) {
-    return text.replace(escapeTilde, "~").replace(escapeSlash, "/");
+  public static unescape<T extends string>(text: T): Unescape<T> {
+    return text.replace(/~[01]/g, (match) => {
+      switch (match) {
+        case "~0":
+          return "~";
+        case "~1":
+          return "/";
+        default:
+          return match;
+      }
+    }) as Unescape<T>;
+  }
+
+  /**
+   * Escapes a string for use as a JSON Pointer token.
+   *
+   * @template T - The type of the input string
+   * @param text - The string to escape as a JSON Pointer token
+   * @returns The escaped JSON Pointer string
+   *
+   * @example
+   * ```typescript
+   * JsonPointer.escape("foo/bar"); // returns "foo~1bar"
+   * JsonPointer.escape("foo~bar"); // returns "foo~0bar"
+   * ```
+   *
+   * @see {@link https://datatracker.ietf.org/doc/html/rfc6901#section-3 | RFC 6901 - Syntax}
+   */
+  public static escape<T extends string>(text: T): Escape<T> {
+    return text.replace(/[~\/]/g, (match) => {
+      switch (match) {
+        case "~":
+          return "~0";
+        case "/":
+          return "~1";
+        default:
+          return match;
+      }
+    }) as Escape<T>;
   }
 }
