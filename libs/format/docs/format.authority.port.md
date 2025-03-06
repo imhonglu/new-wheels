@@ -7,5 +7,5 @@
 **Signature:**
 
 ```typescript
-readonly port?: number;
+port?: number;
 ```

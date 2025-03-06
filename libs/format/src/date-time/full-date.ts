@@ -26,9 +26,9 @@ const FULL_DATE_LENGTH = 10;
  */
 @Serializable
 export class FullDate {
-  public readonly year: number;
-  public readonly month: number;
-  public readonly day: number;
+  public year: number;
+  public month: number;
+  public day: number;
 
   constructor({ year, month, day }: FullDate) {
     this.year = year;

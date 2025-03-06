@@ -7,5 +7,5 @@
 **Signature:**
 
 ```typescript
-readonly domain: AddressLiteral | Hostname;
+domain: AddressLiteral | Hostname;
 ```

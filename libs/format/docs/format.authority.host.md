@@ -7,5 +7,5 @@
 **Signature:**
 
 ```typescript
-readonly host: IdnHostname | IPv4Address | IPv6Address | IPvFuture;
+host: IdnHostname | IPv4Address | IPv6Address | IPvFuture;
 ```

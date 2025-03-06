@@ -7,5 +7,5 @@
 **Signature:**
 
 ```typescript
-readonly userinfo?: string;
+userinfo?: string;
 ```

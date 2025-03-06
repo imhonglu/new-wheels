@@ -29,7 +29,7 @@ import {
  * ```ts
  * @Serializable
  * class Example {
- *   constructor(public readonly text: string) {}
+ *   constructor(public text: string) {}
  *
  *   static parse(value: string): Example {
  *     return new Example(value);

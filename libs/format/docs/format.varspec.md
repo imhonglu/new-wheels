@@ -97,8 +97,6 @@ Description
 
 </td><td>
 
-`readonly`
-
 
 </td><td>
 
@@ -117,8 +115,6 @@ _(Optional)_
 
 
 </td><td>
-
-`readonly`
 
 
 </td><td>

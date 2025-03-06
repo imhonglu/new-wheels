@@ -7,5 +7,5 @@
 **Signature:**
 
 ```typescript
-readonly secfrac?: `.${number}`;
+secfrac?: `.${number}`;
 ```

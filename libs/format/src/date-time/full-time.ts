@@ -54,11 +54,11 @@ export interface TimeNumOffset {
  */
 @Serializable
 export class FullTime {
-  public readonly hour: number;
-  public readonly minute: number;
-  public readonly second: number;
-  public readonly secfrac?: `.${number}`;
-  public readonly offset?: TimeNumOffset;
+  public hour: number;
+  public minute: number;
+  public second: number;
+  public secfrac?: `.${number}`;
+  public offset?: TimeNumOffset;
 
   constructor({ hour, minute, second, secfrac, offset }: FullTime) {
     this.hour = hour;

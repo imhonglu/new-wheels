@@ -7,5 +7,5 @@
 **Signature:**
 
 ```typescript
-readonly time: FullTime;
+time: FullTime;
 ```

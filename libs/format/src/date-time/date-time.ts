@@ -34,8 +34,8 @@ const DATE_TIME_MIN_LENGTH = 20;
  */
 @Serializable
 export class DateTime {
-  public readonly date: FullDate;
-  public readonly time: FullTime;
+  public date: FullDate;
+  public time: FullTime;
 
   constructor({ date, time }: DateTime) {
     this.date = date;

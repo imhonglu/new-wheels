@@ -31,8 +31,8 @@ const pattern = {
  */
 @Serializable
 export class Fragment {
-  public readonly text: string;
-  public readonly options?: URIParseOptions;
+  public text: string;
+  public options?: URIParseOptions;
 
   public constructor({ text, options }: Fragment) {
     this.text = text;

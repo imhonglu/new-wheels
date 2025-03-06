@@ -7,5 +7,5 @@
 **Signature:**
 
 ```typescript
-readonly authority?: Authority;
+authority?: Authority;
 ```

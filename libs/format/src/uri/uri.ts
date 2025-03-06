@@ -47,7 +47,7 @@ import { URIReference } from "./uri-reference.js";
  */
 @Serializable
 export class URI extends URIReference {
-  public readonly scheme: Scheme;
+  public scheme: Scheme;
 
   public constructor(reference: URI) {
     super(reference);

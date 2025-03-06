@@ -29,7 +29,7 @@ const pattern = concat(
  */
 @Serializable
 export class UUID {
-  public readonly segments: [string, string, string, string, string];
+  public segments: [string, string, string, string, string];
 
   public constructor({ segments }: UUID) {
     this.segments = segments;

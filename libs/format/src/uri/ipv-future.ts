@@ -31,8 +31,8 @@ export class IPvFuture {
    *
    * @see {@link https://datatracker.ietf.org/doc/html/rfc3986#page-19 | RFC 3986#page-19}
    */
-  public readonly version: number;
-  public readonly address: string;
+  public version: number;
+  public address: string;
 
   public constructor({ version, address }: IPvFuture) {
     this.version = version;

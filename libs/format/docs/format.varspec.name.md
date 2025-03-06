@@ -7,5 +7,5 @@
 **Signature:**
 
 ```typescript
-readonly name: string;
+name: string;
 ```

@@ -22,9 +22,9 @@ const IPV6_COMPRESSED_PARTS_MAX = 7;
  */
 @Serializable
 export class IPv6Address {
-  public readonly segments: string[];
-  public readonly compressIndex?: number;
-  public readonly embeddedIPv4?: IPv4Address;
+  public segments: string[];
+  public compressIndex?: number;
+  public embeddedIPv4?: IPv4Address;
 
   constructor({ segments, compressIndex, embeddedIPv4 }: IPv6Address) {
     this.segments = segments;

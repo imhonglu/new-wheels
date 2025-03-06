@@ -44,10 +44,10 @@ const pattern = {
  */
 @Serializable
 export class Path {
-  public readonly segments: string[];
-  public readonly isAbsolute: boolean;
-  public readonly hasTrailingSlash: boolean;
-  public readonly options?: URIParseOptions;
+  public segments: string[];
+  public isAbsolute: boolean;
+  public hasTrailingSlash: boolean;
+  public options?: URIParseOptions;
 
   public constructor({
     segments,

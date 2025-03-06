@@ -7,5 +7,5 @@
 **Signature:**
 
 ```typescript
-readonly offset?: TimeNumOffset;
+offset?: TimeNumOffset;
 ```

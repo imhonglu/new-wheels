@@ -7,5 +7,5 @@
 **Signature:**
 
 ```typescript
-readonly day?: number;
+day?: number;
 ```

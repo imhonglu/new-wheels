@@ -7,5 +7,5 @@
 **Signature:**
 
 ```typescript
-readonly hour: number;
+hour: number;
 ```

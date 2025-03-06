@@ -7,5 +7,5 @@
 **Signature:**
 
 ```typescript
-readonly scheme?: Scheme;
+scheme?: Scheme;
 ```

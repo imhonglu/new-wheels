@@ -46,8 +46,8 @@ const pattern = concat(
  */
 @Serializable
 export class Varspec {
-  public readonly name: string;
-  public readonly modifier?: Modifier;
+  public name: string;
+  public modifier?: Modifier;
 
   public constructor({ name, modifier }: Varspec) {
     this.name = name;

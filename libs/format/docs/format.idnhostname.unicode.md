@@ -7,7 +7,7 @@
 **Signature:**
 
 ```typescript
-readonly unicode: {
+unicode: {
         labels: string[];
         tld?: string;
     };

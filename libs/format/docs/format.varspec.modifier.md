@@ -7,5 +7,5 @@
 **Signature:**
 
 ```typescript
-readonly modifier?: Modifier;
+modifier?: Modifier;
 ```

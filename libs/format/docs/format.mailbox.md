@@ -87,8 +87,6 @@ Description
 
 </td><td>
 
-`readonly`
-
 
 </td><td>
 
@@ -105,8 +103,6 @@ Description
 
 
 </td><td>
-
-`readonly`
 
 
 </td><td>

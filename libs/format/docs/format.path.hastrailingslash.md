@@ -7,5 +7,5 @@
 **Signature:**
 
 ```typescript
-readonly hasTrailingSlash: boolean;
+hasTrailingSlash: boolean;
 ```

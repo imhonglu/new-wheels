@@ -7,5 +7,5 @@
 **Signature:**
 
 ```typescript
-readonly week?: number;
+week?: number;
 ```

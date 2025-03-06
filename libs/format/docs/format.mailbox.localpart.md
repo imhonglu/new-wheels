@@ -7,5 +7,5 @@
 **Signature:**
 
 ```typescript
-readonly localPart: LocalPart;
+localPart: LocalPart;
 ```
