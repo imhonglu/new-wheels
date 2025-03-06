@@ -1,5 +1,11 @@
 # @imhonglu/format
 
+## 1.0.8
+
+### Patch Changes
+
+- 7b6c6eb: Add type-safe JSON Pointer get operation
+
 ## 1.0.7
 
 ### Patch Changes
