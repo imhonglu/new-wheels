@@ -20,7 +20,12 @@
     "noscheme",
     "hexdig",
     "vitest",
-    "npmjs"
+    "vite",
+    "npmjs",
+    "dotenv",
+    "jscoverage",
+    "pids",
+    "commitlint"
   ],
   "dictionaries": ["typescript", "node"],
   "ignorePaths": ["pnpm-*.yaml", "dist/", "docs/", "tsconfig.base.json"],
