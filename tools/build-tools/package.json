@@ -34,9 +34,9 @@
   "author": "imhonglu <anonymouser.unknown@gmail.com>",
   "license": "MIT",
   "peerDependencies": {
-    "esbuild": "catalog:",
-    "tslib": "catalog:",
-    "typescript": "catalog:"
+    "esbuild": "^0.25.2",
+    "tslib": "^2.8.1",
+    "typescript": "^5.8.2"
   },
   "dependencies": {
     "@imhonglu/configs": "^1.0.7",
