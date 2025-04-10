@@ -1,6 +1,6 @@
 {
   "name": "@imhonglu/configs",
-  "version": "1.0.7",
+  "version": "1.0.9",
   "description": "Configuration files for the project.",
   "repository": {
     "type": "git",
@@ -39,10 +39,10 @@
   "author": "imhonglu <anonymouser.unknown@gmail.com>",
   "license": "MIT",
   "peerDependencies": {
-    "jest-extended": "catalog:",
-    "vitest": "catalog:"
+    "jest-extended": "^4.0.2",
+    "vitest": "^3.1.1"
   },
   "devDependencies": {
-    "@imhonglu/build-tools": "^1.0.3"
+    "@imhonglu/build-tools": "^1.0.5"
   }
 }

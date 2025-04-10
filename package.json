@@ -8,8 +8,7 @@
   },
   "type": "module",
   "engines": {
-    "node": ">=22.12.0",
-    "pnpm": ">=9.15.2"
+    "pnpm": ">=10.8.0"
   },
   "scripts": {
     "lint:cspell": "cspell --no-progress --show-suggestions --show-context .",
@@ -21,20 +20,20 @@
   "license": "MIT",
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
-    "@changesets/cli": "^2.27.12",
-    "@commitlint/cli": "^19.7.1",
-    "@commitlint/config-conventional": "^19.7.1",
-    "@faker-js/faker": "^9.5.0",
-    "@microsoft/api-documenter": "^7.26.8",
-    "@microsoft/api-extractor": "^7.50.0",
-    "@types/node": "^22.13.4",
-    "@vitest/coverage-v8": "^3.0.5",
-    "cspell": "^8.17.3",
-    "esbuild": "catalog:",
+    "@changesets/cli": "^2.28.1",
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
+    "@faker-js/faker": "^9.6.0",
+    "@microsoft/api-documenter": "^7.26.20",
+    "@microsoft/api-extractor": "^7.52.3",
+    "@types/node": "^22.14.0",
+    "@vitest/coverage-v8": "^3.1.1",
+    "cspell": "^8.18.1",
+    "esbuild": "^0.25.2",
     "husky": "^9.1.7",
-    "jest-extended": "catalog:",
-    "tslib": "catalog:",
-    "typescript": "catalog:",
-    "vitest": "catalog:"
+    "jest-extended": "^4.0.2",
+    "tslib": "^2.8.1",
+    "typescript": "^5.8.3",
+    "vitest": "^3.1.1"
   }
 }

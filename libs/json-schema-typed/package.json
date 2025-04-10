@@ -1,0 +1,54 @@
+{
+  "name": "@imhonglu/json-schema-typed",
+  "version": "1.0.0",
+  "description": "Type-safe JSON Schema 2020-12 specification library with static type inference",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imhonglu/new-wheels.git",
+    "directory": "libs/json-schema-typed"
+  },
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "test": "vitest",
+    "build": "tsc -p tsconfig.build.json",
+    "postbuild": "esm-to-cjs",
+    "generate-docs": "pnpm api-extractor run && pnpm api-documenter markdown -i ./temp -o ./docs",
+    "generate-tests": "./src/test-suite/cli.ts",
+    "postgenerate-tests": "pnpm -w run lint:biome --write",
+    "prepublishOnly": "pnpm run build"
+  },
+  "keywords": [
+    "typescript",
+    "type-safe",
+    "json-schema",
+    "json",
+    "schema",
+    "specification",
+    "type-inference",
+    "validation"
+  ],
+  "author": "imhonglu <anonymouser.unknown@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@imhonglu/build-tools": "^1.0.6",
+    "@imhonglu/configs": "^1.0.9"
+  },
+  "dependencies": {
+    "@imhonglu/format": "^1.0.8",
+    "@imhonglu/toolkit": "^1.0.3",
+    "@imhonglu/type-guard": "^1.0.1",
+    "@imhonglu/type-object": "^1.0.1"
+  }
+}

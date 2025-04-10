@@ -1,25 +1,61 @@
-You are an expert in TypeScript, Node.js.
+# New Wheels Project Coding Convention
 
-Code Style and Structure
-- Write concise, technical TypeScript code with accurate examples.
-- Use functional and declarative programming patterns; avoid classes.
-- Prefer iteration and modularization over code duplication.
-- Use descriptive variable names with auxiliary verbs (e.g., isLoading, hasError).
-- Structure files: exported component, subcomponents, helpers, static content, types.
+## Project Structure
+- Monorepo structure using pnpm workspace
+- apps/: Application code
+- libs/: Shared library code
+- tools/: Development tools and scripts
+- .github/: CI/CD and GitHub workflows
+- .vscode/: Editor settings and extensions
 
-Naming Conventions
-- Use lowercase with dashes for directories (e.g., components/auth-wizard).
-- Favor named exports for components.
+## Code Style
+- TypeScript as the primary language
+- Functional programming patterns preferred
+- Functions and objects over classes
+- Emphasis on modularity and reusability
+- Clear variable naming (isLoading, hasError, etc.)
 
-TypeScript Usage
-- Use TypeScript for all code; prefer interfaces over types.
-- Avoid enums; use maps instead.
-- Use functional components with TypeScript interfaces.
+## File Structure
+- Components: components/[feature-name]/
+- Utilities: utils/[category]/
+- Types: types/[domain]/
+- Constants: constants/[domain]/
 
-Syntax and Formatting
-- Use the "function" keyword for pure functions.
-- Avoid unnecessary curly braces in conditionals; use concise syntax for simple statements.
+## TypeScript Guidelines
+- Prefer interfaces over types
+- Use const maps instead of enums
+- Apply TypeScript interfaces to functional components
+- Leverage generics for type safety
 
-Documentation
-- Use TypeDoc for documentation.
-- Always english for documentation.
+## Naming Conventions
+- Directories: kebab-case (e.g., auth-wizard)
+- Components: PascalCase
+- Functions: camelCase
+- Constants: UPPER_SNAKE_CASE
+- Types/Interfaces: PascalCase
+
+## Documentation
+- Use TypeDoc
+- All documentation in English
+- JSDoc comments required for major functions and components
+- Maintain both README.md and README_KR.md
+
+## Code Quality
+- Code formatting with Biome
+- Git hooks management with Husky
+- Version management with Changesets
+- Commit message validation with Commitlint
+- Spell checking with cspell
+- Editor configuration with .editorconfig
+
+## Testing
+- Unit testing with Vitest
+- Test files are recommended to be placed in the same directory as their source files with *.test.ts pattern
+- Maintain test coverage
+- Test environment configuration in vitest.workspace.js
+
+## Development Environment
+- Node.js version management with .tool-versions
+- Editor settings in .vscode/settings.json
+- Git configuration in .gitattributes
+- License and legal information in LICENSE

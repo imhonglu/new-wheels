@@ -5,16 +5,9 @@
     "declaration": true,
     "declarationMap": true,
     "inlineSourceMap": true,
-    "typeRoots": [
-      "../../../../../node_modules/@types",
-      "../../../node_modules/@types"
-    ],
-    "outDir": "${configDir}/dist"
+    "outDir": "${configDir}/dist",
+    "baseUrl": "${configDir}"
   },
 
-  "include": [
-    // @see https://github.com/microsoft/rushstack/blob/main/rigs/local-node-rig/profiles/default/tsconfig-base.json
-    "../../../src/**/*.ts",
-    "types/*.d.ts"
-  ]
+  "include": ["${configDir}/**/*.ts", "types/*.d.ts"]
 }

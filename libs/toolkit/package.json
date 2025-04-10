@@ -31,8 +31,8 @@
   "author": "imhonglu <anonymouser.unknown@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "@imhonglu/build-tools": "^1.0.3",
-    "@imhonglu/configs": "^1.0.7"
+    "@imhonglu/build-tools": "^1.0.6",
+    "@imhonglu/configs": "^1.0.9"
   },
   "dependencies": {
     "@imhonglu/type-guard": "^1.0.1",
