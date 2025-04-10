@@ -1,5 +1,11 @@
 # @imhonglu/build-tools
 
+## 1.0.7
+
+### Patch Changes
+
+- 62d6366: bump versions
+
 ## 1.0.3
 
 ### Patch Changes
