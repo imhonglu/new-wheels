@@ -1,6 +1,6 @@
 {
   "name": "@imhonglu/toolkit",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Type-safe utility collection for TypeScript projects",
   "repository": {
     "type": "git",
@@ -35,7 +35,7 @@
     "@imhonglu/configs": "^1.0.9"
   },
   "dependencies": {
-    "@imhonglu/type-guard": "^1.0.1",
-    "@imhonglu/type-object": "^1.0.1"
+    "@imhonglu/type-guard": "^1.0.2",
+    "@imhonglu/type-object": "^1.0.2"
   }
 }

@@ -1,5 +1,14 @@
 # @imhonglu/format
 
+## 1.0.9
+
+### Patch Changes
+
+- 7788374: bump package versions
+- Updated dependencies [7788374]
+  - @imhonglu/pattern-builder@1.0.5
+  - @imhonglu/toolkit@1.0.4
+
 ## 1.0.8
 
 ### Patch Changes
