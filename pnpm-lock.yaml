@@ -97,18 +97,9 @@ importers:
 
   libs/json-schema-typed:
     dependencies:
-      '@imhonglu/format':
-        specifier: ^1.0.9
-        version: 1.0.9
       '@imhonglu/toolkit':
         specifier: ^1.0.4
         version: 1.0.4
-      '@imhonglu/type-guard':
-        specifier: ^1.0.2
-        version: 1.0.2
-      '@imhonglu/type-object':
-        specifier: ^1.0.2
-        version: 1.0.2
     devDependencies:
       '@imhonglu/build-tools':
         specifier: ^1.0.7
