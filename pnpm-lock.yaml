@@ -67,16 +67,16 @@ importers:
         version: 1.0.3
     devDependencies:
       '@imhonglu/build-tools':
-        specifier: ^1.0.3
-        version: 1.0.3(esbuild@0.25.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.8.3)(vitest@3.1.1(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1))
+        specifier: workspace:*
+        version: link:../../tools/build-tools
       '@imhonglu/configs':
-        specifier: ^1.0.7
-        version: 1.0.7(jest-extended@4.0.2)(vitest@3.1.1(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1))
+        specifier: workspace:*
+        version: link:../../tools/configs
 
   libs/json-schema:
     dependencies:
       '@imhonglu/format':
-        specifier: ^1.0.7
+        specifier: ^1.0.8
         version: 1.0.8
       '@imhonglu/toolkit':
         specifier: ^1.0.3
@@ -89,11 +89,11 @@ importers:
         version: 1.0.1
     devDependencies:
       '@imhonglu/build-tools':
-        specifier: ^1.0.3
-        version: 1.0.3(esbuild@0.25.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.8.3)(vitest@3.1.1(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1))
+        specifier: workspace:*
+        version: link:../../tools/build-tools
       '@imhonglu/configs':
-        specifier: ^1.0.7
-        version: 1.0.7(jest-extended@4.0.2)(vitest@3.1.1(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1))
+        specifier: workspace:*
+        version: link:../../tools/configs
 
   libs/json-schema-typed:
     dependencies:
@@ -111,20 +111,20 @@ importers:
         version: 1.0.1
     devDependencies:
       '@imhonglu/build-tools':
-        specifier: ^1.0.3
-        version: 1.0.3(esbuild@0.25.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.8.3)(vitest@3.1.1(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1))
+        specifier: workspace:*
+        version: link:../../tools/build-tools
       '@imhonglu/configs':
-        specifier: ^1.0.7
-        version: 1.0.7(jest-extended@4.0.2)(vitest@3.1.1(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1))
+        specifier: workspace:*
+        version: link:../../tools/configs
 
   libs/pattern-builder:
     devDependencies:
       '@imhonglu/build-tools':
-        specifier: ^1.0.3
-        version: 1.0.3(esbuild@0.25.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.8.3)(vitest@3.1.1(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1))
+        specifier: workspace:*
+        version: link:../../tools/build-tools
       '@imhonglu/configs':
-        specifier: ^1.0.7
-        version: 1.0.7(jest-extended@4.0.2)(vitest@3.1.1(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1))
+        specifier: workspace:*
+        version: link:../../tools/configs
 
   libs/toolkit:
     dependencies:
@@ -136,20 +136,20 @@ importers:
         version: 1.0.1
     devDependencies:
       '@imhonglu/build-tools':
-        specifier: ^1.0.3
-        version: 1.0.3(esbuild@0.25.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.8.3)(vitest@3.1.1(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1))
+        specifier: workspace:*
+        version: link:../../tools/build-tools
       '@imhonglu/configs':
-        specifier: ^1.0.7
-        version: 1.0.7(jest-extended@4.0.2)(vitest@3.1.1(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1))
+        specifier: workspace:*
+        version: link:../../tools/configs
 
   libs/type-guard:
     devDependencies:
       '@imhonglu/build-tools':
-        specifier: ^1.0.3
-        version: 1.0.3(esbuild@0.25.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.8.3)(vitest@3.1.1(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1))
+        specifier: workspace:*
+        version: link:../../tools/build-tools
       '@imhonglu/configs':
-        specifier: ^1.0.7
-        version: 1.0.7(jest-extended@4.0.2)(vitest@3.1.1(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1))
+        specifier: workspace:*
+        version: link:../../tools/configs
 
   libs/type-object:
     dependencies:
@@ -158,17 +158,17 @@ importers:
         version: 1.0.1
     devDependencies:
       '@imhonglu/build-tools':
-        specifier: ^1.0.3
-        version: 1.0.3(esbuild@0.25.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.8.3)(vitest@3.1.1(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1))
+        specifier: workspace:*
+        version: link:../../tools/build-tools
       '@imhonglu/configs':
-        specifier: ^1.0.7
-        version: 1.0.7(jest-extended@4.0.2)(vitest@3.1.1(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1))
+        specifier: workspace:*
+        version: link:../../tools/configs
 
   tools/build-tools:
     dependencies:
       '@imhonglu/configs':
-        specifier: ^1.0.7
-        version: 1.0.7(jest-extended@4.0.2)(vitest@3.1.1(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1))
+        specifier: ^1.0.8
+        version: 1.0.8(jest-extended@4.0.2)(vitest@3.1.1(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1))
       '@imhonglu/toolkit':
         specifier: ^1.0.3
         version: 1.0.3
@@ -192,8 +192,8 @@ importers:
         version: 3.1.1(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1)
     devDependencies:
       '@imhonglu/build-tools':
-        specifier: ^1.0.3
-        version: 1.0.3(esbuild@0.25.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.8.3)(vitest@3.1.1(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1))
+        specifier: ^1.0.5
+        version: 1.0.5(esbuild@0.25.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.8.3)(vitest@3.1.1(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1))
 
 packages:
 
@@ -780,19 +780,19 @@ packages:
     resolution: {integrity: sha512-3vm4by+B5lvsFPSyep3ELWmZfE3kicDtmemVpuwl1yH7tqtnHdsA6hG8fbXedMVdkzgtvzWoRgjSB4Q+FHnZiw==}
     engines: {node: '>=18.0.0', npm: '>=9.0.0'}
 
-  '@imhonglu/build-tools@1.0.3':
-    resolution: {integrity: sha512-ppMQd3GdpnGszuEfnYozkRlFqm2r68ZZpU8cQ/XpjRPs1DAf1F8LexNiczNfzHFZM/UEL4zD9+EkTStfreqmFg==}
+  '@imhonglu/build-tools@1.0.5':
+    resolution: {integrity: sha512-qxrF7WYrQwPsuoxZr8/CjKFWgTpKJsMihXyYA2FjTYKweBvSnwNQq0DdCrd0VQxAmddUUDLN8nUJa96Qzcbk0g==}
     hasBin: true
     peerDependencies:
-      esbuild: ^0.24.2
+      esbuild: ^0.25.2
       tslib: ^2.8.1
-      typescript: ^5.7.3
+      typescript: ^5.8.2
 
-  '@imhonglu/configs@1.0.7':
-    resolution: {integrity: sha512-pP6HX9YZgESTa5bdgI+1RB8tt4t7Hd37hSwKfUc2A0BQJVCz5yl4cBMyzJ1lZqhmD1eJpo2uzBKQqALFfoZuAg==}
+  '@imhonglu/configs@1.0.8':
+    resolution: {integrity: sha512-VveIayrewTt4EkB1L0XO4AUl9ryA02vyj32auozPHkdmJ6XUIfyJOO2eEZgq3TX9mWzo60A8g+lhrU5j4b+Nrg==}
     peerDependencies:
       jest-extended: ^4.0.2
-      vitest: ^3.0.5
+      vitest: ^3.1.1
 
   '@imhonglu/format@1.0.8':
     resolution: {integrity: sha512-T0L/n7/SPvT4JRf3OdSC/Yq+C/pWFYV7Skv+6oIHj5wq0bQN7D7+Kzxeipt/nbAD1FGIfJ4gZ9nVeUWzmfbmew==}
@@ -2893,9 +2893,9 @@ snapshots:
 
   '@faker-js/faker@9.6.0': {}
 
-  '@imhonglu/build-tools@1.0.3(esbuild@0.25.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.8.3)(vitest@3.1.1(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1))':
+  '@imhonglu/build-tools@1.0.5(esbuild@0.25.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.8.3)(vitest@3.1.1(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1))':
     dependencies:
-      '@imhonglu/configs': 1.0.7(jest-extended@4.0.2)(vitest@3.1.1(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1))
+      '@imhonglu/configs': 1.0.8(jest-extended@4.0.2)(vitest@3.1.1(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1))
       '@imhonglu/toolkit': 1.0.3
       esbuild: 0.25.2
       tslib: 2.8.1
@@ -2904,7 +2904,7 @@ snapshots:
       - jest-extended
       - vitest
 
-  '@imhonglu/configs@1.0.7(jest-extended@4.0.2)(vitest@3.1.1(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1))':
+  '@imhonglu/configs@1.0.8(jest-extended@4.0.2)(vitest@3.1.1(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1))':
     dependencies:
       jest-extended: 4.0.2
       vitest: 3.1.1(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1)
