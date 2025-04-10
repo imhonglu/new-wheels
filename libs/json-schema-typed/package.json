@@ -46,9 +46,6 @@
     "@imhonglu/configs": "^1.0.10"
   },
   "dependencies": {
-    "@imhonglu/format": "^1.0.9",
-    "@imhonglu/toolkit": "^1.0.4",
-    "@imhonglu/type-guard": "^1.0.2",
-    "@imhonglu/type-object": "^1.0.2"
+    "@imhonglu/toolkit": "^1.0.4"
   }
 }
