@@ -42,6 +42,6 @@
     "@imhonglu/configs": "^1.0.9"
   },
   "dependencies": {
-    "@imhonglu/toolkit": "^1.0.3"
+    "@imhonglu/toolkit": "^1.0.4"
   }
 }

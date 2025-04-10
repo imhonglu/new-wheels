@@ -60,11 +60,11 @@ importers:
   libs/format:
     dependencies:
       '@imhonglu/pattern-builder':
+        specifier: ^1.0.5
+        version: 1.0.5
+      '@imhonglu/toolkit':
         specifier: ^1.0.4
         version: 1.0.4
-      '@imhonglu/toolkit':
-        specifier: ^1.0.3
-        version: 1.0.3
     devDependencies:
       '@imhonglu/build-tools':
         specifier: ^1.0.6
@@ -76,17 +76,17 @@ importers:
   libs/json-schema:
     dependencies:
       '@imhonglu/format':
-        specifier: ^1.0.7
-        version: 1.0.8
+        specifier: ^1.0.9
+        version: 1.0.9
       '@imhonglu/toolkit':
-        specifier: ^1.0.3
-        version: 1.0.3
+        specifier: ^1.0.4
+        version: 1.0.4
       '@imhonglu/type-guard':
-        specifier: ^1.0.1
-        version: 1.0.1
+        specifier: ^1.0.2
+        version: 1.0.2
       '@imhonglu/type-object':
-        specifier: ^1.0.1
-        version: 1.0.1
+        specifier: ^1.0.2
+        version: 1.0.2
     devDependencies:
       '@imhonglu/build-tools':
         specifier: ^1.0.6
@@ -98,17 +98,17 @@ importers:
   libs/json-schema-typed:
     dependencies:
       '@imhonglu/format':
-        specifier: ^1.0.8
-        version: 1.0.8
+        specifier: ^1.0.9
+        version: 1.0.9
       '@imhonglu/toolkit':
-        specifier: ^1.0.3
-        version: 1.0.3
+        specifier: ^1.0.4
+        version: 1.0.4
       '@imhonglu/type-guard':
-        specifier: ^1.0.1
-        version: 1.0.1
+        specifier: ^1.0.2
+        version: 1.0.2
       '@imhonglu/type-object':
-        specifier: ^1.0.1
-        version: 1.0.1
+        specifier: ^1.0.2
+        version: 1.0.2
     devDependencies:
       '@imhonglu/build-tools':
         specifier: ^1.0.6
@@ -129,11 +129,11 @@ importers:
   libs/toolkit:
     dependencies:
       '@imhonglu/type-guard':
-        specifier: ^1.0.1
-        version: 1.0.1
+        specifier: ^1.0.2
+        version: 1.0.2
       '@imhonglu/type-object':
-        specifier: ^1.0.1
-        version: 1.0.1
+        specifier: ^1.0.2
+        version: 1.0.2
     devDependencies:
       '@imhonglu/build-tools':
         specifier: ^1.0.6
@@ -154,8 +154,8 @@ importers:
   libs/type-object:
     dependencies:
       '@imhonglu/type-guard':
-        specifier: ^1.0.1
-        version: 1.0.1
+        specifier: ^1.0.2
+        version: 1.0.2
     devDependencies:
       '@imhonglu/build-tools':
         specifier: ^1.0.6
@@ -167,8 +167,8 @@ importers:
   tools/build-tools:
     dependencies:
       '@imhonglu/toolkit':
-        specifier: ^1.0.3
-        version: 1.0.3
+        specifier: ^1.0.4
+        version: 1.0.4
       esbuild:
         specifier: ^0.25.2
         version: 0.25.2
@@ -193,8 +193,8 @@ importers:
         version: 3.1.1(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1)
     devDependencies:
       '@imhonglu/build-tools':
-        specifier: ^1.0.5
-        version: 1.0.5(esbuild@0.25.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.8.3)(vitest@3.1.1(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1))
+        specifier: ^1.0.6
+        version: 1.0.6(esbuild@0.25.2)(tslib@2.8.1)(typescript@5.8.3)
 
 packages:
 
@@ -781,14 +781,6 @@ packages:
     resolution: {integrity: sha512-3vm4by+B5lvsFPSyep3ELWmZfE3kicDtmemVpuwl1yH7tqtnHdsA6hG8fbXedMVdkzgtvzWoRgjSB4Q+FHnZiw==}
     engines: {node: '>=18.0.0', npm: '>=9.0.0'}
 
-  '@imhonglu/build-tools@1.0.5':
-    resolution: {integrity: sha512-qxrF7WYrQwPsuoxZr8/CjKFWgTpKJsMihXyYA2FjTYKweBvSnwNQq0DdCrd0VQxAmddUUDLN8nUJa96Qzcbk0g==}
-    hasBin: true
-    peerDependencies:
-      esbuild: ^0.25.2
-      tslib: ^2.8.1
-      typescript: ^5.8.2
-
   '@imhonglu/build-tools@1.0.6':
     resolution: {integrity: sha512-Mi0qypV/4qwrxnigQlj6MB+VON6aGrNNc/af1RJ/EBOqaJvjc3e709OyeZUxzj4HuapZFDkVrq1Lv6iYo/FtTA==}
     hasBin: true
@@ -803,20 +795,20 @@ packages:
       jest-extended: ^4.0.2
       vitest: ^3.1.1
 
-  '@imhonglu/format@1.0.8':
-    resolution: {integrity: sha512-T0L/n7/SPvT4JRf3OdSC/Yq+C/pWFYV7Skv+6oIHj5wq0bQN7D7+Kzxeipt/nbAD1FGIfJ4gZ9nVeUWzmfbmew==}
+  '@imhonglu/format@1.0.9':
+    resolution: {integrity: sha512-Pn61/Ghp1mcJxDl2ejSBnxr4bA3l7X4fPEPGGcqKhIhHEBD2V3XS2jN1HoL9qFFVBeRg+XdT+Ep8ny9xqIHysQ==}
 
-  '@imhonglu/pattern-builder@1.0.4':
-    resolution: {integrity: sha512-6ZFIRfu/JgKMCeHmoUEad4xzOYJl0J0roex8wkw3gIVnXRCzL+rdAxy41Da1JXQaADJUDVoJcuG0ymT2U1UaCw==}
+  '@imhonglu/pattern-builder@1.0.5':
+    resolution: {integrity: sha512-0yA3moD5EaJ34p9dqScFL4I5YHUPqFhQBMFJhL/OAlHnKGhpeAFvwTx0F3gOQGegWMmzaqPmBVelQlJM9DlmBw==}
 
-  '@imhonglu/toolkit@1.0.3':
-    resolution: {integrity: sha512-eBObk0XyEy0LXzEzIlIYlfYdepSOIOIAcU8DwY5RBcc72cNaVd1oPz2wGhfzLzdlxtb5eT50AoeqmsE58IC1QA==}
+  '@imhonglu/toolkit@1.0.4':
+    resolution: {integrity: sha512-rvvM50TNVKL/44Pkv0YjovY2kOADhRlkQxX6um9KrXDzx9s6+l00UFQcSiH9oM6n4nXa3pRkchDkSkIKpbVlDg==}
 
-  '@imhonglu/type-guard@1.0.1':
-    resolution: {integrity: sha512-vqNTEFXHuOrGuL96Lor6nJqoC7coDEz9xFdTkmFPzUtBJHRsokM0fuFuvIwP/y9ZuzWZNJ2/1B4mB9/NyGxE/w==}
+  '@imhonglu/type-guard@1.0.2':
+    resolution: {integrity: sha512-2mq7qnxjatLmgsixZ7JO9lwZGVijmI/dowemcI3k83iQbtp2syIbMwFBoqdYlJxSPENliMiUnS6sfEyfK4bpoA==}
 
-  '@imhonglu/type-object@1.0.1':
-    resolution: {integrity: sha512-acWkG0hyGtUVtbFErcMTniq9ahCcUiErHcQIx0wLYk6w4L016MsJeUx5yLQm0mA3uaEzOjm/n+VHNhfl4erFGg==}
+  '@imhonglu/type-object@1.0.2':
+    resolution: {integrity: sha512-aqYNCRgtskaKHARwmZrjQI65nSqAyDru8FQQD+4HchVmI1tdgdUCQ3VSGZ50GJSDl7lqSUCmom0xIeTHVO5IHA==}
 
   '@isaacs/cliui@8.0.2':
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
@@ -2902,20 +2894,9 @@ snapshots:
 
   '@faker-js/faker@9.6.0': {}
 
-  '@imhonglu/build-tools@1.0.5(esbuild@0.25.2)(jest-extended@4.0.2)(tslib@2.8.1)(typescript@5.8.3)(vitest@3.1.1(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1))':
-    dependencies:
-      '@imhonglu/configs': 1.0.9(jest-extended@4.0.2)(vitest@3.1.1(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1))
-      '@imhonglu/toolkit': 1.0.3
-      esbuild: 0.25.2
-      tslib: 2.8.1
-      typescript: 5.8.3
-    transitivePeerDependencies:
-      - jest-extended
-      - vitest
-
   '@imhonglu/build-tools@1.0.6(esbuild@0.25.2)(tslib@2.8.1)(typescript@5.8.3)':
     dependencies:
-      '@imhonglu/toolkit': 1.0.3
+      '@imhonglu/toolkit': 1.0.4
       esbuild: 0.25.2
       tslib: 2.8.1
       typescript: 5.8.3
@@ -2925,23 +2906,23 @@ snapshots:
       jest-extended: 4.0.2
       vitest: 3.1.1(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1)
 
-  '@imhonglu/format@1.0.8':
+  '@imhonglu/format@1.0.9':
     dependencies:
-      '@imhonglu/pattern-builder': 1.0.4
-      '@imhonglu/toolkit': 1.0.3
+      '@imhonglu/pattern-builder': 1.0.5
+      '@imhonglu/toolkit': 1.0.4
 
-  '@imhonglu/pattern-builder@1.0.4': {}
+  '@imhonglu/pattern-builder@1.0.5': {}
 
-  '@imhonglu/toolkit@1.0.3':
+  '@imhonglu/toolkit@1.0.4':
     dependencies:
-      '@imhonglu/type-guard': 1.0.1
-      '@imhonglu/type-object': 1.0.1
+      '@imhonglu/type-guard': 1.0.2
+      '@imhonglu/type-object': 1.0.2
 
-  '@imhonglu/type-guard@1.0.1': {}
+  '@imhonglu/type-guard@1.0.2': {}
 
-  '@imhonglu/type-object@1.0.1':
+  '@imhonglu/type-object@1.0.2':
     dependencies:
-      '@imhonglu/type-guard': 1.0.1
+      '@imhonglu/type-guard': 1.0.2
 
   '@isaacs/cliui@8.0.2':
     dependencies:
