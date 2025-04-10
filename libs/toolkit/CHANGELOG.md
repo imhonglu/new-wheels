@@ -1,5 +1,14 @@
 # @imhonglu/toolkit
 
+## 1.0.4
+
+### Patch Changes
+
+- 7788374: bump package versions
+- Updated dependencies [7788374]
+  - @imhonglu/type-object@1.0.2
+  - @imhonglu/type-guard@1.0.2
+
 ## 1.0.3
 
 ### Patch Changes

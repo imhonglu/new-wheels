@@ -1,5 +1,16 @@
 # @imhonglu/json-schema
 
+## 1.1.8
+
+### Patch Changes
+
+- 7788374: bump package versions
+- Updated dependencies [7788374]
+  - @imhonglu/type-object@1.0.2
+  - @imhonglu/type-guard@1.0.2
+  - @imhonglu/toolkit@1.0.4
+  - @imhonglu/format@1.0.9
+
 ## 1.1.7
 
 ### Patch Changes

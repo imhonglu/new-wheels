@@ -1,5 +1,13 @@
 # @imhonglu/type-object
 
+## 1.0.2
+
+### Patch Changes
+
+- 7788374: bump package versions
+- Updated dependencies [7788374]
+  - @imhonglu/type-guard@1.0.2
+
 ## 1.0.1
 
 ### Patch Changes

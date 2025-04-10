@@ -1,6 +1,6 @@
 {
   "name": "@imhonglu/format",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "String formatting library based on RFC specifications",
   "repository": {
     "type": "git",
@@ -43,7 +43,7 @@
     "@imhonglu/configs": "^1.0.9"
   },
   "dependencies": {
-    "@imhonglu/pattern-builder": "^1.0.4",
-    "@imhonglu/toolkit": "^1.0.3"
+    "@imhonglu/pattern-builder": "^1.0.5",
+    "@imhonglu/toolkit": "^1.0.4"
   }
 }
