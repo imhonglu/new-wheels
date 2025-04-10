@@ -1,6 +1,6 @@
 {
   "name": "@imhonglu/build-tools",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "Build tools for the project.",
   "repository": {
     "type": "git",
@@ -39,7 +39,7 @@
     "typescript": "^5.8.2"
   },
   "dependencies": {
-    "@imhonglu/configs": "^1.0.7",
+    "@imhonglu/configs": "^1.0.8",
     "@imhonglu/toolkit": "^1.0.3"
   }
 }
