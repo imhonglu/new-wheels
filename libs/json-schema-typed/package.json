@@ -1,6 +1,6 @@
 {
   "name": "@imhonglu/json-schema-typed",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Type-safe JSON Schema 2020-12 specification library with static type inference",
   "repository": {
     "type": "git",
