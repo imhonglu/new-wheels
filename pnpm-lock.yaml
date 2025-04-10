@@ -111,11 +111,11 @@ importers:
         version: 1.0.2
     devDependencies:
       '@imhonglu/build-tools':
-        specifier: ^1.0.6
-        version: 1.0.6(esbuild@0.25.2)(tslib@2.8.1)(typescript@5.8.3)
+        specifier: ^1.0.7
+        version: 1.0.7(esbuild@0.25.2)(tslib@2.8.1)(typescript@5.8.3)
       '@imhonglu/configs':
-        specifier: ^1.0.9
-        version: 1.0.9(jest-extended@4.0.2)(vitest@3.1.1(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1))
+        specifier: ^1.0.10
+        version: 1.0.10(jest-extended@4.0.2)(vitest@3.1.1(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1))
 
   libs/pattern-builder:
     devDependencies:
@@ -180,8 +180,8 @@ importers:
         version: 5.8.3
     devDependencies:
       '@imhonglu/configs':
-        specifier: ^1.0.9
-        version: 1.0.9(jest-extended@4.0.2)(vitest@3.1.1(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1))
+        specifier: ^1.0.10
+        version: 1.0.10(jest-extended@4.0.2)(vitest@3.1.1(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1))
 
   tools/configs:
     dependencies:
@@ -193,8 +193,8 @@ importers:
         version: 3.1.1(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1)
     devDependencies:
       '@imhonglu/build-tools':
-        specifier: ^1.0.6
-        version: 1.0.6(esbuild@0.25.2)(tslib@2.8.1)(typescript@5.8.3)
+        specifier: ^1.0.7
+        version: 1.0.7(esbuild@0.25.2)(tslib@2.8.1)(typescript@5.8.3)
 
 packages:
 
@@ -788,6 +788,20 @@ packages:
       esbuild: ^0.25.2
       tslib: ^2.8.1
       typescript: ^5.8.2
+
+  '@imhonglu/build-tools@1.0.7':
+    resolution: {integrity: sha512-yij/pdGYEfEwzN6vwW4uLktQiG8FkoSKLAGbWBHgugPz8LB+snYyZECIf3yhAlmxKnrd5HMbsT+1HUrY2eklKA==}
+    hasBin: true
+    peerDependencies:
+      esbuild: ^0.25.2
+      tslib: ^2.8.1
+      typescript: ^5.8.2
+
+  '@imhonglu/configs@1.0.10':
+    resolution: {integrity: sha512-MVr0qYp54veNMWkb/kShw3E8x0AujisJ+9NS5qFUNnLu9NxxhEEKq1JsDAJoXbDHkIwe3C16yOv4X+org1gbmw==}
+    peerDependencies:
+      jest-extended: ^4.0.2
+      vitest: ^3.1.1
 
   '@imhonglu/configs@1.0.9':
     resolution: {integrity: sha512-S1MALxBL9LgbtvbktkL5+rFDjf3Xd1YoVkPMHeFDM8AQy3q8w8n7/CAIVTAik33JiUvlzWCX1AvwcNQ/umNxkA==}
@@ -2900,6 +2914,18 @@ snapshots:
       esbuild: 0.25.2
       tslib: 2.8.1
       typescript: 5.8.3
+
+  '@imhonglu/build-tools@1.0.7(esbuild@0.25.2)(tslib@2.8.1)(typescript@5.8.3)':
+    dependencies:
+      '@imhonglu/toolkit': 1.0.4
+      esbuild: 0.25.2
+      tslib: 2.8.1
+      typescript: 5.8.3
+
+  '@imhonglu/configs@1.0.10(jest-extended@4.0.2)(vitest@3.1.1(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1))':
+    dependencies:
+      jest-extended: 4.0.2
+      vitest: 3.1.1(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1)
 
   '@imhonglu/configs@1.0.9(jest-extended@4.0.2)(vitest@3.1.1(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1))':
     dependencies:
