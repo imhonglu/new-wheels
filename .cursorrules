@@ -50,7 +50,7 @@
 
 ## Testing
 - Unit testing with Vitest
-- Test files follow *.test.ts pattern
+- Test files are recommended to be placed in the same directory as their source files with *.test.ts pattern
 - Maintain test coverage
 - Test environment configuration in vitest.workspace.js
 
