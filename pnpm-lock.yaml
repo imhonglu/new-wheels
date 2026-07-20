@@ -61,8 +61,8 @@ importers:
         version: link:../toolkit
     devDependencies:
       '@imhonglu/build-tools':
-        specifier: workspace:*
-        version: link:../../tools/build-tools
+        specifier: ^1.0.7
+        version: 1.0.7(esbuild@0.28.1)(tslib@2.8.1)(typescript@7.0.2)
       '@imhonglu/configs':
         specifier: workspace:*
         version: link:../../tools/configs
@@ -83,8 +83,8 @@ importers:
         version: link:../type-object
     devDependencies:
       '@imhonglu/build-tools':
-        specifier: workspace:*
-        version: link:../../tools/build-tools
+        specifier: ^1.0.7
+        version: 1.0.7(esbuild@0.28.1)(tslib@2.8.1)(typescript@7.0.2)
       '@imhonglu/configs':
         specifier: workspace:*
         version: link:../../tools/configs
@@ -96,8 +96,8 @@ importers:
         version: link:../toolkit
     devDependencies:
       '@imhonglu/build-tools':
-        specifier: workspace:*
-        version: link:../../tools/build-tools
+        specifier: ^1.0.7
+        version: 1.0.7(esbuild@0.28.1)(tslib@2.8.1)(typescript@7.0.2)
       '@imhonglu/configs':
         specifier: workspace:*
         version: link:../../tools/configs

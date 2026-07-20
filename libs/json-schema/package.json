@@ -42,7 +42,7 @@
   "author": "imhonglu <anonymouser.unknown@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "@imhonglu/build-tools": "workspace:*",
+    "@imhonglu/build-tools": "^1.0.7",
     "@imhonglu/configs": "workspace:*"
   },
   "dependencies": {
