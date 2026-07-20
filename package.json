@@ -34,6 +34,7 @@
     "@commitlint/config-conventional": "^21.2.0",
     "@faker-js/faker": "^10.5.0",
     "@imhonglu/build-tools": "workspace:*",
+    "@imhonglu/configs": "workspace:*",
     "@microsoft/api-documenter": "^7.30.9",
     "@microsoft/api-extractor": "^7.58.11",
     "@types/node": "catalog:",

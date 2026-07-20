@@ -40,9 +40,6 @@
   ],
   "author": "imhonglu <anonymouser.unknown@gmail.com>",
   "license": "MIT",
-  "devDependencies": {
-    "@imhonglu/configs": "workspace:*"
-  },
   "dependencies": {
     "@imhonglu/format": "workspace:*",
     "@imhonglu/toolkit": "workspace:*",

@@ -32,6 +32,9 @@ importers:
       '@imhonglu/build-tools':
         specifier: workspace:*
         version: link:tools/build-tools
+      '@imhonglu/configs':
+        specifier: workspace:*
+        version: link:tools/configs
       '@microsoft/api-documenter':
         specifier: ^7.30.9
         version: 7.30.9(@types/node@26.1.1)
@@ -68,10 +71,6 @@ importers:
       '@imhonglu/toolkit':
         specifier: workspace:*
         version: link:../toolkit
-    devDependencies:
-      '@imhonglu/configs':
-        specifier: workspace:*
-        version: link:../../tools/configs
 
   libs/json-schema:
     dependencies:
@@ -87,26 +86,14 @@ importers:
       '@imhonglu/type-object':
         specifier: workspace:*
         version: link:../type-object
-    devDependencies:
-      '@imhonglu/configs':
-        specifier: workspace:*
-        version: link:../../tools/configs
 
   libs/json-schema-typed:
     dependencies:
       '@imhonglu/toolkit':
         specifier: workspace:*
         version: link:../toolkit
-    devDependencies:
-      '@imhonglu/configs':
-        specifier: workspace:*
-        version: link:../../tools/configs
 
-  libs/pattern-builder:
-    devDependencies:
-      '@imhonglu/configs':
-        specifier: workspace:*
-        version: link:../../tools/configs
+  libs/pattern-builder: {}
 
   libs/toolkit:
     dependencies:
@@ -117,28 +104,17 @@ importers:
         specifier: workspace:*
         version: link:../type-object
     devDependencies:
-      '@imhonglu/configs':
-        specifier: workspace:*
-        version: link:../../tools/configs
       '@types/node':
         specifier: 'catalog:'
         version: 26.1.1
 
-  libs/type-guard:
-    devDependencies:
-      '@imhonglu/configs':
-        specifier: workspace:*
-        version: link:../../tools/configs
+  libs/type-guard: {}
 
   libs/type-object:
     dependencies:
       '@imhonglu/type-guard':
         specifier: workspace:*
         version: link:../type-guard
-    devDependencies:
-      '@imhonglu/configs':
-        specifier: workspace:*
-        version: link:../../tools/configs
 
   tools/build-tools:
     dependencies:
@@ -155,9 +131,6 @@ importers:
         specifier: ^5.8.2
         version: 5.9.3
     devDependencies:
-      '@imhonglu/configs':
-        specifier: workspace:*
-        version: link:../configs
       '@types/node':
         specifier: ^26.1.1
         version: 26.1.1

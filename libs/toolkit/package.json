@@ -37,8 +37,7 @@
   "author": "imhonglu <anonymouser.unknown@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "catalog:",
-    "@imhonglu/configs": "workspace:*"
+    "@types/node": "catalog:"
   },
   "dependencies": {
     "@imhonglu/type-guard": "workspace:*",

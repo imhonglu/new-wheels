@@ -40,8 +40,7 @@
     "typescript": "^5.8.2"
   },
   "devDependencies": {
-    "@types/node": "^26.1.1",
-    "@imhonglu/configs": "workspace:*"
+    "@types/node": "^26.1.1"
   },
   "dependencies": {
     "@imhonglu/toolkit": "workspace:*"
