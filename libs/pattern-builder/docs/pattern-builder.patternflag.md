@@ -4,6 +4,8 @@
 
 ## PatternFlag type
 
+A native JavaScript regular expression flag accepted by [PatternBuilder.compile()](./pattern-builder.patternbuilder.compile.md)<!-- -->.
+
 **Signature:**
 
 ```typescript

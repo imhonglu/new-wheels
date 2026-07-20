@@ -4,12 +4,51 @@
 
 ## PatternBuilder.lookahead() method
 
+Wraps the pattern in a positive lookahead.
+
 **Signature:**
 
 ```typescript
-lookahead(): this;
+lookahead(callback?: ((factory: PatternFactory) => PatternBuilder) | undefined): PatternBuilder;
 ```
+
+## Parameters
+
+<table><thead><tr><th>
+
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+callback
+
+
+</td><td>
+
+((factory: [PatternFactory](./pattern-builder.patternfactory.md)<!-- -->) =&gt; [PatternBuilder](./pattern-builder.patternbuilder.md)<!-- -->) \| undefined
+
+
+</td><td>
+
+_(Optional)_ Optionally appends inputs to this pattern before grouping.
+
+
+</td></tr>
+</tbody></table>
+
 **Returns:**
 
-this
+[PatternBuilder](./pattern-builder.patternbuilder.md)
 

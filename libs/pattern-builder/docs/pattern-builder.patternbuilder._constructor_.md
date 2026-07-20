@@ -4,12 +4,14 @@
 
 ## PatternBuilder.(constructor)
 
-Constructs a new instance of the `PatternBuilder` class
+Creates a builder by concatenating the given pattern inputs.
+
+String inputs are escaped and other inputs preserve their regular expression source.
 
 **Signature:**
 
 ```typescript
-constructor(source: string);
+constructor(...inputs: PatternInput[]);
 ```
 
 ## Parameters
@@ -32,16 +34,19 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-source
+inputs
 
 
 </td><td>
 
-string
+[PatternInput](./pattern-builder.patterninput.md)<!-- -->\[\]
 
 
 </td><td>
+
+The values to concatenate in order.
 
 
 </td></tr>
 </tbody></table>
+

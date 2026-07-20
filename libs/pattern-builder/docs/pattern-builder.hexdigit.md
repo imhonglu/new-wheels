@@ -4,10 +4,10 @@
 
 ## hexDigit variable
 
-The pre-defined hex digit pattern.
+A predefined pattern that matches one hexadecimal digit (`[0-9a-fA-F]`<!-- -->).
 
 **Signature:**
 
 ```typescript
-hexDigit: Characters
+hexDigit: import("../pattern-builder.js").PatternBuilder
 ```

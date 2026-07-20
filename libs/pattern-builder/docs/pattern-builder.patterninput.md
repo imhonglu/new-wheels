@@ -4,10 +4,12 @@
 
 ## PatternInput type
 
+A value that can be composed into a pattern.
+
 **Signature:**
 
 ```typescript
-export type PatternInput = string | PatternBuilder | RegExp;
+export type PatternInput = string | PatternBuilder | RegExp | RegexNode;
 ```
-**References:** [PatternBuilder](./pattern-builder.patternbuilder.md)
+**References:** [PatternBuilder](./pattern-builder.patternbuilder.md)<!-- -->, [RegexNode](./pattern-builder.regexnode.md)
 

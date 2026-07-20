@@ -4,12 +4,14 @@
 
 ## PatternBuilder.oneOrMore() method
 
+Requires one or more repetitions.
+
 **Signature:**
 
 ```typescript
-oneOrMore(): this;
+oneOrMore(): PatternBuilder;
 ```
 **Returns:**
 
-this
+[PatternBuilder](./pattern-builder.patternbuilder.md)
 

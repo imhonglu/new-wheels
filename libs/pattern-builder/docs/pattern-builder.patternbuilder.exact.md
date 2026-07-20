@@ -4,10 +4,12 @@
 
 ## PatternBuilder.exact() method
 
+Requires exactly the given number of repetitions.
+
 **Signature:**
 
 ```typescript
-exact(count: number): this;
+exact(count: number): PatternBuilder;
 ```
 
 ## Parameters
@@ -40,10 +42,13 @@ number
 
 </td><td>
 
+The required number of repetitions.
+
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
-this
+[PatternBuilder](./pattern-builder.patternbuilder.md)
 

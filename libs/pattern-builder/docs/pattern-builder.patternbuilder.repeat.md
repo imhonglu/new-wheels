@@ -4,10 +4,12 @@
 
 ## PatternBuilder.repeat() method
 
+Requires at least `min` and, when supplied, at most `max` repetitions.
+
 **Signature:**
 
 ```typescript
-repeat(min: number, max?: number): this;
+repeat(min: number, max?: number): PatternBuilder;
 ```
 
 ## Parameters
@@ -40,6 +42,8 @@ number
 
 </td><td>
 
+The minimum number of repetitions.
+
 
 </td></tr>
 <tr><td>
@@ -54,12 +58,13 @@ number
 
 </td><td>
 
-_(Optional)_
+_(Optional)_ The maximum number of repetitions, or no upper bound when omitted.
 
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
-this
+[PatternBuilder](./pattern-builder.patternbuilder.md)
 

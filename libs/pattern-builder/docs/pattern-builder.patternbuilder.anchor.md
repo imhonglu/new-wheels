@@ -4,10 +4,12 @@
 
 ## PatternBuilder.anchor() method
 
+Anchors the pattern to the selected input boundary.
+
 **Signature:**
 
 ```typescript
-anchor(position?: "start" | "end"): PatternBuilder;
+anchor(position?: AnchorPosition): PatternBuilder;
 ```
 
 ## Parameters
@@ -35,16 +37,17 @@ position
 
 </td><td>
 
-"start" \| "end"
+[AnchorPosition](./pattern-builder.anchorposition.md)
 
 
 </td><td>
 
-_(Optional)_
+_(Optional)_ The input boundary or boundaries to match. Defaults to both.
 
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [PatternBuilder](./pattern-builder.patternbuilder.md)

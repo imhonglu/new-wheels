@@ -4,6 +4,8 @@
 
 ## PatternBuilder.toString() method
 
+Returns the generated regular expression source.
+
 **Signature:**
 
 ```typescript

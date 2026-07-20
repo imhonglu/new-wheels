@@ -4,10 +4,26 @@
 
 ## PatternBuilder class
 
+An immutable, fluent builder for composing regular expressions.
+
+String inputs are escaped as literal text. Use `PatternBuilder.raw()` when regular expression syntax should be preserved.
+
 **Signature:**
 
 ```typescript
 export declare class PatternBuilder 
+```
+
+## Example
+
+
+```ts
+const identifier = pattern(alpha, pattern.characterSet(alpha, digit).zeroOrMore())
+  .anchor()
+  .compile();
+
+identifier.test("item2"); // true
+identifier.test("2items"); // false
 ```
 
 ## Constructors
@@ -30,7 +46,7 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-[(constructor)(source)](./pattern-builder.patternbuilder._constructor_.md)
+[(constructor)(inputs)](./pattern-builder.patternbuilder._constructor_.md)
 
 
 </td><td>
@@ -38,7 +54,9 @@ Description
 
 </td><td>
 
-Constructs a new instance of the `PatternBuilder` class
+Creates a builder by concatenating the given pattern inputs.
+
+String inputs are escaped and other inputs preserve their regular expression source.
 
 
 </td></tr>
@@ -69,18 +87,22 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-[source](./pattern-builder.patternbuilder.source.md)
+[node](./pattern-builder.patternbuilder.node.md)
 
 
 </td><td>
 
-
-</td><td>
-
-string
+`readonly`
 
 
 </td><td>
+
+[RegexNode](./pattern-builder.regexnode.md)
+
+
+</td><td>
+
+The AST node represented by this builder.
 
 
 </td></tr>
@@ -114,17 +136,39 @@ Description
 
 </td><td>
 
+Anchors the pattern to the selected input boundary.
+
 
 </td></tr>
 <tr><td>
 
-[clone()](./pattern-builder.patternbuilder.clone.md)
+[characterSet(patterns)](./pattern-builder.patternbuilder.characterset.md)
+
+
+</td><td>
+
+`static`
+
+
+</td><td>
+
+Creates a character set from the given pattern inputs.
+
+Existing outer character-set brackets are removed before composition.
+
+
+</td></tr>
+<tr><td>
+
+[compile(flags)](./pattern-builder.patternbuilder.compile.md)
 
 
 </td><td>
 
 
 </td><td>
+
+Compiles the pattern into a regular expression.
 
 
 </td></tr>
@@ -138,77 +182,119 @@ Description
 
 </td><td>
 
-
-</td></tr>
-<tr><td>
-
-[group()](./pattern-builder.patternbuilder.group.md)
-
-
-</td><td>
-
-
-</td><td>
+Requires exactly the given number of repetitions.
 
 
 </td></tr>
 <tr><td>
 
-[lookahead()](./pattern-builder.patternbuilder.lookahead.md)
+[group(callback, options)](./pattern-builder.patternbuilder.group.md)
 
 
 </td><td>
 
 
 </td><td>
+
+Wraps the pattern in a group.
 
 
 </td></tr>
 <tr><td>
 
-[lookbehind()](./pattern-builder.patternbuilder.lookbehind.md)
+[lookahead(callback)](./pattern-builder.patternbuilder.lookahead.md)
 
 
 </td><td>
 
 
 </td><td>
+
+Wraps the pattern in a positive lookahead.
 
 
 </td></tr>
 <tr><td>
 
-[negateLookahead()](./pattern-builder.patternbuilder.negatelookahead.md)
+[lookbehind(callback)](./pattern-builder.patternbuilder.lookbehind.md)
 
 
 </td><td>
 
 
 </td><td>
+
+Wraps the pattern in a positive lookbehind.
 
 
 </td></tr>
 <tr><td>
 
-[negateLookbehind()](./pattern-builder.patternbuilder.negatelookbehind.md)
+[negate()](./pattern-builder.patternbuilder.negate.md)
 
 
 </td><td>
 
 
 </td><td>
+
+Returns a character set that excludes the current pattern.
 
 
 </td></tr>
 <tr><td>
 
-[nonCapturingGroup()](./pattern-builder.patternbuilder.noncapturinggroup.md)
+[negateLookahead(callback)](./pattern-builder.patternbuilder.negatelookahead.md)
 
 
 </td><td>
 
 
 </td><td>
+
+Wraps the pattern in a negative lookahead.
+
+
+</td></tr>
+<tr><td>
+
+[negateLookbehind(callback)](./pattern-builder.patternbuilder.negatelookbehind.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Wraps the pattern in a negative lookbehind.
+
+
+</td></tr>
+<tr><td>
+
+[nonCapture(callback)](./pattern-builder.patternbuilder.noncapture.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Wraps the pattern in a non-capturing group.
+
+
+</td></tr>
+<tr><td>
+
+[nonCapturingGroup(callback)](./pattern-builder.patternbuilder.noncapturinggroup.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Alias for [PatternBuilder.nonCapture()](./pattern-builder.patternbuilder.noncapture.md)<!-- -->.
 
 
 </td></tr>
@@ -222,6 +308,8 @@ Description
 
 </td><td>
 
+Requires one or more repetitions.
+
 
 </td></tr>
 <tr><td>
@@ -233,6 +321,66 @@ Description
 
 
 </td><td>
+
+Allows zero or one repetition.
+
+
+</td></tr>
+<tr><td>
+
+[or(patterns)](./pattern-builder.patternbuilder.or.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Creates an alternation between this pattern and the given patterns.
+
+
+</td></tr>
+<tr><td>
+
+[quantify(options)](./pattern-builder.patternbuilder.quantify.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Applies a quantifier to the pattern.
+
+
+</td></tr>
+<tr><td>
+
+[raw(source)](./pattern-builder.patternbuilder.raw.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Appends an unescaped regular expression source.
+
+
+</td></tr>
+<tr><td>
+
+[raw(source)](./pattern-builder.patternbuilder.raw.md)
+
+
+</td><td>
+
+`static`
+
+
+</td><td>
+
+Creates a builder from an unescaped regular expression source.
 
 
 </td></tr>
@@ -246,17 +394,7 @@ Description
 
 </td><td>
 
-
-</td></tr>
-<tr><td>
-
-[toRegExp(flags)](./pattern-builder.patternbuilder.toregexp.md)
-
-
-</td><td>
-
-
-</td><td>
+Requires at least `min` and, when supplied, at most `max` repetitions.
 
 
 </td></tr>
@@ -270,6 +408,8 @@ Description
 
 </td><td>
 
+Returns the generated regular expression source.
+
 
 </td></tr>
 <tr><td>
@@ -282,6 +422,9 @@ Description
 
 </td><td>
 
+Allows zero or more repetitions.
+
 
 </td></tr>
 </tbody></table>
+

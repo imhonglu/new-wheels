@@ -4,10 +4,10 @@
 
 ## alpha variable
 
-The pre-defined alpha pattern.
+A predefined pattern that matches one ASCII letter (`[a-zA-Z]`<!-- -->).
 
 **Signature:**
 
 ```typescript
-alpha: Characters
+alpha: import("../pattern-builder.js").PatternBuilder
 ```

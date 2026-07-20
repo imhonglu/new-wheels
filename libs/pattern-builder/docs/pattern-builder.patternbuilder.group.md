@@ -4,12 +4,69 @@
 
 ## PatternBuilder.group() method
 
+Wraps the pattern in a group.
+
 **Signature:**
 
 ```typescript
-group(): this;
+group(callback?: ((factory: PatternFactory) => PatternBuilder) | undefined, options?: {
+        type?: GroupType;
+    }): PatternBuilder;
 ```
+
+## Parameters
+
+<table><thead><tr><th>
+
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+callback
+
+
+</td><td>
+
+((factory: [PatternFactory](./pattern-builder.patternfactory.md)<!-- -->) =&gt; [PatternBuilder](./pattern-builder.patternbuilder.md)<!-- -->) \| undefined
+
+
+</td><td>
+
+_(Optional)_ Optionally appends inputs to this pattern before grouping.
+
+
+</td></tr>
+<tr><td>
+
+options
+
+
+</td><td>
+
+{ type?: [GroupType](./pattern-builder.grouptype.md)<!-- -->; }
+
+
+</td><td>
+
+_(Optional)_ The group behavior.
+
+
+</td></tr>
+</tbody></table>
+
 **Returns:**
 
-this
+[PatternBuilder](./pattern-builder.patternbuilder.md)
 

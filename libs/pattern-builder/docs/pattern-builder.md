@@ -19,10 +19,34 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-[Characters](./pattern-builder.characters.md)
+[AlternationNode](./pattern-builder.alternationnode.md)
 
 
 </td><td>
+
+An AST node that matches one of several alternative patterns.
+
+
+</td></tr>
+<tr><td>
+
+[AnchorNode](./pattern-builder.anchornode.md)
+
+
+</td><td>
+
+An AST node that anchors a pattern to the start, end, or both ends of input.
+
+
+</td></tr>
+<tr><td>
+
+[GroupNode](./pattern-builder.groupnode.md)
+
+
+</td><td>
+
+An AST node that wraps a pattern in a regular expression group.
 
 
 </td></tr>
@@ -32,6 +56,82 @@ Description
 
 
 </td><td>
+
+An immutable, fluent builder for composing regular expressions.
+
+String inputs are escaped as literal text. Use `PatternBuilder.raw()` when regular expression syntax should be preserved.
+
+
+</td></tr>
+<tr><td>
+
+[QuantifierNode](./pattern-builder.quantifiernode.md)
+
+
+</td><td>
+
+An AST node that applies a quantifier to a pattern.
+
+Multi-character patterns are automatically wrapped in a non-capturing group.
+
+
+</td></tr>
+<tr><td>
+
+[RawNode](./pattern-builder.rawnode.md)
+
+
+</td><td>
+
+An AST node containing an unescaped regular expression source.
+
+
+</td></tr>
+<tr><td>
+
+[SequenceNode](./pattern-builder.sequencenode.md)
+
+
+</td><td>
+
+An AST node that concatenates patterns in order.
+
+
+</td></tr>
+<tr><td>
+
+[TextNode](./pattern-builder.textnode.md)
+
+
+</td><td>
+
+An AST node containing literal text with regular expression syntax escaped.
+
+
+</td></tr>
+</tbody></table>
+
+## Abstract Classes
+
+<table><thead><tr><th>
+
+Abstract Class
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[RegexNode](./pattern-builder.regexnode.md)
+
+
+</td><td>
+
+The base class for regular expression AST nodes.
 
 
 </td></tr>
@@ -52,34 +152,66 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-[characterSet(patterns)](./pattern-builder.characterset.md)
+[pattern(inputs)](./pattern-builder.pattern.md)
 
 
 </td><td>
 
-Creates a pattern builder for the character set operator.
+Creates a pattern builder from the given inputs.
+
+String inputs are escaped as literal text. Use `pattern.raw()` for raw regular expression syntax.
 
 
 </td></tr>
-<tr><td>
+</tbody></table>
 
-[concat(patterns)](./pattern-builder.concat.md)
+## Interfaces
+
+<table><thead><tr><th>
+
+Interface
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[QuantifierOptions](./pattern-builder.quantifieroptions.md)
 
 
 </td><td>
 
-Creates a pattern builder for the concat operator.
+Options that control how often a pattern may repeat.
 
 
 </td></tr>
-<tr><td>
+</tbody></table>
 
-[oneOf(patterns)](./pattern-builder.oneof.md)
+## Namespaces
+
+<table><thead><tr><th>
+
+Namespace
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[pattern](./pattern-builder.pattern.md)
 
 
 </td><td>
 
-Creates a pattern builder for the one of operator.
+Convenience helpers for creating raw patterns and character sets.
 
 
 </td></tr>
@@ -105,7 +237,7 @@ Description
 
 </td><td>
 
-The pre-defined alpha pattern.
+A predefined pattern that matches one ASCII letter (`[a-zA-Z]`<!-- -->).
 
 
 </td></tr>
@@ -116,7 +248,7 @@ The pre-defined alpha pattern.
 
 </td><td>
 
-The pre-defined digit pattern.
+A predefined pattern that matches one ASCII digit (`[0-9]`<!-- -->).
 
 
 </td></tr>
@@ -127,7 +259,7 @@ The pre-defined digit pattern.
 
 </td><td>
 
-The pre-defined hex digit pattern.
+A predefined pattern that matches one hexadecimal digit (`[0-9a-fA-F]`<!-- -->).
 
 
 </td></tr>
@@ -148,10 +280,45 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
+[AnchorPosition](./pattern-builder.anchorposition.md)
+
+
+</td><td>
+
+The positions at which a pattern can be anchored.
+
+
+</td></tr>
+<tr><td>
+
+[GroupType](./pattern-builder.grouptype.md)
+
+
+</td><td>
+
+The supported regular expression group types.
+
+
+</td></tr>
+<tr><td>
+
+[PatternFactory](./pattern-builder.patternfactory.md)
+
+
+</td><td>
+
+A callback helper that appends inputs to the current pattern.
+
+
+</td></tr>
+<tr><td>
+
 [PatternFlag](./pattern-builder.patternflag.md)
 
 
 </td><td>
+
+A native JavaScript regular expression flag accepted by [PatternBuilder.compile()](./pattern-builder.patternbuilder.compile.md)<!-- -->.
 
 
 </td></tr>
@@ -162,6 +329,9 @@ Description
 
 </td><td>
 
+A value that can be composed into a pattern.
+
 
 </td></tr>
 </tbody></table>
+

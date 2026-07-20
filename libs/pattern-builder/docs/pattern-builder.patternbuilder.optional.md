@@ -4,12 +4,14 @@
 
 ## PatternBuilder.optional() method
 
+Allows zero or one repetition.
+
 **Signature:**
 
 ```typescript
-optional(): this;
+optional(): PatternBuilder;
 ```
 **Returns:**
 
-this
+[PatternBuilder](./pattern-builder.patternbuilder.md)
 

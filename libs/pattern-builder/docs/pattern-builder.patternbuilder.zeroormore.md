@@ -4,12 +4,14 @@
 
 ## PatternBuilder.zeroOrMore() method
 
+Allows zero or more repetitions.
+
 **Signature:**
 
 ```typescript
-zeroOrMore(): this;
+zeroOrMore(): PatternBuilder;
 ```
 **Returns:**
 
-this
+[PatternBuilder](./pattern-builder.patternbuilder.md)
 

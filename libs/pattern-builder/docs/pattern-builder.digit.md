@@ -4,10 +4,10 @@
 
 ## digit variable
 
-The pre-defined digit pattern.
+A predefined pattern that matches one ASCII digit (`[0-9]`<!-- -->).
 
 **Signature:**
 
 ```typescript
-digit: Characters
+digit: import("../pattern-builder.js").PatternBuilder
 ```
