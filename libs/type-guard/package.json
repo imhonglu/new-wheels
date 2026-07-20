@@ -36,6 +36,5 @@
     "zero-dependencies"
   ],
   "author": "imhonglu <anonymouser.unknown@gmail.com>",
-  "license": "MIT",
-  "devDependencies": {}
+  "license": "MIT"
 }

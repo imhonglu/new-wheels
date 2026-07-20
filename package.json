@@ -15,10 +15,9 @@
   "scripts": {
     "prepare": "git config core.hooksPath .git-hooks",
     "clean": "rm -rf ./node_modules && pnpm -rc exec 'rm -rf ./node_modules ./dist/ ./*.tsbuildinfo'",
-    "build:tools": "pnpm --filter @imhonglu/build-tools... build && pnpm install --frozen-lockfile",
-    "build:esm": "pnpm -r run build",
-    "build:cjs": "pnpm -r exec esm-to-cjs",
-    "build": "pnpm run build:tools && pnpm run build:esm && pnpm run build:cjs",
+    "build:tools": "pnpm --filter @imhonglu/build-tools... build",
+    "postbuild:tools": "pnpm install",
+    "build": "pnpm run build:tools && pnpm -r run build && pnpm -r exec esm-to-cjs",
     "version": "pnpm changeset version && pnpm install --lockfile-only",
     "lint:cspell": "cspell --no-progress --show-suggestions --show-context .",
     "lint:biome": "biome check .",
