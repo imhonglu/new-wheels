@@ -1,5 +1,16 @@
 # @imhonglu/json-schema
 
+## 1.1.9
+
+### Patch Changes
+
+- 2b1a371: Update the workspace build and CommonJS distribution workflow.
+- Updated dependencies [2b1a371]
+  - @imhonglu/format@1.0.10
+  - @imhonglu/toolkit@1.0.5
+  - @imhonglu/type-guard@1.0.3
+  - @imhonglu/type-object@1.0.3
+
 ## 1.1.8
 
 ### Patch Changes

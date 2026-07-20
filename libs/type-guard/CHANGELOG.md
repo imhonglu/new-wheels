@@ -1,5 +1,11 @@
 # @imhonglu/type-guard
 
+## 1.0.3
+
+### Patch Changes
+
+- 2b1a371: Update the workspace build and CommonJS distribution workflow.
+
 ## 1.0.2
 
 ### Patch Changes
