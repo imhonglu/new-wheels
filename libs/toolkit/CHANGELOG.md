@@ -1,5 +1,11 @@
 # @imhonglu/toolkit
 
+## 2.0.0
+
+### Major Changes
+
+- 2b11395: Replace `unwrapOr` with a focused `unwrap` API that throws `UnwrapError` and accepts an optional message and error options.
+
 ## 1.0.5
 
 ### Patch Changes

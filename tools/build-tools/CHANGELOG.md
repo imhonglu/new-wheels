@@ -1,5 +1,12 @@
 # @imhonglu/build-tools
 
+## 1.0.9
+
+### Patch Changes
+
+- Updated dependencies [2b11395]
+  - @imhonglu/toolkit@2.0.0
+
 ## 1.0.8
 
 ### Patch Changes
