@@ -1,22 +1,24 @@
-import { characterSet, oneOf } from "@imhonglu/pattern-builder";
+import { pattern } from "@imhonglu/pattern-builder";
 import type { SafeExecutor } from "@imhonglu/toolkit";
 import { Serializable } from "../utils/serializable/serializable.js";
 import { iriPchar, pchar } from "./constants.js";
 import { InvalidFragmentError } from "./errors/invalid-fragment-error.js";
 import type { URIParseOptions } from "./types/uri-parse-options.js";
 
-const pattern = {
-  iriFragment: oneOf(iriPchar, characterSet("/?"))
+const regex = {
+  iriFragment: pattern(iriPchar)
+    .or(pattern.characterSet("/?"))
     .nonCapturingGroup()
     .zeroOrMore()
     .anchor()
-    .toRegExp("u"),
+    .compile("u"),
 
-  fragment: oneOf(pchar, characterSet("/?"))
+  fragment: pattern(pchar)
+    .or(pattern.characterSet("/?"))
     .nonCapturingGroup()
     .zeroOrMore()
     .anchor()
-    .toRegExp(),
+    .compile(),
 };
 
 /**
@@ -48,9 +50,7 @@ export class Fragment {
    * @throws {@link InvalidFragmentError}
    */
   public static parse(text: string, options?: URIParseOptions): Fragment {
-    const fragmentPattern = options?.isIri
-      ? pattern.iriFragment
-      : pattern.fragment;
+    const fragmentPattern = options?.isIri ? regex.iriFragment : regex.fragment;
 
     if (!fragmentPattern.test(text)) {
       throw new InvalidFragmentError(text);

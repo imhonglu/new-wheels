@@ -1,17 +1,17 @@
-import { characterSet, concat, digit } from "@imhonglu/pattern-builder";
+import { digit, pattern } from "@imhonglu/pattern-builder";
 import type { SafeExecutor } from "@imhonglu/toolkit";
 import { Serializable } from "../utils/serializable/serializable.js";
 import { subDelims, unreserved } from "./constants.js";
 import { InvalidIPvFutureError } from "./errors/invalid-ipv-future-error.js";
 
-const pattern = concat(
-  /[vV]/,
-  digit.clone().group(),
-  "\\.",
-  characterSet(unreserved, subDelims, ":").oneOrMore().group(),
+const regex = pattern(
+  pattern.characterSet("v", "V"),
+  digit.group(),
+  pattern.raw("\\."),
+  pattern.characterSet(unreserved, subDelims, ":").oneOrMore().group(),
 )
   .anchor()
-  .toRegExp();
+  .compile();
 
 /**
  * The IPvFuture formatter based on RFC 3986.
@@ -48,7 +48,7 @@ export class IPvFuture {
    * @throws - {@link InvalidIPvFutureError}
    */
   public static parse(text: string): IPvFuture {
-    const match = pattern.exec(text);
+    const match = regex.exec(text);
 
     if (!match) {
       throw new InvalidIPvFutureError(text);

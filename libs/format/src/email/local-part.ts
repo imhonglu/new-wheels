@@ -1,24 +1,28 @@
-import { alpha, characterSet, concat, digit } from "@imhonglu/pattern-builder";
+import { alpha, digit, pattern } from "@imhonglu/pattern-builder";
 import type { SafeExecutor } from "@imhonglu/toolkit";
 import { Serializable } from "../utils/serializable/serializable.js";
 import { InvalidLocalPartError } from "./errors/invalid-local-part-error.js";
 import { hasValidLocalPartLength } from "./utils/has-valid-local-part-length.js";
 
-const atom = characterSet(alpha, digit, /[!#$%&'*+\-/=?^_`{|}~]/).oneOrMore();
-const dot = characterSet(".");
+const atom = pattern
+  .characterSet(alpha, digit, /[!#$%&'*+\-/=?^_`{|}~]/)
+  .oneOrMore();
+const dot = pattern.characterSet(".");
 
-const pattern = {
-  dotString: concat(atom, concat(dot, atom).nonCapturingGroup().zeroOrMore())
+const regex = {
+  dotString: pattern(atom, pattern(dot, atom).nonCapturingGroup().zeroOrMore())
     .anchor()
-    .toRegExp(),
+    .compile(),
 
-  quotedString: concat(
+  quotedString: pattern(
     '"',
-    characterSet(/[\x5c\x20-\x7E]/, /[\x20\x21\x23-\x5B\x5D-\x7E]/).oneOrMore(),
+    pattern
+      .characterSet(/[\x5c\x20-\x7E]/, /[\x20\x21\x23-\x5B\x5D-\x7E]/)
+      .oneOrMore(),
     '"',
   )
     .anchor()
-    .toRegExp(),
+    .compile(),
 };
 
 /**
@@ -60,14 +64,14 @@ export class LocalPart {
       throw new InvalidLocalPartError(text);
     }
 
-    if (pattern.quotedString.test(text)) {
+    if (regex.quotedString.test(text)) {
       return new LocalPart({
         text,
         type: "quotedString",
       });
     }
 
-    if (!pattern.dotString.test(text)) {
+    if (!regex.dotString.test(text)) {
       throw new InvalidLocalPartError(text);
     }
 

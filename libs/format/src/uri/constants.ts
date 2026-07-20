@@ -1,23 +1,15 @@
 // cspell:disable
-import {
-  alpha,
-  characterSet,
-  concat,
-  digit,
-  hexDigit,
-  oneOf,
-} from "@imhonglu/pattern-builder";
+import { alpha, digit, hexDigit, pattern } from "@imhonglu/pattern-builder";
 
-export const pctEncoded = concat("%", hexDigit.clone().exact(2));
-export const subDelims = characterSet(/[!$&'()*+,;=]/);
+export const pctEncoded = pattern("%", hexDigit.exact(2));
+export const subDelims = pattern.characterSet(/[!$&'()*+,;=]/);
 
-export const unreserved = characterSet(alpha, digit, /[-._~]/);
-export const pchar = oneOf(
-  pctEncoded,
-  characterSet(unreserved, subDelims, /[:@]/),
+export const unreserved = pattern.characterSet(alpha, digit, /[-._~]/);
+export const pchar = pattern(pctEncoded).or(
+  pattern.characterSet(unreserved, subDelims, /[:@]/),
 );
 
-export const ucschar = characterSet(
+export const ucschar = pattern.characterSet(
   "\\u{A0}-\\u{D7FF}",
   "\\u{F900}-\\u{FDCF}",
   "\\u{FDF0}-\\u{FFEF}",
@@ -37,14 +29,18 @@ export const ucschar = characterSet(
   "\\u{E1000}-\\u{EFFFD}",
 );
 
-export const iriPrivate = characterSet(
+export const iriPrivate = pattern.characterSet(
   "\\u{E000}-\\u{F8FF}",
   "\\u{F0000}-\\u{FFFFD}",
   "\\u{100000}-\\u{10FFFD}",
 );
 
-export const iriUnreserved = characterSet(alpha, digit, /[-._~]/, ucschar);
-export const iriPchar = oneOf(
-  pctEncoded,
-  characterSet(iriUnreserved, subDelims, /[:@]/),
+export const iriUnreserved = pattern.characterSet(
+  alpha,
+  digit,
+  /[-._~]/,
+  ucschar,
+);
+export const iriPchar = pattern(pctEncoded).or(
+  pattern.characterSet(iriUnreserved, subDelims, /[:@]/),
 );

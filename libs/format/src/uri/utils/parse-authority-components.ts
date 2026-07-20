@@ -30,7 +30,7 @@ export function parseAuthorityComponents(
     const portString = host.slice(colonPos + 1);
 
     if (!portString.endsWith("]")) {
-      port = Number.parseInt(portString);
+      port = Number.parseInt(portString, 10);
       host = host.slice(0, colonPos);
     }
   }

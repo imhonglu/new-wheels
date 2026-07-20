@@ -1,4 +1,4 @@
-import { characterSet, oneOf } from "@imhonglu/pattern-builder";
+import { pattern } from "@imhonglu/pattern-builder";
 import type { SafeExecutor, SafeResult } from "@imhonglu/toolkit";
 import { IdnHostname } from "../hostname/idn-hostname.js";
 import { IPv4Address } from "../ip-address/ipv4-address.js";
@@ -15,18 +15,20 @@ import { IPvFuture } from "./ipv-future.js";
 import type { URIParseOptions } from "./types/uri-parse-options.js";
 import { parseAuthorityComponents } from "./utils/parse-authority-components.js";
 
-const pattern = {
-  iriUserinfo: characterSet(iriUnreserved, subDelims, ":")
+const regex = {
+  iriUserinfo: pattern
+    .characterSet(iriUnreserved, subDelims, ":")
     .nonCapturingGroup()
     .oneOrMore()
     .anchor()
-    .toRegExp("u"),
+    .compile("u"),
 
-  userinfo: oneOf(pctEncoded, characterSet(unreserved, subDelims, ":"))
+  userinfo: pattern(pctEncoded)
+    .or(pattern.characterSet(unreserved, subDelims, ":"))
     .nonCapturingGroup()
     .oneOrMore()
     .anchor()
-    .toRegExp(),
+    .compile(),
 };
 
 /**
@@ -84,9 +86,7 @@ export class Authority {
     }
 
     const { userinfo, host, port, type } = authorityComponents;
-    const userinfoPattern = options?.isIri
-      ? pattern.iriUserinfo
-      : pattern.userinfo;
+    const userinfoPattern = options?.isIri ? regex.iriUserinfo : regex.userinfo;
 
     if (userinfo && !userinfoPattern.test(userinfo)) {
       throw new InvalidAuthorityError(text);

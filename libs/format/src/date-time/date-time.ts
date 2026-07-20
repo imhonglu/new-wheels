@@ -1,4 +1,4 @@
-import { characterSet, concat } from "@imhonglu/pattern-builder";
+import { pattern } from "@imhonglu/pattern-builder";
 import type { SafeExecutor } from "@imhonglu/toolkit";
 import { Serializable } from "../utils/serializable/serializable.js";
 import { InvalidDateTimeError } from "./errors/invalid-date-time-error.js";
@@ -7,13 +7,13 @@ import type { InvalidFullTimeError } from "./errors/invalid-full-time-error.js";
 import { FullDate } from "./full-date.js";
 import { FullTime } from "./full-time.js";
 
-const separator = characterSet("t", "T");
-const notSeparators = separator.clone().negate().oneOrMore().group();
+const separator = pattern.characterSet("t", "T");
+const notSeparators = separator.negate().oneOrMore().group();
 
-const pattern = concat(notSeparators, separator, notSeparators)
+const regex = pattern(notSeparators, separator, notSeparators)
   .nonCapturingGroup()
   .anchor()
-  .toRegExp();
+  .compile();
 
 const DATE_TIME_MAX_LENGTH = 29;
 const DATE_TIME_MIN_LENGTH = 20;
@@ -59,7 +59,7 @@ export class DateTime {
       throw new InvalidDateTimeError(text);
     }
 
-    const match = pattern.exec(text);
+    const match = regex.exec(text);
     if (!match) {
       throw new InvalidDateTimeError(text);
     }

@@ -1,15 +1,15 @@
-import { concat, digit } from "@imhonglu/pattern-builder";
+import { digit, pattern } from "@imhonglu/pattern-builder";
 import type { SafeExecutor } from "@imhonglu/toolkit";
 import { Serializable } from "../utils/serializable/serializable.js";
 import { InvalidFullDateError } from "./errors/invalid-full-date-error.js";
 import { isValidDay } from "./utils/is-valid-day.js";
 import { padZero } from "./utils/pad-zero.js";
 
-const fourDigits = digit.clone().exact(4).group();
-const twoDigits = digit.clone().exact(2).group();
-const pattern = concat(fourDigits, "-", twoDigits, "-", twoDigits)
+const fourDigits = digit.exact(4).group();
+const twoDigits = digit.exact(2).group();
+const regex = pattern(fourDigits, "-", twoDigits, "-", twoDigits)
   .anchor()
-  .toRegExp();
+  .compile();
 
 const FULL_DATE_LENGTH = 10;
 
@@ -49,7 +49,7 @@ export class FullDate {
       throw new InvalidFullDateError(text);
     }
 
-    const match = text.match(pattern);
+    const match = text.match(regex);
 
     if (!match) {
       throw new InvalidFullDateError(text);

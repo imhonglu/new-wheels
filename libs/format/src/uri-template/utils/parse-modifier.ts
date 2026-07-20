@@ -10,7 +10,7 @@ export function parseModifier(text: string): Modifier {
     return { type: "explode" } as ExplodeModifier;
   }
 
-  const maxLength = Number.parseInt(text.slice(1));
+  const maxLength = Number.parseInt(text.slice(1), 10);
   if (maxLength < 1 || maxLength > 9999) {
     throw new InvalidVarspecError(text);
   }

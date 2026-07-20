@@ -1,8 +1,8 @@
 import { digit, hexDigit } from "@imhonglu/pattern-builder";
 
 const pattern = {
-  ipv4: digit.clone().repeat(1, 3).anchor().toRegExp(),
-  ipv6: hexDigit.clone().repeat(1, 4).anchor().toRegExp(),
+  ipv4: digit.repeat(1, 3).anchor().compile(),
+  ipv6: hexDigit.repeat(1, 4).anchor().compile(),
 };
 
 export function isValidPart(type: "ipv4" | "ipv6") {

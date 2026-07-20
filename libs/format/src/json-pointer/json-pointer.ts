@@ -1,4 +1,4 @@
-import { characterSet, concat, oneOf } from "@imhonglu/pattern-builder";
+import { pattern } from "@imhonglu/pattern-builder";
 import type { SafeExecutor } from "@imhonglu/toolkit";
 import { Serializable } from "../utils/serializable/serializable.js";
 import { InvalidJsonPointerError } from "./errors/invalid-json-pointer-error.js";
@@ -7,22 +7,23 @@ import type { PointerPaths } from "./types/pointer-paths.js";
 import type { ResolveJsonPointer } from "./types/resolve-json-pointer.js";
 import type { Unescape } from "./types/unescape.js";
 
-const unescaped = characterSet(
+const unescaped = pattern.characterSet(
   "\\u{00}-\\u{2E}",
   "\\u{30}-\\u{7D}",
   "\\u{7F}-\\u{10FFFF}",
 );
 const escapeTilde = "~0";
 const escapeSlash = "~1";
-const referenceToken = oneOf(unescaped, escapeTilde, escapeSlash)
+const referenceToken = pattern(unescaped)
+  .or(escapeTilde, escapeSlash)
   .nonCapturingGroup()
   .zeroOrMore();
 
-const pattern = concat("/", referenceToken)
+const regex = pattern("/", referenceToken)
   .nonCapturingGroup()
   .zeroOrMore()
   .anchor()
-  .toRegExp("u");
+  .compile("u");
 
 /**
  * The JsonPointer formatter based on RFC 6901.
@@ -76,7 +77,7 @@ export class JsonPointer {
       });
     }
 
-    const match = pattern.exec(text);
+    const match = regex.exec(text);
     if (!match) {
       throw new InvalidJsonPointerError(text);
     }

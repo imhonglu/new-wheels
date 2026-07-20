@@ -1,4 +1,4 @@
-import { characterSet, concat, digit, oneOf } from "@imhonglu/pattern-builder";
+import { digit, pattern } from "@imhonglu/pattern-builder";
 import type { SafeExecutor } from "@imhonglu/toolkit";
 import { Serializable } from "../utils/serializable/serializable.js";
 import { InvalidFullTimeError } from "./errors/invalid-full-time-error.js";
@@ -8,29 +8,30 @@ import { isValidMinute } from "./utils/is-valid-minute.js";
 import { isValidSecond } from "./utils/is-valid-second.js";
 import { padZero } from "./utils/pad-zero.js";
 
-const twoDigits = digit.clone().exact(2);
-const groupedTwoDigits = twoDigits.clone().group();
-const pattern = concat(
+const twoDigits = digit.exact(2);
+const groupedTwoDigits = twoDigits.group();
+const regex = pattern(
   groupedTwoDigits,
   ":",
   groupedTwoDigits,
   ":",
   groupedTwoDigits,
 
-  concat(characterSet("."), digit.clone().oneOrMore()).group().optional(),
+  pattern(pattern.characterSet("."), digit.oneOrMore()).group().optional(),
 
-  oneOf(
-    characterSet("Z", "z"),
-    concat(
-      characterSet("+", "-"),
-      twoDigits,
-      ":",
-      twoDigits,
-    ).nonCapturingGroup(),
-  ).group(),
+  pattern(pattern.characterSet("Z", "z"))
+    .or(
+      pattern(
+        pattern.characterSet("+", "-"),
+        twoDigits,
+        ":",
+        twoDigits,
+      ).nonCapturingGroup(),
+    )
+    .group(),
 )
   .anchor()
-  .toRegExp();
+  .compile();
 
 const FULL_TIME_MIN_LENGTH = 8;
 const FULL_TIME_MAX_LENGTH = 21;
@@ -95,15 +96,15 @@ export class FullTime {
       throw new InvalidFullTimeError(text);
     }
 
-    const match = text.match(pattern);
+    const match = text.match(regex);
 
     if (!match) {
       throw new InvalidFullTimeError(text);
     }
 
-    const hour = Number.parseInt(match[1]);
-    const minute = Number.parseInt(match[2]);
-    const second = Number.parseInt(match[3]);
+    const hour = Number.parseInt(match[1], 10);
+    const minute = Number.parseInt(match[2], 10);
+    const second = Number.parseInt(match[3], 10);
     const secfrac = match[4] as FullTime["secfrac"];
 
     const offsetString = match[5];
@@ -111,8 +112,8 @@ export class FullTime {
       offsetString.length !== 1
         ? {
             sign: offsetString[0] as TimeNumOffset["sign"],
-            hour: Number.parseInt(offsetString.slice(1, 3)),
-            minute: Number.parseInt(offsetString.slice(4)),
+            hour: Number.parseInt(offsetString.slice(1, 3), 10),
+            minute: Number.parseInt(offsetString.slice(4), 10),
           }
         : undefined;
 

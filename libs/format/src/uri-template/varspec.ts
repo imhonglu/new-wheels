@@ -1,10 +1,4 @@
-import {
-  alpha,
-  characterSet,
-  concat,
-  digit,
-  oneOf,
-} from "@imhonglu/pattern-builder";
+import { alpha, digit, pattern } from "@imhonglu/pattern-builder";
 import type { SafeExecutor } from "@imhonglu/toolkit";
 import { pctEncoded } from "../uri/constants.js";
 import { Serializable } from "../utils/serializable/serializable.js";
@@ -12,17 +6,19 @@ import { InvalidVarspecError } from "./errors/invalid-varspec-error.js";
 import type { Modifier } from "./types/modifier.js";
 import { parseModifier } from "./utils/parse-modifier.js";
 
-const pattern = concat(
-  oneOf(characterSet(alpha, digit, /[_.]/), pctEncoded)
+const regex = pattern(
+  pattern(pattern.characterSet(alpha, digit, /[_.]/).or(pctEncoded))
+    .or(pctEncoded)
     .nonCapturingGroup()
     .oneOrMore()
     .group(),
-  oneOf(concat(":", digit.clone().repeat(1, 3)), /\*/)
+  pattern(pattern(":", digit.repeat(1, 3)).or(/\*/))
+    .or(/\*/)
     .group()
     .optional(),
 )
   .anchor()
-  .toRegExp();
+  .compile();
 
 /**
  * The Varspec formatter based on RFC 6570.
@@ -63,7 +59,7 @@ export class Varspec {
    * @throws - {@link InvalidVarspecError}
    */
   public static parse(text: string): Varspec {
-    const match = text.match(pattern);
+    const match = text.match(regex);
     if (!match) {
       throw new InvalidVarspecError(text);
     }

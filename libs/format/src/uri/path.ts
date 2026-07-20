@@ -1,30 +1,30 @@
-import { characterSet, concat } from "@imhonglu/pattern-builder";
+import { pattern } from "@imhonglu/pattern-builder";
 import type { SafeExecutor } from "@imhonglu/toolkit";
 import { Serializable } from "../utils/serializable/serializable.js";
 import { iriPchar, pchar } from "./constants.js";
 import { InvalidPathError } from "./errors/invalid-path-error.js";
 import type { URIParseOptions } from "./types/uri-parse-options.js";
 
-const slash = characterSet("/").optional();
+const slash = pattern.characterSet("/").optional();
 
-const pattern = {
-  iriPath: concat(
-    concat(slash, iriPchar.clone().nonCapturingGroup().oneOrMore())
+const regex = {
+  iriPath: pattern(
+    pattern(slash, iriPchar.nonCapturingGroup().oneOrMore())
       .nonCapturingGroup()
       .zeroOrMore(),
     slash,
   )
     .anchor()
-    .toRegExp("u"),
+    .compile("u"),
 
-  path: concat(
-    concat(slash, pchar.clone().nonCapturingGroup().oneOrMore())
+  path: pattern(
+    pattern(slash, pchar.nonCapturingGroup().oneOrMore())
       .nonCapturingGroup()
       .zeroOrMore(),
     slash,
   )
     .anchor()
-    .toRegExp(),
+    .compile(),
 };
 
 /**
@@ -70,7 +70,7 @@ export class Path {
    * @throws - {@link InvalidPathError}
    */
   public static parse(text: string, options?: URIParseOptions): Path {
-    const pathPattern = options?.isIri ? pattern.iriPath : pattern.path;
+    const pathPattern = options?.isIri ? regex.iriPath : regex.path;
 
     if (!pathPattern.test(text)) {
       throw new InvalidPathError(text);

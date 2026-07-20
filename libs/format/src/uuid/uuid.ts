@@ -1,21 +1,21 @@
-import { concat, hexDigit } from "@imhonglu/pattern-builder";
+import { hexDigit, pattern } from "@imhonglu/pattern-builder";
 import type { SafeExecutor } from "@imhonglu/toolkit";
 import { Serializable } from "../utils/serializable/serializable.js";
 import { InvalidUUIDError } from "./errors/invalid-uuid-error.js";
 
-const pattern = concat(
-  hexDigit.clone().exact(8).group(),
+const regex = pattern(
+  hexDigit.exact(8).group(),
   "-",
-  hexDigit.clone().exact(4).group(),
+  hexDigit.exact(4).group(),
   "-",
-  hexDigit.clone().exact(4).group(),
+  hexDigit.exact(4).group(),
   "-",
-  hexDigit.clone().exact(4).group(),
+  hexDigit.exact(4).group(),
   "-",
-  hexDigit.clone().exact(12).group(),
+  hexDigit.exact(12).group(),
 )
   .anchor()
-  .toRegExp();
+  .compile();
 
 /**
  * The UUID formatter based on RFC 4122.
@@ -44,7 +44,7 @@ export class UUID {
    * @throws - {@link InvalidUUIDError}
    */
   public static parse(text: string): UUID {
-    const match = pattern.exec(text);
+    const match = regex.exec(text);
     if (!match) {
       throw new InvalidUUIDError(text);
     }

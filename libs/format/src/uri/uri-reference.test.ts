@@ -117,7 +117,7 @@ test("should parse a valid ldap URI", () => {
       segments: ["c=GB"],
     }),
     query: expect.objectContaining({
-      pairs: new Map([["objectClass", "one"]]),
+      pairs: new Map([["objectClass?one", ""]]),
     }),
   });
 });

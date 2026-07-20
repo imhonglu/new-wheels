@@ -1,32 +1,31 @@
-import { concat, digit, oneOf } from "@imhonglu/pattern-builder";
+import { digit, pattern } from "@imhonglu/pattern-builder";
 import type { SafeExecutor } from "@imhonglu/toolkit";
 import { Serializable } from "../utils/serializable/serializable.js";
 import { InvalidDurationError } from "./errors/invalid-duration-error.js";
 
-const oneMoreDigits = digit.clone().oneOrMore();
-const pattern = oneOf(
-  concat(
-    "P",
-    concat(oneMoreDigits, "Y").group().optional(),
-    concat(oneMoreDigits, "M").group().optional(),
-    concat(oneMoreDigits, "D").group().optional(),
+const oneMoreDigits = digit.oneOrMore();
+const datePattern = pattern(
+  "P",
+  pattern(oneMoreDigits, "Y").group().optional(),
+  pattern(oneMoreDigits, "M").group().optional(),
+  pattern(oneMoreDigits, "D").group().optional(),
 
-    concat(
-      "T",
-      concat(oneMoreDigits, "H").group().optional(),
-      concat(oneMoreDigits, "M").group().optional(),
-      concat(oneMoreDigits, "S").group().optional(),
-    )
-      .group()
-      .optional(),
+  pattern(
+    "T",
+    pattern(oneMoreDigits, "H").group().optional(),
+    pattern(oneMoreDigits, "M").group().optional(),
+    pattern(oneMoreDigits, "S").group().optional(),
   )
-    .anchor()
-    .nonCapturingGroup(),
-
-  concat("P", concat(oneMoreDigits, "W").group()).anchor().nonCapturingGroup(),
+    .group()
+    .optional(),
 )
   .anchor()
-  .toRegExp();
+  .nonCapturingGroup();
+const weekPattern = pattern("P", pattern(oneMoreDigits, "W").group())
+  .anchor()
+  .nonCapturingGroup();
+
+const regex = pattern(datePattern).or(weekPattern).anchor().compile();
 
 /**
  * The Duration formatter based on RFC 3339.
@@ -67,7 +66,7 @@ export class Duration {
    * @throws - {@link InvalidDurationError}
    */
   public static parse(text: string): Duration {
-    const match = text.match(pattern);
+    const match = text.match(regex);
 
     if (!match) {
       throw new InvalidDurationError(text);
@@ -77,7 +76,7 @@ export class Duration {
 
     if (week) {
       return new Duration({
-        week: Number.parseInt(week),
+        week: Number.parseInt(week, 10),
       });
     }
 
@@ -91,12 +90,12 @@ export class Duration {
     }
 
     return new Duration({
-      year: year ? Number.parseInt(year) : undefined,
-      month: month ? Number.parseInt(month) : undefined,
-      day: day ? Number.parseInt(day) : undefined,
-      hour: hour ? Number.parseInt(hour) : undefined,
-      minute: minute ? Number.parseInt(minute) : undefined,
-      second: second ? Number.parseInt(second) : undefined,
+      year: year ? Number.parseInt(year, 10) : undefined,
+      month: month ? Number.parseInt(month, 10) : undefined,
+      day: day ? Number.parseInt(day, 10) : undefined,
+      hour: hour ? Number.parseInt(hour, 10) : undefined,
+      minute: minute ? Number.parseInt(minute, 10) : undefined,
+      second: second ? Number.parseInt(second, 10) : undefined,
     });
   }
 

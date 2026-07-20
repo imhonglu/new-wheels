@@ -1,22 +1,24 @@
-import { characterSet, oneOf } from "@imhonglu/pattern-builder";
+import { pattern } from "@imhonglu/pattern-builder";
 import type { SafeExecutor } from "@imhonglu/toolkit";
 import { Serializable } from "../utils/serializable/serializable.js";
 import { iriPchar, iriPrivate, pchar } from "./constants.js";
 import { InvalidQueryError } from "./errors/invalid-query-error.js";
 import type { URIParseOptions } from "./types/uri-parse-options.js";
 
-const pattern = {
-  iriQuery: oneOf(iriPrivate, iriPchar, characterSet("/?"))
+const regex = {
+  iriQuery: pattern(iriPrivate)
+    .or(iriPrivate, iriPchar, pattern.characterSet("/?"))
     .nonCapturingGroup()
     .zeroOrMore()
     .anchor()
-    .toRegExp("u"),
+    .compile("u"),
 
-  query: oneOf(pchar, characterSet("/?"))
+  query: pattern(pchar)
+    .or(pattern.characterSet("/?"))
     .nonCapturingGroup()
     .zeroOrMore()
     .anchor()
-    .toRegExp(),
+    .compile(),
 };
 
 /**
@@ -53,7 +55,7 @@ export class Query {
    * @throws - {@link InvalidQueryError}
    */
   public static parse(text: string, options?: URIParseOptions): Query {
-    const queryPattern = options?.isIri ? pattern.iriQuery : pattern.query;
+    const queryPattern = options?.isIri ? regex.iriQuery : regex.query;
 
     if (!queryPattern.test(text)) {
       throw new InvalidQueryError(text);

@@ -1,14 +1,14 @@
-import { alpha, characterSet, concat, digit } from "@imhonglu/pattern-builder";
+import { alpha, digit, pattern } from "@imhonglu/pattern-builder";
 import type { SafeExecutor } from "@imhonglu/toolkit";
 import { Serializable } from "../utils/serializable/serializable.js";
 import { InvalidSchemeError } from "./errors/invalid-scheme-error.js";
 
-const pattern = concat(
-  characterSet(alpha),
-  characterSet(alpha, digit, "+\\-.").nonCapturingGroup().zeroOrMore(),
+const regex = pattern(
+  pattern.characterSet(alpha),
+  pattern.characterSet(alpha, digit, "+\\-.").nonCapturingGroup().zeroOrMore(),
 )
   .anchor()
-  .toRegExp();
+  .compile();
 
 /**
  * The Scheme formatter based on RFC 3986.
@@ -40,7 +40,7 @@ export class Scheme {
    * @throws - {@link InvalidSchemeError}
    */
   public static parse(text: string): Scheme {
-    if (!pattern.test(text)) {
+    if (!regex.test(text)) {
       throw new InvalidSchemeError(text);
     }
 
