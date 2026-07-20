@@ -65,5 +65,5 @@ if (TypeObject.hasOwn(data, 'name')) {
 
 - [keys](./docs/type-object.keys.md) - `Object.keys` wrapper
 - [entries](./docs/type-object.entries.md) - `Object.entries` wrapper
-- [fromEntries](./docs/type-object.fromEntries.md) - `Object.fromEntries` wrapper
-- [hasOwn](./docs/type-object.hasOwn.md) - `Object.hasOwn` wrapper
+- [fromEntries](./docs/type-object.fromentries.md) - `Object.fromEntries` wrapper
+- [hasOwn](./docs/type-object.hasown.md) - `Object.hasOwn` wrapper

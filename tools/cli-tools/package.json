@@ -1,0 +1,28 @@
+{
+  "name": "@imhonglu/cli-tools",
+  "version": "0.0.0",
+  "description": "Internal CLI tools for the project.",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "check-doc-structure": "./bin/check-doc-structure.mjs",
+    "check-markdown-links": "./bin/check-markdown-links.mjs"
+  },
+  "scripts": {
+    "test": "vitest",
+    "build": "tsc -p tsconfig.build.json"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "license": "MIT",
+  "sideEffects": false,
+  "files": [
+    "bin",
+    "dist"
+  ],
+  "devDependencies": {
+    "@imhonglu/configs": "workspace:*",
+    "@types/node": "catalog:"
+  }
+}

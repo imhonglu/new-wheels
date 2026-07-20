@@ -38,6 +38,9 @@ importers:
       '@imhonglu/build-tools':
         specifier: workspace:*
         version: link:tools/build-tools
+      '@imhonglu/cli-tools':
+        specifier: workspace:*
+        version: link:tools/cli-tools
       '@imhonglu/configs':
         specifier: workspace:*
         version: link:tools/configs
@@ -126,11 +129,7 @@ importers:
 
   libs/type-guard: {}
 
-  libs/type-object:
-    dependencies:
-      '@imhonglu/type-guard':
-        specifier: workspace:*
-        version: link:../type-guard
+  libs/type-object: {}
 
   tools/build-tools:
     dependencies:
@@ -146,6 +145,15 @@ importers:
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
+    devDependencies:
+      '@imhonglu/configs':
+        specifier: workspace:*
+        version: link:../configs
+      '@types/node':
+        specifier: 'catalog:'
+        version: 26.1.1
+
+  tools/cli-tools:
     devDependencies:
       '@imhonglu/configs':
         specifier: workspace:*

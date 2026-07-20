@@ -1,0 +1,6 @@
+{
+  "extends": "@imhonglu/configs/tsconfig.lib.json",
+  "compilerOptions": {
+    "types": ["node"]
+  }
+}

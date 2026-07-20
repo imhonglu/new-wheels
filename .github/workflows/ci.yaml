@@ -38,6 +38,7 @@ jobs:
         run: |
           pnpm cspell --no-summary --no-progress .
           pnpm biome ci .
+          pnpm run check:docs
         timeout-minutes: 1
 
       - name: Run tests

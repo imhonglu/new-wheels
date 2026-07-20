@@ -1,4 +1,3 @@
 {
-  "extends": "@imhonglu/configs/tsconfig.lib.json",
-  "references": [{ "path": "../type-guard" }]
+  "extends": "@imhonglu/configs/tsconfig.lib.json"
 }

@@ -38,8 +38,5 @@
   ],
   "author": "imhonglu <anonymouser.unknown@gmail.com>",
   "license": "MIT",
-  "sideEffects": false,
-  "dependencies": {
-    "@imhonglu/type-guard": "workspace:*"
-  }
+  "sideEffects": false
 }

@@ -19,6 +19,7 @@
     "abempty",
     "noscheme",
     "hexdig",
+    "Hashimoto",
     "vitest",
     "vite",
     "npmjs",
@@ -30,7 +31,7 @@
   "dictionaries": ["typescript", "node"],
   "ignorePaths": [
     "dist/",
-    "docs/",
+    "libs/*/docs/**",
     "generated-tests/",
 
     "pnpm-*.yaml",

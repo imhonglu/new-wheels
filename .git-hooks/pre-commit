@@ -21,3 +21,7 @@ fi
 # 검사 도구를 실행합니다.
 pnpm exec cspell --no-must-find-files --files $files
 pnpm exec biome check --no-errors-on-unmatched $files
+
+if printf '%s\n' "$files" | grep -q '\.md$'; then
+  pnpm run check:docs
+fi
