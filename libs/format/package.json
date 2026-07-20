@@ -40,6 +40,10 @@
   "author": "imhonglu <anonymouser.unknown@gmail.com>",
   "license": "MIT",
   "sideEffects": false,
+  "devDependencies": {
+    "@swc/core": "^1.15.46",
+    "unplugin-swc": "^1.5.9"
+  },
   "dependencies": {
     "@imhonglu/pattern-builder": "workspace:*",
     "@imhonglu/toolkit": "workspace:*"
