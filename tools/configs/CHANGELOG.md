@@ -1,5 +1,11 @@
 # @imhonglu/configs
 
+## 1.0.11
+
+### Patch Changes
+
+- 00e679f: Document the exported TypeScript and API Extractor configurations.
+
 ## 1.0.10
 
 ### Patch Changes
