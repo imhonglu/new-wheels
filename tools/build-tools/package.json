@@ -20,9 +20,10 @@
     }
   },
   "bin": {
-    "esm-to-cjs": "./esm-to-cjs.cli.ts"
+    "esm-to-cjs": "./bin/esm-to-cjs.mjs"
   },
   "files": [
+    "bin",
     "dist"
   ],
   "scripts": {
