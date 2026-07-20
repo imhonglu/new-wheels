@@ -47,6 +47,7 @@ The function to be executed safely.
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [SafeExecutor](./toolkit.safeexecutor.md)<!-- -->&lt;T, E&gt;

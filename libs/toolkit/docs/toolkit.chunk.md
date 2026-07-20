@@ -63,6 +63,7 @@ The size of each chunk
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 IterableIterator&lt;T\[\]&gt;

@@ -47,6 +47,7 @@ The object whose keys and values should be inverted
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [Mutable](./toolkit.mutable.md)<!-- -->&lt;[InvertObject](./toolkit.invertobject.md)<!-- -->&lt;T&gt;&gt;

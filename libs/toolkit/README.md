@@ -62,8 +62,8 @@ Fn.Callable<{ args: [number, number], return: string }> // (...args: [number, nu
 - [get-callsites](./docs/toolkit.getcallsites.md) - Retrieves call stack information of currently executing code
 - [create-safe-executor](./docs/toolkit.createsafeexecutor.md) - Creates a safe function executor with exception handling
 - [is-async-function](./docs/toolkit.isasyncfunction.md) - Checks if a given function is asynchronous
-- [unwrap](./docs/toolkit.unwrap.md) - Unwraps an Optional value and returns the actual value
-- [unwrap-or](./docs/toolkit.unwrapor.md) - Returns a default value if the Optional value is empty
+- [unwrap](./docs/toolkit.unwrap.md) - Returns a non-nullish value or throws an `UnwrapError`
+- [UnwrapError](./docs/toolkit.unwraperror.md) - Error thrown when `unwrap` receives a nullish value
 
 ### Type Utilities
 - [literal-union](./docs/toolkit.literalunion.md) - Creates a string literal union type

@@ -49,6 +49,7 @@ The object to clone the prototype from.
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 any

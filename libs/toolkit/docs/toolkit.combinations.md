@@ -47,6 +47,7 @@ The input array from which to generate combinations.
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 IterableIterator&lt;T\[\]&gt;

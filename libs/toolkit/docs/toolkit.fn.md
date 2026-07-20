@@ -59,3 +59,4 @@ Interface for constructable (newable) functions with generic type support
 
 </td></tr>
 </tbody></table>
+

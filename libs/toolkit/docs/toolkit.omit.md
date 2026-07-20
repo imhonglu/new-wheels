@@ -63,6 +63,7 @@ The properties to omit
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 Omit&lt;T, K&gt;

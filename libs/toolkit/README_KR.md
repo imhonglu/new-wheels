@@ -62,8 +62,8 @@ Fn.Callable<{ args: [number, number], return: string }> // (...args: [number, nu
 - [get-callsites](./docs/toolkit.getcallsites.md) - 현재 실행 중인 코드의 호출 스택 정보를 조회합니다
 - [create-safe-executor](./docs/toolkit.createsafeexecutor.md) - 예외 처리가 포함된 안전한 함수 실행기를 생성합니다
 - [is-async-function](./docs/toolkit.isasyncfunction.md) - 주어진 함수가 비동기 함수인지 확인합니다
-- [unwrap](./docs/toolkit.unwrap.md) - Optional 값의 래핑을 해제하고 실제 값을 반환합니다
-- [unwrap-or](./docs/toolkit.unwrapor.md) - Optional 값이 없을 경우 기본값을 반환합니다
+- [unwrap](./docs/toolkit.unwrap.md) - nullish가 아닌 값을 반환하고, nullish 값이면 `UnwrapError`를 던집니다
+- [UnwrapError](./docs/toolkit.unwraperror.md) - `unwrap`이 nullish 값을 받았을 때 발생하는 오류입니다
 
 ### 타입 유틸리티
 - [literal-union](./docs/toolkit.literalunion.md) - 문자열 리터럴 유니온 타입을 생성합니다

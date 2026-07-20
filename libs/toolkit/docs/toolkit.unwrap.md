@@ -11,7 +11,7 @@ Inspired by rust's `unwrap` function.
 **Signature:**
 
 ```typescript
-export declare function unwrap<T>(maybe: T, error?: string | Error): UnwrapResult<T, Error>;
+export declare function unwrap<T>(value: T, ...args: ConstructorParameters<typeof Error>): NonNullable<T>;
 ```
 
 ## Parameters
@@ -34,7 +34,7 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-maybe
+value
 
 
 </td><td>
@@ -50,30 +50,31 @@ The value to unwrap
 </td></tr>
 <tr><td>
 
-error
+args
 
 
 </td><td>
 
-string \| Error
+ConstructorParameters&lt;typeof Error&gt;
 
 
 </td><td>
 
-_(Optional)_ The error to throw if input is null or undefined
+The message and options passed to [UnwrapError](./toolkit.unwraperror.md)
 
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
-[UnwrapResult](./toolkit.unwrapresult.md)<!-- -->&lt;T, Error&gt;
+NonNullable&lt;T&gt;
 
 The input value if it exists, otherwise throws an error
 
 ## Exceptions
 
-- When the input value is null or undefined
+[UnwrapError](./toolkit.unwraperror.md) When the input value is null or undefined
 
 ## Example 1
 

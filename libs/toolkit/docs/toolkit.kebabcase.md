@@ -47,6 +47,7 @@ The string to convert
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 string

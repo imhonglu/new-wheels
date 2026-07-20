@@ -63,6 +63,7 @@ The properties to pick
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 Pick&lt;T, K&gt;

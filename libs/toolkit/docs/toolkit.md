@@ -4,6 +4,32 @@
 
 ## toolkit package
 
+## Classes
+
+<table><thead><tr><th>
+
+Class
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[UnwrapError](./toolkit.unwraperror.md)
+
+
+</td><td>
+
+An error thrown by [unwrap()](./toolkit.unwrap.md) when a value is null or undefined.
+
+
+</td></tr>
+</tbody></table>
+
 ## Functions
 
 <table><thead><tr><th>
@@ -175,7 +201,7 @@ Converts a string to snake case.
 </td></tr>
 <tr><td>
 
-[unwrap(maybe, error)](./toolkit.unwrap.md)
+[unwrap(value, args)](./toolkit.unwrap.md)
 
 
 </td><td>
@@ -183,19 +209,6 @@ Converts a string to snake case.
 Unwraps a value and ensures it is not null or undefined.
 
 Inspired by rust's `unwrap` function.
-
-
-</td></tr>
-<tr><td>
-
-[unwrapOr(maybe, fallback)](./toolkit.unwrapor.md)
-
-
-</td><td>
-
-Unwraps a value and ensures it is not null or undefined.
-
-Inspired by rust's `unwrap_or` function.
 
 
 </td></tr>
@@ -446,13 +459,5 @@ Represents the result of a safe execution, either successful or failed.
 
 
 </td></tr>
-<tr><td>
-
-[UnwrapResult](./toolkit.unwrapresult.md)
-
-
-</td><td>
-
-
-</td></tr>
 </tbody></table>
+
