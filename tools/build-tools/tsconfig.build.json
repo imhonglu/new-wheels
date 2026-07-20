@@ -1,8 +1,9 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "target": "ES2015"
+    "rootDir": "src"
   },
+  "references": [{ "path": "../../libs/toolkit/tsconfig.build.json" }],
   "include": ["src"],
   "exclude": ["**/node_modules", "**/.*/", "**/*.test*.*"]
 }

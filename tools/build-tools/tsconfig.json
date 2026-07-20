@@ -3,5 +3,9 @@
   "compilerOptions": {
     "types": ["node"]
   },
-  "references": []
+  "references": [
+    {
+      "path": "../../libs/toolkit"
+    }
+  ]
 }

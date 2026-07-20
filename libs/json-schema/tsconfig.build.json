@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "target": "ES2015"
+    "rootDir": "src"
   },
   "include": ["src"],
   "exclude": [

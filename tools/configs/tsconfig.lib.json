@@ -4,11 +4,7 @@
     "lib": ["ESNext", "DOM"],
     "declaration": true,
     "declarationMap": true,
-
     "inlineSourceMap": true,
-
-    "outDir": "${configDir}/dist",
-
     "importHelpers": true
   }
 }
