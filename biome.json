@@ -22,7 +22,7 @@
   },
   "overrides": [
     {
-      "includes": ["**/*.test.ts", "**/*.d.ts"],
+      "includes": ["**/*.test*.*", "**/*.d.ts"],
       "linter": {
         "rules": {
           "suspicious": {
