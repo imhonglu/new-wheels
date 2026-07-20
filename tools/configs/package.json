@@ -8,41 +8,18 @@
     "directory": "tools/configs"
   },
   "type": "module",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs",
-      "default": "./dist/index.js"
-    },
     "./api-extractor-base.json": "./api-extractor-base.json",
     "./tsconfig.base.json": "./tsconfig.base.json",
     "./tsconfig.lib.json": "./tsconfig.lib.json"
   },
   "files": [
-    "dist",
     "api-extractor-base.json",
     "tsconfig.base.json",
     "tsconfig.lib.json",
     "types"
   ],
-  "scripts": {
-    "test": "vitest",
-    "build": "tsc -b",
-    "postbuild": "esm-to-cjs",
-    "prepublishOnly": "pnpm run build"
-  },
   "keywords": [],
   "author": "imhonglu <anonymouser.unknown@gmail.com>",
-  "license": "MIT",
-  "peerDependencies": {
-    "jest-extended": "^4.0.2",
-    "vitest": "^3.1.1"
-  },
-  "devDependencies": {
-    "@imhonglu/build-tools": "^1.0.7"
-  }
+  "license": "MIT"
 }

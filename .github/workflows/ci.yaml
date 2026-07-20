@@ -7,7 +7,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: [18, 20, 22]
+        node-version: [24]
         platform:
           - ubuntu-latest
 
@@ -20,15 +20,19 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: latest
+          version: 11.15.0
 
       - name: Setup Node
-        run: pnpm env use -g ${{ matrix.node-version }}
-        timeout-minutes: 1
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: pnpm
 
       - name: Install dependencies
-        run: pnpm install
-        timeout-minutes: 1
+        run: pnpm install --frozen-lockfile
+
+      - name: Build packages
+        run: pnpm --recursive --if-present run build
 
       - name: Run lint
         run: |
