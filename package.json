@@ -18,6 +18,7 @@
     "build:esm": "pnpm -r run build",
     "build:cjs": "pnpm -r run build:cjs",
     "build": "pnpm run build:tools && pnpm run build:esm && pnpm run build:cjs",
+    "version": "pnpm changeset version && pnpm install --lockfile-only",
     "lint:cspell": "cspell --no-progress --show-suggestions --show-context .",
     "lint:biome": "biome check .",
     "lint": "pnpm run lint:cspell && pnpm run lint:biome",
