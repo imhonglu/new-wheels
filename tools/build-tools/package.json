@@ -28,7 +28,6 @@
   "scripts": {
     "test": "vitest",
     "build": "tsc -p tsconfig.build.json",
-    "build:cjs": "pnpm esm-to-cjs",
     "esm-to-cjs": "node dist/esm-to-cjs.cli.js",
     "prepublishOnly": "pnpm run build"
   },

@@ -2,5 +2,8 @@ packages:
   - tools/*
   - libs/*
 
+catalog:
+  '@types/node': ^26.1.1
+
 allowBuilds:
   esbuild: true
