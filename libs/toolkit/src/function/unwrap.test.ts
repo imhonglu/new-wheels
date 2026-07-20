@@ -1,4 +1,5 @@
 import { expect, test } from "vitest";
+import { UnwrapError } from "./unwrap.error.js";
 import { unwrap } from "./unwrap.js";
 
 test("should unwrap string value", () => {
@@ -17,6 +18,7 @@ test("should unwrap object value", () => {
 });
 
 test("should throw error when unwrapping null", () => {
+  expect(() => unwrap(null)).toThrow(UnwrapError);
   expect(() => unwrap(null)).toThrow("Cannot unwrap null or undefined value");
 });
 
@@ -26,15 +28,22 @@ test("should throw error when unwrapping undefined", () => {
   );
 });
 
-test("should unwrap with custom error message", () => {
+test("should throw with a custom error message", () => {
   expect(() => unwrap(null, "Custom error message")).toThrow(
     "Custom error message",
   );
 });
 
-test("should unwrap with Error object", () => {
-  const error = new Error("Custom error");
-  expect(() => unwrap(null, error)).toThrow(error);
+test("should throw with an error cause", () => {
+  expect.assertions(2);
+  const cause = new Error("Original error");
+
+  try {
+    unwrap(null, undefined, { cause });
+  } catch (error) {
+    expect(error).toBeInstanceOf(UnwrapError);
+    expect((error as UnwrapError).cause).toBe(cause);
+  }
 });
 
 test("should unwrap nested object properties", () => {

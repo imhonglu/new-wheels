@@ -1,4 +1,4 @@
-import { type UnwrapResult, unwrapOr } from "./unwrap-or.js";
+import { UnwrapError } from "./unwrap.error.js";
 
 /**
  * Unwraps a value and ensures it is not null or undefined.
@@ -6,10 +6,10 @@ import { type UnwrapResult, unwrapOr } from "./unwrap-or.js";
  * Inspired by rust's `unwrap` function.
  *
  * @typeParam T - The type of the value to unwrap
- * @param maybe - The value to unwrap
- * @param error - The error to throw if input is null or undefined
+ * @param value - The value to unwrap
+ * @param args - The message and options passed to {@link UnwrapError}
  * @returns The input value if it exists, otherwise throws an error
- * @throws - When the input value is null or undefined
+ * @throws - {@link UnwrapError} When the input value is null or undefined
  *
  * @example
  * ```ts
@@ -28,8 +28,12 @@ import { type UnwrapResult, unwrapOr } from "./unwrap-or.js";
  * ```
  */
 export function unwrap<T>(
-  maybe: T,
-  error: string | Error = "Cannot unwrap null or undefined value",
-): UnwrapResult<T, Error> {
-  return unwrapOr(maybe, error instanceof Error ? error : new Error(error));
+  value: T,
+  ...args: ConstructorParameters<typeof Error>
+): NonNullable<T> {
+  if (value === null || value === undefined) {
+    throw new UnwrapError(...args);
+  }
+
+  return value as NonNullable<T>;
 }
