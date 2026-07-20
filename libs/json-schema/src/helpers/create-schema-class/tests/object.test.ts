@@ -1,7 +1,7 @@
 import { expect, expectTypeOf, test } from "vitest";
 import {
-  OriginalValueSymbol,
   createSchemaClass,
+  OriginalValueSymbol,
 } from "../create-schema-class.js";
 
 test("should successfully parse valid object input", () => {
@@ -33,8 +33,8 @@ test("should successfully parse valid object input", () => {
     name: "John",
     age: 30,
     active: true,
-    createdAt: expect.toBeString(),
-    updatedAt: expect.toBeString(),
+    createdAt: expect.any(String),
+    updatedAt: expect.any(String),
   });
 
   expect({
@@ -47,8 +47,8 @@ test("should successfully parse valid object input", () => {
     name: "John",
     age: 30,
     active: true,
-    createdAt: expect.toBeString(),
-    updatedAt: expect.toBeString(),
+    createdAt: expect.any(String),
+    updatedAt: expect.any(String),
   });
 
   expect(
@@ -59,8 +59,8 @@ test("should successfully parse valid object input", () => {
   ).toEqual({
     name: "John",
     age: 30,
-    createdAt: expect.toBeString(),
-    updatedAt: expect.toBeString(),
+    createdAt: expect.any(String),
+    updatedAt: expect.any(String),
   });
 
   expect(ObjectSchema.safeParse({ name: "John", age: 30 })).toEqual({
@@ -68,8 +68,8 @@ test("should successfully parse valid object input", () => {
     data: {
       name: "John",
       age: 30,
-      createdAt: expect.toBeString(),
-      updatedAt: expect.toBeString(),
+      createdAt: expect.any(String),
+      updatedAt: expect.any(String),
     },
   });
 

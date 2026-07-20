@@ -35,9 +35,8 @@ export type SafeResult<T, E = unknown> = SuccessResult<T> | FailureResult<E>;
  * @typeParam T - The type of the data payload
  * @typeParam E - The type of the error payload
  */
-export type SafeExecutorResult<T, E = unknown> = T extends Promise<infer U>
-  ? Promise<SafeResult<U, E>>
-  : SafeResult<T, E>;
+export type SafeExecutorResult<T, E = unknown> =
+  T extends Promise<infer U> ? Promise<SafeResult<U, E>> : SafeResult<T, E>;
 
 /**
  * Represents a safe executor function that wraps the provided function.

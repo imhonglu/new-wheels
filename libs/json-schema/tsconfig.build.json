@@ -3,5 +3,12 @@
   "compilerOptions": {
     "target": "ES2015"
   },
-  "exclude": ["dist", "**/*.test.ts", "./src/test-suite/**"]
+  "include": ["src"],
+  "exclude": [
+    "**/node_modules",
+    "**/.*/",
+    "**/*.test*.*",
+    "**/*.cli.ts",
+    "src/test-suite/**"
+  ]
 }

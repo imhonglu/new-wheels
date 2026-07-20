@@ -1,3 +1,4 @@
 {
-  "extends": "./node_modules/@imhonglu/configs/tsconfig.lib.json"
+  "extends": "@imhonglu/configs/tsconfig.lib.json",
+  "references": [{ "path": "../pattern-builder" }, { "path": "../toolkit" }]
 }

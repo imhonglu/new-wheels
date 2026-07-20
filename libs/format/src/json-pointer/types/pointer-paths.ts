@@ -25,14 +25,15 @@ import type { Escape } from "./escape.js";
  * @see {@link https://datatracker.ietf.org/doc/html/rfc6901#section-3 | RFC 6901 - Syntax}
  * @see {@link https://datatracker.ietf.org/doc/html/rfc6901#section-4 | RFC 6901 - Evaluation}
  */
-export type PointerPaths<T> = T extends Array<infer U>
-  ? "" | `/${number}` | `/${number}${PointerPaths<U>}`
-  : T extends object
-    ?
-        | ""
-        | {
-            [K in keyof T]: K extends string
-              ? `/${Escape<K>}${PointerPaths<T[K]>}`
-              : never;
-          }[keyof T]
-    : "";
+export type PointerPaths<T> =
+  T extends Array<infer U>
+    ? "" | `/${number}` | `/${number}${PointerPaths<U>}`
+    : T extends object
+      ?
+          | ""
+          | {
+              [K in keyof T]: K extends string
+                ? `/${Escape<K>}${PointerPaths<T[K]>}`
+                : never;
+            }[keyof T]
+      : "";

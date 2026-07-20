@@ -36,16 +36,20 @@ export interface CallSite {
  * @returns An array of call sites from the current stack trace.
  */
 export function getCallsites(stackTraceLimit = 10) {
-  const _prepareStackTrace = Error.prepareStackTrace;
-  const _stackTraceLimit = Error.stackTraceLimit;
+  const errorConstructor = Error as typeof Error & {
+    prepareStackTrace?: (error: Error, stack: CallSite[]) => unknown;
+    stackTraceLimit?: number;
+  };
+  const _prepareStackTrace = errorConstructor.prepareStackTrace;
+  const _stackTraceLimit = errorConstructor.stackTraceLimit;
 
-  Error.stackTraceLimit = stackTraceLimit;
-  Error.prepareStackTrace = (_, stack) => stack;
+  errorConstructor.stackTraceLimit = stackTraceLimit;
+  errorConstructor.prepareStackTrace = (_, stack) => stack;
 
   const stack = new Error().stack as unknown as CallSite[];
 
-  Error.prepareStackTrace = _prepareStackTrace;
-  Error.stackTraceLimit = _stackTraceLimit;
+  errorConstructor.prepareStackTrace = _prepareStackTrace;
+  errorConstructor.stackTraceLimit = _stackTraceLimit;
 
   return stack.slice(1);
 }

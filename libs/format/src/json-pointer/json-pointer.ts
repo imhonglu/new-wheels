@@ -186,7 +186,7 @@ export class JsonPointer {
    * @see {@link https://datatracker.ietf.org/doc/html/rfc6901#section-3 | RFC 6901 - Syntax}
    */
   public static escape<T extends string>(text: T): Escape<T> {
-    return text.replace(/[~\/]/g, (match) => {
+    return text.replace(/[~/]/g, (match) => {
       switch (match) {
         case "~":
           return "~0";

@@ -1,5 +1,5 @@
 import { expect, expectTypeOf, test } from "vitest";
-import { type ObjectEntry, entries } from "./entries.js";
+import { entries, type ObjectEntry } from "./entries.js";
 
 test("should convert object to array of key-value pairs", () => {
   const A = entries({

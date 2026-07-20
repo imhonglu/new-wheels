@@ -19,7 +19,9 @@
       "default": "./dist/index.js"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "test": "vitest",
     "build": "tsc -p tsconfig.build.json",
@@ -42,10 +44,10 @@
   "author": "imhonglu <anonymouser.unknown@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "@imhonglu/build-tools": "^1.0.7",
-    "@imhonglu/configs": "^1.0.10"
+    "@imhonglu/build-tools": "workspace:*",
+    "@imhonglu/configs": "workspace:*"
   },
   "dependencies": {
-    "@imhonglu/toolkit": "^1.0.4"
+    "@imhonglu/toolkit": "workspace:*"
   }
 }

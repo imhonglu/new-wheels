@@ -11,7 +11,7 @@ import {
 export const pctEncoded = concat("%", hexDigit.clone().exact(2));
 export const subDelims = characterSet(/[!$&'()*+,;=]/);
 
-export const unreserved = characterSet(alpha, digit, /[\-._~]/);
+export const unreserved = characterSet(alpha, digit, /[-._~]/);
 export const pchar = oneOf(
   pctEncoded,
   characterSet(unreserved, subDelims, /[:@]/),
@@ -43,7 +43,7 @@ export const iriPrivate = characterSet(
   "\\u{100000}-\\u{10FFFD}",
 );
 
-export const iriUnreserved = characterSet(alpha, digit, /[\-._~]/, ucschar);
+export const iriUnreserved = characterSet(alpha, digit, /[-._~]/, ucschar);
 export const iriPchar = oneOf(
   pctEncoded,
   characterSet(iriUnreserved, subDelims, /[:@]/),

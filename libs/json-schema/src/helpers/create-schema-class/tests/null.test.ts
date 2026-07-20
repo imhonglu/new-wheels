@@ -1,7 +1,7 @@
 import { expect, expectTypeOf, test } from "vitest";
 import {
-  OriginalValueSymbol,
   createSchemaClass,
+  OriginalValueSymbol,
 } from "../create-schema-class.js";
 
 test("should successfully parse valid null input", () => {

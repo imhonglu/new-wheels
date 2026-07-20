@@ -47,18 +47,19 @@ export interface SchemaDefMap<T> {
   };
 }
 
-export type SchemaDef<T> = Omit<T, keyof BasicMetaData> extends {
-  const: infer U;
-}
-  ? T & BasicMetaData<U>
-  : T extends { enum: infer U }
-    ? T & BasicMetaData<ArrayElement<U>>
-    : T extends { type: infer U }
-      ? T &
-          Match<U, SchemaDefMap<T>> &
-          Omit<BasicMetaData<SchemaInstanceType<T>>, "default"> & {
-            default?:
-              | SchemaInstanceType<T>
-              | Fn.Callable<{ return: SchemaInstanceType<T> }>;
-          }
-      : SchemaInferBase;
+export type SchemaDef<T> =
+  Omit<T, keyof BasicMetaData> extends {
+    const: infer U;
+  }
+    ? T & BasicMetaData<U>
+    : T extends { enum: infer U }
+      ? T & BasicMetaData<ArrayElement<U>>
+      : T extends { type: infer U }
+        ? T &
+            Match<U, SchemaDefMap<T>> &
+            Omit<BasicMetaData<SchemaInstanceType<T>>, "default"> & {
+              default?:
+                | SchemaInstanceType<T>
+                | Fn.Callable<{ return: SchemaInstanceType<T> }>;
+            }
+        : SchemaInferBase;

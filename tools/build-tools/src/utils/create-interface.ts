@@ -1,5 +1,5 @@
 import ts from "typescript";
-import { type DataType, createTypeNode } from "./create-type-node.js";
+import { createTypeNode, type DataType } from "./create-type-node.js";
 
 export function createProperties(
   properties: Record<string, DataType>,

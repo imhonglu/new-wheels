@@ -1,5 +1,5 @@
 import { expect, expectTypeOf, test } from "vitest";
-import { type ObjectHasOwn, hasOwn } from "./has-own.js";
+import { hasOwn, type ObjectHasOwn } from "./has-own.js";
 
 test("should correctly type guard and check object properties", () => {
   const source = { a: 1 } as unknown;

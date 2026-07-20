@@ -1,5 +1,5 @@
 import { describe, expect, expectTypeOf, test } from "vitest";
-import { type ObjectKey, keys } from "./keys.js";
+import { keys, type ObjectKey } from "./keys.js";
 
 describe("primitive types", () => {
   test("boolean should return empty array", () => {

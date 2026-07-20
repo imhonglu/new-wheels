@@ -1,4 +1,4 @@
-import { type ObjectKey, keys } from "@imhonglu/type-object";
+import { keys, type ObjectKey } from "@imhonglu/type-object";
 import { pick } from "./pick.js";
 
 /**

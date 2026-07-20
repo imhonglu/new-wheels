@@ -71,7 +71,6 @@ export namespace Primitive {
    * type C = Primitive.Match<string, "number", number>; // never
    * ```
    */
-  export type Match<A, B, Result> = Resolve<A> extends Resolve<B>
-    ? Result
-    : never;
+  export type Match<A, B, Result> =
+    Resolve<A> extends Resolve<B> ? Result : never;
 }

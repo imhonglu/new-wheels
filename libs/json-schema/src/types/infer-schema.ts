@@ -49,20 +49,21 @@ export interface InferSchemaMap<T> {
   };
 }
 
-export type InferSchema<T> = Omit<T, keyof BasicMetaData> extends {
-  const: infer U;
-}
-  ? T & BasicMetaData<U>
-  : T extends { enum: infer U }
-    ? T & BasicMetaData<ArrayElement<U>>
-    : T extends { type: infer U }
-      ? Omit<T, Exclude<keyof TypeSchema, "type">> &
-          Match<U, InferSchemaMap<T>> &
-          Omit<BasicMetaData<InferSchemaType<T>>, "default"> & {
-            default?:
-              | InferSchemaType<T>
-              | Fn.Callable<{ return: InferSchemaType<T> }>;
-          }
-      : T extends Schema<infer U>
-        ? T
-        : SchemaInput;
+export type InferSchema<T> =
+  Omit<T, keyof BasicMetaData> extends {
+    const: infer U;
+  }
+    ? T & BasicMetaData<U>
+    : T extends { enum: infer U }
+      ? T & BasicMetaData<ArrayElement<U>>
+      : T extends { type: infer U }
+        ? Omit<T, Exclude<keyof TypeSchema, "type">> &
+            Match<U, InferSchemaMap<T>> &
+            Omit<BasicMetaData<InferSchemaType<T>>, "default"> & {
+              default?:
+                | InferSchemaType<T>
+                | Fn.Callable<{ return: InferSchemaType<T> }>;
+            }
+        : T extends Schema<infer U>
+          ? T
+          : SchemaInput;

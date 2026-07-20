@@ -9,12 +9,12 @@ import type { UnevaluatedLocations } from "./unevaluated-locations.js";
 
 export * from "./applying-sub-schema.js";
 export * from "./basic-meta-data.js";
+export * from "./boolean-schema.js";
 export * from "./core.js";
 export * from "./format.js";
 export * from "./string-encoded-data.js";
 export * from "./structural-validation.js";
 export * from "./unevaluated-locations.js";
-export * from "./boolean-schema.js";
 
 /**
  * @see {@link https://json-schema.org/draft/2020-12/draft-bhutton-json-schema-01#section-4.3.1 | ObjectSchema}

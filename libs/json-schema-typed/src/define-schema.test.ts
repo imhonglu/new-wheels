@@ -24,7 +24,7 @@ test("should create a typed schema with required string property", () => {
       createdAt: {
         type: "string",
         format: "date-time",
-        default: expect.toBeFunction(),
+        default: expect.any(Function),
       },
     },
     required: ["name", "createdAt"],

@@ -1,3 +1,7 @@
 {
-  "extends": "./node_modules/@imhonglu/configs/tsconfig.lib.json"
+  "extends": "@imhonglu/configs/tsconfig.lib.json",
+  "compilerOptions": {
+    "types": ["node"]
+  },
+  "references": []
 }

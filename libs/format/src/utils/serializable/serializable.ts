@@ -1,7 +1,7 @@
 import {
+  createSafeExecutor,
   type Fn,
   type SafeResult,
-  createSafeExecutor,
 } from "@imhonglu/toolkit";
 
 /**
