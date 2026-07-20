@@ -36,7 +36,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build packages
-        run: pnpm --recursive --if-present run build
+        run: pnpm run build
 
       - name: Create and publish versions
         uses: changesets/action@v1
