@@ -1,5 +1,14 @@
 # @imhonglu/format
 
+## 1.0.10
+
+### Patch Changes
+
+- 2b1a371: Update the workspace build and CommonJS distribution workflow.
+- Updated dependencies [2b1a371]
+  - @imhonglu/pattern-builder@1.0.6
+  - @imhonglu/toolkit@1.0.5
+
 ## 1.0.9
 
 ### Patch Changes

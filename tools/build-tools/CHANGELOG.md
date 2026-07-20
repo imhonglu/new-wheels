@@ -1,5 +1,13 @@
 # @imhonglu/build-tools
 
+## 1.0.8
+
+### Patch Changes
+
+- 2b1a371: Update the workspace build and CommonJS distribution workflow.
+- Updated dependencies [2b1a371]
+  - @imhonglu/toolkit@1.0.5
+
 ## 1.0.7
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @imhonglu/pattern-builder
 
+## 1.0.6
+
+### Patch Changes
+
+- 2b1a371: Update the workspace build and CommonJS distribution workflow.
+
 ## 1.0.5
 
 ### Patch Changes
