@@ -61,8 +61,8 @@ importers:
         version: link:../toolkit
     devDependencies:
       '@imhonglu/build-tools':
-        specifier: ^1.0.7
-        version: 1.0.7(esbuild@0.28.1)(tslib@2.8.1)(typescript@7.0.2)
+        specifier: workspace:*
+        version: link:../../tools/build-tools
       '@imhonglu/configs':
         specifier: workspace:*
         version: link:../../tools/configs
@@ -83,8 +83,8 @@ importers:
         version: link:../type-object
     devDependencies:
       '@imhonglu/build-tools':
-        specifier: ^1.0.7
-        version: 1.0.7(esbuild@0.28.1)(tslib@2.8.1)(typescript@7.0.2)
+        specifier: workspace:*
+        version: link:../../tools/build-tools
       '@imhonglu/configs':
         specifier: workspace:*
         version: link:../../tools/configs
@@ -96,8 +96,8 @@ importers:
         version: link:../toolkit
     devDependencies:
       '@imhonglu/build-tools':
-        specifier: ^1.0.7
-        version: 1.0.7(esbuild@0.28.1)(tslib@2.8.1)(typescript@7.0.2)
+        specifier: workspace:*
+        version: link:../../tools/build-tools
       '@imhonglu/configs':
         specifier: workspace:*
         version: link:../../tools/configs
@@ -105,8 +105,8 @@ importers:
   libs/pattern-builder:
     devDependencies:
       '@imhonglu/build-tools':
-        specifier: ^1.0.7
-        version: 1.0.7(esbuild@0.28.1)(tslib@2.8.1)(typescript@7.0.2)
+        specifier: workspace:*
+        version: link:../../tools/build-tools
       '@imhonglu/configs':
         specifier: workspace:*
         version: link:../../tools/configs
@@ -121,8 +121,8 @@ importers:
         version: link:../type-object
     devDependencies:
       '@imhonglu/build-tools':
-        specifier: ^1.0.7
-        version: 1.0.7(esbuild@0.28.1)(tslib@2.8.1)(typescript@7.0.2)
+        specifier: workspace:*
+        version: link:../../tools/build-tools
       '@imhonglu/configs':
         specifier: workspace:*
         version: link:../../tools/configs
@@ -133,8 +133,8 @@ importers:
   libs/type-guard:
     devDependencies:
       '@imhonglu/build-tools':
-        specifier: ^1.0.7
-        version: 1.0.7(esbuild@0.28.1)(tslib@2.8.1)(typescript@7.0.2)
+        specifier: workspace:*
+        version: link:../../tools/build-tools
       '@imhonglu/configs':
         specifier: workspace:*
         version: link:../../tools/configs
@@ -146,8 +146,8 @@ importers:
         version: link:../type-guard
     devDependencies:
       '@imhonglu/build-tools':
-        specifier: ^1.0.7
-        version: 1.0.7(esbuild@0.28.1)(tslib@2.8.1)(typescript@7.0.2)
+        specifier: workspace:*
+        version: link:../../tools/build-tools
       '@imhonglu/configs':
         specifier: workspace:*
         version: link:../../tools/configs
@@ -962,23 +962,6 @@ packages:
   '@faker-js/faker@10.5.0':
     resolution: {integrity: sha512-bsxD8WLS5lIj7aaoCx1YJkktqYj5vlBUE6HWzu2Q51ksrGJ0H737ECCKlFU7Yf8Br45z9t99frBp/J7kzbMPAg==}
     engines: {node: ^20.19.0 || ^22.13.0 || ^23.5.0 || >=24.0.0, npm: '>=10'}
-
-  '@imhonglu/build-tools@1.0.7':
-    resolution: {integrity: sha512-yij/pdGYEfEwzN6vwW4uLktQiG8FkoSKLAGbWBHgugPz8LB+snYyZECIf3yhAlmxKnrd5HMbsT+1HUrY2eklKA==}
-    hasBin: true
-    peerDependencies:
-      esbuild: ^0.25.2
-      tslib: ^2.8.1
-      typescript: ^5.8.2
-
-  '@imhonglu/toolkit@1.0.4':
-    resolution: {integrity: sha512-rvvM50TNVKL/44Pkv0YjovY2kOADhRlkQxX6um9KrXDzx9s6+l00UFQcSiH9oM6n4nXa3pRkchDkSkIKpbVlDg==}
-
-  '@imhonglu/type-guard@1.0.2':
-    resolution: {integrity: sha512-2mq7qnxjatLmgsixZ7JO9lwZGVijmI/dowemcI3k83iQbtp2syIbMwFBoqdYlJxSPENliMiUnS6sfEyfK4bpoA==}
-
-  '@imhonglu/type-object@1.0.2':
-    resolution: {integrity: sha512-aqYNCRgtskaKHARwmZrjQI65nSqAyDru8FQQD+4HchVmI1tdgdUCQ3VSGZ50GJSDl7lqSUCmom0xIeTHVO5IHA==}
 
   '@inquirer/external-editor@1.0.3':
     resolution: {integrity: sha512-RWbSrDiYmO4LbejWY7ttpxczuwQyZLBUyygsA9Nsv95hpzUWwnNTVQmAq3xuh7vNwCp07UTmE5i11XAEExx4RA==}
@@ -3048,24 +3031,6 @@ snapshots:
     optional: true
 
   '@faker-js/faker@10.5.0': {}
-
-  '@imhonglu/build-tools@1.0.7(esbuild@0.28.1)(tslib@2.8.1)(typescript@7.0.2)':
-    dependencies:
-      '@imhonglu/toolkit': 1.0.4
-      esbuild: 0.28.1
-      tslib: 2.8.1
-      typescript: 7.0.2
-
-  '@imhonglu/toolkit@1.0.4':
-    dependencies:
-      '@imhonglu/type-guard': 1.0.2
-      '@imhonglu/type-object': 1.0.2
-
-  '@imhonglu/type-guard@1.0.2': {}
-
-  '@imhonglu/type-object@1.0.2':
-    dependencies:
-      '@imhonglu/type-guard': 1.0.2
 
   '@inquirer/external-editor@1.0.3(@types/node@26.1.1)':
     dependencies:
