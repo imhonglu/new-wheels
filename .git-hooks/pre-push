@@ -1,0 +1,22 @@
+#!/usr/bin/env sh
+# cspell:ignore ACMR
+
+# pre-push
+#
+# 푸시 전에 변경된 파일과 관련된 테스트를 실행합니다.
+# HEAD 이후 변경된 파일을 대상으로 Vitest related 검사를 실행합니다.
+#
+# 참고: https://git-scm.com/book/ko/v2/Git맞춤-Git-Hooks
+
+set -eu
+
+# 변경된 파일 목록을 조회합니다.
+files=$(git diff --name-only --diff-filter=ACMR HEAD) # added, copied, modified, or renamed
+
+# 검사할 파일이 없으면 종료합니다.
+if [ -z "$files" ]; then
+  exit 0
+fi
+
+# 관련 테스트를 실행합니다.
+pnpm exec vitest related --run --passWithNoTests $files

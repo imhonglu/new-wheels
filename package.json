@@ -13,12 +13,12 @@
     "pnpm": ">=11"
   },
   "scripts": {
+    "prepare": "git config core.hooksPath .git-hooks",
     "lint:cspell": "cspell --no-progress --show-suggestions --show-context .",
     "lint:biome": "biome check .",
     "lint": "pnpm run lint:cspell && pnpm run lint:biome",
     "test": "vitest --config vitest.config.ts",
-    "test:types": "vitest --config vitest.config.ts --typecheck.only",
-    "prepare": "husky"
+    "test:types": "vitest --config vitest.config.ts --typecheck.only"
   },
   "license": "MIT",
   "devDependencies": {
@@ -33,7 +33,6 @@
     "@vitest/coverage-v8": "^4.1.10",
     "cspell": "^10.0.1",
     "esbuild": "^0.28.1",
-    "husky": "^9.1.7",
     "tslib": "^2.8.1",
     "typescript": "^7.0.2",
     "vitest": "^4.1.10"
