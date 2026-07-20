@@ -40,6 +40,7 @@
   ],
   "author": "imhonglu <anonymouser.unknown@gmail.com>",
   "license": "MIT",
+  "sideEffects": false,
   "dependencies": {
     "@imhonglu/format": "workspace:*",
     "@imhonglu/toolkit": "workspace:*",

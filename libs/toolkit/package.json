@@ -36,6 +36,7 @@
   ],
   "author": "imhonglu <anonymouser.unknown@gmail.com>",
   "license": "MIT",
+  "sideEffects": false,
   "devDependencies": {
     "@types/node": "catalog:",
     "@imhonglu/configs": "workspace:*"

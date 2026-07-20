@@ -21,5 +21,6 @@
   ],
   "keywords": [],
   "author": "imhonglu <anonymouser.unknown@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "sideEffects": false
 }

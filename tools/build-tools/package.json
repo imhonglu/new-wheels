@@ -33,6 +33,7 @@
   "keywords": [],
   "author": "imhonglu <anonymouser.unknown@gmail.com>",
   "license": "MIT",
+  "sideEffects": false,
   "peerDependencies": {
     "esbuild": "catalog:",
     "tslib": "catalog:",

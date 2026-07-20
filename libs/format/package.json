@@ -39,6 +39,7 @@
   ],
   "author": "imhonglu <anonymouser.unknown@gmail.com>",
   "license": "MIT",
+  "sideEffects": false,
   "dependencies": {
     "@imhonglu/pattern-builder": "workspace:*",
     "@imhonglu/toolkit": "workspace:*"
