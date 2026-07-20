@@ -28,6 +28,13 @@
     "commitlint"
   ],
   "dictionaries": ["typescript", "node"],
-  "ignorePaths": ["pnpm-*.yaml", "dist/", "docs/", "tsconfig.base.json"],
+  "ignorePaths": [
+    "dist/",
+    "docs/",
+    "generated-tests/",
+
+    "pnpm-*.yaml",
+    "tsconfig.base.json"
+  ],
   "useGitignore": true
 }
