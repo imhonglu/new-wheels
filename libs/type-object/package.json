@@ -1,6 +1,6 @@
 {
   "name": "@imhonglu/type-object",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Type-safe wrapper for JavaScript Object API with zero external dependencies",
   "repository": {
     "type": "git",

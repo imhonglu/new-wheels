@@ -1,5 +1,11 @@
 # @imhonglu/type-object
 
+## 1.0.4
+
+### Patch Changes
+
+- 00e679f: Remove the unused runtime dependency on `@imhonglu/type-guard`.
+
 ## 1.0.3
 
 ### Patch Changes

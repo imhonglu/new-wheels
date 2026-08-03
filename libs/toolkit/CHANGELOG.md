@@ -1,5 +1,12 @@
 # @imhonglu/toolkit
 
+## 2.0.1
+
+### Patch Changes
+
+- Updated dependencies [00e679f]
+  - @imhonglu/type-object@1.0.4
+
 ## 2.0.0
 
 ### Major Changes

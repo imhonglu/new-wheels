@@ -1,5 +1,12 @@
 # @imhonglu/build-tools
 
+## 1.0.10
+
+### Patch Changes
+
+- 00e679f: Ship the `esm-to-cjs` command from compiled JavaScript output.
+  - @imhonglu/toolkit@2.0.1
+
 ## 1.0.9
 
 ### Patch Changes

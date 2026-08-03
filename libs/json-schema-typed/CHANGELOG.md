@@ -1,5 +1,11 @@
 # @imhonglu/json-schema-typed
 
+## 1.0.5
+
+### Patch Changes
+
+- @imhonglu/toolkit@2.0.1
+
 ## 1.0.4
 
 ### Patch Changes
