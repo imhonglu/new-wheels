@@ -1,5 +1,11 @@
 # @imhonglu/configs
 
+## 1.0.12
+
+### Patch Changes
+
+- 336285a: Add Korean README entry points and keep package documentation aligned across both supported languages.
+
 ## 1.0.11
 
 ### Patch Changes
