@@ -1,51 +1,72 @@
 name: CI
 
-on: [pull_request]
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review, converted_to_draft]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-pr-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
 
 jobs:
   ci:
-    strategy:
-      fail-fast: false
-      matrix:
-        node-version: [24]
-        platform:
-          - ubuntu-latest
-
-    name: ${{ matrix.platform }} / Node.js ${{ matrix.node-version }}
-    runs-on: ${{ matrix.platform }}
+    if: github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
+      - name: Checkout
+        uses: actions/checkout@v6
         with:
-          version: 11.15.0
+          fetch-depth: 2
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 24
           cache: pnpm
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build packages
-        run: pnpm run build
-
-      - name: Run lint
+      - name: Check source and docs
         run: |
           pnpm cspell --no-summary --no-progress .
           pnpm biome ci .
           pnpm run check:docs
-        timeout-minutes: 1
 
-      - name: Run tests
-        # TODO: run only related tests
-        run: pnpm vitest --run
-        timeout-minutes: 1
+      - name: Build packages
+        run: pnpm run build
 
-      - name: Run JSON Schema conformance baseline
-        run: pnpm --filter @imhonglu/json-schema-conformance test:conformance
-        timeout-minutes: 1
+      - name: Test affected packages
+        run: |
+          if git diff --quiet HEAD^1 -- package.json pnpm-lock.yaml pnpm-workspace.yaml vitest.config.ts .github/workflows/ci.yaml; then
+            pnpm \
+              --filter="...[HEAD^1]" \
+              --filter="!@imhonglu/new-wheels" \
+              --test-pattern="**/*.test.ts" \
+              --changed-files-ignore-pattern="**/*.md" \
+              --if-present run test -- --run
+          else
+            pnpm vitest --run
+          fi
+
+      - name: Test affected JSON Schema conformance
+        run: |
+          if git diff --quiet HEAD^1 -- package.json pnpm-lock.yaml pnpm-workspace.yaml vitest.config.ts .github/workflows/ci.yaml; then
+            pnpm \
+              --filter="...[HEAD^1]" \
+              --filter="!@imhonglu/new-wheels" \
+              --test-pattern="**/*.test.ts" \
+              --changed-files-ignore-pattern="**/*.md" \
+              --changed-files-ignore-pattern="tools/json-schema-conformance/src/**/*.test.ts" \
+              --if-present run test:conformance
+          else
+            pnpm --filter @imhonglu/json-schema-conformance test:conformance
+          fi
