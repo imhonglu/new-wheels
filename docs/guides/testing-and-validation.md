@@ -7,7 +7,7 @@
 
 ## 작업 중 빠른 피드백
 
-작업 중에는 변경한 패키지만 검증합니다.
+작업 중에는 변경과 가장 가까운 패키지 검증부터 시작합니다. 공용 계약이나 설정에 영향이 있으면 직접 의존 패키지와 전체 검증으로 확장합니다.
 
 ```sh
 pnpm --filter <package-name> build
@@ -59,6 +59,7 @@ pnpm --filter @imhonglu/json-schema-conformance test:conformance
 | JSON Schema 외부 적합성 | [적합성 도구](../../tools/json-schema-conformance/README.md) | 명시적 적합성 명령 | 전체 적합성 기준선 | Enforced |
 | 공개 API 문서 최신성 | [API 문서 생성](./generating-api-docs.md) | 생성과 diff 검토 | 없음 | Manual |
 | changeset 존재와 수준 | [Changesets 관리](./managing-changesets.md) | `changeset status` | 없음 | Manual |
+| GitHub Issue Form과 PR 템플릿 | [GitHub 작업 추적](./tracking-work-with-github.md) | YAML·링크 수동 검토 | 없음 | Manual |
 | workspace README 쌍과 영문·한글 의미 일치 | [Markdown 작성](./writing-markdown.md) | 수동 비교 | 없음 | Manual |
 | workspace 의존 방향 | [저장소 구조](../architecture/repository-structure.md) | 없음 | 없음 | Documented |
 

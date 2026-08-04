@@ -7,4 +7,4 @@
 - [저장소 구조](./repository-structure.md): workspace 영역, 패키지 구성과 런타임 의존 방향
 - [공개 API 정책](./public-api-policy.md): 공개 계약의 범위와 호환성 판단
 
-선택의 배경은 [ADR](../decisions/README.md), 구체적인 실행 절차는 [개발 가이드](../guides/README.md)에서 찾습니다.
+선택의 배경은 [ADR](../decisions/README.md), 구체적인 실행 절차는 [저장소 가이드](../guides/README.md)에서 찾습니다.

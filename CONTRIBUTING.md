@@ -4,37 +4,19 @@
 
 ## 준비
 
-- Node.js 24 이상
-- pnpm 11 이상
-
-```sh
-pnpm install --frozen-lockfile
-```
-
-설치 과정에서 저장소의 Git hook이 활성화됩니다.
+필요한 Node.js와 pnpm 버전, 의존성 설치와 Git hook 확인은 [로컬 개발 환경](./docs/guides/local-development.md)을 따릅니다.
 
 ## 기본 흐름
 
-1. 변경 목적, 범위와 확인 가능한 성공 기준을 정합니다.
-2. 아래 표에서 변경 유형에 맞는 기준 문서를 확인합니다.
+1. [GitHub 작업 추적](./docs/guides/tracking-work-with-github.md)에 따라 이슈를 먼저 만들고 완료할 결과와 조건을 정합니다.
+2. [저장소 가이드](./docs/guides/README.md)에서 변경 유형에 맞는 기준 문서를 확인합니다.
 3. 구현과 가까운 테스트부터 실행하고 영향 범위에 맞게 검증을 확장합니다.
 4. 공개 계약에 영향이 있으면 문서와 changeset을 함께 갱신합니다.
-5. diff와 검증 결과를 확인한 뒤 Conventional Commits 형식으로 커밋합니다.
 
-## 변경별 시작점
+저장소 구조, 기술 결정, 운영 절차와 활성 계획은 [저장소 문서](./docs/README.md)에서 찾습니다.
 
-| 변경 | 기준 문서 |
-| --- | --- |
-| 공통 작업 원칙 | [개발 작업 원칙](./docs/guides/development-principles.md) |
-| 외부·workspace 의존성 추가·갱신·제거 | [의존성 관리](./docs/guides/managing-dependencies.md) |
-| 빌드, 테스트와 완료 검증 | [테스트와 검증](./docs/guides/testing-and-validation.md) |
-| 공개 export, 런타임 동작, CLI 또는 설정 | [공개 API 변경](./docs/guides/changing-a-public-api.md) |
-| CLI 구현 | [CLI 도구 작성](./docs/guides/writing-cli-tools.md) |
-| README, TSDoc와 유지보수 문서 | [문서 작성 원칙](./docs/guides/documentation-principles.md)과 [Markdown 작성](./docs/guides/writing-markdown.md) |
-| 릴리스와 배포 실패 대응 | [릴리스 운영 절차](./docs/operations/release.md) |
+## 완료와 커밋
 
-## 커밋
-
-커밋 메시지는 Conventional Commits 형식을 사용합니다. 구현, 생성 문서, changeset은 서로 독립적으로 검토할 가치가 있으면 별도 커밋으로 나눕니다.
+최종 diff와 검증 결과를 확인하고 실행하지 못한 검사를 기록합니다. 커밋 메시지는 Conventional Commits 형식을 사용하며, 구현, 생성 문서와 changeset은 서로 독립적으로 검토할 가치가 있으면 별도 커밋으로 나눕니다.
 
 Git hook과 CI에서 실행되는 검사의 정확한 범위는 [테스트와 검증](./docs/guides/testing-and-validation.md)을 기준으로 합니다.

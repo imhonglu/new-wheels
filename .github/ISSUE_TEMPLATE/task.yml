@@ -1,0 +1,56 @@
+name: 작업
+description: 변경의 배경, 범위와 완료 조건을 기록합니다.
+body:
+  - type: markdown
+    attributes:
+      value: |
+        이슈는 작업 범위와 완료 판단의 기준입니다.
+        만들기 전에 같은 결과를 다루는 이슈가 있는지 검색해 주세요.
+        제목은 달성할 결과가 드러나는 간결한 명사형으로 작성합니다.
+        로그와 참고 자료에는 시크릿, 자격 증명이나 개인정보를 포함하지 않습니다.
+
+        자세한 절차는 [GitHub 작업 추적 가이드](https://github.com/imhonglu/new-wheels/blob/main/docs/guides/tracking-work-with-github.md)를 따릅니다.
+
+  - type: textarea
+    id: context
+    attributes:
+      label: 배경과 목표
+      description: 현재 상태와 변경이 필요한 이유, 달성할 결과를 설명해 주세요.
+      placeholder: |
+        현재 상태: 검색 결과가 최신순으로만 제공됩니다.
+        달성할 결과: 사용자가 가격순과 인기순을 선택할 수 있습니다.
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: 범위
+      description: 포함할 변경과 중요한 제외 범위를 적어 주세요.
+      placeholder: |
+        포함:
+        - API 정렬 파라미터
+        - 웹 정렬 선택 UI
+        - 관련 테스트와 문서
+
+        제외:
+        - 검색 인덱스 구조 변경
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: 완료 조건
+      description: 작업 완료 여부를 판단할 수 있는 동작과 상태를 작성해 주세요.
+      placeholder: |
+        - [ ] 사용자가 가격순과 인기순을 선택할 수 있습니다.
+        - [ ] 기존 최신순 동작이 유지됩니다.
+    validations:
+      required: true
+
+  - type: textarea
+    id: references
+    attributes:
+      label: 참고
+      description: 관련 문서·이슈, 재현 근거, 의존 작업이나 구현 전에 결정할 내용을 기록합니다.

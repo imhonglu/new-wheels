@@ -86,15 +86,12 @@ git diff --check
 
 | 검사 | 확인하는 내용 |
 | --- | --- |
-| `check:docs` | 대상 내부 링크 파일의 존재와 대소문자, `docs` 인덱스 등록, 현재 문서 파일명·H1·메타데이터, ADR·Plan 형식 |
+| `check:docs` | 검사 대상의 내부 링크, `docs` 인덱스와 문서 유형별 구조 규칙 |
 | CSpell | 저장소 맞춤법 사전과 철자 |
 | `git diff --check` | 현재 diff의 whitespace 오류. `check:docs`와 CI에는 포함되지 않는 로컬 확인 |
-| 수동 검토 | Markdown 앵커, 외부 URL, 내용의 정확성, 근거 경로의 타당성, 영문·한글 의미 일치, 일반 Markdown 스타일 |
-| 검사 없음 | Biome 기반 Markdown 형식 검사 |
+| 수동 검토 | Markdown 앵커, 외부 URL, 내용과 근거의 정확성, 영문·한글 의미 일치, 일반 Markdown 스타일 |
 
-루트 `check:docs`의 입력 기준은 `package.json#scripts`입니다. 현재 `AGENTS.md`, `CONTRIBUTING.md`, 루트 README, `docs`, `libs`와 `tools`를 입력으로 사용합니다. 디렉터리 순회는 CLI README에 명시한 경로를 건너뛰므로 예를 들어 `.changeset`, 임의의 다른 루트 Markdown, `src`, `dist`와 생성 `libs/*/docs`는 검사 범위에 포함되지 않습니다. 범위 밖 파일은 별도로 확인합니다.
-
-`check:docs`는 Markdown 앵커와 외부 URL의 가용성을 검사하지 않습니다. 현재 링크 검사는 fenced·inline code 안의 inline Markdown 링크 문법도 대상으로 해석하지만 reference-style과 HTML 링크는 인식하지 않습니다. 구조 검사는 fenced code를 인덱스 등록으로 인정하지 않습니다. 개별 CLI의 정확한 사용법과 제외 경로는 [`@imhonglu/cli-tools`](../../tools/cli-tools/README.md)를 따릅니다.
+`check:docs`의 실제 입력은 `package.json#scripts`, 개별 검사의 동작과 제외 경로는 [`@imhonglu/cli-tools`](../../tools/cli-tools/README.md)가 소유합니다. 검사 범위 밖의 Markdown은 별도로 확인합니다. 이 저장소는 Markdown을 Biome으로 포맷하거나 검사하지 않으며, `check:docs`도 앵커의 존재, 외부 URL의 가용성이나 내용의 정확성을 보장하지 않습니다.
 
 ## 완료 확인
 

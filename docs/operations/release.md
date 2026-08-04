@@ -13,14 +13,11 @@
 4. 미소비 changeset이 있으면 Changesets action이 버전 PR을 생성하거나 갱신합니다.
 5. 버전 PR이 병합되면 패키지를 빌드하고 npm에 배포합니다.
 
-Release workflow는 패키지를 다시 빌드하지만 lint와 test를 반복하지 않으므로 병합 전 CI가 검증 경계입니다.
+Release workflow는 패키지를 다시 빌드하지만 lint와 test를 반복하지 않으므로 병합 전 CI가 검증 경계입니다. 트리거, 권한과 실행 명령의 기준은 이 문서가 아니라 실제 workflow입니다.
 
-## 워크플로우 책임
+## 자동화 경계
 
-- `pnpm install --frozen-lockfile`
-- 전체 패키지 빌드
-- `pnpm run version`을 통한 버전 및 lockfile 갱신
-- `pnpm changeset publish`를 통한 배포
+Release workflow는 고정 lockfile로 의존성을 설치하고 전체 패키지를 빌드한 뒤 Changesets action에 버전 PR 생성과 npm 배포를 맡깁니다. 이 문서는 workflow 명령을 복제하지 않고 사람이 판단해야 하는 확인 사항과 실패 대응만 소유합니다.
 
 ## 수동 확인
 

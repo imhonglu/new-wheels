@@ -3,6 +3,8 @@
 - Last verified: 2026-08-04
 - Verified against: `libs/*/package.json`, `libs/*/src/index.ts`, `tools/*/package.json`, `.changeset/config.json`
 
+이 문서는 공개 패키지에서 소비자 계약으로 취급하는 범위와 호환성에 따른 버전 수준을 정의합니다. 구체적인 변경 절차는 [공개 API 변경 가이드](../guides/changing-a-public-api.md)가 소유합니다.
+
 ## 공개 API의 범위
 
 다음 항목은 소비자와의 계약으로 취급합니다.
