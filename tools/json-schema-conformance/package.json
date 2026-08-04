@@ -1,6 +1,6 @@
 {
   "name": "@imhonglu/json-schema-conformance",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Private JSON Schema conformance test generator and runner.",
   "private": true,
   "type": "module",

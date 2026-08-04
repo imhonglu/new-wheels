@@ -1,5 +1,14 @@
 # @imhonglu/build-tools
 
+## 1.0.11
+
+### Patch Changes
+
+- 336285a: Add Korean README entry points and keep package documentation aligned across both supported languages.
+- 20d2e79: Run `esm-to-cjs` directly from its compiled `dist` entrypoint.
+- Updated dependencies [5f7f9a6]
+  - @imhonglu/toolkit@2.0.2
+
 ## 1.0.10
 
 ### Patch Changes

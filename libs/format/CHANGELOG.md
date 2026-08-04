@@ -1,5 +1,12 @@
 # @imhonglu/format
 
+## 1.0.14
+
+### Patch Changes
+
+- Updated dependencies [5f7f9a6]
+  - @imhonglu/toolkit@2.0.2
+
 ## 1.0.13
 
 ### Patch Changes

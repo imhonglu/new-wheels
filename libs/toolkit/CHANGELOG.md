@@ -1,5 +1,11 @@
 # @imhonglu/toolkit
 
+## 2.0.2
+
+### Patch Changes
+
+- 5f7f9a6: Cache exact return values immediately, including pending or rejected Promises, so concurrent calls with the same key share one execution. Custom resolvers now receive positional arguments as declared, and the built-in store caches `undefined` results correctly.
+
 ## 2.0.1
 
 ### Patch Changes
