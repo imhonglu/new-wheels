@@ -1,17 +1,19 @@
 # 릴리스
 
-- Status: Active
-- Last verified: 2026-07-21
-- Verified against: `.github/workflows/release.yaml`, `package.json`
+- Last verified: 2026-08-04
+- Verified against: `.github/workflows/ci.yaml`, `.github/workflows/release.yaml`, `.changeset/config.json`, `package.json`
 
 릴리스는 `.github/workflows/release.yaml`과 Changesets로 관리합니다.
 
 ## 흐름
 
-1. 기능 PR에 changeset을 포함합니다.
-2. 변경이 `main`에 병합되면 Release workflow가 실행됩니다.
-3. 미소비 changeset이 있으면 Changesets action이 버전 PR을 생성하거나 갱신합니다.
-4. 버전 PR이 병합되면 패키지를 빌드하고 npm에 배포합니다.
+1. 공개 패키지 변경은 [Changesets 관리](../guides/managing-changesets.md)에 따라 changeset을 포함합니다.
+2. PR의 [전체 검증](../guides/testing-and-validation.md)이 통과한 뒤 변경을 `main`에 병합합니다.
+3. `main` push로 Release workflow가 실행됩니다.
+4. 미소비 changeset이 있으면 Changesets action이 버전 PR을 생성하거나 갱신합니다.
+5. 버전 PR이 병합되면 패키지를 빌드하고 npm에 배포합니다.
+
+Release workflow는 패키지를 다시 빌드하지만 lint와 test를 반복하지 않으므로 병합 전 CI가 검증 경계입니다.
 
 ## 워크플로우 책임
 
@@ -22,10 +24,10 @@
 
 ## 수동 확인
 
-- changeset의 버전 수준이 공개 API 영향과 맞는가?
+- changeset의 버전 수준이 [공개 API 정책](../architecture/public-api-policy.md)과 맞는가?
 - 내부 의존 패키지의 연쇄 버전 변경이 예상과 맞는가?
 - changelog가 소비자 관점에서 이해 가능한가?
-- 패키지 README와 생성 API 문서가 최신인가?
+- 패키지 `README.md`·`README_KR.md`와 [생성 API 문서](../guides/generating-api-docs.md)가 최신인가?
 
 ## 실패 시 확인
 

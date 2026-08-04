@@ -4,8 +4,8 @@
 
 ## Introduction
 
-- A library that complies with JSON Schema 2020-12-draft specification
-- Validated based on [JSON-Schema-test-suite](https://github.com/json-schema-org/JSON-Schema-Test-Suite)
+- A library targeting the JSON Schema Draft 2020-12 specification
+- Validated with the pinned [JSON Schema Test Suite](https://github.com/json-schema-org/JSON-Schema-Test-Suite) fixture set; see the repository's [conformance tooling](../../tools/json-schema-conformance/README.md) for the revision and commands
 - Supports **static type inference** based on schema definitions
 
 ![demo-1](./assets/demo.gif)
@@ -34,24 +34,7 @@
 
 ## Implementation Status
 
-Currently, 1,487 out of 1,563 test cases have passed (95.1%)
-
-Excluded items:
-
-- `defs`: Schema definition related tests, excluded as they are not related to validation
-- `format`: Excluded as it belongs to the optional category
-
-Unsupported items:
-
-- `anchor`
-- `refRemote`
-- `vocabulary`
-- `dynamicRef`
-- `optional/anchor`
-- `optional/dynamicRef`
-- `optional/dependencies-compatibility`
-- `optional/format/relative-json-pointer`
-- `optional/format/json-pointer`
+The implementation is not yet fully conformant and the pinned suite includes known expected failures. The repository's [conformance tooling](../../tools/json-schema-conformance/README.md) is the source of truth for the revision, exclusions, exact baseline, and execution procedure.
 
 ## Installation
 

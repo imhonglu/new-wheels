@@ -4,14 +4,7 @@
 
 ## 문서
 
-- [저장소 구조](./repository-structure.md): workspace 영역과 패키지의 기본 구성
-- [런타임 패키지 의존 관계](./runtime-dependencies.md): 런타임 의존 방향과 변경 영향
+- [저장소 구조](./repository-structure.md): workspace 영역, 패키지 구성과 런타임 의존 방향
 - [공개 API 정책](./public-api-policy.md): 공개 계약의 범위와 호환성 판단
 
-## 문서 추가 기준
-
-- 두 개 이상의 패키지에 적용되는 구조적 규칙
-- 허용하거나 금지해야 하는 패키지 의존 방향
-- 공개 API, 데이터 흐름, 성능 등 지속적으로 지켜야 하는 특성
-
-선택의 배경과 대안이 중요하면 [ADR](../decisions/README.md)을 함께 작성합니다. 구체적인 실행 절차는 [개발 가이드](../guides/README.md)에 둡니다.
+선택의 배경은 [ADR](../decisions/README.md), 구체적인 실행 절차는 [개발 가이드](../guides/README.md)에서 찾습니다.

@@ -1,5 +1,7 @@
 # @imhonglu/configs
 
+[English](./README.md) | [한국어](./README_KR.md)
+
 Shared TypeScript and API Extractor configuration for `@imhonglu/new-wheels` packages.
 
 ## Installation
@@ -35,5 +37,5 @@ This package has no build output or standalone tests. Changes must be validated 
 
 ```sh
 pnpm run build
-pnpm --filter @imhonglu/configs exec npm pack --dry-run --ignore-scripts
+pnpm --filter @imhonglu/configs pack --dry-run
 ```

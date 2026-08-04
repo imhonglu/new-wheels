@@ -1,10 +1,11 @@
 # API 문서 생성 가이드
 
-- Status: Active
-- Last verified: 2026-07-21
-- Verified against: `libs/*/package.json`, `libs/*/api-extractor.json`, `tools/configs/api-extractor-base.json`
+- Last verified: 2026-08-04
+- Verified against: `libs/*/package.json`, `libs/*/api-extractor.json`, `tools/*/package.json`, `tools/configs/api-extractor-base.json`
 
-라이브러리 패키지는 API Extractor와 API Documenter로 Markdown API 문서를 생성합니다.
+라이브러리 패키지는 API Extractor와 API Documenter로 Markdown API 문서를 생성합니다. 소스 TSDoc 작성 기준은 [TypeScript 문서화](./documenting-typescript.md)를 따릅니다.
+
+현재 생성 대상은 `generate-docs` 스크립트와 API Extractor 설정을 가진 `libs/*`입니다. 공개 `tools/*` 패키지는 TypeScript API가 있어도 이 설정을 추가하기 전에는 자동으로 포함되지 않습니다.
 
 이 방식의 선택 배경은 [ADR 0001: API 문서를 소스에서 생성](../decisions/0001-generate-api-docs-from-source.md)에 기록되어 있습니다.
 
@@ -26,7 +27,7 @@ pnpm --filter <package-name> generate-docs
 ## 수정 원칙
 
 - 생성 파일을 직접 수정하지 않습니다.
-- 설명이 잘못되면 소스 TSDoc을 수정합니다.
+- 설명이 잘못되면 TypeScript 문서화 기준에 따라 소스 TSDoc을 수정합니다.
 - 심볼이 누락되면 `src/index.ts` export와 빌드 결과를 확인합니다.
 - `{@link}` 경고가 발생하면 API Extractor가 해석할 수 있는 공개 심볼인지 확인합니다.
 

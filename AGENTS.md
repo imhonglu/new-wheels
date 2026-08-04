@@ -1,6 +1,6 @@
 # AGENTS.md
 
-이 파일은 [AGENTS.md 오픈 포맷](https://agents.md/)을 따르는 저장소 작업 지침입니다.
+이 파일은 [AGENTS.md 오픈 포맷](https://agents.md/)을 따르는 코딩 에이전트 실행 계약입니다. 사람을 위한 흐름은 [기여 가이드](./CONTRIBUTING.md), 세부 절차는 연결된 저장소 가이드를 따릅니다.
 
 ## 환경 준비
 
@@ -19,60 +19,43 @@ pnpm install --frozen-lockfile
 - 변경 유형에 맞는 검증을 실행하고 결과를 확인합니다.
 - 실행하지 못한 검증과 남은 위험을 명확히 알립니다.
 
-자세한 기준은 [개발 작업 원칙](./docs/guides/development-workflow.md)을 따릅니다.
+자세한 기준은 [개발 작업 원칙](./docs/guides/development-principles.md)을 따릅니다.
 
-## 저장소 지도
+## 사실 확인 순서
+
+버전, 스크립트와 패키지 경계처럼 변할 수 있는 실행 사실은 현재 작업 트리에서 확인합니다.
+
+1. 대상 패키지의 `package.json`, 소스, 가까운 테스트와 README
+2. 루트 `package.json`, `pnpm-workspace.yaml`, 공용 설정과 워크플로우
+3. 이 파일과 [저장소 문서](./docs/README.md)
+
+manifest, 설정과 워크플로우는 현재 실행 사실의 기준입니다. 반면 소스 TSDoc, Architecture와 ADR은 의도한 공개 계약·정책·선택 이유를 기록합니다. 이 계약과 구현이 다르면 어느 한쪽을 자동으로 덮어쓰지 말고 구현 결함인지 의도한 계약 변경인지 먼저 판별한 뒤 해당 변경 절차를 따릅니다.
+
+## 저장소와 작업별 가이드
 
 - `libs/*`: npm에 공개되는 라이브러리 패키지
 - `tools/*`: 빌드·CLI 도구와 공유 설정 패키지
-- [아키텍처](./docs/architecture/README.md): 현재 저장소 구조, 패키지 경계, 공개 API 정책
-- [기술 결정 기록](./docs/decisions/README.md): 중요한 선택의 배경과 트레이드오프
-- [개발 가이드](./docs/guides/README.md): 반복 작업의 실행 절차
-- [운영 절차](./docs/operations/README.md): 릴리스처럼 외부 상태를 변경하는 절차
-- [엔지니어링 하네스](./docs/engineering-harness.md): 저장소 규칙과 검증 장치의 연결 상태
-- [실행 계획](./docs/plans/README.md): 여러 변경에 걸친 작업 계획과 진행 기록
 
-## 문서 기록 판단
+| 변경 | 기준 문서 |
+| --- | --- |
+| 일반 소스와 테스트 | [테스트와 검증](./docs/guides/testing-and-validation.md) |
+| 외부·workspace 의존성 추가·갱신·제거 | [의존성 관리](./docs/guides/managing-dependencies.md) |
+| 라이브러리 공개 API, 공개 CLI·설정·패키징 | [공개 API 변경](./docs/guides/changing-a-public-api.md) |
+| CLI 구현과 진입점 | [CLI 도구 작성](./docs/guides/writing-cli-tools.md) |
+| 공유 설정 | [`@imhonglu/configs`](./tools/configs/README.md)와 [공개 API 변경](./docs/guides/changing-a-public-api.md) |
+| 수동 문서 | [문서 작성 원칙](./docs/guides/documentation-principles.md)과 [Markdown 작성](./docs/guides/writing-markdown.md) |
+| 생성 API 문서 | [API 문서 생성](./docs/guides/generating-api-docs.md) |
+| JSON Schema 적합성 기준 | [적합성 도구](./tools/json-schema-conformance/README.md) |
+| 릴리스 | [릴리스 운영 절차](./docs/operations/release.md) |
 
-- 여러 세션이나 PR에 걸친 작업은 시작 전에 [실행 계획](./docs/plans/README.md)을 만들거나 기존 계획을 갱신합니다.
-- 장기적으로 유지할 구조적 선택이나 대안과 트레이드오프가 있는 결정은 [ADR](./docs/decisions/README.md)로 기록합니다.
-- 단순 구현 상세, 쉽게 되돌릴 수 있는 선택, 일회성 수정은 별도 Plan이나 ADR로 만들지 않습니다.
-- 작업을 종료할 때 Plan의 상태와 최종 검증 결과를 갱신합니다.
-- 문서를 추가하거나 이동하면 가장 가까운 `README.md` 인덱스를 함께 갱신합니다.
-
-## 변경별 필수 절차
-
-| 변경 | 먼저 읽을 문서 | 필수 검증 |
-| --- | --- | --- |
-| 일반 소스 | [테스트와 검증](./docs/guides/testing-and-validation.md) | 대상 패키지 build, test |
-| 공개 도구 API·CLI·패키징 | 대상 `tools/*/README.md` | 대상 패키지 build, test, package dry-run, 공개 패키지 changeset |
-| 공유 설정 | [`@imhonglu/configs`](./tools/configs/README.md) | 전체 build, package dry-run, changeset |
-| 라이브러리 공개 API | [공개 API 변경](./docs/guides/changing-a-public-api.md) | build, test, API 문서, changeset |
-| 수동 문서 | [문서 작성](./docs/guides/writing-documentation.md) | `pnpm run check:docs`, `git diff --check` |
-| 생성 API 문서 | [API 문서 생성](./docs/guides/generating-api-docs.md) | 대상 패키지 build, generate-docs |
-| 릴리스 | [릴리스](./docs/operations/release.md) | changeset과 워크플로우 상태 확인 |
-
-대상 패키지의 기본 검증 명령은 다음과 같습니다.
-
-```sh
-pnpm --filter <package-name> build
-pnpm --filter <package-name> test -- --run
-```
-
-`build` 또는 `test` 스크립트가 없는 설정 패키지는 해당 패키지 README에 정의된 소비자 검증을 실행합니다.
-
-CLI 또는 패키징 변경은 배포 파일 목록도 확인합니다.
-
-```sh
-pnpm --filter <package-name> exec npm pack --dry-run --ignore-scripts
-```
+여러 변경에 걸친 작업은 [실행 계획](./docs/plans/README.md), 장기적으로 유지할 선택의 배경은 [ADR](./docs/decisions/README.md)에 기록합니다. 단순 구현 상세나 일회성 수정에는 별도 기록을 만들지 않습니다.
 
 ## 반드시 지킬 제약
 
 - 공개 API 설명의 기준은 소스 TSDoc입니다.
 - `libs/*/docs`는 API Documenter가 생성하므로 직접 수정하지 않습니다.
-- 사용자 설치 방법과 대표 예제는 각 패키지 README에 둡니다.
-- 라이브러리 공개 API 변경에는 테스트, TSDoc, 생성 문서 검토, changeset을 포함합니다.
+- `tools/json-schema-conformance/generated`는 적합성 생성기가 관리하므로 직접 수정하지 않습니다.
+- `libs/*`와 `tools/*`의 각 workspace 패키지는 `README.md`와 `README_KR.md`를 함께 유지하고, 패키지 사실이 바뀌면 [Markdown 작성](./docs/guides/writing-markdown.md)에 따라 두 문서를 같은 변경에서 검토합니다.
+- 공개 패키지의 설치 방법과 대표 예제는 해당 `README.md`와 `README_KR.md`에 둡니다. private 도구는 역할, 명령과 검증 방법을 설명합니다.
+- 공개 패키지의 소비자 계약 변경에는 관련 테스트·문서, 패키징 검토와 changeset을 포함합니다. 라이브러리 TypeScript API를 바꾸면 TSDoc과 생성 문서도 갱신합니다.
 - 설계 선택의 배경은 기존 현재 상태 문서에 섞지 않고 ADR로 기록합니다.
-
-사람을 위한 기본 기여 절차는 [기여 가이드](./CONTRIBUTING.md), 전체 문서 분류 기준은 [저장소 문서](./docs/README.md)를 참고합니다.

@@ -1,8 +1,6 @@
 # 공개 API 문서 설명 보완
 
-- Status: Active
 - Started: 2026-07-21
-- Closed: N/A
 - Scope: `libs/format`, `libs/json-schema`, `libs/json-schema-typed`, `libs/type-guard`, `libs/toolkit`
 
 ## 성공 기준
@@ -18,7 +16,7 @@
 - [ ] `json-schema`의 빈 설명 39개를 소스 TSDoc에서 보완하고 검증합니다.
 - [ ] `json-schema-typed`의 빈 설명 27개를 소스 TSDoc에서 보완하고 검증합니다.
 - [ ] `type-guard`의 빈 설명 6개를 소스 TSDoc에서 보완하고 검증합니다.
-- [ ] `toolkit`의 빈 설명 1개를 소스 TSDoc에서 보완하고 검증합니다.
+- [x] `toolkit`의 빈 설명 1개를 소스 TSDoc에서 보완하고 검증합니다.
 
 ## 결정 기록
 
@@ -28,9 +26,4 @@
 ## 진행 기록
 
 - 2026-07-21: 생성된 패키지 API 인덱스를 감사해 빈 설명 108개를 확인했습니다.
-
-## 종료 결과
-
-- 최종 결과: 진행 중
-- 검증 결과: N/A
-- 남은 작업: 위 단계 전체
+- 2026-08-03: `MemoizeOptions`와 속성의 계약을 소스 TSDoc에 보완하고 `toolkit` build, test, `generate-docs`를 검증했습니다.

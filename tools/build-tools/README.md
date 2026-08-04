@@ -1,5 +1,7 @@
 # @imhonglu/build-tools
 
+[English](./README.md) | [한국어](./README_KR.md)
+
 Build utilities shared by packages in `@imhonglu/new-wheels`.
 
 ## Installation
@@ -19,8 +21,4 @@ pnpm run build
 pnpm exec esm-to-cjs
 ```
 
-When developing this workspace package itself, build it before invoking its installed launcher.
-
-```sh
-pnpm --filter @imhonglu/build-tools build
-```
+Workspace development follows the repository's [CLI tool guide](../../docs/guides/writing-cli-tools.md).

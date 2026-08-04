@@ -4,8 +4,8 @@
 
 ## Introduction
 
-- JSON Schema 2020-12-draft 사양을 준수하는 라이브러리입니다.
-- [JSON-Schema-test-suite](https://github.com/json-schema-org/JSON-Schema-Test-Suite)를 기반으로 검증되었습니다.
+- JSON Schema Draft 2020-12 사양 구현을 목표로 하는 라이브러리입니다.
+- 고정된 [JSON Schema Test Suite](https://github.com/json-schema-org/JSON-Schema-Test-Suite) fixture로 검증합니다. revision과 실행 명령은 저장소의 [적합성 도구](../../tools/json-schema-conformance/README.md)를 참고합니다.
 - 스키마 정의에 기반한 **정적 타입 추론**을 지원합니다.
 
 ![demo-1](./assets/demo.gif)
@@ -34,24 +34,7 @@
 
 ## Implementation Status
 
-현재 총 1,563개의 테스트 케이스 중 1,487개가 통과되었습니다 (95.1%)
-
-제외 항목:
-
-- `defs`: 스키마 정의 관련 테스트로, 유효성 검사와 무관하여 제외하였습니다.
-- `format`: optional 카테고리에 속하는 기능으로 제외하였습니다.
-
-미지원 항목:
-
-- `anchor`
-- `refRemote`
-- `vocabulary`
-- `dynamicRef`
-- `optional/anchor`
-- `optional/dynamicRef`
-- `optional/dependencies-compatibility`
-- `optional/format/relative-json-pointer`
-- `optional/format/json-pointer`
+아직 사양 전체를 준수하지 않으며 고정된 suite에는 알려진 expected failure가 있습니다. revision, 제외 목록, 정확한 기준선과 실행 절차는 저장소의 [적합성 도구](../../tools/json-schema-conformance/README.md)를 단일 기준으로 관리합니다.
 
 ## Installation
 
@@ -276,4 +259,3 @@ const person = new Person({
 - [JsonSchema](./docs/json-schema.jsonschema.md) - Object Schema, Boolean Schema 타입을 포함한 JSON Schema 타입
 - [ObjectSchema](./docs/json-schema.objectschema.md) - Object Schema
 - [BooleanSchema](./docs/json-schema.booleanschema.md) - Boolean Schema
-
