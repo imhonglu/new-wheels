@@ -9,15 +9,15 @@
 
 1. 공개 패키지 변경은 [Changesets 관리](../guides/managing-changesets.md)에 따라 changeset을 포함합니다.
 2. PR의 [전체 검증](../guides/testing-and-validation.md)이 통과한 뒤 변경을 `main`에 병합합니다.
-3. `main` push로 Release workflow가 실행됩니다.
-4. 미소비 changeset이 있으면 Changesets action이 버전 PR을 생성하거나 갱신합니다.
-5. 버전 PR이 병합되면 패키지를 빌드하고 npm에 배포합니다.
+3. changeset Markdown을 포함한 변경이 `main`에 들어오면 Release workflow가 실행됩니다.
+4. 미소비 changeset이 있으면 Changesets action이 빌드 없이 버전 PR을 생성하거나 갱신합니다.
+5. 버전 PR 병합으로 changeset Markdown이 제거되면 Release workflow가 다시 실행되고, `pnpm run release`가 패키지를 빌드한 뒤 npm에 배포합니다.
 
 Release workflow는 패키지를 다시 빌드하지만 lint와 test를 반복하지 않으므로 병합 전 CI가 검증 경계입니다. 트리거, 권한과 실행 명령의 기준은 이 문서가 아니라 실제 workflow입니다.
 
 ## 자동화 경계
 
-Release workflow는 고정 lockfile로 의존성을 설치하고 전체 패키지를 빌드한 뒤 Changesets action에 버전 PR 생성과 npm 배포를 맡깁니다. 이 문서는 workflow 명령을 복제하지 않고 사람이 판단해야 하는 확인 사항과 실패 대응만 소유합니다.
+Release workflow는 `.changeset/*.md`가 추가·변경·삭제된 `main` push와 명시적인 수동 실행만 받습니다. 고정 lockfile로 의존성을 설치한 뒤 Changesets action에 버전 PR 생성 또는 npm 배포를 맡기며, 전체 build는 실제 publish 명령 안에서만 실행합니다. 이 문서는 workflow 명령을 복제하지 않고 사람이 판단해야 하는 확인 사항과 실패 대응만 소유합니다.
 
 ## 수동 확인
 

@@ -20,6 +20,7 @@
 
 - [문서 작성 원칙](./documentation-principles.md): 독자, 근거, 단일 소유와 문서 생명주기
 - [CLI 도구 작성](./writing-cli-tools.md): TypeScript CLI의 빌드·실행 경계와 테스트
+- [GitHub Actions 작성](./writing-github-actions.md): 최소 구성, 트리거, 실행 속도와 구현 경계
 - [TypeScript 문서화](./documenting-typescript.md): 공개 TSDoc과 내부 주석의 기준
 - [Markdown 작성](./writing-markdown.md): workspace README 언어 쌍, 메타데이터, 링크와 검증
 - [테스트와 검증](./testing-and-validation.md): 로컬 검사, Git hook, CI 피드백

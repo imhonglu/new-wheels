@@ -42,7 +42,7 @@ pnpm --filter @imhonglu/json-schema-conformance test:conformance
 | 커밋 전 | 스테이지된 파일의 CSpell과 Biome, Markdown이 있으면 `check:docs` |
 | 커밋 메시지 | Commitlint의 Conventional Commits 형식 |
 | 푸시 전 | push 범위의 코드 파일과 관련된 Vitest 테스트 |
-| Pull Request | 전체 build, CSpell, Biome, 문서, 기본 Vitest와 JSON Schema 적합성 기준선 |
+| 검토 준비가 된 Pull Request | 전체 build·정적 검사, 영향 패키지와 dependent의 Vitest, 영향받은 JSON Schema 적합성 기준선 |
 
 문서와 changeset만 변경된 push는 관련 테스트를 생략합니다. Git hook은 빠른 피드백 장치이므로 작업 중에는 대상 패키지 검증을 명시적으로 실행합니다.
 
@@ -55,11 +55,12 @@ pnpm --filter @imhonglu/json-schema-conformance test:conformance
 | 내부 Markdown 링크와 문서 구조 | [Markdown 작성](./writing-markdown.md) | `check:docs` pre-commit | `check:docs` | Enforced |
 | ADR과 Plan 형식 | [기술 결정 기록](../decisions/README.md), [실행 계획](../plans/README.md) | `check:docs` pre-commit | `check:docs` | Enforced |
 | 타입 안전성 | 이 가이드 | 대상 패키지 build | 전체 build | Enforced |
-| 동작 회귀 | 이 가이드 | 대상·관련 Vitest | 전체 기본 Vitest | Enforced |
-| JSON Schema 외부 적합성 | [적합성 도구](../../tools/json-schema-conformance/README.md) | 명시적 적합성 명령 | 전체 적합성 기준선 | Enforced |
+| 동작 회귀 | 이 가이드 | 대상·관련 Vitest | 영향 패키지와 dependent의 Vitest | Enforced |
+| JSON Schema 외부 적합성 | [적합성 도구](../../tools/json-schema-conformance/README.md) | 명시적 적합성 명령 | 영향받은 적합성 기준선 | Enforced |
 | 공개 API 문서 최신성 | [API 문서 생성](./generating-api-docs.md) | 생성과 diff 검토 | 없음 | Manual |
 | changeset 존재와 수준 | [Changesets 관리](./managing-changesets.md) | `changeset status` | 없음 | Manual |
 | GitHub Issue Form과 PR 템플릿 | [GitHub 작업 추적](./tracking-work-with-github.md) | YAML·링크 수동 검토 | 없음 | Manual |
+| GitHub Actions 구조와 실행 제어 | [GitHub Actions 작성](./writing-github-actions.md) | Actionlint와 수동 검토 | 실제 워크플로 실행 | Manual |
 | workspace README 쌍과 영문·한글 의미 일치 | [Markdown 작성](./writing-markdown.md) | 수동 비교 | 없음 | Manual |
 | workspace 의존 방향 | [저장소 구조](../architecture/repository-structure.md) | 없음 | 없음 | Documented |
 
@@ -69,7 +70,9 @@ pnpm --filter @imhonglu/json-schema-conformance test:conformance
 
 ## JSON Schema 적합성 검증
 
-기본 Vitest에서 이 패키지는 `src` 아래 도구 테스트만 실행하고 `generated`의 적합성 테스트는 제외합니다. 생성 fixture나 기준선을 변경할 때는 private [`@imhonglu/json-schema-conformance`](../../tools/json-schema-conformance/README.md) 패키지가 정의한 입력 소유권과 갱신·검사 절차를 따릅니다. CI는 전체 적합성 기준선을 별도 단계로 실행합니다.
+기본 Vitest에서 이 패키지는 `src` 아래 도구 테스트만 실행하고 `generated`의 적합성 테스트는 제외합니다. 생성 fixture나 기준선을 변경할 때는 private [`@imhonglu/json-schema-conformance`](../../tools/json-schema-conformance/README.md) 패키지가 정의한 입력 소유권과 갱신·검사 절차를 따릅니다.
+
+CI는 pnpm workspace 그래프에서 적합성 패키지 자체나 그 dependency의 구현이 변경 대상에 포함될 때만 전체 적합성 기준선을 실행합니다. dependency의 테스트 파일이나 적합성 도구의 일반 단위 테스트만 바뀌면 기준선까지 확장하지 않습니다. 루트 manifest, lockfile, workspace 선언, 루트 Vitest 설정이나 CI workflow가 바뀌면 패키지 영향 범위를 안전하게 한정하거나 실행 방식만 별도로 검증할 수 없으므로 전체 기본 테스트와 적합성 기준선을 실행합니다. Markdown만 바뀐 패키지는 테스트 대상에서 제외합니다.
 
 ## 실패 처리
 
