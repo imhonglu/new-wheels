@@ -151,7 +151,7 @@ Converts a string to kebab case.
 
 </td><td>
 
-Memoizes the provided function, caching its results based on the arguments.
+Memoizes the provided function, caching its results based on the arguments. The exact return value is cached before it is returned, so calls with the same key share a pending or rejected `Promise`<!-- -->. Synchronously thrown errors are not cached.
 
 
 </td></tr>
@@ -255,6 +255,8 @@ Represents a failed execution result with an error payload.
 
 
 </td><td>
+
+Configures how [memoize()](./toolkit.memoize.md) creates keys and stores return values.
 
 
 </td></tr>

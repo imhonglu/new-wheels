@@ -4,6 +4,8 @@
 
 ## MemoizeOptions interface
 
+Configures how [memoize()](./toolkit.memoize.md) creates keys and stores return values.
+
 **Signature:**
 
 ```typescript
@@ -48,7 +50,7 @@ Description
 
 </td><td>
 
-_(Optional)_
+_(Optional)_ Creates a cache key from the function's positional arguments. Defaults to `JSON.stringify(args)`<!-- -->.
 
 
 </td></tr>
@@ -67,7 +69,9 @@ _(Optional)_
 
 </td><td>
 
-_(Optional)_
+_(Optional)_ Stores return values by cache key.
+
+Returning `undefined` from a custom store signals a cache miss. The built-in store can distinguish and cache an actual `undefined` return value.
 
 
 </td></tr>

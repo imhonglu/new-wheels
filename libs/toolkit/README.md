@@ -58,7 +58,7 @@ Fn.Callable<{ args: [number, number], return: string }> // (...args: [number, nu
 - [omit](./docs/toolkit.omit.md) - Creates a new object excluding specified properties from an object
 
 ### Function Utilities
-- [memoize](./docs/toolkit.memoize.md) - Caches function results to prevent recalculation for identical inputs
+- [memoize](./docs/toolkit.memoize.md) - Caches return values by key and shares in-flight Promises
 - [get-callsites](./docs/toolkit.getcallsites.md) - Retrieves call stack information of currently executing code
 - [create-safe-executor](./docs/toolkit.createsafeexecutor.md) - Creates a safe function executor with exception handling
 - [is-async-function](./docs/toolkit.isasyncfunction.md) - Checks if a given function is asynchronous

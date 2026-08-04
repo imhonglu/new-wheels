@@ -4,7 +4,7 @@
 
 ## memoize() function
 
-Memoizes the provided function, caching its results based on the arguments.
+Memoizes the provided function, caching its results based on the arguments. The exact return value is cached before it is returned, so calls with the same key share a pending or rejected `Promise`<!-- -->. Synchronously thrown errors are not cached.
 
 **Signature:**
 
@@ -69,6 +69,10 @@ _(Optional)_ Optional memoization options.
 T
 
 The memoized function.
+
+## Remarks
+
+The default resolver serializes the argument array with `JSON.stringify`<!-- -->. Supply a resolver when arguments are not JSON-serializable or when JSON serialization does not provide the required key semantics. The default store retains cached values for the lifetime of the memoized function.
 
 ## Example
 

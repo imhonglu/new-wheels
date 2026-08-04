@@ -58,7 +58,7 @@ Fn.Callable<{ args: [number, number], return: string }> // (...args: [number, nu
 - [omit](./docs/toolkit.omit.md) - 객체에서 특정 속성들을 제외한 새로운 객체를 만듭니다
 
 ### 함수 유틸리티
-- [memoize](./docs/toolkit.memoize.md) - 함수의 결과를 캐시하여 동일한 입력에 대한 재계산을 방지합니다
+- [memoize](./docs/toolkit.memoize.md) - 키별 반환값을 캐시하고 진행 중인 Promise를 공유합니다
 - [get-callsites](./docs/toolkit.getcallsites.md) - 현재 실행 중인 코드의 호출 스택 정보를 조회합니다
 - [create-safe-executor](./docs/toolkit.createsafeexecutor.md) - 예외 처리가 포함된 안전한 함수 실행기를 생성합니다
 - [is-async-function](./docs/toolkit.isasyncfunction.md) - 주어진 함수가 비동기 함수인지 확인합니다

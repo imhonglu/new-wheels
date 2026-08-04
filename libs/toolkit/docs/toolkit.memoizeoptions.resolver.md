@@ -4,6 +4,8 @@
 
 ## MemoizeOptions.resolver property
 
+Creates a cache key from the function's positional arguments. Defaults to `JSON.stringify(args)`<!-- -->.
+
 **Signature:**
 
 ```typescript

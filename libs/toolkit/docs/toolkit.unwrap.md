@@ -74,7 +74,7 @@ The input value if it exists, otherwise throws an error
 
 ## Exceptions
 
-[UnwrapError](./toolkit.unwraperror.md) When the input value is null or undefined
+- [UnwrapError](./toolkit.unwraperror.md) When the input value is null or undefined
 
 ## Example 1
 

@@ -4,6 +4,10 @@
 
 ## MemoizeOptions.store property
 
+Stores return values by cache key.
+
+Returning `undefined` from a custom store signals a cache miss. The built-in store can distinguish and cache an actual `undefined` return value.
+
 **Signature:**
 
 ```typescript
