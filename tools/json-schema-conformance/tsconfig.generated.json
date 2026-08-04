@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "composite": false,
+    "incremental": false,
+    "noEmit": true
+  },
+  "include": [
+    "src/run-test-groups.ts",
+    "src/parse-test-groups.ts",
+    "generated/**/*.test.ts"
+  ]
+}

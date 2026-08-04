@@ -43,5 +43,9 @@ jobs:
 
       - name: Run tests
         # TODO: run only related tests
-        run: pnpm vitest --run --exclude "src/generated-tests/**"
+        run: pnpm vitest --run
+        timeout-minutes: 1
+
+      - name: Run JSON Schema conformance baseline
+        run: pnpm --filter @imhonglu/json-schema-conformance test:conformance
         timeout-minutes: 1

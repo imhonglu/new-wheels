@@ -46,5 +46,5 @@ if [ -z "$code_files" ]; then
   exit 0
 fi
 
-# CI와 동일하게 자동 생성 테스트를 제외하고 관련 테스트를 실행합니다.
+# push 범위의 코드 파일과 관련된 테스트를 실행합니다.
 pnpm exec vitest related --run --passWithNoTests --exclude "src/generated-tests/**" $code_files

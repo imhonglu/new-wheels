@@ -1,0 +1,32 @@
+{
+  "name": "@imhonglu/json-schema-conformance",
+  "version": "0.0.0",
+  "description": "Private JSON Schema conformance test generator and runner.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prebuild": "rm -rf ./dist ./tsconfig.build.tsbuildinfo",
+    "build": "tsc -p tsconfig.build.json",
+    "pretest": "pnpm run build",
+    "test": "vitest",
+    "sync-suite": "pnpm run build && node ./dist/bin/sync-suite.cli.js",
+    "generate-tests": "pnpm run build && node ./dist/bin/generate-tests.cli.js && pnpm run check:generated && pnpm run check:baseline",
+    "refresh-tests": "pnpm run sync-suite && pnpm run generate-tests",
+    "precheck:generated": "pnpm --filter @imhonglu/json-schema... build",
+    "check:generated": "tsc -p tsconfig.generated.json",
+    "check:baseline": "pnpm run build && node ./dist/bin/check-failure-baseline.cli.js",
+    "pretest:conformance": "pnpm run check:generated && pnpm run check:baseline",
+    "test:conformance": "vitest run --config vitest.conformance.config.ts"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@imhonglu/json-schema": "workspace:*"
+  },
+  "devDependencies": {
+    "@imhonglu/configs": "workspace:*",
+    "@types/node": "catalog:"
+  }
+}

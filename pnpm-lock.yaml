@@ -164,6 +164,19 @@ importers:
 
   tools/configs: {}
 
+  tools/json-schema-conformance:
+    dependencies:
+      '@imhonglu/json-schema':
+        specifier: workspace:*
+        version: link:../../libs/json-schema
+    devDependencies:
+      '@imhonglu/configs':
+        specifier: workspace:*
+        version: link:../configs
+      '@types/node':
+        specifier: 'catalog:'
+        version: 26.1.1
+
 packages:
 
   '@babel/code-frame@7.29.7':

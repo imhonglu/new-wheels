@@ -20,15 +20,16 @@
     }
   },
   "bin": {
-    "esm-to-cjs": "./bin/esm-to-cjs.mjs"
+    "esm-to-cjs": "./dist/bin/esm-to-cjs.cli.js"
   },
   "files": [
-    "bin",
     "dist"
   ],
   "scripts": {
+    "prebuild": "rm -rf ./dist ./tsconfig.build.tsbuildinfo",
+    "pretest": "pnpm run build",
     "test": "vitest",
-    "build": "tsc -p tsconfig.build.json",
+    "build": "tsc -p tsconfig.build.json && node ./dist/bin/esm-to-cjs.cli.js",
     "prepublishOnly": "pnpm run build"
   },
   "keywords": [],

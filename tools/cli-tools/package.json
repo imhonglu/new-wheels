@@ -5,10 +5,12 @@
   "private": true,
   "type": "module",
   "bin": {
-    "check-doc-structure": "./bin/check-doc-structure.mjs",
-    "check-markdown-links": "./bin/check-markdown-links.mjs"
+    "check-doc-structure": "./dist/bin/check-doc-structure.cli.js",
+    "check-markdown-links": "./dist/bin/check-markdown-links.cli.js"
   },
   "scripts": {
+    "prebuild": "rm -rf ./dist ./tsconfig.build.tsbuildinfo",
+    "pretest": "pnpm run build",
     "test": "vitest",
     "build": "tsc -p tsconfig.build.json"
   },
@@ -18,7 +20,6 @@
   "license": "MIT",
   "sideEffects": false,
   "files": [
-    "bin",
     "dist"
   ],
   "devDependencies": {

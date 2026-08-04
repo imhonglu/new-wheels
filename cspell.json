@@ -26,13 +26,16 @@
     "dotenv",
     "jscoverage",
     "pids",
-    "commitlint"
+    "commitlint",
+    "Berman",
+    "ffdx"
   ],
   "dictionaries": ["typescript", "node"],
   "ignorePaths": [
     "dist/",
     "libs/*/docs/**",
-    "generated-tests/",
+    "tools/json-schema-conformance/generated/**",
+    "tools/json-schema-conformance/known-failures.json",
 
     "pnpm-*.yaml",
     "tsconfig.base.json"

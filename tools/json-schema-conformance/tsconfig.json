@@ -1,0 +1,7 @@
+{
+  "extends": "@imhonglu/configs/tsconfig.lib.json",
+  "compilerOptions": {
+    "types": ["node"]
+  },
+  "references": [{ "path": "../../libs/json-schema" }]
+}

@@ -8,7 +8,12 @@
     "defaultBranch": "main"
   },
   "files": {
-    "includes": ["**", "!**/node_modules", "!**/dist"],
+    "includes": [
+      "**",
+      "!**/node_modules",
+      "!**/dist",
+      "!tools/json-schema-conformance/generated"
+    ],
     "ignoreUnknown": true
   },
   "formatter": {

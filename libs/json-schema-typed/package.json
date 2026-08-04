@@ -26,8 +26,6 @@
     "test": "vitest",
     "build": "tsc -p tsconfig.build.json",
     "generate-docs": "pnpm api-extractor run && pnpm api-documenter markdown -i ./temp -o ./docs",
-    "generate-tests": "./src/test-suite/cli.ts",
-    "postgenerate-tests": "pnpm -w run lint:biome --write",
     "prepublishOnly": "pnpm run build"
   },
   "keywords": [

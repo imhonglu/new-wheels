@@ -9,3 +9,6 @@ dist/
 
 # API Extractor
 temp/
+
+# Legacy checkout used by the former in-package JSON Schema generator
+libs/json-schema/src/test-suite/JSON-Schema-Test-Suite/

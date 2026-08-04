@@ -1,0 +1,18 @@
+{
+  "repository": "https://github.com/json-schema-org/JSON-Schema-Test-Suite.git",
+  "revision": "82a077498cc761d69e8530c721702be980926c89",
+  "draft": "draft2020-12",
+  "exclude": [
+    "format.json",
+    "defs.json",
+    "anchor.json",
+    "refRemote.json",
+    "vocabulary.json",
+    "dynamicRef.json",
+    "optional/anchor.json",
+    "optional/dynamicRef.json",
+    "optional/dependencies-compatibility.json",
+    "optional/format/relative-json-pointer.json",
+    "optional/format/json-pointer.json"
+  ]
+}
