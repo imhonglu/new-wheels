@@ -55,7 +55,33 @@
 
 하나의 이슈는 독립적으로 승인하고 종료할 수 있는 결과 하나를 소유합니다. 같은 결과에 필요한 구현, 테스트, 설정과 문서는 파일 종류가 달라도 같은 이슈에 둡니다. 별도로 승인하거나 되돌릴 수 있는 결과, 다른 완료 조건이나 후속 일정이 필요한 변경은 새 이슈로 분리합니다.
 
-브랜치 이름에는 이슈 번호와 목적을 알아볼 수 있게 포함하는 것을 권장합니다. 고정 접두사나 형식은 자동화가 필요해질 때 도입합니다.
+## 작업 브랜치
+
+`main`은 일반적인 저장소 변경의 PR base입니다. 작업 트리가 깨끗한지 확인하고 최신 `origin/main`에서 수명이 짧은 브랜치를 만듭니다.
+
+```sh
+git status --short --branch
+git fetch origin main
+git switch -c docs/54-branch-convention origin/main
+```
+
+사람이 만드는 브랜치는 `<type>/<issue-number>-<description>`, 코딩 에이전트가 만드는 브랜치는 `agent/<issue-number>-<description>` 형식을 사용합니다.
+
+- `type`은 변경의 주된 목적과 맞는 Conventional Commits type을 사용합니다. 대표적으로 `feat`, `fix`, `refactor`, `docs`, `test`, `build`, `ci`, `chore`가 있습니다.
+- `issue-number`는 작업을 소유하는 GitHub 이슈 번호입니다. 브랜치 하나가 독립적인 결과 하나를 다루도록 이슈 범위와 일치시킵니다.
+- `description`은 결과를 구분할 수 있는 짧은 영문 kebab-case로 작성합니다. 이슈 제목 전체, 담당자, 날짜와 `wip` 같은 상태를 복사하지 않습니다.
+- `type`과 설명은 탐색을 돕는 표지일 뿐 작업 계약을 대신하지 않습니다. 배경·범위와 완료 조건은 이슈, 실제 변경과 검증은 PR이 소유합니다.
+
+```text
+feat/123-json-pointer-get
+fix/456-enum-type-inference
+docs/54-branch-convention
+agent/54-branch-convention
+```
+
+선행 PR에 의존하는 변경만 예외적으로 해당 작업 브랜치에서 분기합니다. 이때 후속 PR의 base를 선행 브랜치로 지정하고 PR 본문에 의존 관계와 병합 순서를 기록합니다. 선행 PR이 병합되면 base를 `main`으로 바꾸고 불필요한 선행 diff가 남지 않았는지 확인합니다.
+
+병합한 브랜치는 후속 작업에 재사용하지 않습니다. 남은 작업은 기존 이슈의 범위에 맞는 새 브랜치 또는 별도 이슈에서 시작하고, 병합한 로컬·원격 브랜치는 더 이상 참조되지 않는지 확인한 뒤 정리합니다.
 
 ## Plan과 ADR
 
@@ -84,6 +110,7 @@ Issue Form은 [GitHub의 Issue Form 구문](https://docs.github.com/communities/
 
 - 구현 전에 중복을 확인하고 이슈를 만들거나 선택했는가?
 - 이슈가 결과 하나와 검증 가능한 완료 조건을 소유하는가?
+- 작업 브랜치가 이슈 번호와 구분 가능한 설명을 포함하고 올바른 base에서 시작했는가?
 - 구현·문서·테스트가 같은 이슈 범위 안에 있는가?
 - PR이 이슈를 closing keyword 또는 참조로 연결했는가?
 - 범위 밖 후속 작업을 별도 이슈로 분리했는가?
