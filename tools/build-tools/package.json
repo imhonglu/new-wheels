@@ -1,7 +1,7 @@
 {
   "name": "@imhonglu/build-tools",
   "version": "1.0.11",
-  "description": "Build tools for the project.",
+  "description": "TypeScript compiler utilities for code generation.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/imhonglu/new-wheels.git",
@@ -19,17 +19,13 @@
       "default": "./dist/index.js"
     }
   },
-  "bin": {
-    "esm-to-cjs": "./dist/bin/esm-to-cjs.cli.js"
-  },
   "files": [
     "dist"
   ],
   "scripts": {
-    "prebuild": "rm -rf ./dist ./tsconfig.build.tsbuildinfo",
     "pretest": "pnpm run build",
     "test": "vitest",
-    "build": "tsc -p tsconfig.build.json && node ./dist/bin/esm-to-cjs.cli.js",
+    "build": "tsdown",
     "prepublishOnly": "pnpm run build"
   },
   "keywords": [],
@@ -37,13 +33,12 @@
   "license": "MIT",
   "sideEffects": false,
   "peerDependencies": {
-    "esbuild": "catalog:",
-    "tslib": "catalog:",
     "typescript": "^5.9.3"
   },
   "devDependencies": {
+    "@imhonglu/configs": "workspace:*",
     "@types/node": "catalog:",
-    "@imhonglu/configs": "workspace:*"
+    "typescript": "^5.9.3"
   },
   "dependencies": {
     "@imhonglu/toolkit": "workspace:*"

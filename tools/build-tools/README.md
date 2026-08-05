@@ -2,23 +2,28 @@
 
 [English](./README.md) | [한국어](./README_KR.md)
 
-Build utilities shared by packages in `@imhonglu/new-wheels`.
+TypeScript compiler utilities for code-generation tools.
 
 ## Installation
 
 ```sh
-pnpm add -D @imhonglu/build-tools esbuild tslib typescript
+pnpm add -D @imhonglu/build-tools typescript
 ```
 
-## Commands
+`typescript` is a peer dependency. Install a version allowed by this package's
+`peerDependencies`.
 
-### `esm-to-cjs`
+## Example
 
-Run this command from a package whose ESM build output is in `dist`. It converts every `dist/**/*.js` entry to a matching CommonJS `.cjs` file. If `dist` does not exist, it exits without writing files.
+Create and print a TypeScript type node:
 
-```sh
-pnpm run build
-pnpm exec esm-to-cjs
+```ts
+import { createTypeNode, printNode } from "@imhonglu/build-tools";
+
+const node = createTypeNode({ id: Number, name: String });
+
+console.log(printNode(node));
 ```
 
-Workspace development follows the repository's [CLI tool guide](../../docs/guides/writing-cli-tools.md).
+The package also exports helpers for creating declarations, loading a
+`tsconfig.json`, running subprocesses, and printing TypeScript AST nodes.

@@ -1,6 +1,6 @@
 # 의존성 관리 가이드
 
-- Last verified: 2026-08-04
+- Last verified: 2026-08-05
 - Verified against: `package.json`, `pnpm-workspace.yaml`, `pnpm-lock.yaml`, `libs/*/package.json`, `tools/*/package.json`, `.changeset/config.json`
 
 이 가이드는 외부 의존성과 workspace 의존성을 추가·갱신·제거하거나 선언 위치를 바꿀 때 적용합니다. 현재 버전의 기준은 각 `package.json`과 `pnpm-workspace.yaml`, 실제 해석 결과의 기준은 `pnpm-lock.yaml`입니다. 현재 workspace 런타임 의존 방향은 [저장소 구조](../architecture/repository-structure.md), 변경 유형별 검증은 [테스트와 검증](./testing-and-validation.md)을 따릅니다.
@@ -26,6 +26,7 @@
 
 - 같은 외부 의존성을 여러 곳에서 **같은 버전 정책으로 유지할 의도**가 있을 때만 `pnpm-workspace.yaml#catalog`에 선언하고 소비 manifest에서 `catalog:`으로 참조합니다. 사용 위치가 여러 곳이라는 사실만으로 catalog에 합치지 않습니다.
 - 같은 이름의 의존성도 저장소 개발 환경과 공개 peer 계약처럼 책임과 지원 범위가 다르면 별도 범위를 유지할 수 있습니다.
+- workspace는 `autoInstallPeers: false`로 누락된 peer dependency를 자동 설치하지 않습니다. 직접 사용하는 peer는 해당 소비 위치에 명시적으로 선언하고, optional peer는 실제 기능에 필요할 때만 추가합니다.
 - 내부 패키지는 실제 용도에 맞는 dependency 종류에 선언하고 버전은 `workspace:*`를 사용합니다. 독립 배포를 위해 저장소 안에서 외부 버전 범위를 미리 적지 않습니다.
 - `catalog:`은 catalog의 실제 범위로, `workspace:*`는 대상 workspace 패키지의 정확한 버전으로 pack·publish 시 변환됩니다. 공개 패키지는 [공개 API 변경](./changing-a-public-api.md)의 pnpm pack 절차로 파일 목록과 생성된 `package.json`을 검토합니다.
 - `pnpm-lock.yaml`은 manifest와 workspace 설정에서 생성하는 추적 대상이며 직접 편집하지 않습니다.

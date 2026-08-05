@@ -1,7 +1,7 @@
 # CLI 도구 작성
 
-- Last verified: 2026-08-04
-- Verified against: `tools/*/package.json`, `tools/*/src/bin`, `package.json`
+- Last verified: 2026-08-05
+- Verified against: `tools/*/package.json`, `tools/*/src/bin`, `tools/*/tsdown.config.ts`, `package.json`
 
 이 가이드는 저장소의 TypeScript CLI가 개발 환경과 패키지 설치 환경에서 같은 빌드 산출물을 실행하도록 만드는 공통 작성·검증 기준입니다. 선택 배경은 [ADR 0003](../decisions/0003-run-cli-from-build-output.md)에 기록되어 있습니다.
 
@@ -10,7 +10,7 @@
 - CLI 소스는 대상 패키지의 `src/bin/*.cli.ts`에 둡니다.
 - 다른 패키지나 사용자가 호출하는 명령은 `package.json#bin`, 패키지 내부 명령은 `package.json#scripts`에서 노출합니다.
 - `bin`과 스크립트는 TypeScript 소스나 별도 JavaScript wrapper가 아니라 빌드된 `dist/bin/*.cli.js`를 실행합니다.
-- 빌드는 이전 `dist`와 TypeScript build info를 제거한 뒤 CLI를 다시 생성해야 합니다.
+- 빌드는 이전 `dist`를 정리하고 CLI를 다시 생성해야 하며, 정리 책임은 해당 패키지의 빌드 도구 설정이 소유합니다.
 - 공개 패키지의 CLI에는 해시뱅을 포함하고 package dry-run에서 실행 파일이 배포되는지 확인합니다.
 
 ## 구현 분리

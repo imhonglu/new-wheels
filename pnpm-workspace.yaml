@@ -2,11 +2,10 @@ packages:
   - tools/*
   - libs/*
 
+autoInstallPeers: false
+
 catalog:
   '@types/node': ^26.1.1
-  esbuild: ^0.28.1
-  tslib: ^2.8.1
 
 allowBuilds:
   '@swc/core': true
-  esbuild: true

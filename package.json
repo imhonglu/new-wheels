@@ -9,14 +9,13 @@
   "type": "module",
   "packageManager": "pnpm@11.15.0",
   "engines": {
-    "node": ">=24",
+    "node": ">=24.11",
     "pnpm": ">=11"
   },
   "scripts": {
     "prepare": "git config core.hooksPath .git-hooks",
     "clean": "rm -rf ./node_modules && pnpm -rc exec 'rm -rf ./node_modules ./dist/ ./*.tsbuildinfo'",
-    "build:tools": "pnpm --filter @imhonglu/build-tools... --filter @imhonglu/cli-tools... build",
-    "build": "pnpm run build:tools && pnpm -r run build && pnpm -r --filter '!@imhonglu/build-tools' --filter '!@imhonglu/json-schema-conformance' exec node ../../tools/build-tools/dist/bin/esm-to-cjs.cli.js",
+    "build": "pnpm -r run build",
     "version": "pnpm changeset version && pnpm install --lockfile-only",
     "release": "pnpm run build && pnpm changeset publish",
     "check:docs": "pnpm --filter @imhonglu/cli-tools build && node tools/cli-tools/dist/bin/check-markdown-links.cli.js AGENTS.md CONTRIBUTING.md README.md README_KR.md docs libs tools && node tools/cli-tools/dist/bin/check-doc-structure.cli.js docs",
@@ -41,8 +40,7 @@
     "@types/node": "catalog:",
     "@vitest/coverage-v8": "^4.1.10",
     "cspell": "^10.0.1",
-    "esbuild": "catalog:",
-    "tslib": "catalog:",
+    "tsdown": "^0.22.14",
     "typescript": "^7.0.2",
     "vitest": "^4.1.10"
   }
