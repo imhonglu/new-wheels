@@ -1,6 +1,6 @@
 # 로컬 개발 환경 준비
 
-- Last verified: 2026-08-04
+- Last verified: 2026-08-05
 - Verified against: `package.json`, `pnpm-lock.yaml`, `pnpm-workspace.yaml`, `.git-hooks/*`, `.github/workflows/ci.yaml`, `.github/workflows/release.yaml`
 
 이 문서는 저장소를 처음 내려받거나 Node.js·pnpm을 바꾼 뒤 공통 로컬 환경을 준비하고 확인하는 절차입니다. 패키지 고유 명령은 가장 가까운 README, 변경 유형별 build·test와 검증 범위는 [테스트와 검증](./testing-and-validation.md)이 소유합니다.
@@ -9,7 +9,7 @@
 
 로컬 개발에는 실행 시점에 지원되는 [최신 Node.js LTS](https://nodejs.org/en/about/previous-releases)를 사용합니다. 루트 `package.json#engines`는 권장 버전을 고정하는 설정이 아니라 저장소와 공개 패키지가 지원하는 최소 호환 범위이며, 현재 기준은 다음과 같습니다.
 
-- Node.js 24 이상
+- Node.js 24.11 이상
 - pnpm 11 이상
 
 따라서 Node.js는 최신 LTS이면서 `engines` 범위를 충족해야 합니다. 저장소가 사용하는 정확한 pnpm 버전은 `package.json#packageManager`에서 확인합니다. 저장소는 Node.js와 pnpm의 시스템 설치 방법이나 에디터 확장을 별도로 강제하지 않으며, 선택한 설치 방법은 이 요구사항을 충족해야 합니다.

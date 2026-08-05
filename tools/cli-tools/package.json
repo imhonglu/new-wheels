@@ -9,10 +9,9 @@
     "check-markdown-links": "./dist/bin/check-markdown-links.cli.js"
   },
   "scripts": {
-    "prebuild": "rm -rf ./dist ./tsconfig.build.tsbuildinfo",
     "pretest": "pnpm run build",
     "test": "vitest",
-    "build": "tsc -p tsconfig.build.json"
+    "build": "tsdown"
   },
   "engines": {
     "node": ">=24"

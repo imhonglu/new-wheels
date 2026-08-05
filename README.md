@@ -24,8 +24,8 @@ A pnpm workspace for independently published TypeScript libraries and their buil
 
 | Package | Purpose |
 | --- | --- |
-| [`@imhonglu/build-tools`](./tools/build-tools/README.md) | Build-output conversion utilities |
-| [`@imhonglu/configs`](./tools/configs/README.md) | Shared TypeScript and API Extractor configuration |
+| [`@imhonglu/build-tools`](./tools/build-tools/README.md) | TypeScript compiler utilities for code generation |
+| [`@imhonglu/configs`](./tools/configs/README.md) | Shared TypeScript, API Extractor, and build configuration |
 
 ## Start here
 

@@ -5,8 +5,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "prebuild": "rm -rf ./dist ./tsconfig.build.tsbuildinfo",
-    "build": "tsc -p tsconfig.build.json",
+    "build": "tsdown",
     "pretest": "pnpm run build",
     "test": "vitest",
     "sync-suite": "pnpm run build && node ./dist/bin/sync-suite.cli.js",

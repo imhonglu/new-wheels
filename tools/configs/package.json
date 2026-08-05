@@ -1,7 +1,7 @@
 {
   "name": "@imhonglu/configs",
   "version": "1.0.12",
-  "description": "Configuration files for the project.",
+  "description": "Shared TypeScript, API Extractor, and tsdown configuration.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/imhonglu/new-wheels.git",
@@ -11,12 +11,14 @@
   "exports": {
     "./api-extractor-base.json": "./api-extractor-base.json",
     "./tsconfig.base.json": "./tsconfig.base.json",
-    "./tsconfig.lib.json": "./tsconfig.lib.json"
+    "./tsconfig.lib.json": "./tsconfig.lib.json",
+    "./tsdown.config.js": "./tsdown.config.js"
   },
   "files": [
     "api-extractor-base.json",
     "tsconfig.base.json",
     "tsconfig.lib.json",
+    "tsdown.config.js",
     "types"
   ],
   "keywords": [],

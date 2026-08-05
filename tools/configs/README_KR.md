@@ -2,7 +2,7 @@
 
 [English](./README.md) | [한국어](./README_KR.md)
 
-`@imhonglu/new-wheels` 패키지가 공유하는 TypeScript와 API Extractor 설정입니다.
+`@imhonglu/new-wheels` 패키지가 공유하는 TypeScript, API Extractor와 tsdown 설정입니다.
 
 ## 설치
 
@@ -29,6 +29,38 @@ pnpm add -D @imhonglu/configs
   "extends": "@imhonglu/configs/api-extractor-base.json",
   "mainEntryPointFilePath": "<projectFolder>/dist/index.d.ts"
 }
+```
+
+## tsdown
+
+공통 빌드 설정을 사용할 때 tsdown을 함께 설치합니다.
+
+```sh
+pnpm add -D @imhonglu/configs tsdown
+```
+
+패키지의 `tsdown.config.ts`에서 공통 설정을 사용합니다.
+
+```ts
+import sharedConfig from "@imhonglu/configs/tsdown.config.js";
+import { defineConfig } from "tsdown";
+
+export default defineConfig(sharedConfig);
+```
+
+`baseConfig`와 `declarationConfig`도 함께 내보냅니다. 패키지가 소유하는 플랫폼이나 plugin 예외만 tsdown의 `mergeConfig`로 병합합니다.
+
+```ts
+import {
+  baseConfig,
+  declarationConfig,
+} from "@imhonglu/configs/tsdown.config.js";
+import { defineConfig, mergeConfig } from "tsdown";
+
+export default defineConfig([
+  mergeConfig(baseConfig, { platform: "node" }),
+  declarationConfig,
+]);
 ```
 
 ## 검증

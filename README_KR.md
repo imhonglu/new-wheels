@@ -24,8 +24,8 @@
 
 | 패키지 | 역할 |
 | --- | --- |
-| [`@imhonglu/build-tools`](./tools/build-tools/README_KR.md) | 빌드 산출물 변환 도구 |
-| [`@imhonglu/configs`](./tools/configs/README_KR.md) | 공통 TypeScript와 API Extractor 설정 |
+| [`@imhonglu/build-tools`](./tools/build-tools/README_KR.md) | 코드 생성을 위한 TypeScript 컴파일러 유틸리티 |
+| [`@imhonglu/configs`](./tools/configs/README_KR.md) | 공통 TypeScript, API Extractor와 빌드 설정 |
 
 ## 다음 문서
 
