@@ -1,5 +1,16 @@
 # @imhonglu/build-tools
 
+## 2.0.0
+
+### Major Changes
+
+- f520262: Generate ESM, CommonJS, declarations, and source mappings directly with tsdown while preserving package entry points. Remove the `esm-to-cjs` command from `@imhonglu/build-tools`; consumers of that command must use their package build tool to emit CommonJS directly.
+
+### Patch Changes
+
+- Updated dependencies [f520262]
+  - @imhonglu/toolkit@2.0.3
+
 ## 1.0.11
 
 ### Patch Changes
